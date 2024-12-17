@@ -1,15 +1,15 @@
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { useTranslations } from "next-intl";
+
 import { LocaleType } from "@/i18n/types";
 
 type Props = Readonly<{
   params: { locale: LocaleType };
 }>;
 
-export async function generateMetadata({
-  params: { locale },
-}: Omit<Props, "children">): Promise<Metadata> {
+export async function generateMetadata({ params }: Omit<Props, "children">): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pages" });
 
   return {

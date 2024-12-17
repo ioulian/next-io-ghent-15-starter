@@ -1,15 +1,16 @@
 import { NextPage } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import { generateSanitizedMetadata } from "@/utils/next";
 
+import { generateSanitizedMetadata } from "@/utils/next";
 import { LocaleType } from "@/i18n/types";
 
 type Props = Readonly<{
   params: { locale: LocaleType };
 }>;
 
-export const generateMetadata = generateSanitizedMetadata<Props>(async ({ params: { locale } }) => {
+export const generateMetadata = generateSanitizedMetadata<Props>(async ({ params }) => {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pages.home.meta" });
 
   return {

@@ -24,7 +24,8 @@
     "lodash": "4.17.21",
     "next": "15.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "reset-css": "5.0.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -37,10 +38,15 @@
     "cssnano": "7.0.6",
     "eslint": "^9",
     "eslint-config-next": "15.1.0",
+    "eslint-plugin-i18next": "6.1.1",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-sonarjs": "3.0.1",
     "husky": "9.1.7",
     "lint-staged": "15.2.11",
     "next-intl": "3.26.1",
     "postcss": "8.4.49",
+    "postcss-import": "16.1.0",
+    "postcss-nesting": "13.0.1",
     "prettier": "3.4.2",
     "ts-node": "10.9.2",
     "typescript": "^5"

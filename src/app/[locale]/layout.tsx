@@ -1,11 +1,15 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
-import { htmlFontClass } from "@/app/_styles/fonts";
 import { Metadata, Viewport } from "next";
 import { ReactNode } from "react";
+
+import { routing } from "@/i18n/routing";
+import { htmlFontClass } from "@/app/[locale]/_styles/fonts";
 import { LocaleType } from "@/i18n/types";
+
+import "./_styles/globals.css";
+import { getCss } from "./_styles/variables";
 
 type Props = Readonly<{
   children: ReactNode;
@@ -20,9 +24,8 @@ export function generateViewport(): Viewport {
   };
 }
 
-export async function generateMetadata({
-  params: { locale },
-}: Omit<Props, "children">): Promise<Metadata> {
+export async function generateMetadata({ params }: Omit<Props, "children">): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "app.defaultMeta" });
 
   return {
@@ -36,11 +39,13 @@ export async function generateMetadata({
 
 export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  const { locale } = await params;
+
   // Ensure that the incoming `locale` is valid
   // @ts-expect-error "locale" is a string, we need to check if it's correct first
   if (!routing.locales.includes(locale)) {
@@ -53,6 +58,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={htmlFontClass}>
+      <head>
+        <style>{getCss()}</style>
+      </head>
       <body>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
