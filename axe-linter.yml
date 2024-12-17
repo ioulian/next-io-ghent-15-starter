@@ -1,0 +1,52 @@
+rules:
+exclude:
+global-components:
+  Button:
+    element: button
+    attributes:
+      - aria-*
+  LinkButton:
+    element: a
+  Image:
+    element: img
+    attributes:
+      - alt
+      - aria-*
+  Spinner:
+    element: span
+    attributes:
+      - aria-*
+      - role:
+          default: progressbar
+  Alert:
+    element: div
+    attributes:
+      - aria-*
+      - role:
+          default: alert
+  SvgSprite:
+    element: svg
+    attributes:
+      - aria-*
+      - title
+  Label:
+    element: label
+    attributes:
+      - aria-*
+  Input:
+    element: input
+    attributes:
+      - aria-*
+  PasswordInput:
+    element: input
+    attributes:
+      - aria-*
+  Select:
+    element: select
+    attributes:
+      - aria-*
+  Textarea:
+    element: textarea
+    attributes:
+      - aria-*
+# TODO: add Heading

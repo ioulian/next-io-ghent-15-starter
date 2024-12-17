@@ -1,0 +1,127 @@
+{
+  "common": {
+    "button": {
+      "spinner": {
+        "aria-label": "Working"
+      }
+    },
+    "dataTable": {
+      "sorting": {
+        "asc": "Sort ascending",
+        "desc": "Sort descending",
+        "clear": "Clear sorting"
+      },
+      "pageSize": {
+        "label": "Show {pageSize} per page"
+      }
+    },
+    "form": {
+      "description": {
+        "prefix": "Description:"
+      },
+      "error": {
+        "prefix": "Error:"
+      },
+      "label": {
+        "required": "(required)"
+      },
+      "select": {
+        "emptyValue": "Select..."
+      },
+      "passwordStrength": {
+        "messages": {
+          "ltSecond": "Cracked in less than {base} second",
+          "second": "Cracked in less than {base} second",
+          "seconds": "Cracked in less than {base} seconds",
+          "minute": "Cracked in less than {base} minute",
+          "minutes": "Cracked in less than {base} minutes",
+          "hour": "Cracked in less than {base} hour",
+          "hours": "Cracked in less than {base} hours",
+          "day": "Cracked in less than {base} day",
+          "days": "Cracked in less than {base} days",
+          "month": "Cracked in less than {base} month",
+          "months": "Cracked in less than {base} months",
+          "year": "Cracked in less than {base} year",
+          "years": "Cracked in less than {base} years",
+          "centuries": "Cracked in centuries"
+        }
+      },
+      "passwordInput": {
+        "revealPassword": "Reveal password",
+        "hidePassword": "Hide password"
+      },
+      "validationErrors": {
+        "required": "This field is required",
+        "email": "This must be a valid email address",
+        "password": "Password is not strong enough",
+        "passwordMatch": "Passwords do not match"
+      }
+    },
+    "richText": {
+      "toolbar": {
+        "actions": {
+          "bold": {
+            "text": "Bold",
+            "tooltip": "Bold"
+          },
+          "italic": {
+            "text": "Italic",
+            "tooltip": "Italic"
+          },
+          "strike": {
+            "text": "Strikethrough",
+            "tooltip": "Strikethrough"
+          },
+          "format": {
+            "label": "Format",
+            "paragraph": "Paragraph",
+            "h1": "Heading 1",
+            "h2": "Heading 2",
+            "h3": "Heading 3",
+            "h4": "Heading 4",
+            "h5": "Heading 5",
+            "h6": "Heading 6"
+          },
+          "bulletList": {
+            "text": "Bullet list",
+            "tooltip": "Bullet list"
+          },
+          "orderedList": {
+            "text": "Ordered list",
+            "tooltip": "Ordered list"
+          },
+          "horizontalRule": {
+            "text": "Horizontal rule",
+            "tooltip": "Horizontal rule"
+          }
+        }
+      }
+    },
+    "localeSwitcher": {
+      "current": "Selected language: {locale}",
+      "locales": {
+        "nl-BE": "Nederlands",
+        "fr-BE": "Français",
+        "en-GB": "English"
+      }
+    },
+    "breadcrumb": {
+      "label": "Breadcrumb"
+    },
+    "ellipsis": {
+      "expand": "Read more",
+      "collapse": "Collapse"
+    },
+    "pagination": {
+      "aria": {
+        "break": {
+          "forward": "Jump forward",
+          "backward": "Jump backward"
+        },
+        "page": "Page {page}",
+        "previous": "Previous page",
+        "next": "Next page"
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "app": {
+    "defaultMeta": {
+      "title": {
+        "template": "%s | Next IO Ghent starter",
+        "default": "Next IO Ghent starter"
+      },
+      "description": "Default description"
+    }
+  },
+  "pages": {
+    "notFound": {
+      "meta": {
+        "title": "Not found",
+        "description": "Not found"
+      },
+      "title": "404 Not found"
+    },
+    "home": {
+      "meta": {
+        "title": "Homepage",
+        "description": "Homepage description"
+      },
+      "title": "Homepage FR"
+    },
+    "serverside": {
+      "meta": {
+        "title": "Serverside",
+        "description": "Serverside description"
+      }
+    }
+  }
+}

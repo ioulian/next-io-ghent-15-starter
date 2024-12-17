@@ -3,23 +3,46 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "prepare": "husky",
+    "postinstall": "husky && patch-package",
+    "dev": "next dev --experimental-https --turbopack",
+    "analyze": "cross-env ANALYZE=true pnpm build",
+    "build": "pnpm check-translations && pnpm check-build-prerequisites && next build",
     "start": "next start",
-    "lint": "next lint"
+    "check-types": "tsc --noemit",
+    "format-code": "prettier --write .",
+    "lint": "pnpm check-types && next lint --fix",
+    "check-translations": "ts-node -O '{\"module\":\"commonjs\"}' scripts/check-translations.ts",
+    "check-build-prerequisites": "ts-node -O '{\"module\":\"commonjs\"}' scripts/check-build-prerequisites.ts",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "panda codegen && storybook build",
+    "test-storybook": "test-storybook",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
+    "lodash": "4.17.21",
+    "next": "15.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.1.0"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@next/env": "15.1.0",
+    "@types/lodash": "4.17.13",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "10.4.20",
+    "cssnano": "7.0.6",
     "eslint": "^9",
     "eslint-config-next": "15.1.0",
-    "@eslint/eslintrc": "^3"
+    "husky": "9.1.7",
+    "lint-staged": "15.2.11",
+    "next-intl": "3.26.1",
+    "postcss": "8.4.49",
+    "prettier": "3.4.2",
+    "ts-node": "10.9.2",
+    "typescript": "^5"
   }
 }
