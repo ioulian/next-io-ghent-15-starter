@@ -11,7 +11,7 @@ const icons = {
 
 const meta: Meta<typeof SvgSprite> = {
   tags: ["autodocs"],
-  title: "UI/Svg Sprite",
+  title: "UI/Atoms/Svg Sprite",
   component: SvgSprite,
   argTypes: {
     src: {
