@@ -2,20 +2,17 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Metadata, Viewport } from "next";
-import { ReactNode } from "react";
 
 import { routing } from "@/i18n/routing";
 import { LocaleType } from "@/i18n/types";
+import SpriteSheetInline from "@/components/atoms/svg-sprite/SpriteSheetInline";
 
-import "./_styles/globals.css";
 import Providers from "./_components/Providers";
 import { htmlFontClass } from "./_styles/fonts";
 import { getCss } from "./_styles/variables";
+import "./_styles/globals.css";
 
-type Props = Readonly<{
-  children: ReactNode;
-  params: { locale: LocaleType };
-}>;
+type Params = Promise<{ locale: LocaleType }>;
 
 export function generateViewport(): Viewport {
   return {
@@ -25,7 +22,7 @@ export function generateViewport(): Viewport {
   };
 }
 
-export async function generateMetadata({ params }: Omit<Props, "children">): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "app.defaultMeta" });
 
@@ -43,12 +40,11 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Params;
 }) {
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid
-  // @ts-expect-error "locale" is a string, we need to check if it's correct first
   if (!routing.locales.includes(locale)) {
     notFound();
   }
@@ -63,6 +59,7 @@ export default async function LocaleLayout({
         <style>{getCss()}</style>
       </head>
       <body>
+        <SpriteSheetInline />
         <NextIntlClientProvider messages={messages}>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>

@@ -1,0 +1,7 @@
+@layer base {
+  .spriteSheet {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+}

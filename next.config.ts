@@ -4,6 +4,8 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import createBundleAnalyzer from "@next/bundle-analyzer";
 
+import { injectToWebpackConfig } from "./scripts/svg-sprite-sheet.mjs";
+
 const withNextIntl = createNextIntlPlugin();
 const withBundleAnalyzer = createBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -16,6 +18,11 @@ const nextConfig: NextConfig = {
   generateBuildId: () => customBuildId,
   env: {
     NEXT_PUBLIC_CUSTOM_BUILD_ID: customBuildId,
+  },
+  webpack: (config, context) => {
+    injectToWebpackConfig(config, context.buildId);
+
+    return config;
   },
 };
 

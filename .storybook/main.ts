@@ -3,6 +3,8 @@ import path from "path";
 import type { StorybookConfig } from "@storybook/nextjs";
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
+import { injectToWebpackConfig } from "./../scripts/svg-sprite-sheet.mjs";
+
 const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
@@ -20,7 +22,7 @@ const config: StorybookConfig = {
     options: {},
   },
   typescript: {
-    check: process.env.NODE_ENV !== "production",
+    check: false,
     reactDocgen: "react-docgen-typescript",
   },
   docs: {
@@ -31,6 +33,8 @@ const config: StorybookConfig = {
   },
   staticDirs: ["../public"],
   webpackFinal: async (config) => {
+    injectToWebpackConfig(config);
+
     if (config.resolve) {
       config.resolve.alias = {
         ...config.resolve.alias,

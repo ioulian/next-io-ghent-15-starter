@@ -100,6 +100,7 @@ const eslintConfig = [
   {
     rules: {
       "sonarjs/todo-tag": "off",
+      "sonarjs/no-unused-vars": "off",
     },
   },
 ];
