@@ -22,13 +22,15 @@
   },
   "dependencies": {
     "@tabler/icons": "3.26.0",
+    "clsx": "2.1.1",
     "flat": "6.0.1",
     "lodash": "4.17.21",
     "next": "15.1.0",
     "next-nprogress-bar": "2.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "reset-css": "5.0.2"
+    "reset-css": "5.0.2",
+    "tailwind-variants": "0.3.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",

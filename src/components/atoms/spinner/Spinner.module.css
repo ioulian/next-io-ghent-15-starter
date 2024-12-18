@@ -1,0 +1,54 @@
+@layer atoms {
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    line-height: 1;
+    background-color: var(--spinner-background-color);
+
+    > span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .element {
+    display: block;
+    border-width: 2px;
+    border-style: solid;
+    border-top-color: var(--spinner-primary-color);
+    border-right-color: var(--spinner-secondary-color);
+    border-bottom-color: var(--spinner-secondary-color);
+    border-left-color: var(--spinner-secondary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    width: 16px;
+    height: 16px;
+  }
+
+  .label {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1;
+  }
+
+  .fullWidth {
+    width: 100%;
+  }
+
+  .fullHeight {
+    height: 100%;
+  }
+}
