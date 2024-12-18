@@ -1,5 +1,8 @@
+// @ts-check
+
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+
 import { FlatCompat } from "@eslint/eslintrc";
 import i18next from "eslint-plugin-i18next";
 // import importPlugin from "eslint-plugin-import";

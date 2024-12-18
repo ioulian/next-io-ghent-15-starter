@@ -5,10 +5,11 @@ import { Metadata, Viewport } from "next";
 import { ReactNode } from "react";
 
 import { routing } from "@/i18n/routing";
-import { htmlFontClass } from "@/app/[locale]/_styles/fonts";
 import { LocaleType } from "@/i18n/types";
 
 import "./_styles/globals.css";
+import Providers from "./_components/Providers";
+import { htmlFontClass } from "./_styles/fonts";
 import { getCss } from "./_styles/variables";
 
 type Props = Readonly<{
@@ -62,7 +63,9 @@ export default async function LocaleLayout({
         <style>{getCss()}</style>
       </head>
       <body>
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>
+          <Providers>{children}</Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

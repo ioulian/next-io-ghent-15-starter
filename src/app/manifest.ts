@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 
+import { getVariable } from "./[locale]/_styles/variables";
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "iO Ghent",
@@ -7,9 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "iO Ghent Next.js starter kit",
     start_url: "/",
     display: "standalone",
-    // TODO: We can use tokens here!
-    background_color: "#fff",
-    theme_color: "#314C74",
+    background_color: getVariable("color.white"),
+    theme_color: getVariable("color.primary.400"),
     icons: [
       {
         src: "/favicon.ico",

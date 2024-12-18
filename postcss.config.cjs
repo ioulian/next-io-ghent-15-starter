@@ -1,10 +1,12 @@
 module.exports = {
   plugins: {
-    autoprefixer: {},
+    "postcss-preset-env": {},
+    "@csstools/postcss-global-data": {
+      files: ["./src/app/[locale]/_styles/media.css"],
+    },
     cssnano: {},
-    // TODO: turn on for browser support
-    //"@csstools/postcss-cascade-layers": {},
     "postcss-nesting": {},
     "postcss-import": {},
+    "postcss-custom-media": {},
   },
 };
