@@ -1,11 +1,12 @@
 import { ComponentPropsWithRef, forwardRef, memo } from "react";
+import { VariantProps } from "tailwind-variants";
 
 import { addClassNameToProps } from "@/utils/styles";
 
 import { heading } from "./Heading.styles";
 
 export type HeadingType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-export type HeadingSize = "display" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+export type HeadingSize = VariantProps<typeof heading>["size"];
 
 const Heading = forwardRef<
   HTMLHeadingElement,
