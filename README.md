@@ -8,7 +8,6 @@ It contains a lot of useful presets and common components to be used in your pro
 
 - "Full" Typescript: All project code is written in Typescript where possible. Some other JS files are (where possible) also typed;
 - Translations ([next-intl](https://github.com/amannn/next-intl)): Allow using intellisense (with TS) for translations and custom scripts to check if translations are complete. Both server and client components support using translations;
-- Styling using [panda-css](https://panda-css.com/);
 - Favicons: Using default metadata API from Next.js. Only a few specific sizes are needed. (Use <https://realfavicongenerator.net/> with <https://maskable.app/editor>);
 - Avif/webm conversion of images (Provided by Next.js);
 - Bundle analyser (Provided by Next.js);
