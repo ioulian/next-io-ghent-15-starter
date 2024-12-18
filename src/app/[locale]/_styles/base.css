@@ -85,18 +85,4 @@
       scroll-behavior: auto !important;
     }
   }
-
-  /* Prevent overflow of images and remove spacing at the bottom */
-  picture,
-  img,
-  svg,
-  video {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
-
-  svg {
-    width: 100%;
-  }
 }

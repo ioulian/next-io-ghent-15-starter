@@ -20,6 +20,9 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
+  "browserslist": [
+    "last 2 versions"
+  ],
   "dependencies": {
     "@tabler/icons": "3.26.0",
     "clsx": "2.1.1",
@@ -29,7 +32,6 @@
     "next-nprogress-bar": "2.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "reset-css": "5.0.2",
     "tailwind-variants": "0.3.0"
   },
   "devDependencies": {

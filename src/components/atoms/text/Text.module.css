@@ -1,0 +1,24 @@
+@layer atoms {
+  .text {
+    > * + * {
+      margin-top: 1.25rem;
+
+      @media (--lg-up) {
+        margin-top: 1.5rem;
+      }
+    }
+
+    ul,
+    ol {
+      padding-left: 1.5rem;
+    }
+
+    ul {
+      list-style: disc outside;
+    }
+
+    ol {
+      list-style: decimal outside;
+    }
+  }
+}

@@ -1,6 +1,11 @@
-module.exports = {
+/** @type {import('postcss-load-config').Config} */
+const config = {
   plugins: {
-    "postcss-preset-env": {},
+    "postcss-preset-env": {
+      features: {
+        "cascade-layers": false,
+      },
+    },
     "@csstools/postcss-global-data": {
       files: ["./src/app/[locale]/_styles/media.css"],
     },
@@ -10,3 +15,5 @@ module.exports = {
     "postcss-custom-media": {},
   },
 };
+
+module.exports = config;

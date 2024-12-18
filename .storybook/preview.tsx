@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import type { Preview } from "@storybook/react";
 
 import { htmlFontClass } from "@/app/[locale]/_styles/fonts";
+import { getCss } from "@/app/[locale]/_styles/variables";
 
 import messages from "../messages/en-GB/common.json";
 
@@ -23,9 +24,12 @@ const preview: Preview = {
     (Story) => {
       document.documentElement.classList.add(htmlFontClass);
       return (
-        <NextIntlClientProvider locale="en-GB" messages={messages}>
-          <Story />
-        </NextIntlClientProvider>
+        <>
+          <style>{getCss()}</style>
+          <NextIntlClientProvider locale="en-GB" messages={messages}>
+            <Story />
+          </NextIntlClientProvider>
+        </>
       );
     },
   ],

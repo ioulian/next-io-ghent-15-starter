@@ -29,4 +29,9 @@ describe("Spinner", () => {
     );
     expect(screen.getByTestId("test-label")).toBeInTheDocument();
   });
+
+  it("renders with aria-label", () => {
+    render(<Spinner data-testid="test">Test</Spinner>);
+    expect(screen.getByTestId("test").getAttribute("aria-label")).toBe("Test");
+  });
 });
