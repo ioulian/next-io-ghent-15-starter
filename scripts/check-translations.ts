@@ -44,6 +44,7 @@ const getTranslationFile = (locale: string, name: string): Record<string, unknow
 };
 
 const check = async (): Promise<boolean> =>
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   new Promise(async (resolve) => {
     let isCorrect = true;
 
