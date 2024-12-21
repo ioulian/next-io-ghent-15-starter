@@ -1,0 +1,32 @@
+@layer molecules {
+  .ellipsis {
+    > button {
+      margin-top: 1rem;
+    }
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .content {
+  }
+
+  .contentHelper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .lineClamp {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--ellipsis-number-of-lines);
+    line-clamp: var(--ellipsis-number-of-lines);
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
