@@ -19,6 +19,46 @@ export const cssVariables = {
       "900": "#111A27",
       "950": "#111A27",
     },
+    secondary: {
+      "50": "#FCFCFD",
+      "100": "#FAFAFA",
+      "200": "#F4F5F5",
+      "300": "#EFEFF1",
+      "400": "#E7E8E9",
+      "500": "#E2E3E5",
+      "600": "#CCCED1",
+      "700": "#B1B4B9",
+      "800": "#93979F",
+      "900": "#686C74",
+      "950": "#4D5056",
+    },
+    positive: {
+      "50": "#F1F9F4",
+      "100": "#DCEFE3",
+      "200": "#B5DEC4",
+      "300": "#83C99C",
+      "400": "#4BAA6E",
+      "500": "#367B4F",
+      "600": "#306E47",
+      "700": "#2A603E",
+      "800": "#224E32",
+      "900": "#173522",
+      "950": "#132B1B",
+    },
+    negative: {
+      "50": "#FDF3F2",
+      "100": "#FAE7E5",
+      "200": "#F4CBC8",
+      "300": "#ECA39D",
+      "400": "#E17065",
+      "500": "#B42E23",
+      "600": "#9E291F",
+      "700": "#8D251B",
+      "800": "#781F17",
+      "900": "#49130E",
+      "950": "#330D0A",
+    },
+    body: "var(--color-secondary-950)",
   },
   duration: {
     "perceptive-instant": "85ms",
@@ -40,6 +80,20 @@ export const cssVariables = {
     body: "system-ui, sans-serif",
     heading: "system-ui, sans-serif",
   },
+  radius: {
+    small: "4px",
+  },
+  tooltip: {
+    offset: "10px",
+  },
+  floater: {
+    shift: "5px",
+    flip: "5px",
+    arrow: {
+      size: "10px",
+      padding: "10px",
+    },
+  },
 };
 
 export type VariableNameType = Leaves<typeof cssVariables>;
@@ -58,3 +112,12 @@ export const getCss = () => `
   }
 }
 `;
+
+/**
+ * Converts css variable to number only.
+ */
+export const getVariableAsNumber = (name: VariableNameType): number => {
+  const variable = flatCssVariables[name];
+
+  return parseInt(variable.replace("px", "").replace("rem", "").replace("ms", ""), 10);
+};

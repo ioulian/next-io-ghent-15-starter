@@ -1,0 +1,21 @@
+@layer atoms {
+  .circularProgress {
+    position: relative;
+    display: block;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .progress {
+    position: absolute;
+    transform-origin: center center;
+    transform: rotate(-90deg);
+    stroke: var(--circular-progress-main-color);
+    stroke-width: 8px;
+  }
+
+  .background {
+    stroke-width: 8px;
+    stroke: var(--circular-progress-background-color);
+  }
+}

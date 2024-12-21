@@ -1,0 +1,25 @@
+@layer molecules {
+  .breadcrumb {
+    > ol {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+  }
+
+  .breadcrumbItem {
+    &:not(:first-child) {
+      &::before {
+        content: "/";
+        margin-right: 0.75rem;
+      }
+    }
+
+    &:last-child {
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  }
+}

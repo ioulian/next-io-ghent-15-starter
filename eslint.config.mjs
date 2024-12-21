@@ -99,7 +99,8 @@ const eslintConfig = [
   sonarjs.configs.recommended,
   {
     rules: {
-      "sonarjs/todo-tag": "off",
+      "sonarjs/fixme-tag": "warn",
+      "sonarjs/todo-tag": "warn",
       "sonarjs/no-unused-vars": "off",
     },
   },

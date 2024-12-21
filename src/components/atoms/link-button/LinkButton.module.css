@@ -1,0 +1,10 @@
+@layer atoms {
+  .linkButton {
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}

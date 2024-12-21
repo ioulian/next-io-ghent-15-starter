@@ -1,0 +1,15 @@
+@layer molecules {
+  .buttonGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .buttonGroupAlignStart {
+    justify-content: flex-start;
+  }
+
+  .buttonGroupAlignEnd {
+    justify-content: flex-end;
+  }
+}

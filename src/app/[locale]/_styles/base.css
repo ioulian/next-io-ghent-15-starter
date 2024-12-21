@@ -48,6 +48,14 @@
     font-size: inherit;
   }
 
+  ul,
+  ol {
+    &[role="list"],
+    &[role="listbox"] {
+      list-style: none;
+    }
+  }
+
   /* Remove 300ms delay on buttons:
   https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action#manipulation */
   a,
