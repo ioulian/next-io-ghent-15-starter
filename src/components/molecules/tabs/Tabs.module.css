@@ -1,0 +1,46 @@
+@layer molecules {
+  .tabs {
+    -webkit-tap-highlight-color: transparent;
+
+    > ul {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-left: 0;
+      list-style: none;
+
+      > li {
+        position: relative;
+        list-style: none;
+        padding-left: 0;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        transition: border-bottom-color var(--duration-fast);
+        margin-bottom: -1px;
+        outline-offset: 4px;
+
+        > span {
+          padding-bottom: 0.5rem;
+          display: block;
+        }
+
+        &[aria-selected="true"] {
+          border-bottom: 2px solid var(--color-primary-500);
+        }
+
+        &[aria-disabled="true"] {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    > div[role="tabpanel"] {
+      display: none;
+    }
+  }
+
+  .tabPanelSelected {
+    display: block !important;
+  }
+}

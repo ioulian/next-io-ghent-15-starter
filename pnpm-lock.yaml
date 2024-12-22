@@ -47,6 +47,12 @@ dependencies:
   react-polymorphed:
     specifier: 2.2.2
     version: 2.2.2(@types/react@19.0.1)
+  react-tabs:
+    specifier: 6.1.0
+    version: 6.1.0(react@19.0.0)
+  react-toastify:
+    specifier: 11.0.2
+    version: 11.0.2(react-dom@19.0.0)(react@19.0.0)
   react-use:
     specifier: 17.6.0
     version: 17.6.0(react-dom@19.0.0)(react@19.0.0)
@@ -10733,6 +10739,27 @@ packages:
     resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /react-tabs@6.1.0(react@19.0.0):
+    resolution: {integrity: sha512-6QtbTRDKM+jA/MZTTefvigNxo0zz+gnBTVFw2CFVvq+f2BuH0nF0vDLNClL045nuTAdOoK/IL1vTP0ZLX0DAyQ==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+    dependencies:
+      clsx: 2.1.1
+      prop-types: 15.8.1
+      react: 19.0.0
+    dev: false
+
+  /react-toastify@11.0.2(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-GjHuGaiXMvbls3ywqv8XdWONwrcO4DXCJIY1zVLkHU73gEElKvTTXNI5Vom3s/k/M8hnkrfsqgBSX3OwmlonbA==}
+    peerDependencies:
+      react: ^18 || ^19
+      react-dom: ^18 || ^19
+    dependencies:
+      clsx: 2.1.1
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+    dev: false
 
   /react-universal-interface@0.6.2(react@19.0.0)(tslib@2.8.1):
     resolution: {integrity: sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==}
