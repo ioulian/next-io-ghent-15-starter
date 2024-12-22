@@ -1,5 +1,8 @@
 {
   "common": {
+    "closeButton": {
+      "defaultLabel": "Close"
+    },
     "button": {
       "spinner": {
         "aria-label": "Working"

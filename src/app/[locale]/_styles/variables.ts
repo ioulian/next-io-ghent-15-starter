@@ -86,6 +86,9 @@ export const cssVariables = {
   tooltip: {
     offset: "10px",
   },
+  popover: {
+    offset: "10px",
+  },
   floater: {
     shift: "5px",
     flip: "5px",
