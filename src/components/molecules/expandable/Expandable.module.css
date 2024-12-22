@@ -1,0 +1,29 @@
+@layer molecules {
+  .expandable {
+  }
+
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: transform var(--duration-normal);
+  }
+
+  .iconOpen {
+    transform: rotate(180deg);
+  }
+
+  .container {
+    padding-top: 1rem;
+  }
+
+  .summary {
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+}

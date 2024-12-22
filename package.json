@@ -34,9 +34,12 @@
     "next": "15.1.0",
     "next-nprogress-bar": "2.4.2",
     "react": "^19.0.0",
+    "react-animate-height": "3.2.3",
     "react-dom": "^19.0.0",
+    "react-paginate": "8.2.0",
     "react-polymorphed": "2.2.2",
     "react-use": "17.6.0",
+    "swiper": "11.1.15",
     "tailwind-variants": "0.3.0"
   },
   "devDependencies": {
