@@ -1,0 +1,14 @@
+@layer molecules {
+  .localeItem {
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .localeItemActive {
+    text-decoration: underline;
+  }
+}

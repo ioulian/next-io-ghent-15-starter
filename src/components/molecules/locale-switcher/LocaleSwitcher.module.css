@@ -1,0 +1,10 @@
+@layer molecules {
+  .list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    gap: 0.25rem;
+  }
+}
