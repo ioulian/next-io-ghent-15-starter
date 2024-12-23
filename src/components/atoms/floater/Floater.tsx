@@ -2,9 +2,8 @@ import { ComponentPropsWithRef, CSSProperties, forwardRef, memo, useMemo } from 
 import { Coords, Placement, Strategy } from "@floating-ui/react";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
-import { addClassNameToProps } from "@/utils/styles";
+import { addClassNameToProps, roundByDPR } from "@/utils/styles";
 
-import { roundByDPR } from "./utils";
 import styles from "./Floater.module.css";
 
 const Floater = forwardRef<

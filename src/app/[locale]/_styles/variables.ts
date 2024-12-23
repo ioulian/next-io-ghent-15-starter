@@ -59,6 +59,7 @@ export const cssVariables = {
       "950": "#330D0A",
     },
     body: "var(--color-secondary-950)",
+    overlay: "rgba(17, 26, 39, 0.7)",
   },
   duration: {
     "perceptive-instant": "85ms",
@@ -87,6 +88,9 @@ export const cssVariables = {
     offset: "10px",
   },
   popover: {
+    offset: "10px",
+  },
+  dropdown: {
     offset: "10px",
   },
   floater: {

@@ -1,0 +1,12 @@
+@layer molecules {
+  .overlay {
+    background-color: var(--color-overlay);
+    backdrop-filter: blur(10px);
+  }
+
+  .centerDialog {
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+  }
+}
