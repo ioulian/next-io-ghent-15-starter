@@ -1,3 +1,5 @@
+import { MessageKeys, NestedKeyOf } from "next-intl";
+
 import { locales } from "@/i18n/constants";
 
 import baseCommonMessages from "../../messages/en-GB/common.json";
@@ -11,3 +13,5 @@ declare global {
   // eslint-disable-next-line
   interface IntlMessages extends Messages {}
 }
+
+export type Translation = MessageKeys<IntlMessages, NestedKeyOf<IntlMessages>>;

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import TextArea from "./TextArea";
 
 const meta: Meta<typeof TextArea> = {
-  title: "UI/Atoms/Text Area",
+  title: "UI/Atoms/Form/Text Area",
   component: TextArea,
   tags: ["autodocs"],
 };

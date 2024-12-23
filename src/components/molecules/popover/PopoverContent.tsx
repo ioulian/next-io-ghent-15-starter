@@ -20,8 +20,8 @@ import { usePopoverContext } from "./hooks";
 
 const PopoverContent = forwardRef<
   HTMLDivElement,
-  { withCloseButton?: boolean } & HTMLProps<HTMLDivElement>
->(({ withCloseButton = false, ...props }, propRef) => {
+  { withCloseButton?: boolean; showArrow?: boolean } & HTMLProps<HTMLDivElement>
+>(({ withCloseButton = false, showArrow, ...props }, propRef) => {
   const t = useTranslations("common.closeButton");
   const context = usePopoverContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
@@ -62,6 +62,7 @@ const PopoverContent = forwardRef<
               aria-labelledby={context.labelId}
               aria-describedby={context.descriptionId}
               {...context.getFloatingProps(props)}
+              showArrow={showArrow}
               style={styles}
             >
               {props.children}

@@ -25,7 +25,7 @@ const options = [
 ];
 
 const meta: Meta<typeof Input> = {
-  title: "UI/Atoms/Input",
+  title: "UI/Atoms/Form/Input",
   component: Input,
   tags: ["autodocs"],
   argTypes: {

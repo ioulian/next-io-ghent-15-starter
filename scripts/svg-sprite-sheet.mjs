@@ -16,6 +16,7 @@ export const injectToWebpackConfig = (config, buildId = "development") => {
         loader: "svg-sprite-loader",
         options: {
           extract: true,
+          esModule: false, // https://github.com/JetBrains/svg-sprite-loader/issues/363
           publicPath: "/static/media/",
           spriteFilename: (svgPath) => {
             return `sprite-${buildId}${svgPath.substr(-4)}`;

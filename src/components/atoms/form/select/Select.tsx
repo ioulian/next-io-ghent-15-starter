@@ -12,7 +12,7 @@ const Select = forwardRef<
     /**
      * Add empty option as first item
      */
-    addEmptyOption?: boolean;
+    addEmptyOption?: boolean | string;
     isError?: boolean;
   } & ComponentPropsWithRef<"select">
 >(({ addEmptyOption = false, children, isError, ...props }, ref) => {
@@ -22,7 +22,9 @@ const Select = forwardRef<
     <select {...addClassNameToProps(props, baseInput({ isError }), styles.select)} ref={ref}>
       {addEmptyOption ? (
         <>
-          <option value="">{t("select.emptyValue")}</option>
+          <option value="">
+            {typeof addEmptyOption === "string" ? addEmptyOption : t("select.emptyValue")}
+          </option>
           <hr />
         </>
       ) : null}

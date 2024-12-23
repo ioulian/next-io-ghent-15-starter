@@ -18,7 +18,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./LinkButton.module.css";
 
-type Props = {
+export type Props = {
   /**
    * Variant of the button
    */
