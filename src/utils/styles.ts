@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import clsx, { ClassValue } from "clsx";
 
 export interface PropsWithClassName {
   className?: string;
@@ -6,7 +6,7 @@ export interface PropsWithClassName {
 
 export const addClassNameToProps = <T extends PropsWithClassName>(
   { className, ...props }: T,
-  ...newClassName: string[]
+  ...newClassName: ClassValue[]
 ) => ({
   ...props,
   className: clsx(...newClassName, className),

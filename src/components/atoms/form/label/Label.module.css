@@ -1,0 +1,10 @@
+@layer atoms {
+  .label {
+    font-weight: 700;
+    display: block;
+  }
+
+  .asterisk {
+    color: var(--form-asterisk);
+  }
+}

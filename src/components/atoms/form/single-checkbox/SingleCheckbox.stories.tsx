@@ -1,0 +1,22 @@
+import type { Meta, StoryObj } from "@storybook/react";
+
+import SingleCheckbox from "./SingleCheckbox";
+
+const meta: Meta<typeof SingleCheckbox> = {
+  title: "UI/Atoms/SingleCheckbox",
+  component: SingleCheckbox,
+  tags: ["autodocs"],
+};
+export default meta;
+type Story = StoryObj<typeof SingleCheckbox>;
+
+export const Default: Story = {
+  args: {},
+};
+
+export const Indeterminate: Story = {
+  args: {
+    checked: false,
+    indeterminate: true,
+  },
+};
