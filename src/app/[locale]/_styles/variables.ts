@@ -101,6 +101,29 @@ export const cssVariables = {
       padding: "10px",
     },
   },
+  form: {
+    input: {
+      color: "var(--color-body)",
+      border: "var(--color-secondary-900)",
+      background: "var(--color-secondary-50)",
+    },
+    select: {
+      indicator: "var(--color-body)",
+    },
+    asterisk: "var(--color-negative-500)",
+    outline: "var(--color-primary-600)",
+    checkbox: {
+      checked: {
+        border: "var(--color-primary-500)",
+        background: "var(--color-primary-500)",
+        color: "var(--color-white)",
+      },
+    },
+    error: "var(--color-negative-500)",
+    requiredMessage: {
+      value: "var(--form-error)",
+    },
+  },
 };
 
 export type VariableNameType = Leaves<typeof cssVariables>;

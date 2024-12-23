@@ -1,0 +1,23 @@
+@layer atoms {
+  .baseInput {
+    color: var(--form-input-color);
+    background-color: var(--form-input-background);
+    border-radius: var(--radius-small);
+    outline-color: var(--form-outline);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--form-input-border);
+    margin: 0;
+
+    & + *:not(button, label) {
+      margin-top: 0.25rem;
+    }
+  }
+
+  .isError {
+    border-color: var(--form-error);
+
+    &:focus {
+      outline-color: var(--form-error);
+    }
+  }
+}

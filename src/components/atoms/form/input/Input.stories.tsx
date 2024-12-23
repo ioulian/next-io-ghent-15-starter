@@ -1,0 +1,57 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import searchIcon from "@tabler/icons/outline/search.svg";
+
+import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
+
+import Input from "./Input";
+
+const options = [
+  "text",
+  "checkbox",
+  "color",
+  "date",
+  "datetime-local",
+  "email",
+  "file",
+  "month",
+  "number",
+  "password",
+  "radio",
+  "search",
+  "tel",
+  "time",
+  "url",
+  "week",
+];
+
+const meta: Meta<typeof Input> = {
+  title: "UI/Atoms/Input",
+  component: Input,
+  tags: ["autodocs"],
+  argTypes: {
+    type: {
+      options,
+      control: {
+        type: "select",
+        labels: options,
+      },
+    },
+  },
+};
+export default meta;
+type Story = StoryObj<typeof Input>;
+
+export const Default: Story = {
+  render: (args) => <Input {...args} />,
+  args: {
+    type: "text",
+  },
+};
+
+export const WithIcon: Story = {
+  render: (args) => <Input {...args} />,
+  args: {
+    type: "search",
+    iconBefore: <SvgSprite src={searchIcon} />,
+  },
+};
