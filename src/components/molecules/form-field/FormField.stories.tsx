@@ -1,3 +1,5 @@
+/* eslint-disable i18next/no-literal-string */
+
 import type { Meta, StoryObj } from "@storybook/react";
 
 import Form from "@/components/organisms/form/Form";
@@ -6,6 +8,9 @@ import Input from "@/components/atoms/form/input/Input";
 import Toggle from "@/components/atoms/form/toggle/Toggle";
 import SingleCheckbox from "@/components/atoms/form/single-checkbox/SingleCheckbox";
 import PasswordInput from "@/components/atoms/form/password/PasswordInput";
+import Radio from "@/components/atoms/form/collection/radio/Radio";
+import List from "@/components/atoms/form/collection/List";
+import Checkbox from "@/components/atoms/form/collection/checkbox/Checkbox";
 
 import FormField from "./FormField";
 
@@ -117,5 +122,41 @@ export const IsToggleWithToggle: Story = {
     isToggle: true,
     description: "Description",
     children: <Toggle />,
+  },
+};
+
+export const WithRadioList: Story = {
+  render: (args) => (
+    <Form>
+      <FormField {...args}>
+        <Radio inputValue="value1">Value 1</Radio>
+        <Radio inputValue="value2">Value 2</Radio>
+        <Radio inputValue="value3">Value 3</Radio>
+      </FormField>
+    </Form>
+  ),
+  args: {
+    label: "Choose one",
+    name: "emailAddress",
+    inputWrapper: List,
+    asFieldSet: true,
+  },
+};
+
+export const WithCheckboxList: Story = {
+  render: (args) => (
+    <Form>
+      <FormField {...args}>
+        <Checkbox inputValue="value1">Value 1</Checkbox>
+        <Checkbox inputValue="value2">Value 2</Checkbox>
+        <Checkbox inputValue="value3">Value 3</Checkbox>
+      </FormField>
+    </Form>
+  ),
+  args: {
+    label: "Choose one",
+    name: "emailAddress",
+    inputWrapper: List,
+    asFieldSet: true,
   },
 };
