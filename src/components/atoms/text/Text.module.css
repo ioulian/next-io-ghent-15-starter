@@ -8,6 +8,30 @@
       }
     }
 
+    /* h1 {
+      composes: h1 from "./../heading/Heading.module.css";
+    }
+
+    h2 {
+      composes: h2 from "./../heading/Heading.module.css";
+    }
+
+    h3 {
+      composes: h3 from "./../heading/Heading.module.css";
+    }
+
+    h4 {
+      composes: h4 from "./../heading/Heading.module.css";
+    }
+
+    h5 {
+      composes: h5 from "./../heading/Heading.module.css";
+    }
+
+    h6 {
+      composes: h6 from "./../heading/Heading.module.css";
+    } */
+
     ul,
     ol {
       padding-left: 1.5rem;

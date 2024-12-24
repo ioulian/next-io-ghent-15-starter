@@ -1,0 +1,11 @@
+@layer atoms {
+  .error {
+    color: var(--form-error);
+    font-size: 0.875rem;
+    font-weight: 700;
+
+    & + * {
+      margin-top: 0.25rem;
+    }
+  }
+}
