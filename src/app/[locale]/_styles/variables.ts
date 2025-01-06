@@ -1,4 +1,4 @@
-import { flatten } from "flat";
+import { flattie } from "flattie";
 
 import { Leaves } from "@/types/helpers";
 
@@ -128,7 +128,7 @@ export const cssVariables = {
 
 export type VariableNameType = Leaves<typeof cssVariables>;
 
-export const flatCssVariables: Record<VariableNameType, string> = flatten(cssVariables);
+export const flatCssVariables: Record<VariableNameType, string> = flattie(cssVariables);
 
 export const getVariable = (name: VariableNameType): string => flatCssVariables[name];
 
