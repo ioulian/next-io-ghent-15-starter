@@ -23,4 +23,11 @@ describe("Select", () => {
     render(<Select data-testid="test" data-foo="bar" addEmptyOption />);
     expect((document.querySelector("select > option") as HTMLOptionElement)?.value).toBe("");
   });
+
+  it("renders with custom empty option", () => {
+    render(<Select data-testid="test" data-foo="bar" addEmptyOption="test" />);
+    expect((document.querySelector("select > option") as HTMLOptionElement)?.innerHTML).toBe(
+      "test",
+    );
+  });
 });
