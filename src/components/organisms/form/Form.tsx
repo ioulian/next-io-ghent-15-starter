@@ -10,7 +10,6 @@ import {
   useForm,
   UseFormProps,
 } from "react-hook-form";
-import { useUpdateEffect } from "react-use";
 
 import { FormFieldError } from "@/components/organisms/form/types";
 import { addClassNameToProps } from "@/utils/styles";
@@ -69,7 +68,7 @@ const Form = <T extends FieldValues = FieldValues>({
   // The double onChange callback is only in dev (probably with strict mode), we set this to true only for development
 
   // Subscribe to onChange event
-  useUpdateEffect(() => {
+  useEffect(() => {
     const subscription = watch((values) => {
       onChange?.(values);
     });
