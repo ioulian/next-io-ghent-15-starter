@@ -1,15 +1,33 @@
 @layer molecules {
   .expandable {
+    /* See: https://codepen.io/utilitybend/pen/PoMyBbj */
+    @supports selector(::details-content) {
+      &::details-content {
+        height: 0;
+        transition:
+          height var(--duration-slow),
+          content-visibility var(--duration-slow) allow-discrete;
+        overflow: clip;
+      }
+    }
+
+    &[open] {
+      .icon {
+        transform: rotate(180deg);
+      }
+
+      @supports selector(::details-content) {
+        &::details-content {
+          height: auto;
+        }
+      }
+    }
   }
 
   .icon {
     width: 1.5rem;
     height: 1.5rem;
     transition: transform var(--duration-normal);
-  }
-
-  .iconOpen {
-    transform: rotate(180deg);
   }
 
   .container {

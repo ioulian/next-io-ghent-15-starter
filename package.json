@@ -43,7 +43,6 @@
     "next": "15.1.0",
     "next-nprogress-bar": "2.4.2",
     "react": "^19.0.0",
-    "react-animate-height": "3.2.3",
     "react-dom": "^19.0.0",
     "react-hook-form": "7.54.2",
     "react-paginate": "8.2.0",

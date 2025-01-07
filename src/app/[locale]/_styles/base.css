@@ -1,4 +1,8 @@
 @layer base {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
   html,
   body {
     -webkit-overflow-scrolling: touch;
