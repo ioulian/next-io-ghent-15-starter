@@ -75,6 +75,22 @@
             "text": "Strikethrough",
             "tooltip": "Strikethrough"
           },
+          "underline": {
+            "text": "Underline",
+            "tooltip": "Underline"
+          },
+          "hardBreak": {
+            "text": "Hard break",
+            "tooltip": "Hard break"
+          },
+          "subscript": {
+            "text": "Subscript",
+            "tooltip": "Subscript"
+          },
+          "superscript": {
+            "text": "Superscript",
+            "tooltip": "Superscript"
+          },
           "format": {
             "label": "Format",
             "paragraph": "Paragraph",

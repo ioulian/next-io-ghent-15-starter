@@ -1,0 +1,54 @@
+@layer molecules {
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: var(--color-secondary-200);
+    padding: 0.25rem;
+    border-bottom: 1px solid var(--form-input-border);
+  }
+
+  .toolbarSeparator {
+    background-color: var(--form-input-border);
+    width: 1px;
+    margin-block: 0.25rem;
+    height: 20px;
+  }
+
+  .button {
+    border-radius: 4px;
+    transition:
+      background-color var(--duration-fast),
+      color var(--duration-fast);
+    padding: 0.25rem;
+
+    > svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-secondary-400);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .buttonIsActive {
+    background-color: var(--color-primary-500);
+    color: var(--color-white);
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-primary-400);
+    }
+  }
+
+  .buttonIsDropdownTrigger {
+    padding: 0.25rem 0.5rem;
+  }
+}

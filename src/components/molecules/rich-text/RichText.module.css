@@ -1,0 +1,16 @@
+@layer molecules {
+  .richtext {
+    overflow: hidden;
+  }
+
+  .richtextContent {
+    background-color: var(--color-white);
+    margin: 1rem;
+    min-height: 10rem;
+    outline-offset: 10px;
+
+    &:focus-visible {
+      outline: 2px solid currentColor;
+    }
+  }
+}
