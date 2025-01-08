@@ -42,7 +42,7 @@ const BASIC_STRING_VALIDATION = z.string({
   invalid_type_error: REQUIRED_MESSAGE,
 });
 
-export const schema: ZodType<SampleFormData> = z
+const schema: ZodType<SampleFormData> = z
   .object({
     firstName: BASIC_STRING_VALIDATION.min(1),
     lastName: BASIC_STRING_VALIDATION.nullish(),
@@ -62,7 +62,7 @@ export const schema: ZodType<SampleFormData> = z
     path: ["passwordRepeat"],
   });
 
-export const formResolver = createZodResolver(schema);
+const formResolver = createZodResolver(schema);
 
 export const Default: Story = {
   render: () => (

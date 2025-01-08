@@ -9,6 +9,9 @@ import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import Button from "@/components/atoms/button/Button";
 import Heading from "@/components/atoms/heading/Heading";
 import Text from "@/components/atoms/text/Text";
+import Tooltip from "@/components/molecules/tooltip/Tooltip";
+import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
+import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
 
 import Popover from "./Popover";
 import PopoverTrigger from "./PopoverTrigger";
@@ -79,6 +82,24 @@ export const PopoverInPopover: Story = {
             </PopoverContent>
           </Popover>
         </PopoverDescription>
+        <PopoverClose>Close</PopoverClose>
+      </PopoverContent>
+    </Popover>
+  ),
+};
+
+export const PopoverWithTooltip: Story = {
+  render: (args) => (
+    <Popover {...args}>
+      <Tooltip placement="top">
+        <PopoverTrigger>
+          <TooltipTrigger>My trigger</TooltipTrigger>
+        </PopoverTrigger>
+        <TooltipContent>Tooltip content</TooltipContent>
+      </Tooltip>
+      <PopoverContent>
+        <PopoverHeading>My popover heading</PopoverHeading>
+        <PopoverDescription>My popover description</PopoverDescription>
         <PopoverClose>Close</PopoverClose>
       </PopoverContent>
     </Popover>
