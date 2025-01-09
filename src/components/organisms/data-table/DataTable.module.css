@@ -1,0 +1,57 @@
+@layer organisms {
+  .container {
+  }
+
+  .table {
+    border-spacing: 0;
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid var(--color-secondary-200);
+
+    th,
+    td {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--color-secondary-200);
+    }
+
+    thead,
+    tfoot {
+      font-weight: 700;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    tbody {
+      th,
+      td {
+        word-break: break-word;
+      }
+    }
+
+    thead {
+      button {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+
+        svg {
+          width: 1rem;
+          height: 1rem;
+          color: var(--color-secondary-700);
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+
+  .headButtonIsSortable {
+    cursor: pointer;
+  }
+
+  .controls {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
