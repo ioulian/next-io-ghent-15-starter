@@ -121,7 +121,6 @@ describe("Form", () => {
       await userEvent.type(input, "test");
     });
 
-    console.log(spy);
     expect(spy).toHaveBeenCalled();
     expect(spy.mock.calls).toHaveLength(4);
     expect(spy.mock.results[3].value).toBe("test");

@@ -147,7 +147,5 @@ export const getCss = () => `
  * Converts css variable to number only.
  */
 export const getVariableAsNumber = (name: VariableNameType): number => {
-  const variable = flatCssVariables[name];
-
-  return parseInt(variable.replace("px", "").replace("rem", "").replace("ms", ""), 10);
+  return parseInt(getVariable(name).replace("px", "").replace("rem", "").replace("ms", ""), 10);
 };

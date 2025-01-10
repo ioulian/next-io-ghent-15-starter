@@ -1,5 +1,10 @@
 {
   "common": {
+    "mainContent": {
+      "link": {
+        "label": "Skip to main content"
+      }
+    },
     "closeButton": {
       "defaultLabel": "Close"
     },
