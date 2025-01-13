@@ -1,15 +1,8 @@
 @layer molecules {
   .link {
-    transition: transform var(--duration-slow);
     position: absolute;
-    z-index: 1000;
-    padding: 0.25rem 0.5rem;
-    background-color: var(--color-white);
+    top: 0;
+    left: 0;
     transform: translateY(-100%);
-
-    &:focus {
-      transform: translateY(0);
-      transition: none;
-    }
   }
 }

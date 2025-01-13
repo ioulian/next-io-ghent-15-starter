@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 import { FC, memo } from "react";
 
+import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
+
 import { MAIN_CONTENT_ID } from "./MainContent.constants";
 import styles from "./MainContentLink.module.css";
 
@@ -8,9 +10,11 @@ const MainContentLink: FC = () => {
   const t = useTranslations("common.mainContent");
 
   return (
-    <a href={`#${MAIN_CONTENT_ID}`} className={styles.link}>
-      {t("link.label")}
-    </a>
+    <VisuallyHidden>
+      <a href={`#${MAIN_CONTENT_ID}`} className={styles.link}>
+        {t("link.label")}
+      </a>
+    </VisuallyHidden>
   );
 };
 
