@@ -1,0 +1,31 @@
+# Workflow name
+name: Run tests
+
+on:
+  # Event for the workflow to run on
+  push:
+    branches:
+      - "master" # Replace with the branch you want to deploy from
+
+# List of jobs
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      # Manual Checkout
+      - uses: actions/checkout@v3
+
+      # Set up Node
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "22.x"
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+          version: 9
+          run_install: false
+
+      - run: pnpm install
+      - run: pnpm test

@@ -26,6 +26,6 @@ const RichTranslation: FC<{
 };
 
 /**
- * Rich translation will
+ * Rich translation
  */
 export default memo(RichTranslation);
