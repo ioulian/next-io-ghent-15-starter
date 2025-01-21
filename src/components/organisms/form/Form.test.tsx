@@ -8,25 +8,13 @@ import { z } from "zod";
 import Input from "@/components/atoms/form/input/Input";
 import { exampleErrors } from "@/components/organisms/form/data";
 import FormField from "@/components/molecules/form-field/FormField";
+import describeGeneralTests from "@/test/generalTests";
 
 import { createValidationMessage, createZodResolver } from "./validation";
 import Form from "./Form";
 
 describe("Form", () => {
-  it("renders", () => {
-    render(<Form data-testid="test" />);
-    expect(screen.getByTestId("test")).toBeInTheDocument();
-  });
-
-  it("renders with custom class", () => {
-    render(<Form data-testid="test" className="test" />);
-    expect(screen.getByTestId("test")).toHaveClass("test");
-  });
-
-  it("renders with custom prop", () => {
-    render(<Form data-testid="test" data-foo="bar" />);
-    expect(screen.getByTestId("test")).toHaveAttribute("data-foo", "bar");
-  });
+  describeGeneralTests(<Form />, () => ({ render }));
 
   it("will handle form flow", async () => {
     const spy = jest.fn();

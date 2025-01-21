@@ -3,23 +3,12 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
+import describeGeneralTests from "@/test/generalTests";
+
 import Breadcrumb from "./Breadcrumb";
 
 describe("Breadcrumb", () => {
-  it("renders", () => {
-    render(<Breadcrumb data-testid="test" />);
-    expect(screen.getByTestId("test")).toBeInTheDocument();
-  });
-
-  it("renders with custom class", () => {
-    render(<Breadcrumb data-testid="test" className="test" />);
-    expect(screen.getByTestId("test")).toHaveClass("test");
-  });
-
-  it("renders with custom prop", () => {
-    render(<Breadcrumb data-testid="test" data-foo="bar" />);
-    expect(screen.getByTestId("test")).toHaveAttribute("data-foo", "bar");
-  });
+  describeGeneralTests(<Breadcrumb />, () => ({ render }));
 
   it("renders with items", () => {
     render(

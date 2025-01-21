@@ -4,24 +4,12 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
 import Tag from "@/components/atoms/tag/Tag";
+import describeGeneralTests from "@/test/generalTests";
 
 import TagList from "./TagList";
 
 describe("TagList", () => {
-  it("renders", () => {
-    render(<TagList data-testid="test" />);
-    expect(screen.getByTestId("test")).toBeInTheDocument();
-  });
-
-  it("renders with custom class", () => {
-    render(<TagList data-testid="test" className="test" />);
-    expect(screen.getByTestId("test")).toHaveClass("test");
-  });
-
-  it("renders with custom prop", () => {
-    render(<TagList data-testid="test" data-foo="bar" />);
-    expect(screen.getByTestId("test")).toHaveAttribute("data-foo", "bar");
-  });
+  describeGeneralTests(<TagList />, () => ({ render }));
 
   it("renders with items", () => {
     render(

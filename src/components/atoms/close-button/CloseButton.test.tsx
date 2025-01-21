@@ -5,8 +5,8 @@ import { render } from "@testing-library/react";
 
 import describeGeneralTests from "@/test/generalTests";
 
-import Tag from "./Tag";
+import CloseButton from "./CloseButton";
 
-describe("Tag", () => {
-  describeGeneralTests(<Tag>test</Tag>, () => ({ render }));
+describe("CircularProgress", () => {
+  describeGeneralTests(<CloseButton>close</CloseButton>, () => ({ render }));
 });

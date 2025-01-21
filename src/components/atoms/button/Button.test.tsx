@@ -3,31 +3,12 @@
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
 
+import describeGeneralTests from "@/test/generalTests";
+
 import Button from "./Button";
 
 describe("Button", () => {
-  it("renders", () => {
-    render(<Button data-testid="test">test</Button>);
-    expect(screen.getByTestId("test")).toBeInTheDocument();
-  });
-
-  it("renders with custom class", () => {
-    render(
-      <Button data-testid="test" className="test">
-        test
-      </Button>,
-    );
-    expect(screen.getByTestId("test")).toHaveClass("test");
-  });
-
-  it("renders with custom prop", () => {
-    render(
-      <Button data-testid="test" data-foo="bar">
-        test
-      </Button>,
-    );
-    expect(screen.getByTestId("test")).toHaveAttribute("data-foo", "bar");
-  });
+  describeGeneralTests(<Button>test</Button>, () => ({ render }));
 
   it("should call onClick", () => {
     const spy = jest.fn();

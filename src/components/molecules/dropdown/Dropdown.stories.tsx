@@ -28,23 +28,28 @@ export default meta;
 type Story = StoryObj<typeof Dropdown>;
 
 export const Basic: Story = {
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByTestId("trigger"));
-    await wait(getVariableAsNumber("duration.normal"));
-    await expect(screen.getByTestId("trigger2")).toBeVisible();
 
-    await userEvent.hover(screen.getByTestId("trigger2"));
-    await wait(getVariableAsNumber("duration.normal"));
-    await expect(screen.getByTestId("trigger3")).toBeVisible();
+    await step("Dropdown open", async () => {
+      await userEvent.click(canvas.getByTestId("trigger"));
+      await wait(getVariableAsNumber("duration.normal"));
+      await expect(screen.getByTestId("trigger2")).toBeVisible();
 
-    await userEvent.hover(screen.getByTestId("trigger3"));
-    await wait(getVariableAsNumber("duration.normal"));
-    await expect(screen.getByTestId("trigger4")).toBeVisible();
+      await userEvent.hover(screen.getByTestId("trigger2"));
+      await wait(getVariableAsNumber("duration.normal"));
+      await expect(screen.getByTestId("trigger3")).toBeVisible();
 
-    await userEvent.click(screen.getByTestId("trigger4"));
-    await wait(getVariableAsNumber("duration.fast"));
-    await expect(screen.queryByTestId("trigger4")).toBeNull();
+      await userEvent.hover(screen.getByTestId("trigger3"));
+      await wait(getVariableAsNumber("duration.normal"));
+      await expect(screen.getByTestId("trigger4")).toBeVisible();
+    });
+
+    await step("Dropdown close", async () => {
+      await userEvent.click(screen.getByTestId("trigger4"));
+      await wait(getVariableAsNumber("duration.fast"));
+      await expect(screen.queryByTestId("trigger4")).toBeNull();
+    });
   },
   render: (args) => (
     <Dropdown {...args}>

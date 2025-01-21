@@ -3,23 +3,12 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
+import describeGeneralTests from "@/test/generalTests";
+
 import ButtonGroup from "./ButtonGroup";
 
 describe("ButtonGroup", () => {
-  it("renders", () => {
-    render(<ButtonGroup data-testid="test" />);
-    expect(screen.getByTestId("test")).toBeInTheDocument();
-  });
-
-  it("renders with custom class", () => {
-    render(<ButtonGroup data-testid="test" className="test" />);
-    expect(screen.getByTestId("test")).toHaveClass("test");
-  });
-
-  it("renders with custom prop", () => {
-    render(<ButtonGroup data-testid="test" data-foo="bar" />);
-    expect(screen.getByTestId("test")).toHaveAttribute("data-foo", "bar");
-  });
+  describeGeneralTests(<ButtonGroup />, () => ({ render }));
 
   it("renders with items", () => {
     render(

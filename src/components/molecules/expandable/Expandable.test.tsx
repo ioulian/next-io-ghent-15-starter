@@ -3,23 +3,12 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
+import describeGeneralTests from "@/test/generalTests";
+
 import Expandable from "./Expandable";
 
 describe("Ellipsis", () => {
-  it("renders", () => {
-    render(<Expandable data-testid="test" summary="test" />);
-    expect(screen.getByTestId("test")).toBeInTheDocument();
-  });
-
-  it("renders with custom class", () => {
-    render(<Expandable data-testid="test" className="test" summary="test" />);
-    expect(screen.getByTestId("test")).toHaveClass("test");
-  });
-
-  it("renders with custom prop", () => {
-    render(<Expandable data-testid="test" data-foo="bar" summary="test" />);
-    expect(screen.getByTestId("test")).toHaveAttribute("data-foo", "bar");
-  });
+  describeGeneralTests(<Expandable summary="test" />, () => ({ render }));
 
   it("renders with items", () => {
     render(

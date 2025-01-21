@@ -3,31 +3,12 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
+import describeGeneralTests from "@/test/generalTests";
+
 import Alert from "./Alert";
 
 describe("Alert", () => {
-  it("renders", () => {
-    render(<Alert data-testid="test" />);
-    expect(screen.getByTestId("test")).toBeInTheDocument();
-  });
-
-  it("renders with custom class", () => {
-    render(
-      <Alert data-testid="test" className="test">
-        test
-      </Alert>,
-    );
-    expect(screen.getByTestId("test")).toHaveClass("test");
-  });
-
-  it("renders with custom prop", () => {
-    render(
-      <Alert data-testid="test" data-foo="bar">
-        test
-      </Alert>,
-    );
-    expect(screen.getByTestId("test")).toHaveAttribute("data-foo", "bar");
-  });
+  describeGeneralTests(<Alert />, () => ({ render }));
 
   it("renders without icon", () => {
     render(<Alert icon={false}>test</Alert>);

@@ -3,31 +3,12 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
+import describeGeneralTests from "@/test/generalTests";
+
 import LinkButton from "./LinkButton";
 
 describe("LinkButton", () => {
-  it("renders", () => {
-    render(<LinkButton data-testid="test" />);
-    expect(screen.getByTestId("test")).toBeInTheDocument();
-  });
-
-  it("renders with custom class", () => {
-    render(
-      <LinkButton data-testid="test" className="test">
-        test
-      </LinkButton>,
-    );
-    expect(screen.getByTestId("test")).toHaveClass("test");
-  });
-
-  it("renders with custom prop", () => {
-    render(
-      <LinkButton data-testid="test" data-foo="bar">
-        test
-      </LinkButton>,
-    );
-    expect(screen.getByTestId("test")).toHaveAttribute("data-foo", "bar");
-  });
+  describeGeneralTests(<LinkButton>test</LinkButton>, () => ({ render }));
 
   it("renders with iconBefore", () => {
     render(<LinkButton iconBefore={<span data-testid="iconBefore">before</span>}>test</LinkButton>);

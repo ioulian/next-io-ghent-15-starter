@@ -135,15 +135,20 @@ export default meta;
 type Story = StoryObj<typeof Dialog>;
 
 export const Uncontrolled: Story = {
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByTestId("trigger"));
-    await wait(getVariableAsNumber("duration.normal"));
-    await expect(screen.getByTestId("content")).toBeVisible();
 
-    await userEvent.click(screen.getByTestId("close"));
-    await wait(getVariableAsNumber("duration.fast"));
-    await expect(screen.queryByTestId("content")).toBeNull();
+    await step("Dialog open", async () => {
+      await userEvent.click(canvas.getByTestId("trigger"));
+      await wait(getVariableAsNumber("duration.normal"));
+      await expect(screen.getByTestId("content")).toBeVisible();
+    });
+
+    await step("Dialog close", async () => {
+      await userEvent.click(screen.getByTestId("close"));
+      await wait(getVariableAsNumber("duration.fast"));
+      await expect(screen.queryByTestId("content")).toBeNull();
+    });
   },
   render: (args) => (
     <Dialog {...args}>

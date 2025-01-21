@@ -3,23 +3,12 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
+import describeGeneralTests from "@/test/generalTests";
+
 import Heading from "./Heading";
 
 describe("Heading", () => {
-  it("renders", () => {
-    render(<Heading data-testid="test" />);
-    expect(screen.getByTestId("test")).toBeInTheDocument();
-  });
-
-  it("renders with custom class", () => {
-    render(<Heading data-testid="test" className="test" />);
-    expect(screen.getByTestId("test")).toHaveClass("test");
-  });
-
-  it("renders with custom prop", () => {
-    render(<Heading data-testid="test" data-foo="bar" />);
-    expect(screen.getByTestId("test")).toHaveAttribute("data-foo", "bar");
-  });
+  describeGeneralTests(<Heading>test</Heading>, () => ({ render }));
 
   it("renders with items", () => {
     render(

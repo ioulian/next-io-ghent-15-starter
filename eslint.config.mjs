@@ -102,6 +102,8 @@ const eslintConfig = [
       "sonarjs/fixme-tag": "warn",
       "sonarjs/todo-tag": "warn",
       "sonarjs/no-unused-vars": "off",
+      // As we use generic tests
+      "sonarjs/no-empty-test-file": "off",
     },
   },
 ];
