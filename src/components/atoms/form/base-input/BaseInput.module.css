@@ -16,7 +16,7 @@
   .isError {
     border-color: var(--form-error);
 
-    &:focus {
+    &:focus-visible {
       outline-color: var(--form-error);
     }
   }

@@ -31,7 +31,7 @@
     border-color: var(--color-primary-500);
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       background-color: var(--color-primary-400);
       border-color: var(--color-primary-400);
     }
@@ -43,7 +43,7 @@
     border-color: var(--color-secondary-500);
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       background-color: var(--color-secondary-400);
       border-color: var(--color-secondary-400);
     }
@@ -55,7 +55,7 @@
     border-color: var(--color-positive-500);
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       background-color: var(--color-positive-400);
       border-color: var(--color-positive-400);
     }
@@ -67,7 +67,7 @@
     border-color: var(--color-negative-500);
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       background-color: var(--color-negative-400);
       border-color: var(--color-negative-400);
     }
@@ -79,7 +79,7 @@
     border-color: var(--color-secondary-500);
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       background-color: var(--color-secondary-400);
       border-color: var(--color-secondary-400);
     }
@@ -90,7 +90,7 @@
     border-color: transparent;
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       background-color: var(--color-secondary-400);
       border-color: var(--color-secondary-400);
     }
