@@ -21,7 +21,7 @@ import Spinner from "../spinner/Spinner";
 
 import { button } from "./Button.styles";
 
-interface Props extends ComponentPropsWithRef<"button"> {
+type Props = {
   /**
    * Variant of the button
    */
@@ -61,7 +61,7 @@ interface Props extends ComponentPropsWithRef<"button"> {
    * Should the element be able to be clicked on
    */
   disabled?: boolean;
-}
+} & ComponentPropsWithRef<"button">;
 
 const Button = forwardRef<HTMLButtonElement, WithRequired<Props, "children">>(
   (
