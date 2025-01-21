@@ -1,0 +1,7 @@
+@layer organisms {
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
