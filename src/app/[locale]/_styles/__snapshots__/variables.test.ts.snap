@@ -51,6 +51,7 @@ exports[`variables generates correct css 1`] = `
 --color-negative-900: #49130E;
 --color-negative-950: #330D0A;
 --color-body: var(--color-secondary-950);
+--color-background: var(--color-white);
 --color-overlay: rgba(17, 26, 39, 0.7);
 --duration-perceptive-instant: 85ms;
 --duration-fast: 100ms;
