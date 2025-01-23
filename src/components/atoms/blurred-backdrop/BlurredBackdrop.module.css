@@ -1,0 +1,11 @@
+@layer atoms {
+  .blurredBackdrop {
+    position: absolute;
+    inset: 0;
+    height: 200%;
+    background: linear-gradient(to bottom, var(--color-background) 0%, transparent 50%);
+    backdrop-filter: blur(6px);
+    mask-image: linear-gradient(to bottom, black 0% 50%, transparent 50% 100%);
+    pointer-events: none;
+  }
+}

@@ -59,6 +59,7 @@ export const cssVariables = {
       "950": "#330D0A",
     },
     body: "var(--color-secondary-950)",
+    background: "var(--color-white)",
     overlay: "rgba(17, 26, 39, 0.7)",
   },
   duration: {
