@@ -4,7 +4,7 @@
   }
 
   .richtextContent {
-    background-color: var(--color-white);
+    background-color: var(--form-input-background);
     margin: 1rem;
     min-height: 10rem;
     outline-offset: 10px;
