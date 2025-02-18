@@ -8,6 +8,7 @@ const icons = {
   iconSample,
   iconSample2,
 } as const;
+console.log(icons);
 
 const meta: Meta<typeof SvgSprite> = {
   tags: ["autodocs"],
@@ -36,4 +37,5 @@ export const Default: Story = {
     src: iconSample,
     title: "Svg icon",
   },
+  render: (args) => <SvgSprite {...args} style={{ width: "2rem", height: "2rem" }} />,
 };
