@@ -2,23 +2,35 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import BlurredBackdrop from "./BlurredBackdrop";
+import { createSmoothShadow } from "@/components/utils/smooth-shadow/utilities";
+import { presetDefault } from "@/components/utils/smooth-shadow/presets";
 
-const meta: Meta<typeof BlurredBackdrop> = {
-  title: "UI/Atoms/Blurred backdrop helper",
-  component: BlurredBackdrop,
-  tags: ["autodocs"],
+import styles from "./StickyShadow.module.css";
+import stylesBackdrop from "./../blurred-backdrop/BlurredBackdrop.module.css";
+
+const meta: Meta = {
+  title: "UI/Utils/Sticky shadow",
 };
 
 export default meta;
-type Story = StoryObj<typeof BlurredBackdrop>;
+type Story = StoryObj;
 
-export const Default: Story = {
+export const Example: Story = {
   render: () => {
     return (
       <div>
-        <div style={{ position: "sticky", top: 0, left: 0, right: 0 }}>
-          <BlurredBackdrop />
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            left: 0,
+            right: 0,
+            margin: "-1rem -1rem 2rem -1rem",
+            "--sticky-shadow": createSmoothShadow(presetDefault),
+          }}
+          className={styles.stickyShadow}
+        >
+          <div className={stylesBackdrop.blurredBackdrop} />
           <div
             style={{
               display: "flex",
@@ -26,7 +38,7 @@ export const Default: Story = {
               padding: "2rem 3rem",
               position: "relative",
               zIndex: 1,
-              backgroundColor: "rgba(196, 196, 224, 0.5)",
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
             }}
           >
             <span style={{ marginRight: "auto" }}>Home</span>
@@ -36,6 +48,9 @@ export const Default: Story = {
             <span>item 4</span>
           </div>
         </div>
+        <p style={{ marginBottom: "1rem" }}>
+          <strong>Scroll down and look at the shadow of the sticky element</strong>
+        </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum tortor sem.
           Praesent urna elit, ornare ut ipsum pharetra, fringilla consectetur velit. Sed mi lacus,

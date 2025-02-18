@@ -1,0 +1,23 @@
+@layer utils {
+  .stickyShadow {
+    --sticky-shadow: var(--shadow-normal);
+
+    @supports (animation-timeline: scroll()) {
+      & {
+        animation: sticky-scroll-shadow linear both;
+        animation-timeline: scroll();
+        animation-range: 0 2rem;
+      }
+    }
+  }
+}
+
+@keyframes sticky-scroll-shadow {
+  from {
+    box-shadow: none;
+  }
+
+  to {
+    box-shadow: var(--sticky-shadow);
+  }
+}
