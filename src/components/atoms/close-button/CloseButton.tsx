@@ -7,6 +7,7 @@ import Button from "@/components/atoms/button/Button";
 
 import styles from "./CloseButton.module.css";
 
+// TODO: Fix ally here
 const CloseButton: FC<ComponentPropsWithRef<typeof Button>> = (props) => {
   return (
     <Button
