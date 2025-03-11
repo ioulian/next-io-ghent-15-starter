@@ -11,9 +11,8 @@ const PopoverClose = forwardRef<HTMLButtonElement, HTMLProps<HTMLButtonElement>>
       state.setOpen(false);
     }, [state]);
 
-    if (isValidElement(children)) {
+    if (isValidElement<Record<string, unknown>>(children)) {
       return cloneElement(children, {
-        // @ts-expect-error // FIXME: types
         ref,
         onClick,
         ...props,

@@ -14,7 +14,6 @@ export const defaultTranslationValues: RichTranslationValues = {
   br: () => <br />,
 };
 
-// TODO: test
 const RichTranslation: FC<{
   tags?: RichTranslationValues;
   children: (tags: RichTranslationValues) => ReactNode;

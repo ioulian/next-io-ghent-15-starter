@@ -4,11 +4,11 @@ import iconX from "@tabler/icons/outline/x.svg";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import { addClassNameToProps } from "@/utils/styles";
 import Button from "@/components/atoms/button/Button";
+import { WithRequired } from "@/types/helpers";
 
 import styles from "./CloseButton.module.css";
 
-// TODO: Fix ally here
-const CloseButton: FC<ComponentPropsWithRef<typeof Button>> = (props) => {
+const CloseButton: FC<WithRequired<ComponentPropsWithRef<typeof Button>, "children">> = (props) => {
   return (
     <Button
       {...addClassNameToProps(props, styles.closeButton)}

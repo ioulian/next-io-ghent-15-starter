@@ -1,5 +1,10 @@
 {
   "common": {
+    "stories": {
+      "richTranslation": {
+        "value": "<p>This is an <strong>example</strong> of <em><RichTranslation /></em>. You can pass <customLink>Custom components</customLink>.</p>"
+      }
+    },
     "mainContent": {
       "link": {
         "label": "Skip to main content"

@@ -124,7 +124,6 @@ const FormField = <T extends FieldValues = FieldValues>({
   children,
   disabled,
   ...props
-  // FIXME: later
 }: FormFieldProps<T>) => {
   const { register, unregister, control, formState, getFieldState } = useFormContext<T>();
   const t = useTranslations();
@@ -154,7 +153,7 @@ const FormField = <T extends FieldValues = FieldValues>({
   };
 
   return (
-    // @ts-expect-error TODO: fixme
+    // @ts-expect-error TODO: type me
     <Component
       {...addClassNameToProps(props, formField({ isHidden, isDisabled: disabled, isToggle }))}
     >

@@ -1,7 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 import describeGeneralTests from "@/test/generalTests";
 
@@ -19,17 +19,19 @@ describe("Ellipsis", () => {
     expect(screen.getByTestId("test")).toBeInTheDocument();
   });
 
-  // FIXME: somehow onToggle is not being fired, but it works otherwise...
-  // it("should call onToggle", () => {
-  //   const spy = jest.fn();
-  //   render(
-  //     <Expandable summary="test-summary" data-testid="test" onToggle={spy}>
-  //       <p>test</p>
-  //     </Expandable>,
-  //   );
+  it("should call onToggle", () => {
+    const spy = jest.fn();
+    render(
+      <Expandable summary="test-summary" data-testid="test" onToggle={spy}>
+        <p>test</p>
+      </Expandable>,
+    );
 
-  //   fireEvent.click(screen.getByText("test-summary"));
+    fireEvent.click(screen.getByText("test-summary"));
 
-  //   expect(spy).toHaveBeenCalled();
-  // });
+    // onToggle happens but only later
+    setTimeout(() => {
+      expect(spy).toHaveBeenCalled();
+    }, 10);
+  });
 });

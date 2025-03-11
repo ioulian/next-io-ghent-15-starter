@@ -19,7 +19,6 @@ const RichText = forwardRef<
   Omit<EditorProviderProps, "children"> & { isError?: boolean }
 >(({ isError, ...props }, ref) => {
   const editorRef = useRef<Editor | null>(null);
-  // TODO: maybe we should write a wrapper to be used with react-hook-form controller
   const [extensions] = useState(() => [StarterKit, Subscript, Superscript, Underline]);
   const [editorProps] = useState(() => ({
     ref,

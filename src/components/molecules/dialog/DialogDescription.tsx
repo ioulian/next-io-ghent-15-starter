@@ -17,9 +17,8 @@ const DialogDescription = forwardRef<HTMLParagraphElement, HTMLProps<HTMLParagra
       return () => setDescriptionId(undefined);
     }, [id, setDescriptionId]);
 
-    if (isValidElement(children)) {
+    if (isValidElement<Record<string, unknown>>(children)) {
       return cloneElement(children, {
-        // @ts-expect-error // FIXME: types
         ref,
         id,
         ...props,

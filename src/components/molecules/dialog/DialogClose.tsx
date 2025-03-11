@@ -11,9 +11,8 @@ const DialogClose = forwardRef<HTMLButtonElement, HTMLProps<HTMLButtonElement>>(
       context.setOpen(false);
     }, [context]);
 
-    if (isValidElement(children)) {
+    if (isValidElement<Record<string, unknown>>(children)) {
       return cloneElement(children, {
-        // @ts-expect-error // FIXME: types
         ref,
         onClick,
         ...props,

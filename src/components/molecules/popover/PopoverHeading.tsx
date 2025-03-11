@@ -17,9 +17,8 @@ const PopoverHeading = forwardRef<HTMLHeadingElement, HTMLProps<HTMLHeadingEleme
       return () => setLabelId(undefined);
     }, [id, setLabelId]);
 
-    if (isValidElement(children)) {
+    if (isValidElement<Record<string, unknown>>(children)) {
       return cloneElement(children, {
-        // @ts-expect-error // FIXME: types
         ref,
         id,
         ...props,

@@ -19,9 +19,6 @@ import styles from "./Form.module.css";
 
 /**
  * Wrapper around `react-hook-form`.
- *
- * TODO: find a way to pass type to children, maybe use a function that we pass
- * to form, from wich every child can get it types?
  */
 const Form = <T extends FieldValues = FieldValues>({
   /**
