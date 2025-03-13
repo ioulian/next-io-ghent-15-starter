@@ -1,0 +1,29 @@
+import { Meta, ColorPalette, ColorItem, Title } from "@storybook/blocks";
+import { cssVariables } from "./../../app/[locale]/_styles/variables.ts";
+import isObject from "lodash/isObject";
+
+<Meta title="Base/Colors" />
+
+<Title>Colors</Title>
+
+<ColorPalette>
+  {Object.entries(cssVariables.color).map(([key, value]) => {
+    if (typeof value === "string") {
+      // if (value.startsWith("var(")) {
+      //   return null;
+      // }
+      return <ColorItem key={key} title={`--color-${key}`} colors={{ [`--color-${key}`]: value }} />;
+    }
+
+    if (isObject(value)) {
+      return <ColorItem key={key} title={`--color-${key}`} colors={Object.entries(value).reduce((all, [subKey, subValue]) => ({
+        ...all,
+        [`--color-${key}-${subKey}`]: subValue
+      }), {})} />
+    }
+
+    return null;
+
+})}
+
+</ColorPalette>

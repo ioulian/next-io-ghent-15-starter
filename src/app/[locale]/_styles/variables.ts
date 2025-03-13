@@ -79,8 +79,8 @@ export const cssVariables = {
     "swift-in": "cubic-bezier(0.4, 0, 1, 1)",
   },
   font: {
-    body: "var(--font-primary, 'system-ui, sans-serif')",
-    heading: "var(--font-primary, 'system-ui, sans-serif')",
+    body: "system-ui, sans-serif",
+    heading: "system-ui, sans-serif",
   },
   radius: {
     small: "4px",

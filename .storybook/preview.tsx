@@ -22,7 +22,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => {
-      document.documentElement.classList.add(htmlFontClass);
+      document.documentElement.classList.add(...htmlFontClass.split(" "));
       return (
         <>
           <style>{getCss()}</style>
