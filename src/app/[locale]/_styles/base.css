@@ -27,6 +27,13 @@
     }
   }
 
+  input,
+  button,
+  textarea,
+  select {
+    font-family: var(--font-body);
+  }
+
   hr {
     width: 100%;
     height: 1px;

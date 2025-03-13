@@ -1,13 +1,13 @@
-import { Source_Sans_3 } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
-export const sourceSansPro = Source_Sans_3({
+export const montserratPro = Montserrat({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-heading",
+  variable: "--font-primary",
 });
 
 /**
  * This class should be added to the html to allow custom fonts to be used
  */
-export const htmlFontClass = sourceSansPro.variable;
+export const htmlFontClass = montserratPro.variable;
