@@ -36,6 +36,8 @@ import {
   useMemo,
   useRef,
   useState,
+  MouseEvent,
+  FocusEvent,
 } from "react";
 
 import Floater from "@/components/atoms/floater/Floater";
@@ -48,8 +50,9 @@ import styles from "./Dropdown.module.css";
 const DropdownMenu = forwardRef<
   HTMLButtonElement,
   DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButtonElement>
->(({ children, trigger, ...props }, forwardedRef) => {
+>(({ children, trigger, onFocus, onMouseEnter, ...props }, forwardedRef) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [allowHover, setAllowHover] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [hasFocusInside, setHasFocusInside] = useState<boolean>(false);
 
@@ -96,11 +99,11 @@ const DropdownMenu = forwardRef<
 
   const hover = useHover(context, {
     handleClose: safePolygon({ blockPointerEvents: true }),
-    enabled: isNested,
+    enabled: isNested && allowHover,
     delay: { open: 75 },
   });
   const click = useClick(context, {
-    toggle: !isNested,
+    toggle: !isNested || !allowHover,
     event: "mousedown",
     ignoreMouse: isNested,
   });
@@ -111,6 +114,7 @@ const DropdownMenu = forwardRef<
     activeIndex,
     nested: isNested,
     onNavigate: setActiveIndex,
+    orientation: "vertical",
   });
   const typeahead = useTypeahead(context, {
     listRef: labelsRef,
@@ -160,6 +164,33 @@ const DropdownMenu = forwardRef<
     }
   }, [tree, isOpen, nodeId, parentId]);
 
+  // Determine if "hover" logic can run based on the modality of input. This
+  // prevents unwanted focus synchronization as menus open and close with
+  // keyboard navigation and the cursor is resting on the menu.
+  useEffect(() => {
+    function onPointerMove({ pointerType }: PointerEvent) {
+      if (pointerType !== "touch") {
+        setAllowHover(true);
+      }
+    }
+
+    function onKeyDown() {
+      setAllowHover(false);
+    }
+
+    window.addEventListener("pointermove", onPointerMove, {
+      once: true,
+      capture: true,
+    });
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => {
+      window.removeEventListener("pointermove", onPointerMove, {
+        capture: true,
+      });
+      window.removeEventListener("keydown", onKeyDown, true);
+    };
+  }, [allowHover]);
+
   const { isMounted, styles: floaterStyles } = useTransitionStyles(context, {
     duration: {
       open: getVariableAsNumber("duration.normal"),
@@ -174,11 +205,33 @@ const DropdownMenu = forwardRef<
       getItemProps,
       setHasFocusInside,
       isOpen,
+      allowHover,
+      setIsOpen,
+      parent,
     }),
-    [activeIndex, setActiveIndex, getItemProps, setHasFocusInside, isOpen],
+    [activeIndex, setActiveIndex, getItemProps, setHasFocusInside, isOpen, allowHover, parent],
   );
 
   const position = useMemo(() => ({ x, y }), [x, y]);
+
+  const onFocusCallback = useCallback(
+    (event: FocusEvent<HTMLButtonElement>) => {
+      onFocus?.(event);
+      setHasFocusInside(false);
+      parent.setHasFocusInside(true);
+    },
+    [onFocus, parent],
+  );
+
+  const onMouseEnterCallback = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      onMouseEnter?.(event);
+      if (parent.allowHover && parent.isOpen) {
+        parent.setActiveIndex(item.index);
+      }
+    },
+    [onMouseEnter, item.index, parent],
+  );
 
   return (
     <FloatingNode id={nodeId!}>
@@ -193,11 +246,8 @@ const DropdownMenu = forwardRef<
         {...getReferenceProps(
           parent.getItemProps({
             ...props,
-            onFocus(event: React.FocusEvent<HTMLButtonElement>) {
-              props.onFocus?.(event);
-              setHasFocusInside(false);
-              parent.setHasFocusInside(true);
-            },
+            onFocus: onFocusCallback,
+            onMouseEnter: onMouseEnterCallback,
           }),
         )}
       >

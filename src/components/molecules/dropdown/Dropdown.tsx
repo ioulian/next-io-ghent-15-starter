@@ -1,22 +1,38 @@
 "use client";
 
 import { FloatingTree, useFloatingParentNodeId } from "@floating-ui/react";
-import { createContext, forwardRef, HTMLProps, memo, ReactNode } from "react";
+import {
+  createContext,
+  Dispatch,
+  forwardRef,
+  HTMLProps,
+  memo,
+  ReactNode,
+  SetStateAction,
+} from "react";
 
 import DropdownMenu from "./DropdownMenu";
 
-export const MenuContext = createContext<{
-  getItemProps: (userProps?: React.HTMLProps<HTMLElement>) => Record<string, unknown>;
+export type MenuContextType = {
+  getItemProps: (userProps?: HTMLProps<HTMLElement>) => Record<string, unknown>;
   activeIndex: number | null;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number | null>>;
-  setHasFocusInside: React.Dispatch<React.SetStateAction<boolean>>;
+  setActiveIndex: Dispatch<SetStateAction<number | null>>;
+  setHasFocusInside: Dispatch<SetStateAction<boolean>>;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
   isOpen: boolean;
-}>({
+  allowHover: boolean;
+  parent: MenuContextType | null;
+};
+
+export const MenuContext = createContext<MenuContextType>({
   getItemProps: () => ({}),
   activeIndex: null,
   setActiveIndex: () => {},
   setHasFocusInside: () => {},
+  setIsOpen: () => {},
   isOpen: false,
+  allowHover: true,
+  parent: null,
 });
 
 export interface WithTypeAheadKey {
