@@ -4,10 +4,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import MenuBarRootItem from "@/components/organisms/menu-bar/root-item/MenuBarRootItem";
+import Dropdown from "@/components/molecules/dropdown/Dropdown";
+import DropdownMenuItem from "@/components/molecules/dropdown/DropdownMenuItem";
 
 import MenuBar from "./MenuBar";
-import Menu from "./menu/Menu";
-import MenuItem from "./menu-item/MenuItem";
 
 const meta: Meta<typeof MenuBar> = {
   title: "UI/Organisms/Menu bar",
@@ -30,26 +30,44 @@ export const Default: Story = {
         <MenuBarRootItem
           href="#"
           render={
-            <Menu label="Edit">
-              <MenuItem label="Undo" onClick={() => console.log("Undo")} />
-              <MenuItem label="Redo" />
-              <MenuItem label="Cut" disabled />
-              <Menu label="Copy as">
-                <MenuItem label="Text" />
-                <MenuItem label="Video" />
-                <Menu label="Image">
-                  <MenuItem label=".png" />
-                  <MenuItem label=".jpg" />
-                  <MenuItem label=".svg" />
-                  <MenuItem label=".gif" />
-                </Menu>
-                <MenuItem label="Audio" />
-              </Menu>
-              <Menu label="Share">
-                <MenuItem label="Mail" />
-                <MenuItem label="Instagram" />
-              </Menu>
-            </Menu>
+            <Dropdown trigger="Item 4">
+              <DropdownMenuItem typeaheadKey="Undo">Undo</DropdownMenuItem>
+              <DropdownMenuItem typeaheadKey="Redo">Redo</DropdownMenuItem>
+              <DropdownMenuItem typeaheadKey="Cut" disabled>
+                Cut
+              </DropdownMenuItem>
+              <Dropdown
+                trigger={
+                  <button type="button" data-testid="trigger2">
+                    Copy as &gt;
+                  </button>
+                }
+                typeaheadKey="Copy as"
+              >
+                <DropdownMenuItem typeaheadKey="Text">Text</DropdownMenuItem>
+                <DropdownMenuItem typeaheadKey="Video">Video</DropdownMenuItem>
+                <Dropdown
+                  trigger={
+                    <button type="button" data-testid="trigger3">
+                      Image &gt;
+                    </button>
+                  }
+                  typeaheadKey="Image"
+                >
+                  <DropdownMenuItem typeaheadKey=".png">.png</DropdownMenuItem>
+                  <DropdownMenuItem typeaheadKey=".jpg" data-testid="trigger4">
+                    .jpg
+                  </DropdownMenuItem>
+                  <DropdownMenuItem typeaheadKey=".svg">.svg</DropdownMenuItem>
+                  <DropdownMenuItem typeaheadKey=".gif">.gif</DropdownMenuItem>
+                </Dropdown>
+                <DropdownMenuItem typeaheadKey="Audio">Audio</DropdownMenuItem>
+              </Dropdown>
+              <Dropdown trigger="Share >" typeaheadKey="Share">
+                <DropdownMenuItem typeaheadKey="Mail">Mail</DropdownMenuItem>
+                <DropdownMenuItem typeaheadKey="Instagram">Instagram</DropdownMenuItem>
+              </Dropdown>
+            </Dropdown>
           }
         >
           Item 3
