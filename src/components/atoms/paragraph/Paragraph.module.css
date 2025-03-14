@@ -1,0 +1,20 @@
+@layer atoms {
+  .paragraph {
+    --paragraph-font-size: 1rem;
+    --paragraph-line-height: 1.5;
+
+    font-size: var(--paragraph-font-size);
+    line-height: var(--paragraph-line-height);
+  }
+
+  .lead {
+    --paragraph-font-size: 1.125rem;
+  }
+
+  .normal {
+  }
+
+  .small {
+    --paragraph-font-size: 0.875rem;
+  }
+}

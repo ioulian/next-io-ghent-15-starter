@@ -2,7 +2,7 @@
   .baseInput {
     color: var(--form-input-color);
     background-color: var(--form-input-background);
-    border-radius: var(--radius-small);
+    border-radius: var(--radius-01);
     outline-color: var(--form-outline);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--form-input-border);

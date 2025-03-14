@@ -83,7 +83,9 @@ export const cssVariables = {
     heading: "system-ui, sans-serif",
   },
   radius: {
-    small: "4px",
+    "01": "4px",
+    "02": "8px",
+    "03": "16px",
   },
   tooltip: {
     offset: "10px",

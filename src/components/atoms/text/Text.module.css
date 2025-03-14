@@ -8,16 +8,6 @@
       }
     }
 
-    /* TODO: we should use styles from <Heading /> */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: var(--font-heading);
-    }
-
     ul,
     ol {
       padding-left: 1.5rem;

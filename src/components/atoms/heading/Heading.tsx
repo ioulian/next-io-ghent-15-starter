@@ -1,12 +1,12 @@
 import { ComponentPropsWithRef, forwardRef, memo } from "react";
-import { VariantProps } from "tailwind-variants";
 
 import { addClassNameToProps } from "@/utils/styles";
 
 import { heading } from "./Heading.styles";
 
 export type HeadingType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-export type HeadingSize = VariantProps<typeof heading>["size"];
+// eslint-disable-next-line sonarjs/redundant-type-aliases
+export type HeadingSize = HeadingType;
 
 const Heading = forwardRef<
   HTMLHeadingElement,
@@ -31,7 +31,7 @@ const Heading = forwardRef<
   const size: HeadingSize = sizeArgument ?? (type as HeadingType);
 
   return (
-    <Element {...addClassNameToProps(props, heading({ size }))} ref={ref}>
+    <Element {...addClassNameToProps(props, heading(), size)} ref={ref}>
       {children}
     </Element>
   );

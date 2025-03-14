@@ -5,7 +5,7 @@
     align-items: flex-start;
     gap: 1rem;
     padding: 0.75rem;
-    border-radius: var(--radius-small);
+    border-radius: var(--radius-01);
   }
 
   .alertNormal {

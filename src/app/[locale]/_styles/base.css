@@ -15,16 +15,7 @@
   }
 
   body {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    line-height: 1.25rem;
-    letter-spacing: 0.01em;
     background-color: var(--color-background);
-
-    @media (--lg-up) {
-      font-size: 1.125rem;
-      line-height: 1.5rem;
-    }
   }
 
   input,

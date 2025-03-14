@@ -14,7 +14,7 @@ type Story = StoryObj<typeof Heading>;
 export const Default: Story = {
   args: {
     type: "h1",
-    size: "display",
+    size: "h1",
     children: "Heading",
   },
 };

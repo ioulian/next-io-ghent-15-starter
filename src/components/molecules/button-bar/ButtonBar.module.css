@@ -1,6 +1,6 @@
 @layer molecules {
   .buttonBar {
-    border-radius: var(--radius-small);
+    border-radius: var(--radius-01);
 
     > * {
       margin-left: -1px;

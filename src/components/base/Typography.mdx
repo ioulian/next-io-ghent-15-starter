@@ -1,0 +1,53 @@
+import { Meta, Typeset } from "@storybook/blocks";
+
+<Meta title="Typography" />
+
+export const typography = {
+  type: {
+    primary: '"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
+  },
+  weight: {
+    regular: "400",
+    bold: "700",
+    extrabold: "800",
+    black: "900",
+  },
+  size: {
+    s1: 12,
+    s2: 14,
+    s3: 16,
+    m1: 20,
+    m2: 24,
+    m3: 28,
+    l1: 32,
+    l2: 40,
+    l3: 48,
+  },
+};
+
+export const SampleText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+# Headings
+
+**Font:** Montserrat
+
+**Weights:** 400(regular), 700(bold)
+
+**Note**: Sizes specified here are only for demonstration only. Headings are responsive and we show hardcoded desktop values only. See `<Heading>` for more info.
+
+<Typeset
+  fontSizes={[20, 22, 24, 32, 40, 48]}
+  fontWeight={700}
+  sampleText={SampleText}
+  fontFamily="Montserrat"
+/>
+
+# Body
+
+**Font:** Inter
+
+**Weights:** 400(regular), 500(semi-bold), 700(bold)
+
+**Note**: Sizes specified here are only for demonstration only. See `<Paragraph>` for more info.
+
+<Typeset fontSizes={[14, 16, 18]} fontWeight={400} sampleText={SampleText} fontFamily="Inter" />
