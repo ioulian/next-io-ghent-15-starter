@@ -82,6 +82,11 @@ export const cssVariables = {
     body: "system-ui, sans-serif",
     heading: "system-ui, sans-serif",
   },
+  elevation: {
+    "01": "0px 0px 6px 0px rgba(0, 0, 0, 0.02), 0px 2px 4px 0px rgba(0, 0, 0, 0.08);",
+    "02": "0px 0px 4px 0px rgba(0, 0, 0, 0.04), 0px 4px 8px 0px rgba(0, 0, 0, 0.06);",
+    "03": "0px 0px 4px 0px rgba(0, 0, 0, 0.04), 0px 8px 16px 0px rgba(0, 0, 0, 0.08);",
+  },
   radius: {
     "01": "4px",
     "02": "8px",

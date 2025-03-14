@@ -53,7 +53,7 @@ const CircularProgress = forwardRef<
           r="42%"
           fill="none"
           strokeDasharray={`calc(2*${Math.PI}*42%*${finalPercent}) calc(2*${Math.PI}*42%)`}
-          strokeLinecap={!!finalPercent ? "round" : undefined}
+          strokeLinecap={finalPercent !== 1 ? "round" : undefined}
           className={classes.progress()}
         />
       </svg>

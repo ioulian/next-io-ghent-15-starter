@@ -8,7 +8,6 @@ const icons = {
   iconSample,
   iconSample2,
 } as const;
-console.log(icons);
 
 const meta: Meta<typeof SvgSprite> = {
   tags: ["autodocs"],

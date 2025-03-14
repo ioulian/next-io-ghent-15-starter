@@ -17,4 +17,13 @@
   .small {
     --paragraph-font-size: 0.875rem;
   }
+
+  .clamped {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--paragraph-number-of-lines);
+    line-clamp: var(--paragraph-number-of-lines);
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

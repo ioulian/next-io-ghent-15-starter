@@ -26,7 +26,6 @@ const Accordion = forwardRef<
     children: ReactElement<{ name?: string }>[];
   } & Omit<ComponentPropsWithRef<"div">, "children">
 >(({ name, children, ...props }, ref) => {
-  console.log(props);
   const id = useId();
   const finalName = typeof name === "string" ? name : id;
 

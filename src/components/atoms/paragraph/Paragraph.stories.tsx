@@ -17,3 +17,12 @@ export const Default: Story = {
     children: "Paragraph text",
   },
 };
+
+export const Clamped: Story = {
+  args: {
+    size: "normal",
+    children:
+      "Paragraph text Paragraph text Paragraph text Paragraph text Paragraph text Paragraph text Paragraph text Paragraph text Paragraph text Paragraph text Paragraph text Paragraph text Paragraph text",
+    maxLines: 3,
+  },
+};

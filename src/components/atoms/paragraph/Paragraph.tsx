@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, forwardRef, memo } from "react";
+import { ComponentPropsWithRef, forwardRef, memo, useMemo } from "react";
 import { VariantProps } from "tailwind-variants";
 
 import { addClassNameToProps } from "@/utils/styles";
@@ -11,10 +11,21 @@ const Paragraph = forwardRef<
   HTMLParagraphElement,
   {
     size?: ParagraphSize;
+    maxLines?: number;
   } & ComponentPropsWithRef<"p">
->(({ size, children, ...props }, ref) => {
+>(({ size, children, maxLines, ...props }, ref) => {
+  const isClamped = typeof maxLines === "number";
+  const style = useMemo(
+    () => (isClamped ? { ["--paragraph-number-of-lines"]: maxLines } : undefined),
+    [maxLines, isClamped],
+  );
+
   return (
-    <p {...addClassNameToProps(props, paragraph({ size }))} ref={ref}>
+    <p
+      {...addClassNameToProps(props, paragraph({ size, clamped: typeof maxLines === "number" }))}
+      ref={ref}
+      style={style}
+    >
       {children}
     </p>
   );

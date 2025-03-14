@@ -1,0 +1,38 @@
+@layer molecules {
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header {
+  }
+
+  .body {
+    flex-grow: 1;
+  }
+
+  .footer {
+  }
+
+  .padded {
+    padding: 1rem;
+  }
+
+  .elevated {
+    background-color: var(--color-white);
+    border-radius: var(--radius-02);
+  }
+
+  .elevation01 {
+    box-shadow: var(--elevation-01);
+  }
+
+  .elevation02 {
+    box-shadow: var(--elevation-02);
+  }
+
+  .elevation03 {
+    box-shadow: var(--elevation-03);
+  }
+}

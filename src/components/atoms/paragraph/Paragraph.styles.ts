@@ -10,5 +10,8 @@ export const paragraph = tv({
       normal: styles.normal,
       small: styles.small,
     },
+    clamped: {
+      true: styles.clamped,
+    },
   },
 });
