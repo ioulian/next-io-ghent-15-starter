@@ -11,7 +11,7 @@ const Card = forwardRef<
     /**
      * Tag of the element
      */
-    type?: ElementType;
+    as?: ElementType;
 
     elevation?: VariantProps<typeof card>["elevation"];
     padded?: boolean;
@@ -19,8 +19,8 @@ const Card = forwardRef<
     header?: ReactNode;
     footer?: ReactNode;
   } & ComponentPropsWithRef<"article">
->(({ elevation, type = "article", padded = false, header, footer, children, ...props }, ref) => {
-  const Element = type;
+>(({ elevation, as = "article", padded = false, header, footer, children, ...props }, ref) => {
+  const Element = as;
 
   const classes = card({ elevation, padded });
 

@@ -8,6 +8,9 @@
   }
 
   .header {
+    > * {
+      width: 100%;
+    }
   }
 
   .body {

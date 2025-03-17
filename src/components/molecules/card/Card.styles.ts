@@ -21,5 +21,4 @@ export const card = tv({
       "03": { base: [styles.elevated, styles.elevation03] },
     },
   },
-  defaultVariants: {},
 });

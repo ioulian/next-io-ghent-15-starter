@@ -1,0 +1,29 @@
+@value button from "./../../atoms/button/Button.module.css";
+
+@layer blocks {
+  .cardList {
+  }
+
+  .body {
+  }
+
+  .footer {
+    margin-top: 48px;
+
+    @media (--md-up) {
+      margin-top: 64px;
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .button {
+        @media (--sm-down) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

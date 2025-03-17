@@ -1,6 +1,7 @@
 import {
   Children,
   ComponentPropsWithRef,
+  ElementType,
   forwardRef,
   memo,
   useImperativeHandle,
@@ -15,12 +16,18 @@ import { layout } from "@/components/atoms/layout/Layout.styles";
 import styles from "./Layout.module.css";
 
 const Heading = forwardRef<
-  HTMLDivElement,
+  HTMLElement,
   {
+    /**
+     * Tag of the element
+     */
+    as?: ElementType;
+
     debug?: boolean;
     variant?: VariantProps<typeof layout>["variant"];
   } & ComponentPropsWithRef<"div">
->(({ debug, variant, children, ...props }, ref) => {
+>(({ debug, as = "div", variant, children, ...props }, ref) => {
+  const Element = as;
   const showDebug = process.env.NODE_ENV !== "production" && debug;
   const innerRef = useRef<HTMLDivElement>(null);
   useImperativeHandle(ref, () => innerRef.current!, []);
@@ -45,12 +52,12 @@ const Heading = forwardRef<
   });
 
   return (
-    <div
+    <Element
       {...addClassNameToProps(props, layout({ variant }), showDebug && styles.debug)}
       ref={innerRef}
     >
       {children}
-    </div>
+    </Element>
   );
 });
 
