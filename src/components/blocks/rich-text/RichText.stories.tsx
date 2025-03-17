@@ -2,28 +2,31 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Text from "./Text";
+import Card from "@/components/molecules/card/Card";
+import Heading from "@/components/atoms/heading/Heading";
+import Button from "@/components/atoms/button/Button";
 
-const meta: Meta<typeof Text> = {
-  title: "UI/Atoms/Text",
-  component: Text,
+import RichText from "./RichText";
+
+const meta: Meta<typeof RichText> = {
+  title: "UI/Blocks/Rich text",
+  component: RichText,
   tags: ["autodocs"],
+  parameters: {
+    layout: "padded",
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof Text>;
+type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
-  args: {
-    children: (
-      <>
-        <h1>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
-        <h4>Heading 4</h4>
-        <h5>Heading 5</h5>
-        <h6>Heading 6</h6>
-        <hr />
+  render: () => {
+    return (
+      <RichText>
+        <Heading type="h2" size="h1">
+          Lorem ipsum dolores
+        </Heading>
         <p>
           Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus
           vel augue <strong>lacinia quam venenatis vestibulum</strong>. Donec id elit non mi porta
@@ -97,7 +100,11 @@ export const Default: Story = {
             </tr>
           </tbody>
         </table>
-      </>
-    ),
+
+        <p>
+          <Button>Button</Button>
+        </p>
+      </RichText>
+    );
   },
 };

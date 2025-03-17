@@ -44,7 +44,7 @@ const Heading = forwardRef<
 
       if (oneColError || twoColError || threeColError || fourColError) {
         console.warn(
-          `You are using <Layout> with "${variant}", but only only provided ${childrenLength} child node(s). Layout node:`,
+          `You are using <Layout> with "${variant}", but only only provided ${childrenLength} child node(s). Node:`,
           innerRef.current,
         );
       }

@@ -5,32 +5,34 @@ import { render, screen } from "@testing-library/react";
 
 import describeGeneralTests from "@/test/generalTests";
 
-import Layout from "./Layout";
+import MediaText from "./MediaText";
 
-describe("Layout", () => {
+describe("MediaText", () => {
   describeGeneralTests(
-    <Layout>
-      <div>Col 1</div>
-    </Layout>,
+    <MediaText>
+      <p>Test</p>
+      <p>Test</p>
+    </MediaText>,
     () => ({ render }),
   );
 
   it("renders with items", () => {
     render(
-      <Layout>
-        <div data-testid="test">test</div>
-      </Layout>,
+      <MediaText>
+        <p data-testid="test">test</p>
+        <p>test</p>
+      </MediaText>,
     );
     expect(screen.getByTestId("test")).toBeInTheDocument();
   });
 
-  it("warns when variant cols and children.length mismatch", () => {
+  it("warns when 2 children are not passed", () => {
     const consoleSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
 
     render(
-      <Layout variant="twoCol">
-        <div>test</div>
-      </Layout>,
+      <MediaText>
+        <p>test</p>
+      </MediaText>,
     );
 
     expect(consoleSpy).toHaveBeenCalled();

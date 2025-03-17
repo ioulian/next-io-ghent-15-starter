@@ -18,6 +18,14 @@
     background-color: var(--color-background);
   }
 
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    width: 100%;
+  }
+
   input,
   button,
   textarea,
