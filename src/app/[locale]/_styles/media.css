@@ -16,8 +16,8 @@
 @custom-media --sm-only (min-width: 540px) and (max-width: 767px);
 @custom-media --sm-up (min-width: 540px);
 
-@custom-media --xs-down (max-width: 576px);
-@custom-media --xs-only (min-width: 375px) and (max-width: 575px);
+@custom-media --xs-down (max-width: 539px);
+@custom-media --xs-only (min-width: 375px) and (max-width: 539px);
 @custom-media --xs-up (min-width: 375px);
 
 @custom-media --xxs-down (max-width: 374px);

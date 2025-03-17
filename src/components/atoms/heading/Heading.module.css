@@ -1,4 +1,5 @@
 @layer atoms {
   .heading {
+    display: block;
   }
 }

@@ -2,7 +2,7 @@ import { ComponentPropsWithRef, forwardRef, memo } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 
-import { heading } from "./Heading.styles";
+import styles from "./Heading.module.css";
 
 export type HeadingType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 // eslint-disable-next-line sonarjs/redundant-type-aliases
@@ -31,7 +31,7 @@ const Heading = forwardRef<
   const size: HeadingSize = sizeArgument ?? (type as HeadingType);
 
   return (
-    <Element {...addClassNameToProps(props, heading(), size)} ref={ref}>
+    <Element {...addClassNameToProps(props, styles.heading, size)} ref={ref}>
       {children}
     </Element>
   );
