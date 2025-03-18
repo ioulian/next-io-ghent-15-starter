@@ -2,7 +2,6 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Card from "@/components/molecules/card/Card";
 import Heading from "@/components/atoms/heading/Heading";
 import Button from "@/components/atoms/button/Button";
 import Text from "@/components/atoms/text/Text";
@@ -19,7 +18,7 @@ const meta: Meta<typeof MediaText> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Card>;
+type Story = StoryObj<typeof MediaText>;
 
 export const Default: Story = {
   render: () => {
