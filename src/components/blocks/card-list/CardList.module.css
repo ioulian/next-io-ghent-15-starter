@@ -8,10 +8,10 @@
   }
 
   .footer {
-    margin-top: 48px;
+    margin-top: 3rem;
 
     @media (--md-up) {
-      margin-top: 64px;
+      margin-top: 4rem;
     }
 
     > div {

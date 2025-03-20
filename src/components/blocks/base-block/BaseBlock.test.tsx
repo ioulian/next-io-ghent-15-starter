@@ -5,21 +5,21 @@ import { render, screen } from "@testing-library/react";
 
 import describeGeneralTests from "@/test/generalTests";
 
-import RichText from "./RichText";
+import BaseBlock from "./BaseBlock";
 
-describe("RichText", () => {
+describe("BaseBlock", () => {
   describeGeneralTests(
-    <RichText>
+    <BaseBlock>
       <p>Test</p>
-    </RichText>,
+    </BaseBlock>,
     () => ({ render }),
   );
 
   it("renders with items", () => {
     render(
-      <RichText>
+      <BaseBlock>
         <p data-testid="test">test</p>
-      </RichText>,
+      </BaseBlock>,
     );
     expect(screen.getByTestId("test")).toBeInTheDocument();
   });

@@ -21,6 +21,7 @@ import {
   useState,
 } from "react";
 import { useTranslations } from "next-intl";
+import clsx from "clsx";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import Sheet from "@/components/atoms/sheet/Sheet";
@@ -33,7 +34,7 @@ import { useDialogContext } from "./hooks";
 const DialogContent = forwardRef<
   HTMLDivElement,
   { withCloseButton?: boolean; asSheet?: boolean } & HTMLProps<HTMLDivElement>
->(({ withCloseButton, asSheet = false, ...props }, propRef) => {
+>(({ withCloseButton, asSheet = false, className, ...props }, propRef) => {
   const t = useTranslations("common.closeButton");
   const context = useDialogContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
@@ -110,7 +111,11 @@ const DialogContent = forwardRef<
     <Wrapper>
       <FloatingNode id={context.nodeId}>
         <FloatingPortal>
-          <FloatingOverlay lockScroll className={overlay({ asSheet })} style={style}>
+          <FloatingOverlay
+            lockScroll
+            className={clsx(overlay({ asSheet }), className)}
+            style={style}
+          >
             <FloatingFocusManager context={context.context} modal disabled={focusDisabled}>
               {asSheet ? (
                 <Sheet

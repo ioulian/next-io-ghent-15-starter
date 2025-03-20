@@ -2,10 +2,13 @@
 // button-has-type will be handled by mega menu
 
 import type { Meta, StoryObj } from "@storybook/react";
+import iconChevron from "@tabler/icons/outline/chevron-down.svg";
 
 import MenuBarRootItem from "@/components/organisms/menu-bar/root-item/MenuBarRootItem";
 import Dropdown from "@/components/molecules/dropdown/Dropdown";
 import DropdownMenuItem from "@/components/molecules/dropdown/DropdownMenuItem";
+import Button from "@/components/atoms/button/Button";
+import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 
 import MenuBar from "./MenuBar";
 
@@ -30,7 +33,13 @@ export const Default: Story = {
         <MenuBarRootItem
           href="#"
           render={
-            <Dropdown trigger="Item 4">
+            <Dropdown
+              trigger={
+                <Button size="base" variant="simple" iconAfter={<SvgSprite src={iconChevron} />}>
+                  Item 4
+                </Button>
+              }
+            >
               <DropdownMenuItem typeaheadKey="Undo">Undo</DropdownMenuItem>
               <DropdownMenuItem typeaheadKey="Redo">Redo</DropdownMenuItem>
               <DropdownMenuItem typeaheadKey="Cut" disabled>

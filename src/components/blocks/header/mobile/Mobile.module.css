@@ -1,0 +1,33 @@
+@value floater from "./../../../atoms/floater/Floater.module.css";
+
+@layer blocks {
+  .mobile {
+    border-bottom: 1px solid #b4b5be;
+    background-color: var(--color-white);
+    padding-block: 0.75rem;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .dialog {
+    padding: 0;
+    place-items: start;
+
+    .floater {
+      width: 100vw;
+      padding: 2rem;
+      max-width: none;
+      border: 0;
+      border-radius: 0;
+    }
+  }
+}

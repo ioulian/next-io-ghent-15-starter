@@ -3,11 +3,11 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Media from "./Media";
 
 const meta: Meta<typeof Media> = {
-  title: "UI/Blocks/Media",
+  title: "Boilerplate/Blocks/Media",
   component: Media,
   tags: ["autodocs"],
   parameters: {
-    layout: "padded",
+    layout: "fullscreen",
   },
 };
 

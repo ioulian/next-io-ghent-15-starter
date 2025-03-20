@@ -1,0 +1,9 @@
+@layer blocks {
+  .blockBase {
+    padding-block: 1rem;
+
+    @media (--md-up) {
+      padding-block: 2rem;
+    }
+  }
+}

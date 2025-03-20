@@ -2,12 +2,12 @@
   .mediaText {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1rem;
 
     @media (--md-up) {
       flex-direction: row;
       align-items: center;
-      gap: 32px;
+      gap: 2rem;
     }
 
     /* Center vertically */

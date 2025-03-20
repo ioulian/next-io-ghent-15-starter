@@ -1,0 +1,74 @@
+@layer blocks {
+  .desktop {
+    border-bottom: 1px solid #b4b5be;
+  }
+
+  .topMenu {
+    padding-block: 0.5rem;
+    background-color: #ebedf2;
+  }
+
+  .mainMenu {
+    padding-block: 1rem;
+    background-color: var(--color-white);
+  }
+
+  .topMenuInner {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 2rem;
+  }
+
+  .mainMenuInner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .topMenuItems {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+      text-decoration: none;
+
+      &:hover,
+      &:focus-visible {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .topMenuNav {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 1.5rem;
+
+    a {
+      text-decoration: none;
+
+      &:hover,
+      &:focus-visible {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .logo {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .mainNav {
+    margin-left: auto;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}

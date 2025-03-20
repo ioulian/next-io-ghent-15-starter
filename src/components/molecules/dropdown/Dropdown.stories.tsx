@@ -27,30 +27,32 @@ const meta: Meta<typeof Dropdown> = {
 export default meta;
 type Story = StoryObj<typeof Dropdown>;
 
+const play: Story["play"] = async ({ canvasElement, step }) => {
+  const canvas = within(canvasElement);
+
+  await step("Dropdown open", async () => {
+    await userEvent.click(canvas.getByTestId("trigger"));
+    await wait(getVariableAsNumber("duration.normal"));
+    await expect(screen.getByTestId("trigger2")).toBeVisible();
+
+    await userEvent.hover(screen.getByTestId("trigger2"));
+    await wait(getVariableAsNumber("duration.normal"));
+    await expect(screen.getByTestId("trigger3")).toBeVisible();
+
+    await userEvent.hover(screen.getByTestId("trigger3"));
+    await wait(getVariableAsNumber("duration.normal"));
+    await expect(screen.getByTestId("trigger4")).toBeVisible();
+  });
+
+  await step("Dropdown close", async () => {
+    await userEvent.click(screen.getByTestId("trigger4"));
+    await wait(getVariableAsNumber("duration.fast"));
+    await expect(screen.queryByTestId("trigger4")).toBeNull();
+  });
+};
+
 export const Basic: Story = {
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-
-    await step("Dropdown open", async () => {
-      await userEvent.click(canvas.getByTestId("trigger"));
-      await wait(getVariableAsNumber("duration.normal"));
-      await expect(screen.getByTestId("trigger2")).toBeVisible();
-
-      await userEvent.hover(screen.getByTestId("trigger2"));
-      await wait(getVariableAsNumber("duration.normal"));
-      await expect(screen.getByTestId("trigger3")).toBeVisible();
-
-      await userEvent.hover(screen.getByTestId("trigger3"));
-      await wait(getVariableAsNumber("duration.normal"));
-      await expect(screen.getByTestId("trigger4")).toBeVisible();
-    });
-
-    await step("Dropdown close", async () => {
-      await userEvent.click(screen.getByTestId("trigger4"));
-      await wait(getVariableAsNumber("duration.fast"));
-      await expect(screen.queryByTestId("trigger4")).toBeNull();
-    });
-  },
+  play,
   render: (args) => (
     <Dropdown {...args}>
       <DropdownMenuItem onClick={action("Undo")} typeaheadKey="Undo">
@@ -103,6 +105,7 @@ export const Basic: Story = {
 };
 
 export const CustomElements: Story = {
+  play,
   render: (args) => (
     <Dropdown {...args}>
       <DropdownMenuItem typeaheadKey="Undo">
@@ -115,7 +118,11 @@ export const CustomElements: Story = {
         <Button>Cut</Button>
       </DropdownMenuItem>
       <Dropdown
-        trigger={<Button iconAfter={<SvgSprite src={iconChevron} />}>Copy as</Button>}
+        trigger={
+          <Button iconAfter={<SvgSprite src={iconChevron} />} data-testid="trigger2">
+            Copy as
+          </Button>
+        }
         typeaheadKey="Copy as"
       >
         <DropdownMenuItem typeaheadKey="Text">
@@ -125,13 +132,17 @@ export const CustomElements: Story = {
           <Button>Video</Button>
         </DropdownMenuItem>
         <Dropdown
-          trigger={<Button iconAfter={<SvgSprite src={iconChevron} />}>Image</Button>}
+          trigger={
+            <Button iconAfter={<SvgSprite src={iconChevron} />} data-testid="trigger3">
+              Image
+            </Button>
+          }
           typeaheadKey="Image"
         >
           <DropdownMenuItem typeaheadKey=".png">
             <Button>.png</Button>
           </DropdownMenuItem>
-          <DropdownMenuItem typeaheadKey=".jpg">
+          <DropdownMenuItem typeaheadKey=".jpg" data-testid="trigger4">
             <Button>.jpg</Button>
           </DropdownMenuItem>
           <DropdownMenuItem typeaheadKey=".svg">
@@ -159,7 +170,7 @@ export const CustomElements: Story = {
     </Dropdown>
   ),
   args: {
-    trigger: <Button>Menu</Button>,
+    trigger: <Button data-testid="trigger">Menu</Button>,
   },
 };
 

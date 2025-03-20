@@ -1,0 +1,19 @@
+@layer blocks {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: var(--zIndex-header);
+  }
+
+  .desktop {
+    @media (--md-down) {
+      display: none;
+    }
+  }
+
+  .mobile {
+    @media (--lg-up) {
+      display: none;
+    }
+  }
+}

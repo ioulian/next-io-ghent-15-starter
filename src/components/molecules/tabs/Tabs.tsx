@@ -1,33 +1,35 @@
 "use client";
 
-import { ComponentPropsWithRef, FC, memo } from "react";
-import { Tabs as ReactTabs } from "react-tabs";
+import { ComponentPropsWithRef, forwardRef, memo } from "react";
+import { Tabs as ReactTabs, TabsProps } from "react-tabs";
 import clsx from "clsx";
+
+import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Tabs.module.css";
 
-const Tabs: FC<ComponentPropsWithRef<typeof ReactTabs>> = ({
-  children,
-  className,
-  disabledTabClassName,
-  selectedTabClassName,
-  selectedTabPanelClassName,
-  ...props
-}) => {
-  return (
-    <div>
-      <ReactTabs
-        {...props}
-        className={clsx(styles.tabs, typeof className === "string" ? className : undefined)}
-        disabledTabClassName={disabledTabClassName}
-        selectedTabClassName={selectedTabClassName}
-        selectedTabPanelClassName={clsx(styles.tabPanelSelected, selectedTabPanelClassName)}
-      >
-        {children}
-      </ReactTabs>
-    </div>
-  );
-};
+const Tabs = forwardRef<HTMLDivElement, { tabsProps?: TabsProps } & ComponentPropsWithRef<"div">>(
+  ({ children, tabsProps, ...props }, ref) => {
+    return (
+      <div {...addClassNameToProps(props)} ref={ref}>
+        <ReactTabs
+          {...tabsProps}
+          className={clsx(styles.tabs)}
+          disabledTabClassName={tabsProps?.disabledTabClassName}
+          selectedTabClassName={tabsProps?.selectedTabClassName}
+          selectedTabPanelClassName={clsx(
+            styles.tabPanelSelected,
+            tabsProps?.selectedTabPanelClassName,
+          )}
+        >
+          {children}
+        </ReactTabs>
+      </div>
+    );
+  },
+);
+
+Tabs.displayName = "Tabs";
 
 /**
  * Wrapper around `react-tabs` with correct styling

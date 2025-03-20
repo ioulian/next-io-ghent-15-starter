@@ -9,11 +9,11 @@ import Text from "@/components/atoms/text/Text";
 import MediaText from "./MediaText";
 
 const meta: Meta<typeof MediaText> = {
-  title: "UI/Blocks/Media with text",
+  title: "Boilerplate/Blocks/Media with text",
   component: MediaText,
   tags: ["autodocs"],
   parameters: {
-    layout: "padded",
+    layout: "fullscreen",
   },
 };
 

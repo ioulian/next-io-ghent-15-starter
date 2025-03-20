@@ -23,6 +23,7 @@ import { WithRequired } from "@/types/helpers";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 
 import { cardSlider, controls } from "./CardSlider.styles";
+import blockStyles from "./../Blocks.module.css";
 
 import "./CardSlider.css";
 
@@ -56,7 +57,7 @@ const CardSlider = forwardRef<
   }, [paginationElId, prevElId, nextElId]);
 
   return (
-    <div {...addClassNameToProps(props, classes.base())} ref={ref}>
+    <div {...addClassNameToProps(props, classes.base(), blockStyles.blockBase)} ref={ref}>
       <Layout variant="oneCol" className={classes.body()}>
         <Swiper {...swiperSettings}>
           {Children.map(children, (child) => {
@@ -69,23 +70,25 @@ const CardSlider = forwardRef<
         </Swiper>
       </Layout>
       <Layout variant="oneCol" as="footer" className={classes.footer()}>
-        {action}
-        <div className={controlsClasses.base()}>
-          <button
-            className={clsx(controlsClasses.prev(), prevElId)}
-            type="button"
-            aria-label={t("controls.prev.ariaLabel")}
-          >
-            <SvgSprite src={iconChevronLeft} />
-          </button>
-          <div className={clsx(controlsClasses.pagination(), paginationElId)} />
-          <button
-            className={clsx(controlsClasses.next(), nextElId)}
-            type="button"
-            aria-label={t("controls.next.ariaLabel")}
-          >
-            <SvgSprite src={iconChevronRight} />
-          </button>
+        <div>
+          {action}
+          <div className={controlsClasses.base()}>
+            <button
+              className={clsx(controlsClasses.prev(), prevElId)}
+              type="button"
+              aria-label={t("controls.prev.ariaLabel")}
+            >
+              <SvgSprite src={iconChevronLeft} />
+            </button>
+            <div className={clsx(controlsClasses.pagination(), paginationElId)} />
+            <button
+              className={clsx(controlsClasses.next(), nextElId)}
+              type="button"
+              aria-label={t("controls.next.ariaLabel")}
+            >
+              <SvgSprite src={iconChevronRight} />
+            </button>
+          </div>
         </div>
       </Layout>
     </div>

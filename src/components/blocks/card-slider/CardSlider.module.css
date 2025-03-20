@@ -14,22 +14,24 @@
   }
 
   .footer {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    flex-direction: column-reverse;
-    margin-top: 48px;
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      flex-direction: column-reverse;
+      margin-top: 3rem;
 
-    @media (--md-up) {
-      margin-top: 64px;
-      flex-direction: row;
-      justify-content: space-between;
-    }
+      @media (--md-up) {
+        margin-top: 4rem;
+        flex-direction: row;
+        justify-content: space-between;
+      }
 
-    .button {
-      @media (--sm-down) {
-        width: 100%;
+      .button {
+        @media (--sm-down) {
+          width: 100%;
+        }
       }
     }
   }
@@ -55,9 +57,9 @@
 
   .prev,
   .next {
-    width: 48px;
-    height: 48px;
-    padding: 14px;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.875rem;
 
     > svg {
       width: 100%;
@@ -71,8 +73,8 @@
     gap: 8px;
 
     > span {
-      width: 12px;
-      height: 12px;
+      width: 0.75rem;
+      height: 0.75rem;
       border: 1px solid var(--color-secondary-800);
       transition: background-color var(--duration-fast);
       border-radius: 50%;

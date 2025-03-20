@@ -15,6 +15,7 @@ import { addClassNameToProps } from "@/utils/styles";
 import Layout from "../../atoms/layout/Layout";
 
 import styles from "./MediaText.module.css";
+import blockStyles from "./../Blocks.module.css";
 
 const MediaText = forwardRef<
   HTMLDivElement,
@@ -39,7 +40,12 @@ const MediaText = forwardRef<
 
   return (
     <div
-      {...addClassNameToProps(props, styles.mediaText, coverMedia && styles.coverMedia)}
+      {...addClassNameToProps(
+        props,
+        styles.mediaText,
+        coverMedia && styles.coverMedia,
+        blockStyles.blockBase,
+      )}
       ref={innerRef}
     >
       <Layout variant="twoCol">

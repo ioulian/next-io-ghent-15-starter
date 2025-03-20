@@ -1,0 +1,41 @@
+@layer blocks {
+  .footer {
+    background-color: #ebedf2;
+  }
+
+  .doormat {
+  }
+
+  .meta {
+    border-top: 1px solid #d2d4da;
+    padding-block: 1rem;
+
+    .metaContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      @media (--md-up) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      nav {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: space-between;
+
+        a {
+          text-decoration: none;
+
+          &:focus-visible,
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

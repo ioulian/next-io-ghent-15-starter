@@ -5,6 +5,7 @@ import { addClassNameToProps } from "@/utils/styles";
 import Layout from "../../atoms/layout/Layout";
 
 import { cardList } from "./CardList.styles";
+import blockStyles from "./../Blocks.module.css";
 
 const CardList = forwardRef<
   HTMLDivElement,
@@ -15,7 +16,7 @@ const CardList = forwardRef<
   const classes = cardList();
 
   return (
-    <div {...addClassNameToProps(props, classes.base())} ref={ref}>
+    <div {...addClassNameToProps(props, classes.base(), blockStyles.blockBase)} ref={ref}>
       {children ? (
         <Layout variant="threeCol" className={classes.body()}>
           {children}

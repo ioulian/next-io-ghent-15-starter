@@ -9,7 +9,7 @@ const meta: Meta<typeof Layout> = {
   component: Layout,
   tags: ["autodocs"],
   parameters: {
-    layout: "padded",
+    layout: "fullscreen",
   },
 };
 

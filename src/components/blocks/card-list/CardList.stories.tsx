@@ -12,11 +12,11 @@ import LinkButton from "@/components/atoms/link-button/LinkButton";
 import CardList from "./CardList";
 
 const meta: Meta<typeof CardList> = {
-  title: "UI/Blocks/CardList",
+  title: "Boilerplate/Blocks/CardList",
   component: CardList,
   tags: ["autodocs"],
   parameters: {
-    layout: "padded",
+    layout: "fullscreen",
   },
 };
 

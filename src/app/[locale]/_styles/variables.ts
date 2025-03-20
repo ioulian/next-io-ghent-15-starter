@@ -87,6 +87,11 @@ export const cssVariables = {
     "02": "0px 0px 4px 0px rgba(0, 0, 0, 0.04), 0px 4px 8px 0px rgba(0, 0, 0, 0.06);",
     "03": "0px 0px 4px 0px rgba(0, 0, 0, 0.04), 0px 8px 16px 0px rgba(0, 0, 0, 0.08);",
   },
+  zIndex: {
+    header: "10",
+    dialog: "20",
+    floater: "30",
+  },
   radius: {
     "01": "4px",
     "02": "8px",

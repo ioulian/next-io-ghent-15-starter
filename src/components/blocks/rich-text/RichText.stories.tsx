@@ -2,23 +2,22 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Card from "@/components/molecules/card/Card";
 import Heading from "@/components/atoms/heading/Heading";
 import Button from "@/components/atoms/button/Button";
 
 import RichText from "./RichText";
 
 const meta: Meta<typeof RichText> = {
-  title: "UI/Blocks/Rich text",
+  title: "Boilerplate/Blocks/Rich text",
   component: RichText,
   tags: ["autodocs"],
   parameters: {
-    layout: "padded",
+    layout: "fullscreen",
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Card>;
+type Story = StoryObj<typeof RichText>;
 
 export const Default: Story = {
   render: () => {

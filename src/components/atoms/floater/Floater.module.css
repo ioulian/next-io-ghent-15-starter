@@ -8,6 +8,7 @@
     max-width: calc(100vw - var(--floater-shift) * 2);
     border-radius: var(--radius-01);
     border: 1px solid var(--color-primary-500);
+    z-index: var(--zIndex-floater);
 
     &:focus-visible {
       outline: none;

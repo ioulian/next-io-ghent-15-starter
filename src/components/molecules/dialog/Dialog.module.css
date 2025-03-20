@@ -8,5 +8,6 @@
     display: grid;
     place-items: center;
     padding: 1rem;
+    z-index: var(--zIndex-dialog);
   }
 }

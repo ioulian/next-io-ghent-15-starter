@@ -12,11 +12,11 @@ import Button from "@/components/atoms/button/Button";
 import CardSlider from "./CardSlider";
 
 const meta: Meta<typeof CardSlider> = {
-  title: "UI/Blocks/CardSlider",
+  title: "Boilerplate/Blocks/CardSlider",
   component: CardSlider,
   tags: ["autodocs"],
   parameters: {
-    layout: "padded",
+    layout: "fullscreen",
   },
 };
 

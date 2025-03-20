@@ -1,5 +1,20 @@
 {
   "common": {
+    "header": {
+      "mobile": {
+        "openButton": {
+          "label": "Open menu"
+        },
+        "closeButton": {
+          "label": "Close menu"
+        }
+      }
+    },
+    "footer": {
+      "meta": {
+        "createdBy": "Created by iO Digital"
+      }
+    },
     "cardSlider": {
       "controls": {
         "prev": {
