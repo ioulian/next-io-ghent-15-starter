@@ -96,7 +96,6 @@ export const NextLink: Story = {
     variant: "primary",
     children: "Navigate to another page",
     disabled: false,
-    isLoading: false,
     iconOnly: false,
     fullWidth: false,
     size: "normal",

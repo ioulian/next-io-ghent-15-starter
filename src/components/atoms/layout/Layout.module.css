@@ -29,11 +29,11 @@
 
   .debug {
     &,
-    div {
+    > div {
       border: 1px solid var(--color-secondary-300);
     }
 
-    div {
+    > div {
       background-color: rgba(0, 0, 0, 0.03);
     }
   }

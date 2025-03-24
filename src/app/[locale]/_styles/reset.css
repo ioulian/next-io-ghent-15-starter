@@ -1,4 +1,5 @@
 /* From: https://www.joshwcomeau.com/css/custom-css-reset/ */
+/* From: https://piccalil.li/blog/a-more-modern-css-reset/ */
 
 @layer reset {
   /* 1. Use a more-intuitive box-sizing model */
@@ -67,5 +68,19 @@
   #root,
   #__next {
     isolation: isolate;
+  }
+
+  /* A elements that don't have a class get default styles */
+  a {
+    text-decoration-skip-ink: auto;
+
+    &:not([class]) {
+      color: currentColor;
+    }
+  }
+
+  /* Anything that has been anchored to should have extra scroll margin */
+  :target {
+    scroll-margin-block: 5ex;
   }
 }

@@ -132,7 +132,7 @@ export const Combination1: Story = {
   render: (args) => (
     <Layout {...args}>
       <div>
-        <Layout variant="twoCol25x75">
+        <Layout variant="twoCol25x75" debug>
           <div>Col 1 - 1</div>
           <div>Col 1 - 2</div>
         </Layout>

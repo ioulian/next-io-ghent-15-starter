@@ -1,6 +1,8 @@
 @layer base {
   :root {
-    interpolate-size: allow-keywords;
+    @supports (interpolate-size: allow-keywords) {
+      interpolate-size: allow-keywords;
+    }
   }
 
   html,
@@ -8,10 +10,11 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -30,7 +33,7 @@
   button,
   textarea,
   select {
-    font-family: var(--font-body);
+    font-family: inherit;
   }
 
   hr {
@@ -99,9 +102,9 @@
     *,
     *::before,
     *::after {
-      animation-duration: 0.01ms !important;
+      animation-duration: 0.001ms !important;
       animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
+      transition-duration: 0.001ms !important;
       scroll-behavior: auto !important;
     }
   }
