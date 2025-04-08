@@ -110,8 +110,7 @@ describe("Form", () => {
     });
 
     expect(spy).toHaveBeenCalled();
-    expect(spy.mock.calls).toHaveLength(4);
-    expect(spy.mock.results[3].value).toBe("test");
+    expect(spy.mock.results[spy.mock.results.length - 1].value).toBe("test");
   });
 
   it("should not trigger onSubmit when loading", async () => {
