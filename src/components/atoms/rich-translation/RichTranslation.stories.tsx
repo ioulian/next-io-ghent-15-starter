@@ -17,13 +17,18 @@ const Example: FC = () => {
   const t = useTranslations("common");
 
   return (
-    <RichTranslation>
-      {(tags) =>
-        t.rich("stories.richTranslation.value", {
-          ...tags,
-          // @ts-expect-error FIXME: later
-          customLink: (chunks) => <a href="#">{chunks}</a>,
-        })
+    <RichTranslation
+      tags={{
+        customLink: (chunks) => (
+          <a href="#" className="custom">
+            {chunks}
+          </a>
+        ),
+      }}
+    >
+      {
+        // @ts-expect-error FIXME
+        (tags) => t.rich("stories.richTranslation.value", tags)
       }
     </RichTranslation>
   );
