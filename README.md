@@ -22,7 +22,7 @@ It contains a lot of useful presets and common components to be used in your pro
 - Jest (by Next.js). Most custom components are tested;
 - With [next-cache-toolbar](https://github.com/KajSzy/next-cache-toolbar) to easily debug cached api requests;
 - Use with PNPM (preferred) or NPM;
-- [Why Did You Render](https://github.com/welldone-software/why-did-you-render) pre-installed (activate in .env);
+- Translations checks with [i18n-check](https://github.com/lingualdev/i18n-check) (Custom checks are still under scripts if needed, as they will check source files too. Custom check can be removed when https://github.com/lingualdev/i18n-check/issues/36 will be fixed)
 
 ## Getting Started
 
@@ -30,11 +30,11 @@ It contains a lot of useful presets and common components to be used in your pro
 
 ```bash
 # PNPM
-pnpm create next-app --example https://github.com/ioulian/next-ui-ghent-app-starter
-pnpm run dev
+pnpm create next-app --example https://github.com/ioulian/next-io-ghent-15-starter
+pnpm dev
 
 # NPM
-npx create-next-app --example https://github.com/ioulian/next-ui-ghent-app-starter
+npx create-next-app --example https://github.com/ioulian/next-io-ghent-15-starter
 npm run dev
 ```
 
@@ -52,7 +52,7 @@ nvm use && npm install
 
 ```bash
 # PNPM
-pnpm run storybook
+pnpm storybook
 
 # NPM
 npm run storybook
@@ -64,7 +64,7 @@ npm run storybook
 
 ## Go live checklist
 
-There are some basic GO-live checks implemented when you run `npm run build`, but these files should be checked:
+There are some basic GO-live checks implemented when you run `pnpm build`, but these files should be checked:
 
 - `.env`
 - Meta: `src/app/apple-icon.png`, `src/app/favicon.ico`, `src/app/icon.png`, `src/app/manifest.ts`
@@ -72,7 +72,7 @@ There are some basic GO-live checks implemented when you run `npm run build`, bu
 
 ## Issues/TODO's
 
-Issues and TODO's can be found here: <https://github.com/ioulian/next-ui-ghent-app-starter/issues>
+Issues and TODO's can be found here: <https://github.com/ioulian/next-io-ghent-15-starter/issues>
 
 ## Component export convention
 
