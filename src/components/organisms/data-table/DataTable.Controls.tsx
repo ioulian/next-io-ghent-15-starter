@@ -65,7 +65,7 @@ const Controls = <T,>({
         <Select value={table.getState().pagination.pageSize} onChange={pageSizeOnSelect}>
           {showPerPages.map((pageSize) => (
             <option key={pageSize} value={pageSize}>
-              {t("pageSize.label", { pageSize })}
+              {t("pageSize.label", { pageSize: pageSize.toString() })}
             </option>
           ))}
         </Select>

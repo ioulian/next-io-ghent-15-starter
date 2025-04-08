@@ -21,11 +21,7 @@ const PasswordStrength = forwardRef<
 
   useEffect(() => {
     if (typeof value === "string" && value.length > 0) {
-      validatePassword(
-        value,
-        // @ts-expect-error This works
-        messages.common.form.passwordStrength.messages,
-      ).then((result) => {
+      validatePassword(value, messages.common.form.passwordStrength.messages).then((result) => {
         setScore(result.score);
         setMessage(result.crackTimesDisplay.offlineSlowHashing1e4PerSecond);
       });
@@ -33,11 +29,7 @@ const PasswordStrength = forwardRef<
       setScore(-1);
       setMessage("");
     }
-  }, [
-    value,
-    // @ts-expect-error This works
-    messages.common.form.passwordStrength.messages,
-  ]);
+  }, [value, messages.common.form.passwordStrength.messages]);
 
   const classes = passwordStrength();
 

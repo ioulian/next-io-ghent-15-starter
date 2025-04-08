@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { AbstractIntlMessages, useTranslations } from "next-intl";
 import {
   Children,
   cloneElement,
@@ -200,8 +200,10 @@ const FormField = <T extends FieldValues = FieldValues>({
       {error ? (
         <FieldError id={errorId}>
           {error.type === BE_VALIDATION
-            ? t(`common.form.validationErrors.${error.message}` as unknown as Leaves<IntlMessages>)
-            : t(error.message as unknown as Leaves<IntlMessages>)}
+            ? t(
+                `common.form.validationErrors.${error.message}` as unknown as Leaves<AbstractIntlMessages>,
+              )
+            : t(error.message as unknown as Leaves<AbstractIntlMessages>)}
         </FieldError>
       ) : null}
       {description ? <Description id={descriptionId}>{description}</Description> : null}

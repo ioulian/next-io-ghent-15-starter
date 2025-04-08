@@ -14,6 +14,7 @@
     "jsx": "preserve",
     "incremental": true,
     "types": ["jest", "node"],
+    "allowArbitraryExtensions": true,
     "plugins": [
       {
         "name": "next"

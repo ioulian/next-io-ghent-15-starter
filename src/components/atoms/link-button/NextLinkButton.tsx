@@ -2,7 +2,7 @@
 
 import { FC, memo, PropsWithChildren, useCallback, useState } from "react";
 
-import { Link as LocalizedLink } from "@/i18n/routing";
+import { Link as LocalizedLink } from "@/i18n/navigation";
 
 import LinkButton, { type Props as LBProps } from "./LinkButton";
 

@@ -21,6 +21,7 @@ const Example: FC = () => {
       {(tags) =>
         t.rich("stories.richTranslation.value", {
           ...tags,
+          // @ts-expect-error FIXME: later
           customLink: (chunks) => <a href="#">{chunks}</a>,
         })
       }

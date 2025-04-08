@@ -4,7 +4,7 @@ import { addClassNameToProps } from "@/utils/styles";
 import Layout from "@/components/atoms/layout/Layout";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import LocaleSwitcher from "@/components/molecules/locale-switcher/LocaleSwitcher";
-import { Link } from "@/i18n/routing";
+import { Link } from "@/i18n/navigation";
 
 import { useActions, useTopMenuItems } from "../Desktop.hooks";
 

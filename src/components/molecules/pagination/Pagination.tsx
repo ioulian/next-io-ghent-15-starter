@@ -19,7 +19,7 @@ const Pagination: FC<ReactPaginateProps> = (props) => {
             backward: t("aria.break.backward"),
             forward: t("aria.break.forward"),
           },
-          ariaLabelBuilder: (page) => t("aria.page", { page }),
+          ariaLabelBuilder: (page) => t("aria.page", { page: page.toString() }),
           previousAriaLabel: t("aria.previous"),
           nextAriaLabel: t("aria.next"),
           className: clsx(styles.pagination, props.className),

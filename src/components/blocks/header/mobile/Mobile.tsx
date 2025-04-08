@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { addClassNameToProps } from "@/utils/styles";
 import Layout from "@/components/atoms/layout/Layout";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
-import { Link } from "@/i18n/routing";
+import { Link } from "@/i18n/navigation";
 import Dialog from "@/components/molecules/dialog/Dialog";
 import DialogTrigger from "@/components/molecules/dialog/DialogTrigger";
 import Button from "@/components/atoms/button/Button";
