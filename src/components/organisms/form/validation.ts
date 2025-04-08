@@ -1,9 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodType } from "zod";
+import { AppConfig } from "next-intl";
 
 import { Leaves } from "@/types/helpers";
 
-export const createValidationMessage = <T extends Leaves<IntlMessages>>(message: T) => ({
+export const createValidationMessage = <T extends Leaves<AppConfig["Messages"]>>(message: T) => ({
   message,
 });
 

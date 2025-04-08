@@ -1,6 +1,6 @@
 "use client";
 
-import { AbstractIntlMessages, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import {
   Children,
   cloneElement,
@@ -31,7 +31,6 @@ import { addClassNameToProps } from "@/utils/styles";
 import Label from "@/components/atoms/form/label/Label";
 import FieldError from "@/components/atoms/form/field-error/FieldError";
 import { BE_VALIDATION } from "@/components/organisms/form/constants";
-import { Leaves } from "@/types/helpers";
 import Description from "@/components/atoms/form/description/Description";
 
 import { formField } from "./FormField.styles";
@@ -200,10 +199,10 @@ const FormField = <T extends FieldValues = FieldValues>({
       {error ? (
         <FieldError id={errorId}>
           {error.type === BE_VALIDATION
-            ? t(
-                `common.form.validationErrors.${error.message}` as unknown as Leaves<AbstractIntlMessages>,
-              )
-            : t(error.message as unknown as Leaves<AbstractIntlMessages>)}
+            ? // @ts-expect-error FIXME
+              t(`common.form.validationErrors.${error.message}`)
+            : // @ts-expect-error FIXME
+              t(error.message)}
         </FieldError>
       ) : null}
       {description ? <Description id={descriptionId}>{description}</Description> : null}
