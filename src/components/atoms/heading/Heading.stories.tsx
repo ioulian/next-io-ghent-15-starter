@@ -15,6 +15,6 @@ export const Default: Story = {
   args: {
     type: "h1",
     size: "h1",
-    children: "Heading",
+    children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   },
 };
