@@ -23,7 +23,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "// tests": "echo 'Tests'",
-    "test-storybook": "test-storybook",
+    "test:storybook": "test-storybook",
     "test": "jest",
     "test:watch": "jest --watch"
   },
