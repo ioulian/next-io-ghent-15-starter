@@ -32,7 +32,6 @@
     "pnpm": "^10.0.0"
   },
   "dependencies": {
-    "@episerver/forms-sdk": "1.0.1",
     "@faker-js/faker": "9.7.0",
     "@floating-ui/react": "0.27.7",
     "@hookform/resolvers": "5.0.1",
