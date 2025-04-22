@@ -35,7 +35,10 @@ const SvgSprite: FC<
     {},
   );
 
-  const cacheBust = process.env.NODE_ENV !== "production" ? `?${src.checksum}` : "";
+  const cacheBust =
+    process.env.NODE_ENV === "production"
+      ? `?${process.env.NEXT_PUBLIC_CUSTOM_BUILD_ID}`
+      : `?${src.checksum}`;
 
   return (
     <svg
