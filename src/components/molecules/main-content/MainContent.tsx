@@ -7,7 +7,7 @@ import { MAIN_CONTENT_ID } from "./MainContent.constants";
 
 const MainContent: FC<ComponentPropsWithRef<"main">> = ({ children, ...props }) => {
   useEffectOnce(() => {
-    if (process.env.NODE_ENV !== "production" || process.env.IS_STORYBOOK === "true") {
+    if (process.env.NODE_ENV !== "production") {
       const link = document.querySelector(`a[href="#${MAIN_CONTENT_ID}"]`);
       if (link === null) {
         console.warn(

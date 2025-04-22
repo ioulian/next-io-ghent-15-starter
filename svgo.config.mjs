@@ -1,11 +1,11 @@
 const config = {
-  multipass: false, // boolean
+  multipass: true, // boolean
   js2svg: {
     indent: 4, // number
     pretty: false, // boolean
   },
   plugins: [
-    "preset-default", // built-in plugins enabled by default
+    //"preset-default", // built-in plugins enabled by default
     { name: "removeAttrs", params: { attrs: ["*:class:*"] } },
   ],
 };

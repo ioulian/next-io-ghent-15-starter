@@ -1,7 +1,19 @@
 import { FC, HTMLProps, memo, useId } from "react";
+import { SvgSymbolImport } from "@jebka/webpack-svg-sprite-loader";
+import omit from "lodash/omit";
+
+export type SvgSpirteSrc = SvgSymbolImport & { checksum: string };
+const KEY_MAPPING: Record<string, string> = {
+  "xml:space": "xmlSpace",
+  "stroke-linecap": "strokeLinecap",
+  "stroke-linejoin": "strokeLinejoin",
+  "stroke-width": "strokeWidth",
+};
 
 const SvgSprite: FC<
-  { src: { id: string; viewBox: string } } & Omit<HTMLProps<SVGElement>, "src">
+  {
+    src: SvgSpirteSrc;
+  } & Omit<HTMLProps<SVGElement>, "src">
 > = ({
   src,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -18,25 +30,23 @@ const SvgSprite: FC<
 
   const titleId = useId();
 
-  // As inline spritesheet will not work in storybook (no server code allowed),
-  // We need to prefix the ID with the url of the sprite.
-  // This will make the performance slightly worse, but it's only for storybook.
-  const url =
-    process.env.IS_STORYBOOK === "true"
-      ? `${__webpack_public_path__}static/media/sprite-development.svg`
-      : "";
+  const attributes = Object.entries(omit(src.attributes, ["width", "height", "xml:space"])).reduce(
+    (all, [key, value]) => ({ ...all, [KEY_MAPPING[key] ?? key]: value }),
+    {},
+  );
 
-  // src.id?.slice is needed as we don't change webpack config for jest
+  const cacheBust = process.env.NODE_ENV !== "production" ? `?${src.checksum}` : "";
+
   return (
     <svg
       {...typedProps}
-      viewBox={src.viewBox}
+      {...attributes}
       role={title ? "img" : undefined}
       aria-hidden={!title ? true : undefined}
       aria-labelledby={title ? titleId : undefined}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <use xlinkHref={`${url}#${src.id?.slice(0, -"-usage".length)}`} />
+      <use xlinkHref={`${src.spritePath}${cacheBust}#${src.symbolId}`} />
     </svg>
   );
 };

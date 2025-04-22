@@ -8,7 +8,7 @@ import { useTranslations } from "next-intl";
 import { ComponentPropsWithRef } from "react";
 import clsx from "clsx";
 
-import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
+import SvgSprite, { type SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
 
 import styles from "./DataTable.module.css";
 
@@ -23,7 +23,7 @@ const THeadButton = <T,>({
   const canSort = header.column.getCanSort();
 
   let title: string | undefined = undefined;
-  let icon: { id: string; viewBox: string } | undefined = undefined;
+  let icon: SvgSpirteSrc | undefined = undefined;
   if (canSort) {
     // Title
     title = t("sorting.clear");

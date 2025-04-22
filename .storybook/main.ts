@@ -29,9 +29,7 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
-  env: {
-    IS_STORYBOOK: "true",
-  },
+  env: {},
   staticDirs: ["../public"],
   webpackFinal: async (config) => {
     injectToWebpackConfig(config);

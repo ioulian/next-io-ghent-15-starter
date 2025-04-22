@@ -1,11 +1,12 @@
 import { NextPage } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import sampleSvgSprite from "@tabler/icons/outline/abc.svg";
 
 import { generateSanitizedMetadata } from "@/utils/next";
 import { LocaleType } from "@/i18n/types";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
+
+import sampleSvgSprite from "./../../../public/img/logo-sprite.svg";
 
 type Props = Readonly<{
   params: Promise<{ locale: LocaleType }>;

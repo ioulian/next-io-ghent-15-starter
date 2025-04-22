@@ -1,8 +1,12 @@
+// We can't type this easily, sue us :(
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { resolve } from "path";
 
-import SpriteLoaderPlugin from "svg-sprite-loader/plugin.js";
+import { SvgSpritePlugin } from "@jebka/webpack-svg-sprite-loader";
 
-export const injectToWebpackConfig = (config, buildId = "development") => {
+export const injectToWebpackConfig = (config) => {
   const fileLoaderRule = config.module.rules.find(
     (rule) => rule.test && rule.test.test && rule.test.test(".svg"),
   );
@@ -13,15 +17,7 @@ export const injectToWebpackConfig = (config, buildId = "development") => {
     },
     use: [
       {
-        loader: "svg-sprite-loader",
-        options: {
-          extract: true,
-          esModule: false, // https://github.com/JetBrains/svg-sprite-loader/issues/363
-          publicPath: "/static/media/",
-          spriteFilename: (svgPath) => {
-            return `sprite-${buildId}${svgPath.substr(-4)}`;
-          },
-        },
+        loader: "@jebka/webpack-svg-sprite-loader",
       },
       "svgo-loader",
     ],
@@ -32,5 +28,11 @@ export const injectToWebpackConfig = (config, buildId = "development") => {
       resolve("public"),
     ],
   });
-  config.plugins.push(new SpriteLoaderPlugin({ plainSprite: true }));
+  config.plugins.push(
+    new SvgSpritePlugin({
+      /* The output folder must start with static, so the
+       generated sprites are publicly accessible. */
+      outputFolder: "static/sprites",
+    }),
+  );
 };

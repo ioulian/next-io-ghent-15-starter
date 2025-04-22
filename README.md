@@ -14,7 +14,7 @@ It contains a lot of useful presets and common components to be used in your pro
 - [NVM](https://github.com/nvm-sh/nvm) preset;
 - .env variables (Provided by Next.js);
 - Custom auth implementation using JWT;
-- [SVG Sprites](https://www.npmjs.com/package/svg-sprite-loader) (Custom or with [Tabler icons](https://tabler-icons.io/)). SVG spritesheet is exported to .svg file;
+- [SVG Sprites](https://github.com/just-paja/svg-sprites/tree/master/packages/webpack-svg-sprite-loader) (Custom or with [Tabler icons](https://tabler-icons.io/)). SVG spritesheet is exported to .svg file;
 - Font optimisation (Provided by Next.js);
 - [Storybook](https://github.com/storybookjs/storybook) with a11y checks, next-intl support and Next.js support;
 - Common components preset (with a11y in mind): <https://ioulian.github.io/next-ui-ghent-app-starter/>;
@@ -25,6 +25,8 @@ It contains a lot of useful presets and common components to be used in your pro
 - Translations checks with [i18n-check](https://github.com/lingualdev/i18n-check) (Custom checks are still under scripts if needed, as they will check source files too. Custom check can be removed when https://github.com/lingualdev/i18n-check/issues/36 will be fixed)
 
 ## Getting Started
+
+Note: when using npm, patches will not be applied!
 
 ### Install
 

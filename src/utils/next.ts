@@ -6,20 +6,6 @@ import isEmpty from "lodash/isEmpty";
 import isObject from "lodash/isObject";
 
 /**
- * Will get build ID of current application build, is useful for cache busting
- */
-export const getBuildId = (): string | "development" => {
-  if (process.env.IS_STORYBOOK === "true") {
-    return "development";
-  }
-
-  return process.env.NODE_ENV === "development"
-    ? /* c8 ignore next */
-      "development"
-    : process.env.NEXT_PUBLIC_CUSTOM_BUILD_ID!;
-};
-
-/**
  * Helper function to resolve AND sanitize parent metadata
  */
 export const generateSanitizedMetadata = <T extends Record<string, unknown>>(

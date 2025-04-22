@@ -5,14 +5,11 @@ import iconVariantSuccess from "@tabler/icons/outline/circle-check.svg";
 import { VariantProps } from "tailwind-variants";
 
 import { addClassNameToProps } from "@/utils/styles";
-import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
+import SvgSprite, { type SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
 
 import { alert } from "./Alert.styles";
 
-const ICON_MAP: Record<
-  Exclude<VariantProps<typeof alert>["variant"], undefined>,
-  { id: string; viewBox: string }
-> = {
+const ICON_MAP: Record<Exclude<VariantProps<typeof alert>["variant"], undefined>, SvgSpirteSrc> = {
   normal: iconVariantNormal,
   info: iconVariantNormal,
   danger: iconVariantDanger,

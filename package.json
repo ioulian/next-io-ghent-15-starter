@@ -5,7 +5,7 @@
   "scripts": {
     "// general": "echo 'General stuff'",
     "prepare": "husky",
-    "postinstall": "husky && patch-package",
+    "postinstall": "husky",
     "// project": "echo 'Next.js specific stuff'",
     "dev": "next dev --experimental-https",
     "analyze": "cross-env ANALYZE=true pnpm build",
@@ -68,6 +68,7 @@
     "@chromatic-com/storybook": "3.2.6",
     "@csstools/postcss-global-data": "3.0.0",
     "@eslint/eslintrc": "3.3.1",
+    "@jebka/webpack-svg-sprite-loader": "1.1.7",
     "@lingual/i18n-check": "0.7.3",
     "@next/bundle-analyzer": "15.3.1",
     "@next/env": "15.3.1",
@@ -105,7 +106,6 @@
     "lint-staged": "15.5.1",
     "next-intl": "4.0.3",
     "next-rspack": "15.3.1",
-    "patch-package": "8.0.0",
     "playwright": "1.52.0",
     "postcss": "8.5.3",
     "postcss-custom-media": "11.0.5",
@@ -115,7 +115,6 @@
     "prettier": "3.5.3",
     "react-docgen-typescript": "2.2.2",
     "storybook": "8.6.12",
-    "svg-sprite-loader": "6.0.11",
     "svgo-loader": "4.0.0",
     "ts-node": "10.9.2",
     "tsconfig-paths-webpack-plugin": "4.2.0",
@@ -123,19 +122,15 @@
     "typescript": "5.8.3"
   },
   "pnpm": {
-    "overrides": {
-      "postcss@<7.0.36": ">=7.0.36",
-      "postcss@<8.4.31": ">=8.4.31",
-      "braces@<3.0.3": ">=3.0.3",
-      "micromatch@<4.0.8": ">=4.0.8",
-      "esbuild@<=0.24.2": ">=0.25.0",
-      "axios@<1.8.2": ">=1.8.2",
-      "@babel/runtime@<7.26.10": ">=7.26.10",
-      "@babel/helpers@<7.26.10": ">=7.26.10",
-      "image-size@>=1.1.0 <1.2.1": ">=1.2.1"
-    },
     "patchedDependencies": {
       "react-paginate": "patches/react-paginate.patch"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "core-js-pure",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }

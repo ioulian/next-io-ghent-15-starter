@@ -6,7 +6,6 @@ import { ReactNode } from "react";
 
 import { routing } from "@/i18n/routing";
 import { LocaleType } from "@/i18n/types";
-import SpriteSheetInline from "@/components/atoms/svg-sprite/SpriteSheetInline";
 
 import Providers from "./_components/Providers";
 import { htmlFontClass } from "./_styles/fonts";
@@ -60,7 +59,6 @@ export default async function LocaleLayout({
         <style>{getCss()}</style>
       </head>
       <body>
-        <SpriteSheetInline />
         <NextIntlClientProvider messages={messages}>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>
