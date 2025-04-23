@@ -35,6 +35,9 @@ const SvgSprite: FC<
     {},
   );
 
+  // This is needed as chrome (and maybe others) caches this very hard, hard refresh does not work,
+  // You need to open a new tab to refresh this. However, using cache busting works.
+  // In development, it refreshes a lot more, in production every spritesheet will be cached.
   const cacheBust =
     process.env.NODE_ENV === "production"
       ? `?${process.env.NEXT_PUBLIC_CUSTOM_BUILD_ID}`
