@@ -1,7 +1,8 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import { SwiperSlide } from "swiper/react";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 import Slider from "./Slider";
 

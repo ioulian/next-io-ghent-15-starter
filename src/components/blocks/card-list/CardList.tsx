@@ -3,8 +3,8 @@ import { ComponentPropsWithRef, forwardRef, memo, ReactNode } from "react";
 import { addClassNameToProps } from "@/utils/styles";
 
 import Layout from "../../atoms/layout/Layout";
-
 import { cardList } from "./CardList.styles";
+
 import blockStyles from "./../Blocks.module.css";
 
 const CardList = forwardRef<

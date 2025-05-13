@@ -2,8 +2,8 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import LoaderDelay from "@/components/utils/loader-delay/LoaderDelay";
 import Spinner from "@/components/atoms/spinner/Spinner";
+import LoaderDelay from "@/components/utils/loader-delay/LoaderDelay";
 
 const meta: Meta<typeof LoaderDelay> = {
   title: "UI/Utils/Loader Delay",

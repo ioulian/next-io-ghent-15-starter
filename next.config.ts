@@ -1,8 +1,9 @@
 import crypto from "crypto";
 
-import type { NextConfig } from "next";
-import createNextIntlPlugin from "next-intl/plugin";
 import createBundleAnalyzer from "@next/bundle-analyzer";
+import createNextIntlPlugin from "next-intl/plugin";
+
+import type { NextConfig } from "next";
 
 import { injectToWebpackConfig } from "./scripts/svg-sprite-sheet.mjs";
 

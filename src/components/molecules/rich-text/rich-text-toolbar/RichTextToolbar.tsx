@@ -1,22 +1,24 @@
 "use client";
 
 import { ComponentPropsWithRef, forwardRef, memo, useEffect, useState } from "react";
-import { useCurrentEditor } from "@tiptap/react";
+
 import { FloatingDelayGroup } from "@floating-ui/react";
+import { useCurrentEditor } from "@tiptap/react";
 
 import { addClassNameToProps } from "@/utils/styles";
 
+import ActionBold from "./ActionBold";
+import ActionBulletlist from "./ActionBulletList";
+import ActionFormat from "./ActionFormat";
 import ActionHardBreak from "./ActionHardBreak";
-import ActionUnderline from "./ActionUnderline";
+import ActionHorizontalRule from "./ActionHorizontalRule";
+import ActionItalic from "./ActionItalic";
+import ActionOrderedList from "./ActionOrderedList";
+import ActionStrike from "./ActionStrike";
 import ActionSubscript from "./ActionSubscript";
 import ActionSuperscript from "./ActionSuperscript";
-import ActionBold from "./ActionBold";
-import ActionItalic from "./ActionItalic";
-import ActionStrike from "./ActionStrike";
-import ActionFormat from "./ActionFormat";
-import ActionBulletlist from "./ActionBulletList";
-import ActionOrderedList from "./ActionOrderedList";
-import ActionHorizontalRule from "./ActionHorizontalRule";
+import ActionUnderline from "./ActionUnderline";
+
 import styles from "./RichTextToolbar.module.css";
 
 const RichTextToolbar = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>(

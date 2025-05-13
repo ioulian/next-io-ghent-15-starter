@@ -1,10 +1,12 @@
 import "@testing-library/jest-dom";
+
 import { render, screen } from "@testing-library/react";
 
-import Form from "@/components/organisms/form/Form";
 import Input from "@/components/atoms/form/input/Input";
+import Form from "@/components/organisms/form/Form";
 
 import FormField from "./FormField";
+
 import styles from "./FormField.module.css";
 
 describe("FormField", () => {

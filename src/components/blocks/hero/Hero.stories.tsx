@@ -2,8 +2,8 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Heading from "@/components/atoms/heading/Heading";
 import Button from "@/components/atoms/button/Button";
+import Heading from "@/components/atoms/heading/Heading";
 import Text from "@/components/atoms/text/Text";
 
 import Hero from "./Hero";

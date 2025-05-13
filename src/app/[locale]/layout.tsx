@@ -1,8 +1,9 @@
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { Metadata, Viewport } from "next";
 import { ReactNode } from "react";
+import { Metadata, Viewport } from "next";
+import { notFound } from "next/navigation";
+
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 import { LocaleType } from "@/i18n/types";
@@ -10,6 +11,7 @@ import { LocaleType } from "@/i18n/types";
 import Providers from "./_components/Providers";
 import { htmlFontClass } from "./_styles/fonts";
 import { getCss } from "./_styles/variables";
+
 import "./_styles/globals.css";
 
 type Params = Promise<{ locale: LocaleType }>;
@@ -49,17 +51,13 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
-  const messages = await getMessages();
-
   return (
     <html lang={locale} className={htmlFontClass}>
       <head>
         <style>{getCss()}</style>
       </head>
       <body>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>
       </body>

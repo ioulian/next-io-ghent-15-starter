@@ -1,9 +1,25 @@
 "use client";
 
 import {
+  FocusEvent,
+  forwardRef,
+  HTMLProps,
+  memo,
+  MouseEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+
+import {
+  arrow,
   autoUpdate,
   flip,
   FloatingFocusManager,
+  FloatingList,
   FloatingNode,
   FloatingPortal,
   offset,
@@ -17,34 +33,20 @@ import {
   useFloatingTree,
   useHover,
   useInteractions,
-  useListNavigation,
-  useRole,
-  useTypeahead,
-  useMergeRefs,
-  useTransitionStyles,
   useListItem,
-  FloatingList,
-  arrow,
+  useListNavigation,
+  useMergeRefs,
+  useRole,
+  useTransitionStyles,
+  useTypeahead,
 } from "@floating-ui/react";
-import {
-  forwardRef,
-  HTMLProps,
-  memo,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  MouseEvent,
-  FocusEvent,
-} from "react";
 
-import Floater from "@/components/atoms/floater/Floater";
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
+import Floater from "@/components/atoms/floater/Floater";
 
 import { DropdownMenuProps, MenuContext, WithTypeAheadKey } from "./Dropdown";
 import DropdownTrigger from "./DropdownTrigger";
+
 import styles from "./Dropdown.module.css";
 
 const DropdownMenu = forwardRef<

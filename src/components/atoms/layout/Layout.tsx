@@ -7,11 +7,12 @@ import {
   useImperativeHandle,
   useRef,
 } from "react";
-import { VariantProps } from "tailwind-variants";
-import { useEffectOnce } from "react-use";
 
-import { addClassNameToProps } from "@/utils/styles";
+import { useEffectOnce } from "react-use";
+import { VariantProps } from "tailwind-variants";
+
 import { layout } from "@/components/atoms/layout/Layout.styles";
+import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Layout.module.css";
 

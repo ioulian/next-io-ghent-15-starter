@@ -1,14 +1,14 @@
 "use client";
 
 import { ComponentPropsWithRef, forwardRef, memo, useCallback, useState } from "react";
-import passwordShowIcon from "@tabler/icons/outline/eye.svg";
+
 import passwordHideIcon from "@tabler/icons/outline/eye-off.svg";
+import passwordShowIcon from "@tabler/icons/outline/eye.svg";
 import { useTranslations } from "next-intl";
 
-import SvgSprite from "../../svg-sprite/SvgSprite";
 import Button from "../../button/Button";
+import SvgSprite from "../../svg-sprite/SvgSprite";
 import Input from "../input/Input";
-
 import PasswordStrength from "./PasswordStrength";
 
 const PasswordInput = forwardRef<

@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ZodType } from "zod";
 import { AppConfig } from "next-intl";
+import { ZodType } from "zod";
 
 import { Leaves } from "@/types/helpers";
 

@@ -1,9 +1,10 @@
 import { Metadata, ResolvedMetadata, ResolvingMetadata } from "next";
+
+import isEmpty from "lodash/isEmpty";
+import isNil from "lodash/isNil";
+import isObject from "lodash/isObject";
 import merge from "lodash/merge";
 import omitBy from "lodash/omitBy";
-import isNil from "lodash/isNil";
-import isEmpty from "lodash/isEmpty";
-import isObject from "lodash/isObject";
 
 /**
  * Helper function to resolve AND sanitize parent metadata

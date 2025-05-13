@@ -1,10 +1,11 @@
 import { NextPage } from "next";
+
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
-import { generateSanitizedMetadata } from "@/utils/next";
-import { LocaleType } from "@/i18n/types";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
+import { LocaleType } from "@/i18n/types";
+import { generateSanitizedMetadata } from "@/utils/next";
 
 import sampleSvgSprite from "./../../../public/img/logo-sprite.svg";
 

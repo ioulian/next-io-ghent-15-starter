@@ -1,8 +1,9 @@
 "use client";
 
 import { ComponentPropsWithRef, forwardRef, memo, useEffect, useState } from "react";
-import { useWatch } from "react-hook-form";
+
 import { useMessages } from "next-intl";
+import { useWatch } from "react-hook-form";
 
 import { addClassNameToProps } from "@/utils/styles";
 

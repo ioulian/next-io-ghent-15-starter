@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { getAvatarInitials } from "./utilities";
 

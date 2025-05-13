@@ -1,18 +1,19 @@
 "use client";
 
-import { useFloatingTree, useListItem, useMergeRefs } from "@floating-ui/react";
 import {
-  HTMLProps,
   cloneElement,
+  FocusEvent,
   forwardRef,
+  HTMLProps,
   isValidElement,
+  KeyboardEvent,
   memo,
-  useContext,
   MouseEvent,
   useCallback,
-  FocusEvent,
-  KeyboardEvent,
+  useContext,
 } from "react";
+
+import { useFloatingTree, useListItem, useMergeRefs } from "@floating-ui/react";
 
 import { MenuContext, MenuContextType, WithTypeAheadKey } from "./Dropdown";
 

@@ -1,6 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 
 import "@testing-library/jest-dom";
+
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import describeGeneralTests from "@/test/generalTests";

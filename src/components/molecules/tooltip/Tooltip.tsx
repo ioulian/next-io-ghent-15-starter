@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, PropsWithChildren, memo } from "react";
+import { FC, memo, PropsWithChildren } from "react";
 
 import { TooltipContext, TooltipOptions, useTooltip } from "./hooks";
 

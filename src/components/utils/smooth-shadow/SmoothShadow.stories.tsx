@@ -1,10 +1,11 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { FC } from "react";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 import { easings } from "@/utils/easings";
 
-import { SmoothShadowOptionsType, createSmoothShadow } from "./utilities";
 import { presetDefault } from "./presets";
+import { createSmoothShadow, SmoothShadowOptionsType } from "./utilities";
 
 const SmoothShadow: FC<SmoothShadowOptionsType> = (options) => {
   return (

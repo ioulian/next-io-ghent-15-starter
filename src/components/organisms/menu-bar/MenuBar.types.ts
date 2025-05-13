@@ -1,5 +1,6 @@
-import { useInteractions } from "@floating-ui/react";
 import { Dispatch, ReactNode, SetStateAction } from "react";
+
+import { useInteractions } from "@floating-ui/react";
 
 export interface MenuProps {
   label: string;

@@ -1,8 +1,9 @@
-import { useFloatingTree, useListItem, useMergeRefs } from "@floating-ui/react";
-import { forwardRef, HTMLProps, memo, MouseEvent, FocusEvent, useContext } from "react";
+import { FocusEvent, forwardRef, HTMLProps, memo, MouseEvent, useContext } from "react";
 
-import { MenuContextType, MenuItemProps } from "../MenuBar.types";
+import { useFloatingTree, useListItem, useMergeRefs } from "@floating-ui/react";
+
 import { MenuContext } from "../MenuBar.context";
+import { MenuContextType, MenuItemProps } from "../MenuBar.types";
 
 const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps & HTMLProps<HTMLButtonElement>>(
   ({ label, disabled, ...props }, ref) => {

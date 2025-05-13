@@ -2,12 +2,12 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Paragraph from "@/components/atoms/paragraph/Paragraph";
+import Button from "@/components/atoms/button/Button";
 import Heading from "@/components/atoms/heading/Heading";
+import LinkButton from "@/components/atoms/link-button/LinkButton";
+import Paragraph from "@/components/atoms/paragraph/Paragraph";
 import ButtonGroup from "@/components/molecules/button-group/ButtonGroup";
 import Card from "@/components/molecules/card/Card";
-import LinkButton from "@/components/atoms/link-button/LinkButton";
-import Button from "@/components/atoms/button/Button";
 
 import CardSlider from "./CardSlider";
 

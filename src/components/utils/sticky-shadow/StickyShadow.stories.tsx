@@ -2,11 +2,11 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { createSmoothShadow } from "@/components/utils/smooth-shadow/utilities";
 import { presetDefault } from "@/components/utils/smooth-shadow/presets";
+import { createSmoothShadow } from "@/components/utils/smooth-shadow/utilities";
 
-import styles from "./StickyShadow.module.css";
 import stylesBackdrop from "./../blurred-backdrop/BlurredBackdrop.module.css";
+import styles from "./StickyShadow.module.css";
 
 const meta: Meta = {
   title: "UI/Utils/Sticky shadow",

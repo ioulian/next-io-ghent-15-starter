@@ -1,5 +1,6 @@
-import { RichTranslationValues } from "next-intl";
 import { FC, memo, ReactNode } from "react";
+
+import { RichTranslationValues } from "next-intl";
 
 export const defaultTranslationValues: RichTranslationValues = {
   p: (chunks) => <p>{chunks}</p>,

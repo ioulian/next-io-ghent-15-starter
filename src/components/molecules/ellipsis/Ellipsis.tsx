@@ -10,12 +10,13 @@ import {
   useMemo,
   useState,
 } from "react";
-import { useUpdateEffect } from "react-use";
-import { useTranslations } from "next-intl";
 
+import { useTranslations } from "next-intl";
+import { useUpdateEffect } from "react-use";
+
+import Button from "@/components/atoms/button/Button";
 import useResizeObserver from "@/hooks/useResizeObserver";
 import { addClassNameToProps } from "@/utils/styles";
-import Button from "@/components/atoms/button/Button";
 
 import { ellipsis, numberOfLinesVar } from "./Ellipsis.styles";
 

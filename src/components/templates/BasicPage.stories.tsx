@@ -2,17 +2,17 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import BaseBlock from "@/components/blocks/base-block/BaseBlock";
 
-import { Default as HeaderStory } from "./../blocks/header/Header.stories";
-import { Default as HeroStory } from "./../blocks/hero/Hero.stories";
 import { Default as CardSliderStory } from "./../blocks/card-slider/CardSlider.stories";
 import { Default as FooterStory } from "./../blocks/footer/Footer.stories";
-import { Default as RichTextStory } from "./../blocks/rich-text/RichText.stories";
+import { Default as HeaderStory } from "./../blocks/header/Header.stories";
+import { Default as HeroStory } from "./../blocks/hero/Hero.stories";
 import {
   Default as MediaText1,
   Reversed as MediaText2,
 } from "./../blocks/media-text/MediaText.stories";
-import { Default as AccordionStory } from "./../organisms/accordion/Accordion.stories";
+import { Default as RichTextStory } from "./../blocks/rich-text/RichText.stories";
 import { Default as TabsStory } from "./../molecules/tabs/Tabs.stories";
+import { Default as AccordionStory } from "./../organisms/accordion/Accordion.stories";
 
 const meta: Meta = {
   title: "Boilerplate/Templates/Basic page",

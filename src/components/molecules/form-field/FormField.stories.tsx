@@ -2,16 +2,16 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Form from "@/components/organisms/form/Form";
-import { exampleErrors } from "@/components/organisms/form/data";
-import Input from "@/components/atoms/form/input/Input";
-import Toggle from "@/components/atoms/form/toggle/Toggle";
-import SingleCheckbox from "@/components/atoms/form/single-checkbox/SingleCheckbox";
-import PasswordInput from "@/components/atoms/form/password/PasswordInput";
-import Radio from "@/components/atoms/form/collection/radio/Radio";
-import List from "@/components/atoms/form/collection/List";
 import Checkbox from "@/components/atoms/form/collection/checkbox/Checkbox";
+import List from "@/components/atoms/form/collection/List";
+import Radio from "@/components/atoms/form/collection/radio/Radio";
+import Input from "@/components/atoms/form/input/Input";
+import PasswordInput from "@/components/atoms/form/password/PasswordInput";
+import SingleCheckbox from "@/components/atoms/form/single-checkbox/SingleCheckbox";
+import Toggle from "@/components/atoms/form/toggle/Toggle";
 import RichText from "@/components/molecules/rich-text/RichText";
+import { exampleErrors } from "@/components/organisms/form/data";
+import Form from "@/components/organisms/form/Form";
 
 import FormField from "./FormField";
 

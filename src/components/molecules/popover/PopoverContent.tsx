@@ -1,5 +1,7 @@
 "use client";
 
+import { forwardRef, Fragment, HTMLProps, memo, useCallback, useMemo } from "react";
+
 import {
   FloatingFocusManager,
   FloatingNode,
@@ -9,12 +11,11 @@ import {
   useMergeRefs,
   useTransitionStyles,
 } from "@floating-ui/react";
-import { Fragment, HTMLProps, forwardRef, memo, useCallback, useMemo } from "react";
 import { useTranslations } from "next-intl";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
-import Floater from "@/components/atoms/floater/Floater";
 import CloseButton from "@/components/atoms/close-button/CloseButton";
+import Floater from "@/components/atoms/floater/Floater";
 
 import { usePopoverContext } from "./hooks";
 

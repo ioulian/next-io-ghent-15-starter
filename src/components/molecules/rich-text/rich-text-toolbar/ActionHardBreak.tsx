@@ -1,16 +1,17 @@
 "use client";
 
 import { ComponentPropsWithRef, forwardRef, memo, useCallback } from "react";
+
+import iconHardBreak from "@tabler/icons/outline/pilcrow.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
-import iconHardBreak from "@tabler/icons/outline/pilcrow.svg";
 
+import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import { button } from "@/components/molecules/rich-text/rich-text-toolbar/RichTextToolbar.styles";
 import Tooltip from "@/components/molecules/tooltip/Tooltip";
+import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
 import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
 import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
-import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
-import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
 
 const ActionHardBreak = forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
   ({ ...props }, ref) => {

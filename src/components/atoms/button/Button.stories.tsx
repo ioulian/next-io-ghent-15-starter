@@ -1,16 +1,17 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
-import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
 import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
+import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
 import iconSettings from "@tabler/icons/outline/settings.svg";
 
-import Tooltip from "@/components/molecules/tooltip/Tooltip";
-import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
-import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
+import type { Meta, StoryObj } from "@storybook/react";
 
-import Button from "./Button";
+import Tooltip from "@/components/molecules/tooltip/Tooltip";
+import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
+import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
+
 import SvgSprite from "./../svg-sprite/SvgSprite";
+import Button from "./Button";
 
 const meta: Meta<typeof Button> = {
   title: "UI/Atoms/Button",

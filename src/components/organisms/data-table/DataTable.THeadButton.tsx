@@ -1,14 +1,17 @@
 "use client";
 
-import { Header, flexRender } from "@tanstack/react-table";
+import { ComponentPropsWithRef } from "react";
+
 import iconSort from "@tabler/icons/outline/arrows-sort.svg";
 import iconSortAsc from "@tabler/icons/outline/sort-ascending.svg";
 import iconSortDesc from "@tabler/icons/outline/sort-descending.svg";
-import { useTranslations } from "next-intl";
-import { ComponentPropsWithRef } from "react";
+import { flexRender, Header } from "@tanstack/react-table";
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 
-import SvgSprite, { type SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
+import type { SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
+
+import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 
 import styles from "./DataTable.module.css";
 

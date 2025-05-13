@@ -1,6 +1,17 @@
 "use client";
 
 import {
+  forwardRef,
+  Fragment,
+  HTMLProps,
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+
+import {
   FloatingFocusManager,
   FloatingNode,
   FloatingOverlay,
@@ -10,23 +21,13 @@ import {
   useMergeRefs,
   useTransitionStyles,
 } from "@floating-ui/react";
-import {
-  Fragment,
-  HTMLProps,
-  forwardRef,
-  memo,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
-import { useTranslations } from "next-intl";
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
-import Sheet from "@/components/atoms/sheet/Sheet";
 import CloseButton from "@/components/atoms/close-button/CloseButton";
 import Floater from "@/components/atoms/floater/Floater";
+import Sheet from "@/components/atoms/sheet/Sheet";
 
 import { overlay } from "./Dialog.styles";
 import { useDialogContext } from "./hooks";

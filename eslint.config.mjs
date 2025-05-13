@@ -5,7 +5,6 @@ import { fileURLToPath } from "url";
 
 import { FlatCompat } from "@eslint/eslintrc";
 import i18next from "eslint-plugin-i18next";
-// import importPlugin from "eslint-plugin-import";
 import sonarjs from "eslint-plugin-sonarjs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -72,28 +71,6 @@ const eslintConfig = [
 
   // i18next
   i18next.configs["flat/recommended"],
-
-  // Import order
-  //importPlugin.flatConfigs.recommended,
-  {
-    rules: {
-      "import/order": [
-        "error",
-        {
-          groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
-          pathGroups: [
-            {
-              pattern: "@/**",
-              group: "internal",
-              position: "after",
-            },
-          ],
-          "newlines-between": "always",
-          pathGroupsExcludedImportTypes: ["builtin"],
-        },
-      ],
-    },
-  },
 
   // SonarJS
   sonarjs.configs.recommended,

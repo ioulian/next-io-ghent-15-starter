@@ -1,8 +1,9 @@
 import { ComponentPropsWithRef, forwardRef, memo, ReactNode } from "react";
+
 import { useTranslations } from "next-intl";
 
-import { addClassNameToProps } from "@/utils/styles";
 import Text from "@/components/atoms/text/Text";
+import { addClassNameToProps } from "@/utils/styles";
 
 import Layout from "../../atoms/layout/Layout";
 

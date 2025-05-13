@@ -1,5 +1,7 @@
 import React from "react";
+
 import { NextIntlClientProvider } from "next-intl";
+
 import type { Preview } from "@storybook/react";
 
 import { htmlFontClass } from "@/app/[locale]/_styles/fonts";

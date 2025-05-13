@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { ToastContainer, toast, ToastContent, ToastOptions } from "react-toastify/unstyled";
+import { toast, ToastContainer, ToastContent, ToastOptions } from "react-toastify/unstyled";
 
 import "./Toast.css";
 

@@ -1,7 +1,8 @@
 "use client";
 
-import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import { FC, PropsWithChildren } from "react";
+
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 
 import { LOADER_DELAY } from "@/utils/constants";
 

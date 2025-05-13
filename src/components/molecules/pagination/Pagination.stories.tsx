@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
 import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
+import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 

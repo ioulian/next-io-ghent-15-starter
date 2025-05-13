@@ -1,13 +1,14 @@
 "use client";
 
 import { ComponentPropsWithRef, forwardRef, memo, useId } from "react";
+
 import clsx from "clsx";
 
-import { addClassNameToProps } from "@/utils/styles";
 import { baseInput } from "@/components/atoms/form/base-input/BaseInput.styles";
+import { addClassNameToProps } from "@/utils/styles";
 
-import styles from "./Toggle.module.css";
 import stylesVisuallyHidden from "./../../../utils/visually-hidden/VisuallyHidden.module.css";
+import styles from "./Toggle.module.css";
 
 const Toggle = forwardRef<
   HTMLInputElement,

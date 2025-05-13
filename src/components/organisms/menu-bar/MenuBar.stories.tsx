@@ -1,14 +1,15 @@
 /* eslint-disable i18next/no-literal-string, react/jsx-no-target-blank  */
 // button-has-type will be handled by mega menu
 
-import type { Meta, StoryObj } from "@storybook/react";
 import iconChevron from "@tabler/icons/outline/chevron-down.svg";
 
-import MenuBarRootItem from "@/components/organisms/menu-bar/root-item/MenuBarRootItem";
-import Dropdown from "@/components/molecules/dropdown/Dropdown";
-import DropdownMenuItem from "@/components/molecules/dropdown/DropdownMenuItem";
+import type { Meta, StoryObj } from "@storybook/react";
+
 import Button from "@/components/atoms/button/Button";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
+import Dropdown from "@/components/molecules/dropdown/Dropdown";
+import DropdownMenuItem from "@/components/molecules/dropdown/DropdownMenuItem";
+import MenuBarRootItem from "@/components/organisms/menu-bar/root-item/MenuBarRootItem";
 
 import MenuBar from "./MenuBar";
 

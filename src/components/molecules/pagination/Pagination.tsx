@@ -1,9 +1,10 @@
 "use client";
 
 import { FC, memo } from "react";
-import ReactPaginate, { ReactPaginateProps } from "react-paginate";
-import { useTranslations } from "next-intl";
+
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
+import ReactPaginate, { ReactPaginateProps } from "react-paginate";
 
 import styles from "./Pagination.module.css";
 

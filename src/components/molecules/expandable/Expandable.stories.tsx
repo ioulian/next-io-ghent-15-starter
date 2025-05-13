@@ -1,9 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { expect, userEvent, within } from "@storybook/test";
 
-import { wait } from "@/utils/promises";
+import type { Meta, StoryObj } from "@storybook/react";
+
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
+import { wait } from "@/utils/promises";
 
 import Expandable from "./Expandable";
 

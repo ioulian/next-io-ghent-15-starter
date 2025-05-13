@@ -1,6 +1,7 @@
 "use client";
 
 import { ComponentPropsWithRef, FC, memo } from "react";
+
 import { useEffectOnce } from "react-use";
 
 import { MAIN_CONTENT_ID } from "./MainContent.constants";

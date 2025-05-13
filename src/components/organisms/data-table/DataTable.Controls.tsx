@@ -1,12 +1,13 @@
 "use client";
 
-import { Table } from "@tanstack/react-table";
-import { useTranslations } from "next-intl";
 import { ChangeEvent, ComponentPropsWithRef, useCallback } from "react";
 
-import { addClassNameToProps } from "@/utils/styles";
-import Pagination from "@/components/molecules/pagination/Pagination";
+import { Table } from "@tanstack/react-table";
+import { useTranslations } from "next-intl";
+
 import Select from "@/components/atoms/form/select/Select";
+import Pagination from "@/components/molecules/pagination/Pagination";
+import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./DataTable.module.css";
 

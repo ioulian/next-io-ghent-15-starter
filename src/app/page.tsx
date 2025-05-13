@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
 import { NextPage } from "next";
+import { redirect } from "next/navigation";
 
 import { defaultLocale } from "@/i18n/constants";
 

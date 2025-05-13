@@ -1,6 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { useTranslations } from "next-intl";
 import { FC } from "react";
+
+import { useTranslations } from "next-intl";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 import RichTranslation from "./RichTranslation";
 

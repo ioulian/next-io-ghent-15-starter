@@ -1,5 +1,6 @@
-import { Composite, CompositeProps } from "@floating-ui/react";
 import { forwardRef, HTMLAttributes, HTMLProps, memo, useCallback } from "react";
+
+import { Composite, CompositeProps } from "@floating-ui/react";
 
 import { addClassNameToProps } from "@/utils/styles";
 

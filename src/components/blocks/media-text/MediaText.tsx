@@ -8,14 +8,15 @@ import {
   useImperativeHandle,
   useRef,
 } from "react";
+
 import { useEffectOnce } from "react-use";
 
 import { addClassNameToProps } from "@/utils/styles";
 
 import Layout from "../../atoms/layout/Layout";
 
-import styles from "./MediaText.module.css";
 import blockStyles from "./../Blocks.module.css";
+import styles from "./MediaText.module.css";
 
 const MediaText = forwardRef<
   HTMLDivElement,

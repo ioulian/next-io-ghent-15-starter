@@ -1,8 +1,8 @@
 import { ComponentPropsWithRef, forwardRef, memo } from "react";
 
-import { addClassNameToProps } from "@/utils/styles";
 import Text from "@/components/atoms/text/Text";
 import BaseBlock from "@/components/blocks/base-block/BaseBlock";
+import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./RichText.module.css";
 

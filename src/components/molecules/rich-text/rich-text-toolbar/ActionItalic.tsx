@@ -1,16 +1,17 @@
 "use client";
 
 import { ComponentPropsWithRef, forwardRef, memo, useCallback } from "react";
+
+import iconItalic from "@tabler/icons/outline/italic.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
-import iconItalic from "@tabler/icons/outline/italic.svg";
 
+import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
+import { button } from "@/components/molecules/rich-text/rich-text-toolbar/RichTextToolbar.styles";
 import Tooltip from "@/components/molecules/tooltip/Tooltip";
+import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
 import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
 import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
-import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
-import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
-import { button } from "@/components/molecules/rich-text/rich-text-toolbar/RichTextToolbar.styles";
 
 const ActionItalic = forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
   ({ ...props }, ref) => {

@@ -1,21 +1,22 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
-import iconChevron from "@tabler/icons/outline/chevron-right.svg";
 import { useState } from "react";
-import { action } from "@storybook/addon-actions";
-import { userEvent, within, expect, screen } from "@storybook/test";
 
-import { wait } from "@/utils/promises";
+import { action } from "@storybook/addon-actions";
+import { expect, screen, userEvent, within } from "@storybook/test";
+import iconChevron from "@tabler/icons/outline/chevron-right.svg";
+
+import type { Meta, StoryObj } from "@storybook/react";
+
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
-import DropdownMenuItem from "@/components/molecules/dropdown/DropdownMenuItem";
 import Button from "@/components/atoms/button/Button";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
-import DialogTrigger from "@/components/molecules/dialog/DialogTrigger";
 import DialogContent from "@/components/molecules/dialog/DialogContent";
+import DialogTrigger from "@/components/molecules/dialog/DialogTrigger";
+import DropdownMenuItem from "@/components/molecules/dropdown/DropdownMenuItem";
+import { wait } from "@/utils/promises";
 
 import Dialog from "../dialog/Dialog";
-
 import Dropdown from "./Dropdown";
 
 const meta: Meta<typeof Dropdown> = {

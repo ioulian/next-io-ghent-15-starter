@@ -9,20 +9,23 @@ import {
   useId,
   useMemo,
 } from "react";
-import { A11y, Pagination, Navigation } from "swiper/modules";
+
+import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
+import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
+import clsx from "clsx";
+import { useTranslations } from "next-intl";
+import { A11y, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { SwiperOptions } from "swiper/types";
-import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
-import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
-import { useTranslations } from "next-intl";
-import clsx from "clsx";
 
-import { addClassNameToProps } from "@/utils/styles";
-import Layout from "@/components/atoms/layout/Layout";
 import { WithRequired } from "@/types/helpers";
+
+import Layout from "@/components/atoms/layout/Layout";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
+import { addClassNameToProps } from "@/utils/styles";
 
 import { cardSlider, controls } from "./CardSlider.styles";
+
 import blockStyles from "./../Blocks.module.css";
 
 import "./CardSlider.css";

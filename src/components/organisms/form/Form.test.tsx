@@ -1,17 +1,18 @@
 /* eslint-disable i18next/no-literal-string */
 
 import "@testing-library/jest-dom";
-import { act, fireEvent, render, screen } from "@testing-library/react";
+
 import { userEvent } from "@storybook/test";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { z } from "zod";
 
 import Input from "@/components/atoms/form/input/Input";
-import { exampleErrors } from "@/components/organisms/form/data";
 import FormField from "@/components/molecules/form-field/FormField";
+import { exampleErrors } from "@/components/organisms/form/data";
 import describeGeneralTests from "@/test/generalTests";
 
-import { createValidationMessage, createZodResolver } from "./validation";
 import Form from "./Form";
+import { createValidationMessage, createZodResolver } from "./validation";
 
 describe("Form", () => {
   describeGeneralTests(<Form />, () => ({ render }));

@@ -1,16 +1,18 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { userEvent, within, expect, screen } from "@storybook/test";
 
-import { wait } from "@/utils/promises";
+import { expect, screen, userEvent, within } from "@storybook/test";
+
+import type { Meta, StoryObj } from "@storybook/react";
+
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import Button from "@/components/atoms/button/Button";
+import { wait } from "@/utils/promises";
 
 import Tooltip from "./Tooltip";
-import TooltipTrigger from "./TooltipTrigger";
 import TooltipContent from "./TooltipContent";
+import TooltipTrigger from "./TooltipTrigger";
 
 const meta: Meta<typeof Tooltip> = {
   title: "UI/Molecules/Tooltip",

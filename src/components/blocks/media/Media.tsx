@@ -1,7 +1,7 @@
 import { ComponentPropsWithRef, forwardRef, memo } from "react";
 
-import { addClassNameToProps } from "@/utils/styles";
 import BaseBlock from "@/components/blocks/base-block/BaseBlock";
+import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Media.module.css";
 

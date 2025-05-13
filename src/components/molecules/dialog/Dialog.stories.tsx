@@ -1,28 +1,29 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import { FC, useState } from "react";
-import { userEvent, within, expect, screen } from "@storybook/test";
 
-import { wait } from "@/utils/promises";
+import { expect, screen, userEvent, within } from "@storybook/test";
+
+import type { Meta, StoryObj } from "@storybook/react";
+
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import Button from "@/components/atoms/button/Button";
 import Heading from "@/components/atoms/heading/Heading";
 import Text from "@/components/atoms/text/Text";
+import { wait } from "@/utils/promises";
 
-import PopoverTrigger from "../popover/PopoverTrigger";
-import PopoverContent from "../popover/PopoverContent";
-import PopoverHeading from "../popover/PopoverHeading";
-import PopoverDescription from "../popover/PopoverDescription";
-import PopoverClose from "../popover/PopoverClose";
 import Popover from "../popover/Popover";
-
+import PopoverClose from "../popover/PopoverClose";
+import PopoverContent from "../popover/PopoverContent";
+import PopoverDescription from "../popover/PopoverDescription";
+import PopoverHeading from "../popover/PopoverHeading";
+import PopoverTrigger from "../popover/PopoverTrigger";
+import Dialog from "./Dialog";
 import DialogClose from "./DialogClose";
+import DialogContent from "./DialogContent";
 import DialogDescription from "./DialogDescription";
 import DialogHeading from "./DialogHeading";
-import DialogContent from "./DialogContent";
 import DialogTrigger from "./DialogTrigger";
-import Dialog from "./Dialog";
 
 const SampleLargeText: FC = () => (
   <>

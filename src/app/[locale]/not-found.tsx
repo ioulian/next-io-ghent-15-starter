@@ -1,6 +1,7 @@
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import { LocaleType } from "@/i18n/types";
 

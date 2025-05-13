@@ -9,8 +9,8 @@ import {
   useRef,
 } from "react";
 
-import { addClassNameToProps } from "@/utils/styles";
 import { baseInput } from "@/components/atoms/form/base-input/BaseInput.styles";
+import { addClassNameToProps } from "@/utils/styles";
 
 import inputStyles from "./../input/Input.module.css";
 import styles from "./SingleCheckbox.module.css";

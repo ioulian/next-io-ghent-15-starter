@@ -1,5 +1,5 @@
-import { tv } from "tailwind-variants";
 import clsx from "clsx";
+import { tv } from "tailwind-variants";
 
 import styles from "./Spinner.module.css";
 

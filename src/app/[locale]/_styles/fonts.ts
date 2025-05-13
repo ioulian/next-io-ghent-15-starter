@@ -1,5 +1,6 @@
+import { Inter, Montserrat } from "next/font/google";
+
 import clsx from "clsx";
-import { Montserrat, Inter } from "next/font/google";
 
 export const montserrat = Montserrat({
   weight: ["400", "700"],

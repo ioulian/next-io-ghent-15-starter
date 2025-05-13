@@ -1,7 +1,8 @@
 // "Ported" from: https://smoothshadows.com/
-import { easingCoordinates } from "easing-coordinates";
+
 import Color from "colorjs.io";
-import { parse, ColorSpace, sRGB } from "colorjs.io/fn";
+import { ColorSpace, parse, sRGB } from "colorjs.io/fn";
+import { easingCoordinates } from "easing-coordinates";
 
 ColorSpace.register(sRGB);
 

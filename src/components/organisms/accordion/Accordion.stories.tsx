@@ -1,13 +1,14 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
 
-import { wait } from "@/utils/promises";
+import type { Meta, StoryObj } from "@storybook/react";
+
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
-import Expandable from "@/components/molecules/expandable/Expandable";
 import Heading from "@/components/atoms/heading/Heading";
 import Text from "@/components/atoms/text/Text";
+import Expandable from "@/components/molecules/expandable/Expandable";
+import { wait } from "@/utils/promises";
 
 import Accordion from "./Accordion";
 

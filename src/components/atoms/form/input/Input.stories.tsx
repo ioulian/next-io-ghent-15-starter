@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import searchIcon from "@tabler/icons/outline/search.svg";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 

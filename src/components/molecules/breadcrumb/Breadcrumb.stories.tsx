@@ -1,8 +1,10 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import Link from "next/link";
-import { userEvent, within, expect } from "@storybook/test";
+
+import { expect, userEvent, within } from "@storybook/test";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 import LinkButton from "@/components/atoms/link-button/LinkButton";
 

@@ -1,17 +1,18 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
+import { expect, fn, userEvent, within } from "@storybook/test";
 import { z, ZodType } from "zod";
-import { expect, userEvent, within, fn } from "@storybook/test";
 
-import Input from "@/components/atoms/form/input/Input";
-import SingleCheckbox from "@/components/atoms/form/single-checkbox/SingleCheckbox";
-import PasswordInput from "@/components/atoms/form/password/PasswordInput";
-import List from "@/components/atoms/form/collection/List";
-import Checkbox from "@/components/atoms/form/collection/checkbox/Checkbox";
-import FormField from "@/components/molecules/form-field/FormField";
-import Heading from "@/components/atoms/heading/Heading";
+import type { Meta, StoryObj } from "@storybook/react";
+
 import Button from "@/components/atoms/button/Button";
+import Checkbox from "@/components/atoms/form/collection/checkbox/Checkbox";
+import List from "@/components/atoms/form/collection/List";
+import Input from "@/components/atoms/form/input/Input";
+import PasswordInput from "@/components/atoms/form/password/PasswordInput";
+import SingleCheckbox from "@/components/atoms/form/single-checkbox/SingleCheckbox";
+import Heading from "@/components/atoms/heading/Heading";
+import FormField from "@/components/molecules/form-field/FormField";
 import { createZodResolver } from "@/components/organisms/form/validation";
 import { wait } from "@/utils/promises";
 

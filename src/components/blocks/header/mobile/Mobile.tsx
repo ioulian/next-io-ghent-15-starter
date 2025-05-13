@@ -1,18 +1,20 @@
 import { ComponentPropsWithRef, forwardRef, memo } from "react";
+
 import iconMenu from "@tabler/icons/outline/menu-2.svg";
 import { useTranslations } from "next-intl";
 
-import { addClassNameToProps } from "@/utils/styles";
+import Button from "@/components/atoms/button/Button";
 import Layout from "@/components/atoms/layout/Layout";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
-import { Link } from "@/i18n/navigation";
 import Dialog from "@/components/molecules/dialog/Dialog";
-import DialogTrigger from "@/components/molecules/dialog/DialogTrigger";
-import Button from "@/components/atoms/button/Button";
-import DialogContent from "@/components/molecules/dialog/DialogContent";
 import DialogClose from "@/components/molecules/dialog/DialogClose";
+import DialogContent from "@/components/molecules/dialog/DialogContent";
+import DialogTrigger from "@/components/molecules/dialog/DialogTrigger";
+import { Link } from "@/i18n/navigation";
+import { addClassNameToProps } from "@/utils/styles";
 
 import logoSprite from "./../../../../../public/img/logo-sprite.svg";
+
 import styles from "./Mobile.module.css";
 
 const Mobile = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>(

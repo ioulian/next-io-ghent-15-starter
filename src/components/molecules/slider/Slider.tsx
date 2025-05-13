@@ -1,10 +1,12 @@
 "use client";
 
-import { FC, PropsWithChildren, memo } from "react";
+import { FC, memo, PropsWithChildren } from "react";
+
 import { A11y } from "swiper/modules";
 import { Swiper, SwiperProps } from "swiper/react";
 
 import styles from "./Slider.module.css";
+
 import "./Slider.css";
 
 const Slider: FC<PropsWithChildren<SwiperProps>> = ({ children, modules, ...props }) => {

@@ -4,8 +4,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import Button from "@/components/atoms/button/Button";
 
-import Header from "./Header";
 import { Default as MenuBarStory } from "./../../organisms/menu-bar/MenuBar.stories";
+import Header from "./Header";
 
 const meta: Meta<typeof Header> = {
   title: "Boilerplate/Blocks/Header",

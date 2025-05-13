@@ -1,6 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
+import { useMemo } from "react";
+
 import {
   ColumnDef,
   getCoreRowModel,
@@ -8,10 +9,11 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useMemo } from "react";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 import DataTable from "./DataTable";
-import { Person, makeData } from "./DataTable.data";
+import { makeData, Person } from "./DataTable.data";
 
 const StoryView = () => {
   const data = useMemo(() => makeData(10_000), []);

@@ -4,8 +4,8 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import Layout from "../../atoms/layout/Layout";
 
-import styles from "./BaseBlock.module.css";
 import blockStyles from "./../Blocks.module.css";
+import styles from "./BaseBlock.module.css";
 
 const BaseBlock = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>(
   ({ children, ...props }, ref) => {

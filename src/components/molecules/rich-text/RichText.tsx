@@ -1,17 +1,19 @@
 "use client";
 
+import { forwardRef, memo, useCallback, useEffect, useRef, useState } from "react";
+
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
 import Underline from "@tiptap/extension-underline";
 import { Editor, EditorEvents, EditorProvider, EditorProviderProps } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { forwardRef, memo, useCallback, useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
-import styles from "@/components/atoms/text/Text.module.css";
 import { baseInput } from "@/components/atoms/form/base-input/BaseInput.styles";
+import styles from "@/components/atoms/text/Text.module.css";
 
 import RichTextToolbar from "./rich-text-toolbar/RichTextToolbar";
+
 import richTextStyles from "./RichText.module.css";
 
 const RichText = forwardRef<

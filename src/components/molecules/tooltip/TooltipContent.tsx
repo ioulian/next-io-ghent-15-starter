@@ -1,10 +1,11 @@
 "use client";
 
-import { FloatingPortal, useMergeRefs, useTransitionStyles } from "@floating-ui/react";
-import { HTMLProps, forwardRef, memo, useMemo } from "react";
+import { forwardRef, HTMLProps, memo, useMemo } from "react";
 
-import Floater from "@/components/atoms/floater/Floater";
+import { FloatingPortal, useMergeRefs, useTransitionStyles } from "@floating-ui/react";
+
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
+import Floater from "@/components/atoms/floater/Floater";
 
 import { useTooltipContext } from "./hooks";
 

@@ -1,6 +1,5 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import {
   Children,
   cloneElement,
@@ -14,6 +13,8 @@ import {
   useEffect,
   useId,
 } from "react";
+
+import { useTranslations } from "next-intl";
 import {
   Controller,
   ControllerFieldState,
@@ -26,12 +27,12 @@ import {
   UseFormStateReturn,
 } from "react-hook-form";
 
-import { getAriaDescribedBy } from "@/components/molecules/form-field/utils";
-import { addClassNameToProps } from "@/utils/styles";
-import Label from "@/components/atoms/form/label/Label";
-import FieldError from "@/components/atoms/form/field-error/FieldError";
-import { BE_VALIDATION } from "@/components/organisms/form/constants";
 import Description from "@/components/atoms/form/description/Description";
+import FieldError from "@/components/atoms/form/field-error/FieldError";
+import Label from "@/components/atoms/form/label/Label";
+import { getAriaDescribedBy } from "@/components/molecules/form-field/utils";
+import { BE_VALIDATION } from "@/components/organisms/form/constants";
+import { addClassNameToProps } from "@/utils/styles";
 
 import { formField } from "./FormField.styles";
 

@@ -1,15 +1,17 @@
 "use client";
 
-import { Table } from "@tanstack/react-table";
 import { ComponentPropsWithRef } from "react";
+
+import { Table } from "@tanstack/react-table";
 
 import { addClassNameToProps } from "@/utils/styles";
 
-import styles from "./DataTable.module.css";
-import THead from "./DataTable.THead";
 import Controls from "./DataTable.Controls";
 import TBody from "./DataTable.TBody";
 import TFoot from "./DataTable.TFoot";
+import THead from "./DataTable.THead";
+
+import styles from "./DataTable.module.css";
 
 /**
  * Table to be used for tanstack table

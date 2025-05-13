@@ -1,11 +1,14 @@
-import { ComponentPropsWithRef, ReactNode, forwardRef, memo } from "react";
-import iconVariantNormal from "@tabler/icons/outline/info-circle.svg";
+import { ComponentPropsWithRef, forwardRef, memo, ReactNode } from "react";
+
 import iconVariantDanger from "@tabler/icons/outline/alert-circle.svg";
 import iconVariantSuccess from "@tabler/icons/outline/circle-check.svg";
+import iconVariantNormal from "@tabler/icons/outline/info-circle.svg";
 import { VariantProps } from "tailwind-variants";
 
+import type { SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
+
+import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import { addClassNameToProps } from "@/utils/styles";
-import SvgSprite, { type SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
 
 import { alert } from "./Alert.styles";
 

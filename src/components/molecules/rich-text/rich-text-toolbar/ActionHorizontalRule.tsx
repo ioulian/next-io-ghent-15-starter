@@ -1,16 +1,17 @@
 "use client";
 
 import { ComponentPropsWithRef, forwardRef, memo, useCallback } from "react";
+
+import iconHorizontalRule from "@tabler/icons/outline/separator-horizontal.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
-import iconHorizontalRule from "@tabler/icons/outline/separator-horizontal.svg";
 
+import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import { button } from "@/components/molecules/rich-text/rich-text-toolbar/RichTextToolbar.styles";
 import Tooltip from "@/components/molecules/tooltip/Tooltip";
-import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
-import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
-import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
+import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
+import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
 
 const ActionHorizontalRule = forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
   ({ ...props }, ref) => {

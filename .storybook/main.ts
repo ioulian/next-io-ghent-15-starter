@@ -1,7 +1,8 @@
 import path from "path";
 
-import type { StorybookConfig } from "@storybook/nextjs";
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
+
+import type { StorybookConfig } from "@storybook/nextjs";
 
 import { injectToWebpackConfig } from "./../scripts/svg-sprite-sheet.mjs";
 

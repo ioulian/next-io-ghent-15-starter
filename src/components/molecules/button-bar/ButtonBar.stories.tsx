@@ -1,10 +1,11 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
-import { userEvent, within, expect } from "@storybook/test";
-import iconVariantNormal from "@tabler/icons/outline/info-circle.svg";
+import { expect, userEvent, within } from "@storybook/test";
 import iconVariantDanger from "@tabler/icons/outline/alert-circle.svg";
 import iconVariantSuccess from "@tabler/icons/outline/circle-check.svg";
+import iconVariantNormal from "@tabler/icons/outline/info-circle.svg";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 import Button from "@/components/atoms/button/Button";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";

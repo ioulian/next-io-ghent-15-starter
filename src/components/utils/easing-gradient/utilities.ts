@@ -1,5 +1,5 @@
+import { ColorSpace, Lab, mix, parse, serialize, sRGB } from "colorjs.io/fn";
 import { easingCoordinates } from "easing-coordinates";
-import { mix, parse, ColorSpace, sRGB, Lab, serialize } from "colorjs.io/fn";
 
 // If you want to use more color spaces, you'll need to register them first
 ColorSpace.register(sRGB);

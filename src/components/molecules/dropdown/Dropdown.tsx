@@ -1,6 +1,5 @@
 "use client";
 
-import { FloatingTree, useFloatingParentNodeId } from "@floating-ui/react";
 import {
   createContext,
   Dispatch,
@@ -10,6 +9,8 @@ import {
   ReactNode,
   SetStateAction,
 } from "react";
+
+import { FloatingTree, useFloatingParentNodeId } from "@floating-ui/react";
 
 import DropdownMenu from "./DropdownMenu";
 

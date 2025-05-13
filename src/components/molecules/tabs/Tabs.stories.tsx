@@ -1,7 +1,8 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import { Tab, TabList, TabPanel } from "react-tabs";
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 import Text from "@/components/atoms/text/Text";
 

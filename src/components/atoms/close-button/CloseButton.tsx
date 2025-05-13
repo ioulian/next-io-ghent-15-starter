@@ -1,10 +1,12 @@
 import { ComponentPropsWithRef, FC, memo } from "react";
+
 import iconX from "@tabler/icons/outline/x.svg";
 
+import { WithRequired } from "@/types/helpers";
+
+import Button from "@/components/atoms/button/Button";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import { addClassNameToProps } from "@/utils/styles";
-import Button from "@/components/atoms/button/Button";
-import { WithRequired } from "@/types/helpers";
 
 import styles from "./CloseButton.module.css";
 

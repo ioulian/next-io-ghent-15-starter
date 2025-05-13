@@ -1,4 +1,5 @@
 import { ComponentPropsWithRef, CSSProperties, forwardRef, memo, useMemo } from "react";
+
 import { Coords, Placement, Strategy } from "@floating-ui/react";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";

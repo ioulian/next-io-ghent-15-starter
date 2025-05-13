@@ -1,5 +1,7 @@
 "use client";
 
+import { createContext, useCallback, useContext, useMemo, useRef, useState } from "react";
+
 import {
   arrow,
   autoUpdate,
@@ -14,7 +16,6 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
-import { createContext, useCallback, useContext, useMemo, useRef, useState } from "react";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 

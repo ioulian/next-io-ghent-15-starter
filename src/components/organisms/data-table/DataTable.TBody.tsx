@@ -1,5 +1,6 @@
-import { Table, flexRender } from "@tanstack/react-table";
 import { ComponentPropsWithRef } from "react";
+
+import { flexRender, Table } from "@tanstack/react-table";
 
 const TBody = <T,>({
   table,

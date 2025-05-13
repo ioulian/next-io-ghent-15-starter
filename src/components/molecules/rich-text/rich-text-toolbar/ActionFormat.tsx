@@ -1,14 +1,15 @@
 "use client";
 
 import { ComponentPropsWithRef, forwardRef, memo, useCallback } from "react";
+
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
-import Dropdown from "@/components/molecules/dropdown/Dropdown";
-import { addClassNameToProps } from "@/utils/styles";
-import DropdownMenuItem from "@/components/molecules/dropdown/DropdownMenuItem";
 import Heading, { HeadingType } from "@/components/atoms/heading/Heading";
+import Dropdown from "@/components/molecules/dropdown/Dropdown";
+import DropdownMenuItem from "@/components/molecules/dropdown/DropdownMenuItem";
 import { button } from "@/components/molecules/rich-text/rich-text-toolbar/RichTextToolbar.styles";
+import { addClassNameToProps } from "@/utils/styles";
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 

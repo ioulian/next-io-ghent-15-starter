@@ -1,7 +1,7 @@
 import { ComponentPropsWithRef, forwardRef, memo, ReactNode } from "react";
 
-import { addClassNameToProps } from "@/utils/styles";
 import Layout from "@/components/atoms/layout/Layout";
+import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Hero.module.css";
 

@@ -1,24 +1,26 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { userEvent, within, expect, screen } from "@storybook/test";
 
-import { wait } from "@/utils/promises";
+import { expect, screen, userEvent, within } from "@storybook/test";
+
+import type { Meta, StoryObj } from "@storybook/react";
+
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import Button from "@/components/atoms/button/Button";
 import Heading from "@/components/atoms/heading/Heading";
 import Text from "@/components/atoms/text/Text";
 import Tooltip from "@/components/molecules/tooltip/Tooltip";
-import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
 import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
+import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
+import { wait } from "@/utils/promises";
 
 import Popover from "./Popover";
-import PopoverTrigger from "./PopoverTrigger";
-import PopoverContent from "./PopoverContent";
-import PopoverHeading from "./PopoverHeading";
-import PopoverDescription from "./PopoverDescription";
 import PopoverClose from "./PopoverClose";
+import PopoverContent from "./PopoverContent";
+import PopoverDescription from "./PopoverDescription";
+import PopoverHeading from "./PopoverHeading";
+import PopoverTrigger from "./PopoverTrigger";
 
 const meta: Meta<typeof Popover> = {
   title: "UI/Molecules/Popover",

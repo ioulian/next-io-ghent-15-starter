@@ -1,10 +1,11 @@
 /* eslint-disable i18next/no-literal-string */
 
-import type { Meta, StoryObj } from "@storybook/react";
 import iconSettings from "@tabler/icons/outline/settings.svg";
 
-import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
+import type { Meta, StoryObj } from "@storybook/react";
+
 import Heading from "@/components/atoms/heading/Heading";
+import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import Text from "@/components/atoms/text/Text";
 
 import Alert from "./Alert";

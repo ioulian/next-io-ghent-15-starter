@@ -1,6 +1,6 @@
 "use client";
 
-import { HTMLProps, cloneElement, forwardRef, isValidElement, memo } from "react";
+import { cloneElement, forwardRef, HTMLProps, isValidElement, memo } from "react";
 
 import { WithTypeAheadKey } from "./Dropdown";
 

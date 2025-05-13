@@ -1,14 +1,14 @@
 import { ComponentPropsWithRef, forwardRef, memo } from "react";
 
-import { addClassNameToProps } from "@/utils/styles";
 import Layout from "@/components/atoms/layout/Layout";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import LocaleSwitcher from "@/components/molecules/locale-switcher/LocaleSwitcher";
 import { Link } from "@/i18n/navigation";
+import { addClassNameToProps } from "@/utils/styles";
 
 import { useActions, useTopMenuItems } from "../Desktop.hooks";
-
 import logoSprite from "./../../../../../public/img/logo-sprite.svg";
+
 import styles from "./Desktop.module.css";
 
 const Desktop = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>(

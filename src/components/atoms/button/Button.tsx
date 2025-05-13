@@ -1,24 +1,25 @@
 "use client";
 
 import {
-  ReactNode,
-  forwardRef,
-  MouseEvent as ReactMouseEvent,
-  isValidElement,
   cloneElement,
-  memo,
   ComponentPropsWithRef,
+  forwardRef,
+  isValidElement,
+  memo,
+  MouseEvent as ReactMouseEvent,
+  ReactNode,
+  useCallback,
 } from "react";
-import { useCallback } from "react";
+
 import { useTranslations } from "next-intl";
 import { VariantProps } from "tailwind-variants";
 
-import { addClassNameToProps } from "@/utils/styles";
-import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
 import { WithRequired } from "@/types/helpers";
 
-import Spinner from "../spinner/Spinner";
+import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
+import { addClassNameToProps } from "@/utils/styles";
 
+import Spinner from "../spinner/Spinner";
 import { button } from "./Button.styles";
 
 type Props = {

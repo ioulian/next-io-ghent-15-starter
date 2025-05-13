@@ -1,7 +1,8 @@
 "use client";
 
+import { cloneElement, forwardRef, HTMLProps, isValidElement, memo } from "react";
+
 import { useMergeRefs } from "@floating-ui/react";
-import { HTMLProps, cloneElement, forwardRef, isValidElement, memo } from "react";
 
 import { useTooltipContext } from "./hooks";
 
