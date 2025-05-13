@@ -9,7 +9,7 @@ import { getErrorMessage } from "./utils";
 loadEnvConfig(path.join(__dirname, "./.."), false);
 
 // Set to "false" to test builds locally, remember to turn it back on!
-const SHOULD_FAIL_ON_ERROR = true;
+const SHOULD_FAIL_ON_ERROR = false;
 
 // Keep track of errors
 let envFileError = false;

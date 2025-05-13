@@ -8,7 +8,7 @@ import { LOADER_DELAY } from "@/utils/constants";
 
 import { getVariable } from "../_styles/variables";
 
-const Providers: FC<PropsWithChildren> = ({ children }) => {
+const Providers: FC<PropsWithChildren<{ nonce?: string }>> = ({ children, nonce }) => {
   return (
     <>
       {children}
@@ -17,6 +17,7 @@ const Providers: FC<PropsWithChildren> = ({ children }) => {
         color={getVariable("color.primary.400")}
         shouldCompareComplexProps
         delay={LOADER_DELAY}
+        nonce={nonce}
       />
     </>
   );

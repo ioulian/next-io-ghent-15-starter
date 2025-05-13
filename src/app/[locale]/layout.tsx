@@ -7,10 +7,11 @@ import { getTranslations } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 import { LocaleType } from "@/i18n/types";
+import { getNonce } from "@/utils/csp";
 
 import Providers from "./_components/Providers";
 import { htmlFontClass } from "./_styles/fonts";
-import { getCss } from "./_styles/variables";
+import { getCss, getVariable } from "./_styles/variables";
 
 import "./_styles/globals.css";
 
@@ -18,7 +19,7 @@ type Params = Promise<{ locale: LocaleType }>;
 
 export function generateViewport(): Viewport {
   return {
-    themeColor: "#fff",
+    themeColor: getVariable("color.primary.500"),
     initialScale: 1,
     userScalable: true,
   };
@@ -51,14 +52,16 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  const nonce = await getNonce();
+
   return (
     <html lang={locale} className={htmlFontClass}>
       <head>
-        <style>{getCss()}</style>
+        <style nonce={nonce}>{getCss()}</style>
       </head>
       <body>
         <NextIntlClientProvider>
-          <Providers>{children}</Providers>
+          <Providers nonce={nonce || undefined}>{children}</Providers>
         </NextIntlClientProvider>
       </body>
     </html>
