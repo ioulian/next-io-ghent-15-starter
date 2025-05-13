@@ -21,6 +21,13 @@ const customBuildId = crypto.randomBytes(16).toString("hex");
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // If commit hooks are enabled, you can uncomment these lines, making builds faster
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // },
+  // typescript: {
+  //   ignoreBuildErrors: true,
+  // },
   generateBuildId: () => customBuildId,
   env: {
     NEXT_PUBLIC_CUSTOM_BUILD_ID: customBuildId,
