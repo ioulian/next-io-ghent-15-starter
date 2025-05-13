@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-
 import path from "path";
 
 import { loadEnvConfig } from "@next/env";
 
-import { getErrorMessage } from "./utils";
 import defaultManifest from "./../src/app/manifest";
+import { getErrorMessage } from "./utils";
 
 loadEnvConfig(path.join(__dirname, "./.."), false);
 
