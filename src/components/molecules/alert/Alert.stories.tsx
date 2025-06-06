@@ -2,7 +2,7 @@
 
 import iconSettings from "@tabler/icons/outline/settings.svg";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Heading from "@/components/atoms/heading/Heading";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";

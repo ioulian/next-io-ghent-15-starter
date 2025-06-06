@@ -2,7 +2,7 @@
 
 import "@testing-library/jest-dom";
 
-import { userEvent } from "@storybook/test";
+import { userEvent } from "storybook/test";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { z } from "zod";
 

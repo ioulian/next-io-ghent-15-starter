@@ -1,8 +1,8 @@
 "use client";
 
-import { FC, PropsWithChildren } from "react";
+import { FC, memo, PropsWithChildren } from "react";
 
-import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
+import { AppProgressProvider as ProgressProvider } from "@bprogress/next";
 
 import { LOADER_DELAY } from "@/utils/constants";
 
@@ -10,20 +10,20 @@ import { getVariable } from "../_styles/variables";
 
 const Providers: FC<PropsWithChildren<{ nonce?: string }>> = ({ children, nonce }) => {
   return (
-    <>
+    <ProgressProvider
+      height="4px"
+      shouldCompareComplexProps
+      shallowRouting
+      delay={LOADER_DELAY}
+      color={getVariable("color.primary.400")}
+      nonce={nonce}
+    >
       {children}
-      <ProgressBar
-        height="4px"
-        color={getVariable("color.primary.400")}
-        shouldCompareComplexProps
-        delay={LOADER_DELAY}
-        nonce={nonce}
-      />
-    </>
+    </ProgressProvider>
   );
 };
 
 /**
  * Providers that need client component to run.
  */
-export default Providers;
+export default memo(Providers);

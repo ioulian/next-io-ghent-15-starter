@@ -3,7 +3,7 @@
 
 import iconChevron from "@tabler/icons/outline/chevron-down.svg";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Button from "@/components/atoms/button/Button";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";

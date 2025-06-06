@@ -2,7 +2,7 @@ import React from "react";
 
 import { NextIntlClientProvider } from "next-intl";
 
-import type { Preview } from "@storybook/react";
+import type { Preview } from "@storybook/nextjs";
 
 import { htmlFontClass } from "@/app/[locale]/_styles/fonts";
 import { getCss } from "@/app/[locale]/_styles/variables";

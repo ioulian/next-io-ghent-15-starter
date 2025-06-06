@@ -1,6 +1,6 @@
 import searchIcon from "@tabler/icons/outline/search.svg";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 

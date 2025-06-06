@@ -1,7 +1,7 @@
-import { action } from "@storybook/addon-actions";
-import { expect, userEvent, within } from "@storybook/test";
+import { action } from "storybook/actions";
+import { expect, userEvent, within } from "storybook/test";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import { wait } from "@/utils/promises";

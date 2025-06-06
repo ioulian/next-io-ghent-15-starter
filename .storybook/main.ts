@@ -10,28 +10,30 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
   },
+
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-onboarding",
-    "@storybook/addon-essentials",
     "@chromatic-com/storybook",
-    "@storybook/addon-interactions",
     "@storybook/addon-a11y",
+    "@storybook/addon-docs"
   ],
+
   framework: {
     name: "@storybook/nextjs",
     options: {},
   },
+
   typescript: {
     check: false,
     reactDocgen: "react-docgen-typescript",
   },
-  docs: {
-    autodocs: "tag",
-  },
+
   env: {},
   staticDirs: ["../public"],
+
   webpackFinal: async (config) => {
     injectToWebpackConfig(config);
 
@@ -57,6 +59,6 @@ const config: StorybookConfig = {
     }
 
     return config;
-  },
+  }
 };
 export default config;

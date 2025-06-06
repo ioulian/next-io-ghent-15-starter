@@ -1,8 +1,8 @@
 /* eslint-disable i18next/no-literal-string */
 
-import { expect, userEvent, within } from "@storybook/test";
+import { expect, userEvent, within } from "storybook/test";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Button from "@/components/atoms/button/Button";
 

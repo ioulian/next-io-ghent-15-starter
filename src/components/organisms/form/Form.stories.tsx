@@ -1,9 +1,9 @@
 /* eslint-disable i18next/no-literal-string */
 
-import { expect, fn, userEvent, within } from "@storybook/test";
+import { expect, fn, userEvent, within } from "storybook/test";
 import { z, ZodType } from "zod";
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Button from "@/components/atoms/button/Button";
 import Checkbox from "@/components/atoms/form/collection/checkbox/Checkbox";
