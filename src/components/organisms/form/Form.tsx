@@ -79,6 +79,7 @@ const Form = <T extends FieldValues = FieldValues>({
   // Show errors and set focus to first error field
   useEffect(() => {
     if (Array.isArray(fieldErrors) && fieldErrors.length !== 0) {
+      // eslint-disable-next-line react-you-might-not-need-an-effect/you-might-not-need-an-effect
       fieldErrors.forEach(({ field, error: message }, i) => {
         setTimeout(() => {
           setError(field as Path<T>, {

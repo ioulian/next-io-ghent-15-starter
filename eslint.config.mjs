@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 
 import { FlatCompat } from "@eslint/eslintrc";
 import i18next from "eslint-plugin-i18next";
+import youMightNotNeedAnEffect from "eslint-plugin-react-you-might-not-need-an-effect";
 import sonarjs from "eslint-plugin-sonarjs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -81,6 +82,15 @@ const eslintConfig = [
       "sonarjs/no-unused-vars": "off",
       // As we use generic tests
       "sonarjs/no-empty-test-file": "off",
+    },
+  },
+  {
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    plugins: {
+      "react-you-might-not-need-an-effect": youMightNotNeedAnEffect,
+    },
+    rules: {
+      "react-you-might-not-need-an-effect/you-might-not-need-an-effect": "warn",
     },
   },
 ];

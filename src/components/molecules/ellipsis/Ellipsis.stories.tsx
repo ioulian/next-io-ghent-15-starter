@@ -1,5 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 
+import { useState } from "react";
+
 import { action } from "storybook/actions";
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
@@ -142,16 +144,28 @@ export const AutoDisableButton: Story = {
 };
 
 export const Controlled: Story = {
-  args: {
-    open: true,
-    onToggle: action("onToggle"),
-    children: (
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porta dolor mi, at
-        venenatis urna elementum a. Etiam quis diam non massa tempor blandit at nec nibh.
-        Pellentesque non magna ac quam cursus mollis. Nunc urna dui, lobortis non nulla tempus,
-        varius
-      </p>
-    ),
+  render: () => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    return (
+      <>
+        <button
+          type="button"
+          onClick={() => {
+            setIsOpen((v) => !v);
+          }}
+        >
+          Toggle
+        </button>
+        <Ellipsis open={isOpen}>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porta dolor mi, at
+            venenatis urna elementum a. Etiam quis diam non massa tempor blandit at nec nibh.
+            Pellentesque non magna ac quam cursus mollis. Nunc urna dui, lobortis non nulla tempus,
+            varius
+          </p>
+        </Ellipsis>
+      </>
+    );
   },
 };

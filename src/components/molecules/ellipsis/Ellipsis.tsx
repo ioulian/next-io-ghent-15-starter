@@ -57,7 +57,11 @@ const Ellipsis = forwardRef<
     }
   }, [rect, contentRef]);
 
+  // False positive
+  // eslint-disable-next-line react-you-might-not-need-an-effect/you-might-not-need-an-effect
   useEffect(() => {
+    // False positive
+    // eslint-disable-next-line react-you-might-not-need-an-effect/you-might-not-need-an-effect
     setIsOpen(open);
   }, [open]);
 

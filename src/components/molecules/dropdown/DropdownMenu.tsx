@@ -172,11 +172,15 @@ const DropdownMenu = forwardRef<
   useEffect(() => {
     function onPointerMove({ pointerType }: PointerEvent) {
       if (pointerType !== "touch") {
+        // False positive
+        // eslint-disable-next-line react-you-might-not-need-an-effect/you-might-not-need-an-effect
         setAllowHover(true);
       }
     }
 
     function onKeyDown() {
+      // False positive
+      // eslint-disable-next-line react-you-might-not-need-an-effect/you-might-not-need-an-effect
       setAllowHover(false);
     }
 

@@ -93,6 +93,7 @@
     "eslint": "9.28.0",
     "eslint-config-next": "15.3.3",
     "eslint-plugin-i18next": "6.1.1",
+    "eslint-plugin-react-you-might-not-need-an-effect": "0.0.45",
     "eslint-plugin-sonarjs": "3.0.2",
     "eslint-plugin-storybook": "9.0.5",
     "husky": "9.1.7",

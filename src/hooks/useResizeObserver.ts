@@ -44,6 +44,8 @@ export function useResizeObserver<T extends HTMLElement = HTMLElement>() {
       : null,
   );
 
+  // False positive
+  // eslint-disable-next-line react-you-might-not-need-an-effect/you-might-not-need-an-effect
   useEffect(() => {
     if (ref.current) {
       observer?.observe(ref.current);
