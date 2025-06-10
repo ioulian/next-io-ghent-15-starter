@@ -4,6 +4,9 @@ import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
 import type { StorybookConfig } from "@storybook/nextjs";
 
+// This only gives error with TSGO
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { injectToWebpackConfig } from "./../scripts/svg-sprite-sheet.mjs";
 
 const config: StorybookConfig = {
@@ -18,7 +21,8 @@ const config: StorybookConfig = {
     "@storybook/addon-onboarding",
     "@chromatic-com/storybook",
     "@storybook/addon-a11y",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
+    "@storybook/addon-vitest",
   ],
 
   framework: {
@@ -59,6 +63,6 @@ const config: StorybookConfig = {
     }
 
     return config;
-  }
+  },
 };
 export default config;

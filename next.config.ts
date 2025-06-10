@@ -5,6 +5,9 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 import type { NextConfig } from "next";
 
+// This only gives error with TSGO
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import { injectToWebpackConfig } from "./scripts/svg-sprite-sheet.mjs";
 
 const withNextIntl = createNextIntlPlugin({
