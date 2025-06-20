@@ -8,4 +8,5 @@ export const createValidationMessage = <T extends Leaves<AppConfig["Messages"]>>
   message,
 });
 
+// @ts-expect-error - TODO: Fix this https://github.com/react-hook-form/resolvers/issues/782
 export const createZodResolver = <T extends ZodType>(schema: T) => zodResolver(schema);

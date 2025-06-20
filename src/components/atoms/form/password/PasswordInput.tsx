@@ -45,6 +45,8 @@ const PasswordInput = forwardRef<
   );
 });
 
+// False positive
+// eslint-disable-next-line sonarjs/no-hardcoded-passwords
 PasswordInput.displayName = "PasswordInput";
 
 /**

@@ -210,4 +210,5 @@ const config: Config = {
   // watchman: true,
 };
 
+// @ts-expect-error - Temporary fix for Next.js 15.3.4
 export default createJestConfig(config);

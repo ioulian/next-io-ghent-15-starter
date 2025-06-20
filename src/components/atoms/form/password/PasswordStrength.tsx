@@ -46,6 +46,8 @@ const PasswordStrength = forwardRef<
   );
 });
 
+// False positive
+// eslint-disable-next-line sonarjs/no-hardcoded-passwords
 PasswordStrength.displayName = "PasswordStrength";
 
 /**
