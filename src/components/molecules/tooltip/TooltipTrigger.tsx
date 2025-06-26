@@ -14,17 +14,15 @@ const TooltipTrigger = forwardRef<HTMLElement, HTMLProps<HTMLElement>>(
     const childrenRef = (children as any).ref;
     const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef]);
 
-    if (isValidElement(children)) {
-      return cloneElement(
-        children,
-        context.getReferenceProps({
+    if (isValidElement<Record<string, unknown>>(children)) {
+      return cloneElement(children, {
+        ...context.getReferenceProps({
           ref,
           ...props,
           ...(children.props ?? {}),
-          // @ts-expect-error // FIXME: types
-          "data-state": context.open ? "open" : "closed",
         }),
-      );
+        "data-state": context.open ? "open" : "closed",
+      });
     }
 
     return (

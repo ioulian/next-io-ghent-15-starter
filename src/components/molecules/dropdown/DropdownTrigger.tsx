@@ -10,9 +10,8 @@ const DropdownTrigger = forwardRef<
   // We need to remove these props as the may not be passed to the elements
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 >(({ children, typeaheadKey, disabled, ...props }, ref) => {
-  if (isValidElement(children)) {
+  if (isValidElement<Record<string, unknown>>(children)) {
     return cloneElement(children, {
-      // @ts-expect-error // FIXME: types
       ref,
       ...props,
     });
