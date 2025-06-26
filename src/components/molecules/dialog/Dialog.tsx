@@ -10,7 +10,7 @@ const Dialog: FC<PropsWithChildren & DialogOptions> = ({ children, ...options })
   // or other positioning options.
   const popover = useDialog(options);
 
-  return <DialogContext.Provider value={popover}>{children}</DialogContext.Provider>;
+  return <DialogContext value={popover}>{children}</DialogContext>;
 };
 
 export default memo(Dialog);

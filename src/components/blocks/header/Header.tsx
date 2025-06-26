@@ -40,10 +40,10 @@ const Header = forwardRef<
       style={headerStyle}
       ref={ref}
     >
-      <HeaderContext.Provider value={contextValue}>
+      <HeaderContext value={contextValue}>
         <Desktop className={styles.desktop}>{children}</Desktop>
         <Mobile className={styles.mobile} />
-      </HeaderContext.Provider>
+      </HeaderContext>
     </header>
   );
 });

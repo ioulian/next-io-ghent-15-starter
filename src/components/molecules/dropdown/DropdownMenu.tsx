@@ -259,7 +259,7 @@ const DropdownMenu = forwardRef<
       >
         {trigger}
       </DropdownTrigger>
-      <MenuContext.Provider value={contextValue}>
+      <MenuContext value={contextValue}>
         <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
           {isMounted ? (
             <FloatingPortal>
@@ -285,7 +285,7 @@ const DropdownMenu = forwardRef<
             </FloatingPortal>
           ) : null}
         </FloatingList>
-      </MenuContext.Provider>
+      </MenuContext>
     </FloatingNode>
   );
 });

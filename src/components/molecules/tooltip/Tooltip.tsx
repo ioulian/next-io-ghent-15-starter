@@ -10,7 +10,7 @@ const Tooltip: FC<PropsWithChildren & TooltipOptions> = ({ children, ...options 
   // or other positioning options.
   const tooltip = useTooltip(options);
 
-  return <TooltipContext.Provider value={tooltip}>{children}</TooltipContext.Provider>;
+  return <TooltipContext value={tooltip}>{children}</TooltipContext>;
 };
 
 export default memo(Tooltip);
