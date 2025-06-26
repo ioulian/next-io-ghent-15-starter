@@ -1,31 +1,24 @@
 /* eslint-disable i18next/no-literal-string */
 
-import { useState } from "react";
-
-import { action } from "storybook/actions";
-
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Text from "@/components/atoms/text/Text";
 
-import Ellipsis from "./Ellipsis";
+import ScrollProgress from "./ScrollProgress";
 
-const meta: Meta<typeof Ellipsis> = {
-  title: "UI/Molecules/Ellipsis",
-  component: Ellipsis,
+const meta: Meta<typeof ScrollProgress> = {
+  title: "UI/Atoms/Scroll Progress",
+  component: ScrollProgress,
   tags: ["autodocs"],
-  parameters: {
-    layout: "padded",
-  },
+  argTypes: {},
 };
 
 export default meta;
-type Story = StoryObj<typeof Ellipsis>;
+type Story = StoryObj<typeof ScrollProgress>;
 
 export const Default: Story = {
-  args: {
-    onToggle: action("onToggle"),
-    children: (
+  render: (args) => (
+    <>
       <Text>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porta dolor mi, at
@@ -126,48 +119,44 @@ export const Default: Story = {
           commodo placerat. Mauris et molestie dolor. Morbi condimentum magna in ultricies lobortis.
           Vestibulum at scelerisque nunc. Sed luctus sodales enim.
         </p>
+        <p>
+          Morbi pharetra felis in dui dignissim commodo sed a mi. Etiam odio odio, sollicitudin nec
+          lacus non, rutrum vulputate dui. Nam cursus hendrerit molestie. Aenean eleifend quis
+          tortor ut laoreet. Nunc pellentesque, quam et semper gravida, mauris felis consectetur
+          nisi, et efficitur neque libero quis est. Mauris porttitor tempor urna, et vestibulum
+          tortor mattis a. Nunc mauris mauris, aliquam quis ornare nec, lacinia suscipit orci. Etiam
+          sit amet feugiat mauris, vel mattis metus. Sed vehicula ante id tristique viverra.
+        </p>
+        <p>
+          Nunc sed arcu in nulla rhoncus mollis in ac nisl. Donec varius facilisis metus quis
+          ultrices. Fusce quis tincidunt nisi, nec varius erat. Nunc condimentum odio vitae erat
+          consectetur, eget ornare orci malesuada. Duis pretium felis gravida, efficitur lectus sit
+          amet, congue metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+          posuere cubilia curae; Proin consequat accumsan nisi, non ornare nisi sollicitudin vitae.
+          Suspendisse lobortis non lacus quis dictum. Vivamus ornare convallis lorem ac consequat.
+          Morbi tristique sapien orci, quis tincidunt risus sagittis semper. Sed tristique venenatis
+          vulputate. Nullam viverra, lacus quis ullamcorper laoreet, eros ante tempor ante, et
+          commodo leo augue at metus. Donec viverra in lorem bibendum laoreet.
+        </p>
+        <p>
+          Fusce pulvinar dignissim odio, vitae egestas ex sodales in. Suspendisse vel maximus neque.
+          Praesent purus risus, fermentum ut felis ut, sollicitudin vehicula odio. Sed sed nulla
+          dictum, porttitor neque a, semper arcu. Maecenas nibh ligula, aliquet sit amet ipsum at,
+          semper cursus quam. In iaculis porttitor erat tincidunt gravida. Duis porta nibh vitae
+          odio placerat vestibulum.
+        </p>
+        <p>
+          Nullam auctor dignissim mattis. Etiam sed augue eleifend, aliquet massa vitae, tincidunt
+          erat. Cras egestas volutpat dignissim. Suspendisse nec ultricies leo. Sed eu purus et erat
+          commodo placerat. Mauris et molestie dolor. Morbi condimentum magna in ultricies lobortis.
+          Vestibulum at scelerisque nunc. Sed luctus sodales enim.
+        </p>
       </Text>
-    ),
-  },
-};
-
-export const AutoDisableButton: Story = {
+      <ScrollProgress {...args} />
+    </>
+  ),
   args: {
-    onToggle: action("onToggle"),
-    children: (
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porta dolor mi, at
-        venenatis urna elementum a. Etiam quis diam non massa tempor blandit at nec nibh.
-        Pellentesque non magna ac quam cursus mollis. Nunc urna dui, lobortis non nulla tempus,
-        varius
-      </p>
-    ),
-  },
-};
-
-export const Controlled: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-
-    return (
-      <>
-        <button
-          type="button"
-          onClick={() => {
-            setIsOpen((v) => !v);
-          }}
-        >
-          Toggle
-        </button>
-        <Ellipsis open={isOpen}>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porta dolor mi, at
-            venenatis urna elementum a. Etiam quis diam non massa tempor blandit at nec nibh.
-            Pellentesque non magna ac quam cursus mollis. Nunc urna dui, lobortis non nulla tempus,
-            varius
-          </p>
-        </Ellipsis>
-      </>
-    );
+    mainColor: "var(--color-negative-500)",
+    backgroundColor: "var(--color-negative-200)",
   },
 };

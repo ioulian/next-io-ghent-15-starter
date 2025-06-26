@@ -10,14 +10,14 @@
       }
     }
   }
-}
 
-@keyframes sticky-scroll-shadow {
-  from {
-    box-shadow: none;
-  }
+  @keyframes sticky-scroll-shadow {
+    from {
+      box-shadow: none;
+    }
 
-  to {
-    box-shadow: var(--sticky-shadow);
+    to {
+      box-shadow: var(--sticky-shadow);
+    }
   }
 }

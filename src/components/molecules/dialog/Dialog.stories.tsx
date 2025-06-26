@@ -26,7 +26,7 @@ import DialogHeading from "./DialogHeading";
 import DialogTrigger from "./DialogTrigger";
 
 const SampleLargeText: FC = () => (
-  <>
+  <Text>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porta dolor mi, at venenatis
       urna elementum a. Etiam quis diam non massa tempor blandit at nec nibh. Pellentesque non magna
@@ -123,7 +123,7 @@ const SampleLargeText: FC = () => (
       placerat. Mauris et molestie dolor. Morbi condimentum magna in ultricies lobortis. Vestibulum
       at scelerisque nunc. Sed luctus sodales enim.
     </p>
-  </>
+  </Text>
 );
 
 const meta: Meta<typeof Dialog> = {
