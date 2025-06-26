@@ -14,7 +14,6 @@ import {
   useId,
 } from "react";
 
-import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import {
   Controller,
@@ -33,6 +32,7 @@ import FieldError from "@/components/atoms/form/field-error/FieldError";
 import Label from "@/components/atoms/form/label/Label";
 import { getAriaDescribedBy } from "@/components/molecules/form-field/utils";
 import { BE_VALIDATION } from "@/components/organisms/form/constants";
+import { addClassNameToProps } from "@/utils/styles";
 
 import { formField } from "./FormField.styles";
 
@@ -153,10 +153,9 @@ const FormField = <T extends FieldValues = FieldValues>({
   };
 
   return (
+    // @ts-expect-error TODO: type me
     <Component
-      // The following implementation will give ts error, we inline the logic
-      // {...addClassNameToProps(props, formField({ isHidden, isDisabled: disabled, isToggle }))}
-      className={clsx(formField({ isHidden, isDisabled: disabled, isToggle }), props.className)}
+      {...addClassNameToProps(props, formField({ isHidden, isDisabled: disabled, isToggle }))}
     >
       {label ? (
         <Label
