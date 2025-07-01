@@ -53,11 +53,9 @@ const Ellipsis = forwardRef<
       const isEllipsisActive =
         contentRef.current.offsetWidth < contentRef.current.scrollWidth ||
         contentRef.current.offsetHeight < contentRef.current.scrollHeight;
-      setShowButton(isEllipsisActive || process.env.JEST_WORKER_ID !== undefined);
+      setShowButton(isEllipsisActive || process.env.VITEST !== undefined);
     }
   }, [rect, contentRef]);
-
-  // False positive
 
   useEffect(() => {
     // False positive

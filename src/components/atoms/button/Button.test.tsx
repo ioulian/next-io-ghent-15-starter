@@ -1,8 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 
-import "@testing-library/jest-dom";
-
 import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, vi } from "vitest";
 
 import describeGeneralTests from "@/test/generalTests";
 
@@ -12,7 +11,7 @@ describe("Button", () => {
   describeGeneralTests(<Button>test</Button>, () => ({ render }));
 
   it("should call onClick", () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(
       <Button data-testid="test" onClick={spy}>
         test
@@ -25,7 +24,7 @@ describe("Button", () => {
   });
 
   it("should not call onClick when button is disabled", () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(
       <Button data-testid="test" disabled onClick={spy}>
         test
@@ -38,7 +37,7 @@ describe("Button", () => {
   });
 
   it("should not call onClick when button is loading", () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(
       <Button data-testid="test" isLoading onClick={spy}>
         test
@@ -50,7 +49,7 @@ describe("Button", () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it("renders with iconBefore", () => {
+  it("renders with iconBefore", async () => {
     render(<Button iconBefore={<span data-testid="iconBefore">before</span>}>test</Button>);
     expect(screen.getByTestId("iconBefore")).toBeInTheDocument();
   });

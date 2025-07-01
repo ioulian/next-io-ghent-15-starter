@@ -1,7 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
 
-import "@testing-library/jest-dom";
-
 import { render, screen } from "@testing-library/react";
 
 import MainContentLink from "@/components/molecules/main-content/MainContentLink";
@@ -13,7 +11,7 @@ describe("MainContent", () => {
   // @ts-expect-error ignore any
   let consoleWarnMock;
   beforeEach(() => {
-    consoleWarnMock = jest.spyOn(console, "warn").mockImplementation(jest.fn());
+    consoleWarnMock = vi.spyOn(console, "warn").mockImplementation(vi.fn());
   });
   afterEach(() => {
     // @ts-expect-error ignore any

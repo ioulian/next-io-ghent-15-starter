@@ -1,8 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 
-import "@testing-library/jest-dom";
-
 import { render, screen } from "@testing-library/react";
+import { vi } from "vitest";
 
 import describeGeneralTests from "@/test/generalTests";
 
@@ -28,7 +27,7 @@ describe("MediaText", () => {
   });
 
   it("warns when 2 children are not passed", () => {
-    const consoleSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
+    const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
 
     render(
       <MediaText>

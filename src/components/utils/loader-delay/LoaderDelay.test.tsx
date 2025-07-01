@@ -1,7 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
 
-import "@testing-library/jest-dom";
-
 import { act, render, screen, waitFor } from "@testing-library/react";
 
 import LoaderDelay from "./LoaderDelay";

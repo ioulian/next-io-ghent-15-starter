@@ -1,5 +1,3 @@
-import "@testing-library/jest-dom";
-
 import { render, screen } from "@testing-library/react";
 
 import Input from "@/components/atoms/form/input/Input";

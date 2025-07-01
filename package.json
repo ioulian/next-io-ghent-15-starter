@@ -25,8 +25,8 @@
     "build-storybook": "storybook build",
     "// tests": "echo 'Tests'",
     "test:storybook": "test-storybook",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "vitest",
+    "test:watch": "vitest --watch"
   },
   "engines": {
     "node": "^22.0.0",
@@ -85,12 +85,12 @@
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.3.0",
-    "@types/jest": "30.0.0",
     "@types/lodash": "4.17.19",
     "@types/node": "24.0.4",
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "@typescript/native-preview": "7.0.0-dev.20250626.1",
+    "@vitejs/plugin-react": "4.6.0",
     "cross-env": "7.0.3",
     "cssnano": "7.0.7",
     "eslint": "9.29.0",
@@ -100,8 +100,7 @@
     "eslint-plugin-sonarjs": "3.0.3",
     "eslint-plugin-storybook": "9.0.13",
     "husky": "9.1.7",
-    "jest": "30.0.3",
-    "jest-environment-jsdom": "30.0.2",
+    "jsdom": "26.1.0",
     "knip": "5.61.2",
     "lint-staged": "16.1.2",
     "next-rspack": "15.3.4",
@@ -120,7 +119,9 @@
     "ts-node": "10.9.2",
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "tsx": "4.20.3",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "vite-tsconfig-paths": "5.1.4",
+    "vitest": "3.2.4"
   },
   "pnpm": {
     "patchedDependencies": {

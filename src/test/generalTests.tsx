@@ -1,6 +1,7 @@
 import { cloneElement, ReactElement, ReactNode } from "react";
 
 import { RenderResult, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 
 const describeGeneralTests = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

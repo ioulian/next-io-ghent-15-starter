@@ -1,7 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
 
-import "@testing-library/jest-dom";
-
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { userEvent } from "storybook/test";
 import { z } from "zod";
@@ -18,7 +16,7 @@ describe("Form", () => {
   describeGeneralTests(<Form />, () => ({ render }));
 
   it("will handle form flow", async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(
       <Form
         onSubmit={spy}
@@ -70,7 +68,7 @@ describe("Form", () => {
   });
 
   it("will handle form custom errors", async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(
       <Form onSubmit={spy} data-testid="test" fieldErrors={exampleErrors}>
         <FormField name="emailAddress">
@@ -95,7 +93,7 @@ describe("Form", () => {
   });
 
   it("triggers onChange", async () => {
-    const spy = jest.fn((data) => data.emailAddress);
+    const spy = vi.fn((data) => data.emailAddress);
     render(
       <Form data-testid="test" onChange={spy}>
         <FormField name="emailAddress">
@@ -115,7 +113,7 @@ describe("Form", () => {
   });
 
   it("should not trigger onSubmit when loading", async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(
       <Form onSubmit={spy} data-testid="test" isLoading>
         <button type="submit" data-testid="submit">
