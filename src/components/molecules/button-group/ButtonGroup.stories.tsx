@@ -11,7 +11,6 @@ import ButtonGroupSeparator from "./ButtonGroupSeparator";
 
 const meta: Meta<typeof ButtonGroup> = {
   title: "UI/Molecules/Button Group",
-  component: ButtonGroup,
   tags: ["autodocs"],
   parameters: {
     layout: "padded",

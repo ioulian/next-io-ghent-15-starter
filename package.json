@@ -112,6 +112,7 @@
     "postcss-preset-env": "10.2.4",
     "prettier": "3.6.2",
     "react-docgen-typescript": "2.4.0",
+    "react-scan": "0.4.3",
     "storybook": "9.0.15",
     "storybook-addon-test-codegen": "2.0.1",
     "svgo-loader": "4.0.0",

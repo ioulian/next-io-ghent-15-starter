@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`variables generates correct css 1`] = `
+exports[`variables > generates correct css 1`] = `
 "
 @layer variables {
   :root {

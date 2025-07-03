@@ -15,6 +15,8 @@ import { getCss, getVariable } from "./_styles/variables";
 
 import "./_styles/globals.css";
 
+import dynamic from "next/dynamic";
+
 type Params = Promise<{ locale: LocaleType }>;
 
 export function generateViewport(): Viewport {
@@ -38,6 +40,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
+let ReactScan: React.ComponentType = () => null;
+
+if (
+  process.env.NODE_ENV === "development" &&
+  process.env.NEXT_PUBLIC_REACT_SCAN_ENABLE === "true"
+) {
+  ReactScan = dynamic(() => import("./_components/ReactScan"));
+}
+
 export default async function LocaleLayout({
   children,
   params,
@@ -59,6 +70,7 @@ export default async function LocaleLayout({
       <head>
         <style nonce={nonce}>{getCss()}</style>
       </head>
+      <ReactScan />
       <body>
         <NextIntlClientProvider>
           <Providers nonce={nonce || undefined}>{children}</Providers>

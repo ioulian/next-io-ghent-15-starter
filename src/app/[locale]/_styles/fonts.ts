@@ -2,13 +2,13 @@ import { Inter, Montserrat } from "next/font/google";
 
 import clsx from "clsx";
 
-export const montserrat = Montserrat({
+const montserrat = Montserrat({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--font-heading",
 });
-export const inter = Inter({
+const inter = Inter({
   weight: ["400", "500", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],

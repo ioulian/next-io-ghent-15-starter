@@ -7,6 +7,7 @@ import { FlatCompat } from "@eslint/eslintrc";
 import i18next from "eslint-plugin-i18next";
 import youMightNotNeedAnEffect from "eslint-plugin-react-you-might-not-need-an-effect";
 import sonarjs from "eslint-plugin-sonarjs";
+import storybook from "eslint-plugin-storybook";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -92,6 +93,13 @@ const eslintConfig = [
     rules: {
       "react-you-might-not-need-an-effect/you-might-not-need-an-effect": "warn",
     },
+  },
+
+  // Storybook
+  ...storybook.configs["flat/recommended"],
+  {
+    // Inside your .eslintignore file
+    ignores: ["!.storybook"],
   },
 ];
 

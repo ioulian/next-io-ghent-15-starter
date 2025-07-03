@@ -20,7 +20,7 @@ const defaultState: ObserverRect = {
  * This is a better way to detect resize of an element,
  * as otherwise you'll need to add a lot of event listeners on window.
  */
-export function useResizeObserver<T extends HTMLElement = HTMLElement>() {
+const useResizeObserver = <T extends HTMLElement = HTMLElement>() => {
   const frameID = useRef(0);
   const ref = useRef<T>(null);
 
@@ -61,6 +61,6 @@ export function useResizeObserver<T extends HTMLElement = HTMLElement>() {
   }, [observer]);
 
   return [ref, rect] as const;
-}
+};
 
 export default useResizeObserver;
