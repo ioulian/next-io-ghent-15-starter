@@ -1,4 +1,4 @@
-/* eslint-disable i18next/no-literal-string, react/jsx-no-target-blank  */
+/* eslint-disable react/jsx-no-target-blank  */
 // button-has-type will be handled by mega menu
 
 import iconChevron from "@tabler/icons/outline/chevron-down.svg";

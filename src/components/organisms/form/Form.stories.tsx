@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import { expect, fn, userEvent, within } from "storybook/test";
 import { z, ZodType } from "zod";
 
@@ -45,22 +43,14 @@ type SampleFormData = {
 
 const REQUIRED_MESSAGE = "This field is required";
 const EMAIL_MESSAGE = "This is not a valid email";
-const BASIC_STRING_VALIDATION = z.string({
-  required_error: REQUIRED_MESSAGE,
-  invalid_type_error: REQUIRED_MESSAGE,
-});
+const BASIC_STRING_VALIDATION = z.string(REQUIRED_MESSAGE);
 
-const schema: ZodType<SampleFormData> = z
+const schema: ZodType<SampleFormData, SampleFormData> = z
   .object({
     firstName: BASIC_STRING_VALIDATION.min(1),
     lastName: BASIC_STRING_VALIDATION.nullish(),
     emailAddress: BASIC_STRING_VALIDATION.email(EMAIL_MESSAGE),
-    hobbies: z
-      .array(z.string(), {
-        required_error: REQUIRED_MESSAGE,
-        invalid_type_error: REQUIRED_MESSAGE,
-      })
-      .min(1, "Select at least one"),
+    hobbies: z.array(z.string(), REQUIRED_MESSAGE).min(1, "Select at least one"),
     password: BASIC_STRING_VALIDATION.min(6),
     passwordRepeat: BASIC_STRING_VALIDATION.min(6),
     privacy: z.boolean(),
@@ -69,8 +59,6 @@ const schema: ZodType<SampleFormData> = z
     message: "Passwords must match!",
     path: ["passwordRepeat"],
   });
-
-const formResolver = createZodResolver(schema);
 
 export const Default: Story = {
   play: async ({ args, canvasElement, step }) => {
@@ -113,7 +101,10 @@ export const Default: Story = {
   },
   render: (args) => (
     <Form<SampleFormData>
-      formSettings={{ defaultValues: {}, resolver: formResolver }}
+      formSettings={{
+        defaultValues: {},
+        resolver: createZodResolver(schema),
+      }}
       onSubmit={args.onSubmit}
       onChange={args.onChange}
       onError={args.onError}

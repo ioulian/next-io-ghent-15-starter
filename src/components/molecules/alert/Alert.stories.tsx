@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import iconSettings from "@tabler/icons/outline/settings.svg";
 
 import type { Meta, StoryObj } from "@storybook/nextjs";

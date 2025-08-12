@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import describeGeneralTests from "@/test/generalTests";
@@ -28,9 +26,9 @@ describe("Ellipsis", () => {
 
     fireEvent.click(screen.getByText("test-summary"));
 
-    // onToggle happens but only later
+    // onToggle happens but only later, because of the transition
     setTimeout(() => {
       expect(spy).toHaveBeenCalled();
-    }, 10);
+    }, 500);
   });
 });

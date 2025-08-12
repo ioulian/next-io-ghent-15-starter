@@ -19,7 +19,12 @@ const NextLinkButton: FC<PropsWithChildren<Omit<LBProps, "as">>> = ({ children, 
   }, []);
 
   return (
-    <LinkButton as={LocalizedLink} prefetch={prefetch} onMouseEnter={onMouseEnter} {...props}>
+    <LinkButton
+      as={LocalizedLink}
+      prefetch={prefetch ? null : false}
+      onMouseEnter={onMouseEnter}
+      {...props}
+    >
       {children}
     </LinkButton>
   );

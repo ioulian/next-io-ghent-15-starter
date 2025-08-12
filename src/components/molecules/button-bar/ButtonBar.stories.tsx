@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import iconVariantDanger from "@tabler/icons/outline/alert-circle.svg";
 import iconVariantSuccess from "@tabler/icons/outline/circle-check.svg";
 import iconVariantNormal from "@tabler/icons/outline/info-circle.svg";

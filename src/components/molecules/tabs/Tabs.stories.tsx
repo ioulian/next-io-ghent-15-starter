@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import { Tab, TabList, TabPanel } from "react-tabs";
 
 import type { Meta, StoryObj } from "@storybook/nextjs";

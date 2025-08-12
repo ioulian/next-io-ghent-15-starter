@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Text from "@/components/atoms/text/Text";

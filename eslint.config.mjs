@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 
 import { FlatCompat } from "@eslint/eslintrc";
 import i18next from "eslint-plugin-i18next";
-import youMightNotNeedAnEffect from "eslint-plugin-react-you-might-not-need-an-effect";
+import reactYouMightNotNeedAnEffect from "eslint-plugin-react-you-might-not-need-an-effect";
 import sonarjs from "eslint-plugin-sonarjs";
 import storybook from "eslint-plugin-storybook";
 
@@ -73,6 +73,12 @@ const eslintConfig = [
 
   // i18next
   i18next.configs["flat/recommended"],
+  {
+    files: ["**/*.stories.tsx", "**/*.test.tsx"],
+    rules: {
+      "i18next/no-literal-string": "off",
+    },
+  },
 
   // SonarJS
   sonarjs.configs.recommended,
@@ -85,15 +91,9 @@ const eslintConfig = [
       "sonarjs/no-empty-test-file": "off",
     },
   },
-  {
-    files: ["**/*.{js,jsx,ts,tsx}"],
-    plugins: {
-      "react-you-might-not-need-an-effect": youMightNotNeedAnEffect,
-    },
-    rules: {
-      "react-you-might-not-need-an-effect/you-might-not-need-an-effect": "warn",
-    },
-  },
+
+  //
+  reactYouMightNotNeedAnEffect.configs.recommended,
 
   // Storybook
   ...storybook.configs["flat/recommended"],

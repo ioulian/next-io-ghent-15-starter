@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, vi } from "vitest";
 

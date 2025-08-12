@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import { expect, userEvent, within } from "storybook/test";
 
 import type { Meta, StoryObj } from "@storybook/nextjs";

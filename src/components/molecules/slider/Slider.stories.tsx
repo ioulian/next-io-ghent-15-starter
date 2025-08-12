@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import { SwiperSlide } from "swiper/react";
 
 import type { Meta, StoryObj } from "@storybook/nextjs";

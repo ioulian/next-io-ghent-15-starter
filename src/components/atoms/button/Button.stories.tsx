@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
 import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
 import iconSettings from "@tabler/icons/outline/settings.svg";

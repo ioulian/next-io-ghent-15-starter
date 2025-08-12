@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import Link from "next/link";
 
 import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";

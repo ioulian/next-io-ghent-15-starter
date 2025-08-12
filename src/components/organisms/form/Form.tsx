@@ -21,7 +21,12 @@ import styles from "./Form.module.css";
 /**
  * Wrapper around `react-hook-form`.
  */
-const Form = <T extends FieldValues = FieldValues>({
+const Form = <
+  TFieldValues extends FieldValues = FieldValues,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  TContext = any,
+  TTransformedValues = TFieldValues,
+>({
   /**
    * Is current form loading, will not trigger onSubmit when loading
    */
@@ -51,14 +56,14 @@ const Form = <T extends FieldValues = FieldValues>({
   formSettings,
   ...props
 }: {
-  fieldErrors?: FormFieldError<T>[];
+  fieldErrors?: FormFieldError<TFieldValues>[];
   isLoading?: boolean;
-  onSubmit?: (data: T, submitter?: HTMLElement) => void;
-  onError?: (errors: FieldErrors<T>) => void;
-  onChange?: (data?: DeepPartial<T> | T) => void;
-  formSettings?: UseFormProps<T>;
+  onSubmit?: (data: TTransformedValues, submitter?: HTMLElement) => void;
+  onError?: (errors: FieldErrors<TFieldValues>) => void;
+  onChange?: (data?: DeepPartial<TFieldValues> | TFieldValues) => void;
+  formSettings?: UseFormProps<TFieldValues, TContext, TTransformedValues>;
 } & Omit<ComponentPropsWithRef<"form">, "onChange" | "onSubmit">) => {
-  const methods = useForm<T>({
+  const methods = useForm<TFieldValues, TContext, TTransformedValues>({
     mode: "onSubmit",
     ...formSettings,
   });
@@ -79,10 +84,10 @@ const Form = <T extends FieldValues = FieldValues>({
   // Show errors and set focus to first error field
   useEffect(() => {
     if (Array.isArray(fieldErrors) && fieldErrors.length !== 0) {
-      // eslint-disable-next-line react-you-might-not-need-an-effect/you-might-not-need-an-effect
+      // eslint-disable-next-line react-you-might-not-need-an-effect/no-pass-data-to-parent
       fieldErrors.forEach(({ field, error: message }, i) => {
         setTimeout(() => {
-          setError(field as Path<T>, {
+          setError(field as Path<TFieldValues>, {
             type: BE_VALIDATION,
             message,
           });
@@ -91,7 +96,7 @@ const Form = <T extends FieldValues = FieldValues>({
         if (i === 0) {
           try {
             // Can fail on HMR
-            setFocus(field as Path<T>);
+            setFocus(field as Path<TFieldValues>);
             /* c8 ignore next */ // eslint-disable-next-line sonarjs/no-ignored-exceptions, @typescript-eslint/no-unused-vars
           } catch (e) {}
         }

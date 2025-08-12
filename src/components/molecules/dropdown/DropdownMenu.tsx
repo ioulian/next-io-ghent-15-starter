@@ -173,14 +173,14 @@ const DropdownMenu = forwardRef<
     function onPointerMove({ pointerType }: PointerEvent) {
       if (pointerType !== "touch") {
         // False positive
-        // eslint-disable-next-line react-you-might-not-need-an-effect/you-might-not-need-an-effect
+        // eslint-disable-next-line react-you-might-not-need-an-effect/no-chain-state-updates
         setAllowHover(true);
       }
     }
 
     function onKeyDown() {
       // False positive
-      // eslint-disable-next-line react-you-might-not-need-an-effect/you-might-not-need-an-effect
+      // eslint-disable-next-line react-you-might-not-need-an-effect/no-chain-state-updates
       setAllowHover(false);
     }
 

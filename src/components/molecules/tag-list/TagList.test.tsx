@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import { render, screen } from "@testing-library/react";
 
 import Tag from "@/components/atoms/tag/Tag";

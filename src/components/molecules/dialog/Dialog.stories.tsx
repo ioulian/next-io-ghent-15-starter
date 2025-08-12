@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import { FC, useState } from "react";
 
 import { expect, screen, userEvent, within } from "storybook/test";

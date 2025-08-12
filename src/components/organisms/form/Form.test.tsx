@@ -1,5 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
-
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { userEvent } from "storybook/test";
 import { z } from "zod";
