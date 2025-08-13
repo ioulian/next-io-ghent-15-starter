@@ -20,7 +20,7 @@ export const Default: Story = {
         a problem, we can delay the loader to not flash that coponent when the loading happens fast.
       </p>
       <LoaderDelay>
-        <Spinner />
+        <Spinner aria-label="Loading" />
       </LoaderDelay>
     </div>
   ),

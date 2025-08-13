@@ -50,6 +50,7 @@
         "clear": "Clear sorting"
       },
       "pageSize": {
+        "ariaLabel": "Page size",
         "label": "Show {pageSize} per page"
       }
     },

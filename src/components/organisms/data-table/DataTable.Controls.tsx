@@ -63,7 +63,11 @@ const Controls = <T,>({
         />
       ) : null}
       {showPerPages ? (
-        <Select value={table.getState().pagination.pageSize} onChange={pageSizeOnSelect}>
+        <Select
+          value={table.getState().pagination.pageSize}
+          onChange={pageSizeOnSelect}
+          aria-label={t("pageSize.ariaLabel")}
+        >
           {showPerPages.map((pageSize) => (
             <option key={pageSize} value={pageSize}>
               {t("pageSize.label", { pageSize: pageSize.toString() })}
