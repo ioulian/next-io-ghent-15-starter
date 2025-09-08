@@ -49,7 +49,7 @@ const schema: ZodType<SampleFormData, SampleFormData> = z
   .object({
     firstName: BASIC_STRING_VALIDATION.min(1),
     lastName: BASIC_STRING_VALIDATION.nullish(),
-    emailAddress: BASIC_STRING_VALIDATION.email(EMAIL_MESSAGE),
+    emailAddress: z.email(EMAIL_MESSAGE),
     hobbies: z.array(z.string(), REQUIRED_MESSAGE).min(1, "Select at least one"),
     password: BASIC_STRING_VALIDATION.min(6),
     passwordRepeat: BASIC_STRING_VALIDATION.min(6),

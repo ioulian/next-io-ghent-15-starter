@@ -35,6 +35,19 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_CUSTOM_BUILD_ID: customBuildId,
   },
+  headers: async () => {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff",
+          },
+        ],
+      },
+    ];
+  },
   webpack: (config) => {
     injectToWebpackConfig(config);
 
