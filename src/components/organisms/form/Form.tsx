@@ -137,7 +137,12 @@ const Form = <
 
   return (
     <FormProvider {...methods}>
-      <form {...addClassNameToProps(props, styles.form)} onSubmit={onSubmitCallback} noValidate>
+      <form
+        {...addClassNameToProps(props, styles.form)}
+        onSubmit={onSubmitCallback}
+        noValidate
+        aria-busy={isLoading}
+      >
         {/*error && error.title ? <ApiFormError error={error} /> : null*/}
         {children}
       </form>

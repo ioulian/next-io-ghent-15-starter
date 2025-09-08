@@ -103,6 +103,7 @@ const Button = forwardRef<HTMLButtonElement, WithRequired<Props, "children">>(
         ref={ref}
         disabled={disabled}
         aria-disabled={isLoading || disabled ? true : undefined}
+        aria-busy={isLoading}
         onClick={onClick ? newOnClick : undefined}
         {...addClassNameToProps(props, classes.button())}
       >
