@@ -13,7 +13,6 @@ It contains a lot of useful presets and common components to be used in your pro
 - Bundle analyser (Provided by Next.js);
 - [NVM](https://github.com/nvm-sh/nvm) preset;
 - .env variables (Provided by Next.js);
-- Custom auth implementation using JWT;
 - [SVG Sprites](https://github.com/just-paja/svg-sprites/tree/master/packages/webpack-svg-sprite-loader) (Custom or with [Tabler icons](https://tabler-icons.io/)). SVG spritesheet is exported to .svg file;
 - Font optimisation (Provided by Next.js);
 - [Storybook](https://github.com/storybookjs/storybook) with a11y checks, next-intl support and Next.js support;
@@ -23,6 +22,7 @@ It contains a lot of useful presets and common components to be used in your pro
 - With [next-cache-toolbar](https://github.com/KajSzy/next-cache-toolbar) to easily debug cached api requests;
 - Use with PNPM (preferred) or NPM;
 - Translations checks with [i18n-check](https://github.com/lingualdev/i18n-check) (Custom checks are still under scripts if needed, as they will check source files too. Custom check can be removed when https://github.com/lingualdev/i18n-check/issues/36 will be fixed)
+- Default security headers with CSP and NONCE
 
 ## Getting Started
 
