@@ -10,6 +10,7 @@ export default function middleware(req: NextRequest) {
   let res = createMiddleware(routing)(req);
 
   if (process.env.NODE_ENV === "production") {
+    // TODO: CSP is not set for 404 and 500 pages
     res = injectCSP(req, res);
   }
 

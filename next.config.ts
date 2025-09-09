@@ -40,10 +40,45 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: [
+          // See https://docs.arcjet.com/nosecone/quick-start?f=next-js
           {
             key: "X-Content-Type-Options",
             value: "nosniff",
           },
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin",
+          },
+          {
+            key: "Cross-Origin-Resource-Policy",
+            value: "same-origin",
+          },
+          {
+            key: "Cross-Origin-Embedder-Policy",
+            value: "require-corp",
+          },
+          {
+            key: "Referrer-Policy",
+            value: "strict-origin-when-cross-origin",
+          },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains",
+          },
+          {
+            key: "X-Permitted-Cross-Domain-Policies",
+            value: "none",
+          },
+          {
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
+          },
+          // Not supported/is disabled in recent browsers. Do not use! (Use CSP instead)
+          // It is here as a reminder.
+          // {
+          //   key: "X-XSS-Protection",
+          //   value: "1; mode=block",
+          // },
         ],
       },
     ];
