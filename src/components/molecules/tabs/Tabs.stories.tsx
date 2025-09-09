@@ -1,6 +1,6 @@
-import { Tab, TabList, TabPanel } from "react-tabs";
-
 import type { Meta, StoryObj } from "@storybook/nextjs";
+
+import { Tab, TabList, TabPanel } from "react-tabs";
 
 import Text from "@/components/atoms/text/Text";
 

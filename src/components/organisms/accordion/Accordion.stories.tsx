@@ -1,6 +1,6 @@
-import { expect, userEvent, within } from "storybook/test";
-
 import type { Meta, StoryObj } from "@storybook/nextjs";
+
+import { expect, userEvent, within } from "storybook/test";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import Heading from "@/components/atoms/heading/Heading";

@@ -1,9 +1,9 @@
 import crypto from "crypto";
 
+import type { NextConfig } from "next";
+
 import createBundleAnalyzer from "@next/bundle-analyzer";
 import createNextIntlPlugin from "next-intl/plugin";
-
-import type { NextConfig } from "next";
 
 // This only gives error with TSGO
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

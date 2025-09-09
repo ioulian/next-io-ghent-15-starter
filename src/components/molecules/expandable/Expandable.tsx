@@ -1,6 +1,8 @@
 "use client";
 
-import { ComponentPropsWithRef, forwardRef, memo, ReactNode } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo, ReactNode } from "react";
 
 import iconChevron from "@tabler/icons/outline/chevron-down.svg";
 
@@ -9,8 +11,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { expandable } from "./Expandable.styles";
 
-const Expandable = forwardRef<
-  HTMLDetailsElement,
+const Expandable: FC<
   {
     /**
      * Title of the block
@@ -22,11 +23,11 @@ const Expandable = forwardRef<
      */
     open?: boolean;
   } & ComponentPropsWithRef<"details">
->(({ summary, children, open = false, ...props }, ref) => {
+> = ({ summary, children, open = false, ...props }) => {
   const classes = expandable({ isOpen: open });
 
   return (
-    <details {...addClassNameToProps(props, classes.expandable())} open={open} ref={ref}>
+    <details {...addClassNameToProps(props, classes.expandable())} open={open}>
       <summary className={classes.summary()}>
         <span>{summary}</span>
         <SvgSprite className={classes.icon()} src={iconChevron} aria-hidden />
@@ -34,9 +35,7 @@ const Expandable = forwardRef<
       <div className={classes.container()}>{children}</div>
     </details>
   );
-});
-
-Expandable.displayName = "Expandable";
+};
 
 /**
  * Basic, animated, <summary> alternative

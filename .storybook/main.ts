@@ -1,8 +1,8 @@
 import path from "path";
 
-import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
-
 import type { StorybookConfig } from "@storybook/nextjs";
+
+import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
 // This only gives error with TSGO
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

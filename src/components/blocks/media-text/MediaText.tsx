@@ -1,8 +1,9 @@
+import type { FC } from "react";
+
 import {
   Children,
   cloneElement,
   ComponentPropsWithRef,
-  forwardRef,
   isValidElement,
   memo,
   useImperativeHandle,
@@ -18,10 +19,12 @@ import Layout from "../../atoms/layout/Layout";
 import blockStyles from "./../Blocks.module.css";
 import styles from "./MediaText.module.css";
 
-const MediaText = forwardRef<
-  HTMLDivElement,
-  { coverMedia?: boolean } & ComponentPropsWithRef<"div">
->(({ children, coverMedia = false, ...props }, ref) => {
+const MediaText: FC<{ coverMedia?: boolean } & ComponentPropsWithRef<"div">> = ({
+  children,
+  coverMedia = false,
+  ref,
+  ...props
+}) => {
   const innerRef = useRef<HTMLDivElement>(null);
   useImperativeHandle(ref, () => innerRef.current!, []);
 
@@ -60,8 +63,6 @@ const MediaText = forwardRef<
       </Layout>
     </div>
   );
-});
-
-MediaText.displayName = "MediaText";
+};
 
 export default memo(MediaText);

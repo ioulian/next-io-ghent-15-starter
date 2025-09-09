@@ -1,6 +1,8 @@
 "use client";
 
-import { ComponentPropsWithRef, forwardRef, memo, useCallback, useState } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo, useCallback, useState } from "react";
 
 import passwordHideIcon from "@tabler/icons/outline/eye-off.svg";
 import passwordShowIcon from "@tabler/icons/outline/eye.svg";
@@ -11,10 +13,10 @@ import SvgSprite from "../../svg-sprite/SvgSprite";
 import Input from "../input/Input";
 import PasswordStrength from "./PasswordStrength";
 
-const PasswordInput = forwardRef<
-  HTMLInputElement,
-  { showStrengthMeter?: boolean } & ComponentPropsWithRef<"input">
->(({ showStrengthMeter, ...props }, ref) => {
+const PasswordInput: FC<{ showStrengthMeter?: boolean } & ComponentPropsWithRef<"input">> = ({
+  showStrengthMeter,
+  ...props
+}) => {
   const t = useTranslations("common.form");
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -25,7 +27,6 @@ const PasswordInput = forwardRef<
   return (
     <>
       <Input
-        ref={ref}
         {...props}
         type={showPassword ? "text" : "password"}
         iconAfter={
@@ -43,11 +44,9 @@ const PasswordInput = forwardRef<
       {showStrengthMeter && props.name ? <PasswordStrength name={props.name} /> : null}
     </>
   );
-});
+};
 
 // False positive
-// eslint-disable-next-line sonarjs/no-hardcoded-passwords
-PasswordInput.displayName = "PasswordInput";
 
 /**
  * Base input field but with some logic so show/hide password

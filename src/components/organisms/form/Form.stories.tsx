@@ -1,7 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
+
 import { expect, fn, userEvent, within } from "storybook/test";
 import { z, ZodType } from "zod";
-
-import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Button from "@/components/atoms/button/Button";
 import Checkbox from "@/components/atoms/form/collection/checkbox/Checkbox";

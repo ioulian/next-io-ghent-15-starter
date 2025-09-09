@@ -1,4 +1,6 @@
-import { ComponentPropsWithRef, forwardRef, memo } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo } from "react";
 
 import { Placement } from "@floating-ui/react";
 
@@ -6,15 +8,13 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { sheet } from "./Sheet.styles";
 
-const Sheet = forwardRef<
-  HTMLDivElement,
+const Sheet: FC<
   {
     placement: Placement;
   } & ComponentPropsWithRef<"div">
->(({ children, placement, ...props }, ref) => {
+> = ({ children, placement, ...props }) => {
   return (
     <div
-      ref={ref}
       {...addClassNameToProps(
         props,
         sheet({
@@ -25,9 +25,7 @@ const Sheet = forwardRef<
       {children}
     </div>
   );
-});
-
-Sheet.displayName = "Sheet";
+};
 
 /**
  * Sheet that will be fixed on a screen side. TO be used with Floating UI components

@@ -1,8 +1,9 @@
 "use client";
 
+import type { FC } from "react";
+
 import {
   ComponentPropsWithRef,
-  forwardRef,
   memo,
   useCallback,
   useEffect,
@@ -20,8 +21,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { ellipsis, numberOfLinesVar } from "./Ellipsis.styles";
 
-const Ellipsis = forwardRef<
-  HTMLDivElement,
+const Ellipsis: FC<
   {
     /**
      * Number of lines to trunctate the text
@@ -40,7 +40,7 @@ const Ellipsis = forwardRef<
      */
     onToggle?: (isOpen: boolean) => void;
   } & ComponentPropsWithRef<"div">
->(({ children, open = false, onToggle, numberOfLines = 2, ...props }, ref) => {
+> = ({ children, open = false, onToggle, numberOfLines = 2, ...props }) => {
   const t = useTranslations("common.ellipsis");
   const [isOpen, setIsOpen] = useState<boolean>(open);
   const [showButton, setShowButton] = useState<boolean>(true);
@@ -81,7 +81,7 @@ const Ellipsis = forwardRef<
   const classes = ellipsis({ isOpen });
 
   return (
-    <div {...addClassNameToProps(props, classes.ellipsis())} style={numberOfLinesStyle} ref={ref}>
+    <div {...addClassNameToProps(props, classes.ellipsis())} style={numberOfLinesStyle}>
       <div className={classes.container()}>
         <div className={classes.content()} id={id}>
           {children}
@@ -109,9 +109,7 @@ const Ellipsis = forwardRef<
       )}
     </div>
   );
-});
-
-Ellipsis.displayName = "Ellipsis";
+};
 
 /**
  * Ellipis component that will automatically truncate/clamp the text inside.

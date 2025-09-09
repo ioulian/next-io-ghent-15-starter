@@ -1,4 +1,6 @@
-import { ComponentPropsWithRef, forwardRef, memo, ReactNode } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo, ReactNode } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 
@@ -7,16 +9,15 @@ import { cardList } from "./CardList.styles";
 
 import blockStyles from "./../Blocks.module.css";
 
-const CardList = forwardRef<
-  HTMLDivElement,
+const CardList: FC<
   {
     footer?: ReactNode;
   } & ComponentPropsWithRef<"div">
->(({ footer, children, ...props }, ref) => {
+> = ({ footer, children, ...props }) => {
   const classes = cardList();
 
   return (
-    <div {...addClassNameToProps(props, classes.base(), blockStyles.blockBase)} ref={ref}>
+    <div {...addClassNameToProps(props, classes.base(), blockStyles.blockBase)}>
       {children ? (
         <Layout variant="threeCol" className={classes.body()}>
           {children}
@@ -29,8 +30,6 @@ const CardList = forwardRef<
       ) : null}
     </div>
   );
-});
-
-CardList.displayName = "CardList";
+};
 
 export default memo(CardList);

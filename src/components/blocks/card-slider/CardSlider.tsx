@@ -1,8 +1,9 @@
+import type { FC } from "react";
+
 import {
   Children,
   cloneElement,
   ComponentPropsWithRef,
-  forwardRef,
   isValidElement,
   memo,
   ReactNode,
@@ -30,12 +31,11 @@ import blockStyles from "./../Blocks.module.css";
 
 import "./CardSlider.css";
 
-const CardSlider = forwardRef<
-  HTMLDivElement,
+const CardSlider: FC<
   {
     action?: ReactNode;
-  } & WithRequired<ComponentPropsWithRef<"article">, "children">
->(({ action, children, ...props }, ref) => {
+  } & WithRequired<ComponentPropsWithRef<"div">, "children">
+> = ({ action, children, ...props }) => {
   const t = useTranslations("common.cardSlider");
   const paginationElId = useId();
   const prevElId = useId();
@@ -60,7 +60,7 @@ const CardSlider = forwardRef<
   }, [paginationElId, prevElId, nextElId]);
 
   return (
-    <div {...addClassNameToProps(props, classes.base(), blockStyles.blockBase)} ref={ref}>
+    <div {...addClassNameToProps(props, classes.base(), blockStyles.blockBase)}>
       <Layout variant="oneCol" className={classes.body()}>
         <Swiper {...swiperSettings}>
           {Children.map(children, (child) => {
@@ -96,8 +96,6 @@ const CardSlider = forwardRef<
       </Layout>
     </div>
   );
-});
-
-CardSlider.displayName = "CardSlider";
+};
 
 export default memo(CardSlider);

@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-target-blank  */
 // button-has-type will be handled by mega menu
 
-import iconChevron from "@tabler/icons/outline/chevron-down.svg";
-
 import type { Meta, StoryObj } from "@storybook/nextjs";
+
+import iconChevron from "@tabler/icons/outline/chevron-down.svg";
 
 import Button from "@/components/atoms/button/Button";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";

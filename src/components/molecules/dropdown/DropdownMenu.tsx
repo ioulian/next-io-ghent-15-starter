@@ -1,8 +1,9 @@
 "use client";
 
+import type { FC } from "react";
+
 import {
   FocusEvent,
-  forwardRef,
   HTMLProps,
   memo,
   MouseEvent,
@@ -49,10 +50,14 @@ import DropdownTrigger from "./DropdownTrigger";
 
 import styles from "./Dropdown.module.css";
 
-const DropdownMenu = forwardRef<
-  HTMLButtonElement,
-  DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButtonElement>
->(({ children, trigger, onFocus, onMouseEnter, ...props }, forwardedRef) => {
+const DropdownMenu: FC<DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButtonElement>> = ({
+  children,
+  trigger,
+  onFocus,
+  onMouseEnter,
+  ref: forwardedRef,
+  ...props
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [allowHover, setAllowHover] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -288,8 +293,6 @@ const DropdownMenu = forwardRef<
       </MenuContext>
     </FloatingNode>
   );
-});
-
-DropdownMenu.displayName = "DropdownMenu";
+};
 
 export default memo(DropdownMenu);

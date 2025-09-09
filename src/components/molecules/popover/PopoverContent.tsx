@@ -1,6 +1,8 @@
 "use client";
 
-import { forwardRef, Fragment, HTMLProps, memo, useCallback, useMemo } from "react";
+import type { FC } from "react";
+
+import { Fragment, HTMLProps, memo, useCallback, useMemo } from "react";
 
 import {
   FloatingFocusManager,
@@ -19,10 +21,9 @@ import Floater from "@/components/atoms/floater/Floater";
 
 import { usePopoverContext } from "./hooks";
 
-const PopoverContent = forwardRef<
-  HTMLDivElement,
+const PopoverContent: FC<
   { withCloseButton?: boolean; showArrow?: boolean } & HTMLProps<HTMLDivElement>
->(({ withCloseButton = false, showArrow, ...props }, propRef) => {
+> = ({ withCloseButton = false, showArrow, ref: propRef, ...props }) => {
   const t = useTranslations("common.closeButton");
   const context = usePopoverContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
@@ -76,8 +77,6 @@ const PopoverContent = forwardRef<
       </FloatingNode>
     </Wrapper>
   );
-});
-
-PopoverContent.displayName = "PopoverContent";
+};
 
 export default memo(PopoverContent);

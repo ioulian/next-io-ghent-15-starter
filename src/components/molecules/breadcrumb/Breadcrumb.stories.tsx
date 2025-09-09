@@ -1,8 +1,8 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
+
 import Link from "next/link";
 
 import { expect, userEvent, within } from "storybook/test";
-
-import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import LinkButton from "@/components/atoms/link-button/LinkButton";
 

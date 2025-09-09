@@ -1,13 +1,13 @@
 "use client";
 
+import type { FC, ReactNode } from "react";
+
 import {
   cloneElement,
   ComponentPropsWithRef,
-  forwardRef,
   isValidElement,
   memo,
   MouseEvent as ReactMouseEvent,
-  ReactNode,
   useCallback,
 } from "react";
 
@@ -64,74 +64,66 @@ type Props = {
   disabled?: boolean;
 } & ComponentPropsWithRef<"button">;
 
-const Button = forwardRef<HTMLButtonElement, WithRequired<Props, "children">>(
-  (
-    {
-      variant,
-      size,
-      fullWidth,
-      iconOnly,
-      iconBefore,
-      iconAfter,
-      isLoading = false,
-      disabled = false,
-      onClick,
-      children,
-      ...props
+const Button: FC<WithRequired<Props, "children">> = ({
+  variant,
+  size,
+  fullWidth,
+  iconOnly,
+  iconBefore,
+  iconAfter,
+  isLoading = false,
+  disabled = false,
+  onClick,
+  children,
+  ...props
+}) => {
+  const t = useTranslations("common.button");
+  const newOnClick = useCallback(
+    (
+      e: ReactMouseEvent<HTMLButtonElement, MouseEvent> &
+        ReactMouseEvent<HTMLAnchorElement, MouseEvent>,
+    ) => {
+      if (!isLoading && !disabled) {
+        onClick?.(e);
+      }
     },
-    ref,
-  ) => {
-    const t = useTranslations("common.button");
-    const newOnClick = useCallback(
-      (
-        e: ReactMouseEvent<HTMLButtonElement, MouseEvent> &
-          ReactMouseEvent<HTMLAnchorElement, MouseEvent>,
-      ) => {
-        if (!isLoading && !disabled) {
-          onClick?.(e);
-        }
-      },
-      [onClick, isLoading, disabled],
-    );
+    [onClick, isLoading, disabled],
+  );
 
-    const classes = button({ variant, size, isLoading, fullWidth });
+  const classes = button({ variant, size, isLoading, fullWidth });
 
-    return (
-      <button
-        type="button"
-        {...props}
-        ref={ref}
-        disabled={disabled}
-        aria-disabled={isLoading || disabled ? true : undefined}
-        aria-busy={isLoading}
-        onClick={onClick ? newOnClick : undefined}
-        {...addClassNameToProps(props, classes.button())}
-      >
-        <span className={classes.content()}>
-          {isValidElement<Record<string, unknown>>(iconBefore) &&
-            cloneElement(iconBefore, {
-              "aria-hidden": "true",
-              className: classes.icon(),
-            })}
-          {iconOnly ? <VisuallyHidden>{children}</VisuallyHidden> : <span>{children}</span>}
-          {isValidElement<Record<string, unknown>>(iconAfter) &&
-            cloneElement(iconAfter, {
-              "aria-hidden": "true",
-              className: classes.icon(),
-            })}
-        </span>
-        <Spinner
-          className={classes.spinner()}
-          aria-live={isLoading ? "assertive" : "off"}
-          aria-hidden={!isLoading}
-          aria-label={isLoading ? t("spinner.aria-label") : ""}
-        />
-      </button>
-    );
-  },
-);
-
-Button.displayName = "Button";
+  return (
+    <button
+      type="button"
+      {...props}
+      disabled={disabled}
+      aria-disabled={isLoading || disabled ? true : undefined}
+      aria-busy={isLoading}
+      onClick={onClick ? newOnClick : undefined}
+      {...addClassNameToProps(props, classes.button())}
+    >
+      <span className={classes.content()}>
+        {isValidElement<Record<string, unknown>>(iconBefore) &&
+          cloneElement(iconBefore, {
+            "aria-hidden": "true",
+            className: classes.icon(),
+          })}
+        {iconOnly ? <VisuallyHidden>{children}</VisuallyHidden> : <span>{children}</span>}
+        {isValidElement<Record<string, unknown>>(iconAfter) &&
+          cloneElement(iconAfter, {
+            "aria-hidden": "true",
+            className: classes.icon(),
+          })}
+      </span>
+      <Spinner
+        className={classes.spinner()}
+        aria-live={isLoading ? "assertive" : "off"}
+        aria-hidden={!isLoading}
+        aria-label={isLoading ? t("spinner.aria-label") : ""}
+      />
+    </button>
+  );
+};
 
 /**
  * Generic button component

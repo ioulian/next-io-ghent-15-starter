@@ -1,8 +1,8 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
+
 import { useState } from "react";
 
 import { action } from "storybook/actions";
-
-import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Text from "@/components/atoms/text/Text";
 

@@ -1,9 +1,9 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
+
 import iconVariantDanger from "@tabler/icons/outline/alert-circle.svg";
 import iconVariantSuccess from "@tabler/icons/outline/circle-check.svg";
 import iconVariantNormal from "@tabler/icons/outline/info-circle.svg";
 import { expect, userEvent, within } from "storybook/test";
-
-import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Button from "@/components/atoms/button/Button";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";

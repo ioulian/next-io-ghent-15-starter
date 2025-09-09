@@ -1,8 +1,8 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
+
 import { FC } from "react";
 
 import { useTranslations } from "next-intl";
-
-import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import RichTranslation from "./RichTranslation";
 

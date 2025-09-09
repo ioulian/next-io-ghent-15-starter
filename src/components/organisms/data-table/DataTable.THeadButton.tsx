@@ -1,5 +1,7 @@
 "use client";
 
+import type { SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
+
 import { ComponentPropsWithRef } from "react";
 
 import iconSort from "@tabler/icons/outline/arrows-sort.svg";
@@ -8,8 +10,6 @@ import iconSortDesc from "@tabler/icons/outline/sort-descending.svg";
 import { flexRender, Header } from "@tanstack/react-table";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
-
-import type { SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 

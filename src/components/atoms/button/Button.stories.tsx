@@ -1,8 +1,8 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
+
 import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
 import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
 import iconSettings from "@tabler/icons/outline/settings.svg";
-
-import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Tooltip from "@/components/molecules/tooltip/Tooltip";
 import TooltipContent from "@/components/molecules/tooltip/TooltipContent";

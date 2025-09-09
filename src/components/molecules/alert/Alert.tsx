@@ -1,11 +1,12 @@
-import { ComponentPropsWithRef, forwardRef, memo, ReactNode } from "react";
+import type { SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo, ReactNode } from "react";
 
 import iconVariantDanger from "@tabler/icons/outline/alert-circle.svg";
 import iconVariantSuccess from "@tabler/icons/outline/circle-check.svg";
 import iconVariantNormal from "@tabler/icons/outline/info-circle.svg";
 import { VariantProps } from "tailwind-variants";
-
-import type { SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import { addClassNameToProps } from "@/utils/styles";
@@ -31,25 +32,19 @@ interface Props extends ComponentPropsWithRef<"div"> {
   variant?: VariantProps<typeof alert>["variant"];
 }
 
-const Alert = forwardRef<HTMLDivElement, Props>(
-  ({ children, variant = "normal", icon, ...props }, ref) => {
-    const classes = alert({ variant });
-    const defaultIcon = ICON_MAP[variant];
+const Alert: FC<Props> = ({ children, variant = "normal", icon, ...props }) => {
+  const classes = alert({ variant });
+  const defaultIcon = ICON_MAP[variant];
 
-    return (
-      <div {...addClassNameToProps(props, classes.alert())} ref={ref} role="alert">
-        {icon !== false ? (
-          <div className={classes.icon()}>
-            {icon ?? <SvgSprite src={defaultIcon} aria-hidden />}
-          </div>
-        ) : null}
-        <div className={classes.content()}>{children}</div>
-      </div>
-    );
-  },
-);
-
-Alert.displayName = "Alert";
+  return (
+    <div {...addClassNameToProps(props, classes.alert())} role="alert">
+      {icon !== false ? (
+        <div className={classes.icon()}>{icon ?? <SvgSprite src={defaultIcon} aria-hidden />}</div>
+      ) : null}
+      <div className={classes.content()}>{children}</div>
+    </div>
+  );
+};
 
 /**
  * Alert component, with different states

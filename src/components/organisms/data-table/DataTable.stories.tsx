@@ -1,3 +1,5 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
+
 import { useMemo } from "react";
 
 import {
@@ -7,8 +9,6 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
-import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import DataTable from "./DataTable";
 import { makeData, Person } from "./DataTable.data";

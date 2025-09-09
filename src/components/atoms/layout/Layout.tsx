@@ -1,8 +1,9 @@
+import type { FC } from "react";
+
 import {
   Children,
   ComponentPropsWithRef,
   ElementType,
-  forwardRef,
   memo,
   useImperativeHandle,
   useRef,
@@ -16,8 +17,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Layout.module.css";
 
-const Heading = forwardRef<
-  HTMLElement,
+const Heading: FC<
   {
     /**
      * Tag of the element
@@ -27,7 +27,7 @@ const Heading = forwardRef<
     debug?: boolean;
     variant?: VariantProps<typeof layout>["variant"];
   } & ComponentPropsWithRef<"div">
->(({ debug, as = "div", variant, children, ...props }, ref) => {
+> = ({ debug, as = "div", variant, children, ref, ...props }) => {
   const Element = as;
   const showDebug = process.env.NODE_ENV !== "production" && debug;
   const innerRef = useRef<HTMLDivElement>(null);
@@ -60,8 +60,6 @@ const Heading = forwardRef<
       {children}
     </Element>
   );
-});
-
-Heading.displayName = "Heading";
+};
 
 export default memo(Heading);

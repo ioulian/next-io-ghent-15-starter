@@ -1,14 +1,8 @@
 "use client";
 
-import {
-  createContext,
-  Dispatch,
-  forwardRef,
-  HTMLProps,
-  memo,
-  ReactNode,
-  SetStateAction,
-} from "react";
+import type { FC } from "react";
+
+import { createContext, Dispatch, HTMLProps, memo, ReactNode, SetStateAction } from "react";
 
 import { FloatingTree, useFloatingParentNodeId } from "@floating-ui/react";
 
@@ -46,23 +40,20 @@ export interface DropdownMenuProps {
   children?: ReactNode;
 }
 
-const Dropdown = forwardRef<
-  HTMLButtonElement,
-  DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButtonElement>
->((props, ref) => {
+const Dropdown: FC<DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButtonElement>> = (
+  props,
+) => {
   const parentId = useFloatingParentNodeId();
 
   if (parentId === null) {
     return (
       <FloatingTree>
-        <DropdownMenu {...props} ref={ref} />
+        <DropdownMenu {...props} />
       </FloatingTree>
     );
   }
 
-  return <DropdownMenu {...props} ref={ref} />;
-});
-
-Dropdown.displayName = "Dropdown";
+  return <DropdownMenu {...props} />;
+};
 
 export default memo(Dropdown);

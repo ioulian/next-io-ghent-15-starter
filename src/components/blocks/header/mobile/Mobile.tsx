@@ -1,4 +1,6 @@
-import { ComponentPropsWithRef, forwardRef, memo } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo } from "react";
 
 import iconMenu from "@tabler/icons/outline/menu-2.svg";
 import { useTranslations } from "next-intl";
@@ -17,38 +19,34 @@ import logoSprite from "./../../../../../public/img/logo-sprite.svg";
 
 import styles from "./Mobile.module.css";
 
-const Mobile = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>(
-  ({ children, ...props }, ref) => {
-    const t = useTranslations("common.header");
+const Mobile: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
+  const t = useTranslations("common.header");
 
-    return (
-      <div {...addClassNameToProps(props, styles.mobile)} ref={ref}>
-        <Layout variant="oneCol">
-          <div className={styles.menu}>
-            <Link href="/" className={styles.logo}>
-              <SvgSprite src={logoSprite} />
-            </Link>
+  return (
+    <div {...addClassNameToProps(props, styles.mobile)}>
+      <Layout variant="oneCol">
+        <div className={styles.menu}>
+          <Link href="/" className={styles.logo}>
+            <SvgSprite src={logoSprite} />
+          </Link>
 
-            <div>
-              <Dialog>
-                <DialogTrigger>
-                  <Button iconOnly iconBefore={<SvgSprite src={iconMenu} />}>
-                    {t("mobile.openButton.label")}
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className={styles.dialog}>
-                  <DialogClose>{t("mobile.closeButton.label")}</DialogClose>
-                  {children}
-                </DialogContent>
-              </Dialog>
-            </div>
+          <div>
+            <Dialog>
+              <DialogTrigger>
+                <Button iconOnly iconBefore={<SvgSprite src={iconMenu} />}>
+                  {t("mobile.openButton.label")}
+                </Button>
+              </DialogTrigger>
+              <DialogContent className={styles.dialog}>
+                <DialogClose>{t("mobile.closeButton.label")}</DialogClose>
+                {children}
+              </DialogContent>
+            </Dialog>
           </div>
-        </Layout>
-      </div>
-    );
-  },
-);
-
-Mobile.displayName = "Mobile";
+        </div>
+      </Layout>
+    </div>
+  );
+};
 
 export default memo(Mobile);

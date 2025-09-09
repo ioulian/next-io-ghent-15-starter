@@ -1,6 +1,8 @@
 "use client";
 
-import { forwardRef, HTMLProps, memo, useMemo } from "react";
+import type { FC } from "react";
+
+import { HTMLProps, memo, useMemo } from "react";
 
 import { FloatingPortal, useMergeRefs, useTransitionStyles } from "@floating-ui/react";
 
@@ -9,7 +11,7 @@ import Floater from "@/components/atoms/floater/Floater";
 
 import { useTooltipContext } from "./hooks";
 
-const TooltipContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((props, propRef) => {
+const TooltipContent: FC<HTMLProps<HTMLDivElement>> = ({ ref: propRef, ...props }) => {
   const context = useTooltipContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
   const { isMounted, styles } = useTransitionStyles(context.context, {
@@ -41,8 +43,6 @@ const TooltipContent = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((pr
       />
     </FloatingPortal>
   );
-});
-
-TooltipContent.displayName = "TooltipContent";
+};
 
 export default memo(TooltipContent);

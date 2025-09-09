@@ -1,6 +1,8 @@
 "use client";
 
-import { ComponentPropsWithRef, forwardRef, memo, useCallback } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo, useCallback } from "react";
 
 import iconHardBreak from "@tabler/icons/outline/pilcrow.svg";
 import { useCurrentEditor } from "@tiptap/react";
@@ -13,40 +15,35 @@ import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
 import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
 import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
 
-const ActionHardBreak = forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
-  ({ ...props }, ref) => {
-    const { editor } = useCurrentEditor();
-    const t = useTranslations("common.richText.toolbar");
-    const action = useCallback(() => {
-      editor?.chain().focus().setHardBreak().run();
-    }, [editor]);
+const ActionHardBreak: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
+  const { editor } = useCurrentEditor();
+  const t = useTranslations("common.richText.toolbar");
+  const action = useCallback(() => {
+    editor?.chain().focus().setHardBreak().run();
+  }, [editor]);
 
-    if (!editor) {
-      return null;
-    }
+  if (!editor) {
+    return null;
+  }
 
-    return (
-      <Tooltip placement="top">
-        <TooltipTrigger>
-          <button
-            type="button"
-            {...props}
-            ref={ref}
-            onClick={action}
-            disabled={!editor.can().chain().focus().setHardBreak().run()}
-            className={button({ isActive: editor.isActive("setHardBreak") })}
-          >
-            <VisuallyHidden>{t("actions.hardBreak.text")}</VisuallyHidden>
-            <SvgSprite src={iconHardBreak} />
-          </button>
-        </TooltipTrigger>
-        <TooltipContent>{t("actions.hardBreak.tooltip")}</TooltipContent>
-      </Tooltip>
-    );
-  },
-);
-
-ActionHardBreak.displayName = "ActionHardBreak";
+  return (
+    <Tooltip placement="top">
+      <TooltipTrigger>
+        <button
+          type="button"
+          {...props}
+          onClick={action}
+          disabled={!editor.can().chain().focus().setHardBreak().run()}
+          className={button({ isActive: editor.isActive("setHardBreak") })}
+        >
+          <VisuallyHidden>{t("actions.hardBreak.text")}</VisuallyHidden>
+          <SvgSprite src={iconHardBreak} />
+        </button>
+      </TooltipTrigger>
+      <TooltipContent>{t("actions.hardBreak.tooltip")}</TooltipContent>
+    </Tooltip>
+  );
+};
 
 /**
  * HardBreak action

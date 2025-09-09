@@ -1,10 +1,10 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
+
 import Link from "next/link";
 
 import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
 import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
 import iconSettings from "@tabler/icons/outline/settings.svg";
-
-import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Tooltip from "@/components/molecules/tooltip/Tooltip";
 import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
@@ -95,7 +95,6 @@ export const NextLink: Story = {
   args: {
     variant: "primary",
     children: "Navigate to another page",
-    disabled: false,
     iconOnly: false,
     fullWidth: false,
     size: "normal",

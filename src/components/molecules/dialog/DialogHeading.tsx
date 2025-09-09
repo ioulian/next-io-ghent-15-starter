@@ -1,39 +1,36 @@
 "use client";
 
-import { cloneElement, forwardRef, HTMLProps, isValidElement, memo, useLayoutEffect } from "react";
+import type { FC } from "react";
+
+import { cloneElement, HTMLProps, isValidElement, memo, useLayoutEffect } from "react";
 
 import { useId } from "@floating-ui/react";
 
 import { useDialogContext } from "./hooks";
 
-const DialogHeading = forwardRef<HTMLHeadingElement, HTMLProps<HTMLHeadingElement>>(
-  ({ children, ...props }, ref) => {
-    const { setLabelId } = useDialogContext();
-    const id = useId();
+const DialogHeading: FC<HTMLProps<HTMLHeadingElement>> = ({ children, ...props }) => {
+  const { setLabelId } = useDialogContext();
+  const id = useId();
 
-    // Only sets `aria-labelledby` on the Dialog root element
-    // if this component is mounted inside it.
-    useLayoutEffect(() => {
-      setLabelId(id);
-      return () => setLabelId(undefined);
-    }, [id, setLabelId]);
+  // Only sets `aria-labelledby` on the Dialog root element
+  // if this component is mounted inside it.
+  useLayoutEffect(() => {
+    setLabelId(id);
+    return () => setLabelId(undefined);
+  }, [id, setLabelId]);
 
-    if (isValidElement<Record<string, unknown>>(children)) {
-      return cloneElement(children, {
-        ref,
-        id,
-        ...props,
-      });
-    }
+  if (isValidElement<Record<string, unknown>>(children)) {
+    return cloneElement(children, {
+      id,
+      ...props,
+    });
+  }
 
-    return (
-      <h2 {...props} ref={ref} id={id}>
-        {children}
-      </h2>
-    );
-  },
-);
-
-DialogHeading.displayName = "DialogHeading";
+  return (
+    <h2 {...props} id={id}>
+      {children}
+    </h2>
+  );
+};
 
 export default memo(DialogHeading);

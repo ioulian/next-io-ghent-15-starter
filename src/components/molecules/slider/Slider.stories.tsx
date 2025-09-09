@@ -1,6 +1,6 @@
-import { SwiperSlide } from "swiper/react";
-
 import type { Meta, StoryObj } from "@storybook/nextjs";
+
+import { SwiperSlide } from "swiper/react";
 
 import Slider from "./Slider";
 

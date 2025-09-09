@@ -1,4 +1,6 @@
-import { ComponentPropsWithRef, forwardRef, memo } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 
@@ -8,8 +10,7 @@ export type HeadingType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 // eslint-disable-next-line sonarjs/redundant-type-aliases
 export type HeadingSize = HeadingType;
 
-const Heading = forwardRef<
-  HTMLHeadingElement,
+const Heading: FC<
   {
     /**
      * Tag of the element
@@ -21,7 +22,7 @@ const Heading = forwardRef<
      */
     size?: HeadingSize;
   } & ComponentPropsWithRef<"h1">
->(({ type = "h2", size: sizeArgument, children, ...props }, ref) => {
+> = ({ type = "h2", size: sizeArgument, children, ...props }) => {
   const Element = type;
 
   // Check that size is provided when it can't be inferred from type
@@ -30,13 +31,7 @@ const Heading = forwardRef<
   }
   const size: HeadingSize = sizeArgument ?? (type as HeadingType);
 
-  return (
-    <Element {...addClassNameToProps(props, styles.heading, size)} ref={ref}>
-      {children}
-    </Element>
-  );
-});
-
-Heading.displayName = "Heading";
+  return <Element {...addClassNameToProps(props, styles.heading, size)}>{children}</Element>;
+};
 
 export default memo(Heading);

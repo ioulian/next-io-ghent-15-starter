@@ -1,6 +1,8 @@
 "use client";
 
-import { ComponentPropsWithRef, forwardRef, memo, useEffect, useState } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo, useEffect, useState } from "react";
 
 import { useMessages } from "next-intl";
 import { useWatch } from "react-hook-form";
@@ -10,10 +12,10 @@ import { addClassNameToProps } from "@/utils/styles";
 import { passwordStrength } from "./PasswordStrength.styles";
 import { validatePassword } from "./utils";
 
-const PasswordStrength = forwardRef<
-  HTMLDivElement,
-  { name: string } & ComponentPropsWithRef<"div">
->(({ name, ...props }, ref) => {
+const PasswordStrength: FC<{ name: string } & ComponentPropsWithRef<"div">> = ({
+  name,
+  ...props
+}) => {
   const messages = useMessages();
   const value = useWatch({ name });
 
@@ -35,7 +37,7 @@ const PasswordStrength = forwardRef<
   const classes = passwordStrength();
 
   return (
-    <div {...addClassNameToProps(props, classes.container())} ref={ref}>
+    <div {...addClassNameToProps(props, classes.container())}>
       <div className={classes.bar()}>
         <div data-score={score} className={classes.barInner()} />
       </div>
@@ -44,11 +46,7 @@ const PasswordStrength = forwardRef<
       </div>
     </div>
   );
-});
-
-// False positive
-// eslint-disable-next-line sonarjs/no-hardcoded-passwords
-PasswordStrength.displayName = "PasswordStrength";
+};
 
 /**
  * Password strength meter

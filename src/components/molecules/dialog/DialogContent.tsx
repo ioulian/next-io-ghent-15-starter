@@ -1,15 +1,8 @@
 "use client";
 
-import {
-  forwardRef,
-  Fragment,
-  HTMLProps,
-  memo,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import type { FC } from "react";
+
+import { Fragment, HTMLProps, memo, useCallback, useEffect, useMemo, useState } from "react";
 
 import {
   FloatingFocusManager,
@@ -32,10 +25,9 @@ import Sheet from "@/components/atoms/sheet/Sheet";
 import { overlay } from "./Dialog.styles";
 import { useDialogContext } from "./hooks";
 
-const DialogContent = forwardRef<
-  HTMLDivElement,
+const DialogContent: FC<
   { withCloseButton?: boolean; asSheet?: boolean } & HTMLProps<HTMLDivElement>
->(({ withCloseButton, asSheet = false, className, ...props }, propRef) => {
+> = ({ withCloseButton, ref: propRef, asSheet = false, className, ...props }) => {
   const t = useTranslations("common.closeButton");
   const context = useDialogContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
@@ -152,8 +144,6 @@ const DialogContent = forwardRef<
       </FloatingNode>
     </Wrapper>
   );
-});
-
-DialogContent.displayName = "DialogContent";
+};
 
 export default memo(DialogContent);

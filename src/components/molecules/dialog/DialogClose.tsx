@@ -1,32 +1,29 @@
 "use client";
 
-import { cloneElement, forwardRef, HTMLProps, isValidElement, memo, useCallback } from "react";
+import type { FC } from "react";
+
+import { cloneElement, HTMLProps, isValidElement, memo, useCallback } from "react";
 
 import { useDialogContext } from "./hooks";
 
-const DialogClose = forwardRef<HTMLButtonElement, HTMLProps<HTMLButtonElement>>(
-  ({ children, ...props }, ref) => {
-    const context = useDialogContext();
-    const onClick = useCallback(() => {
-      context.setOpen(false);
-    }, [context]);
+const DialogClose: FC<HTMLProps<HTMLButtonElement>> = ({ children, ...props }) => {
+  const context = useDialogContext();
+  const onClick = useCallback(() => {
+    context.setOpen(false);
+  }, [context]);
 
-    if (isValidElement<Record<string, unknown>>(children)) {
-      return cloneElement(children, {
-        ref,
-        onClick,
-        ...props,
-      });
-    }
+  if (isValidElement<Record<string, unknown>>(children)) {
+    return cloneElement(children, {
+      onClick,
+      ...props,
+    });
+  }
 
-    return (
-      <button onClick={onClick} {...props} type="button" ref={ref}>
-        {children}
-      </button>
-    );
-  },
-);
-
-DialogClose.displayName = "DialogClose";
+  return (
+    <button onClick={onClick} {...props} type="button">
+      {children}
+    </button>
+  );
+};
 
 export default memo(DialogClose);

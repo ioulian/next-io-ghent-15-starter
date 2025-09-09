@@ -1,6 +1,6 @@
-import { FC } from "react";
-
 import type { Meta, StoryObj } from "@storybook/nextjs";
+
+import { FC } from "react";
 
 import { getAvatarInitials } from "./utilities";
 

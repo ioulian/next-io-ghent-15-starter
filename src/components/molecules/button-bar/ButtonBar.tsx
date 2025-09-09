@@ -1,14 +1,14 @@
-import { ComponentPropsWithRef, forwardRef, memo } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./ButtonBar.module.css";
 
-const ButtonBar = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>(({ ...props }, ref) => {
-  return <div {...addClassNameToProps(props, styles.buttonBar)} ref={ref} />;
-});
-
-ButtonBar.displayName = "buttonBar";
+const ButtonBar: FC<ComponentPropsWithRef<"div">> = ({ ...props }) => {
+  return <div {...addClassNameToProps(props, styles.buttonBar)} />;
+};
 
 /**
  * Will render buttons as a bar

@@ -1,15 +1,9 @@
 "use client";
 
-import {
-  cloneElement,
-  ComponentPropsWithRef,
-  forwardRef,
-  isValidElement,
-  memo,
-  ReactNode,
-} from "react";
+import type { ElementType, FC } from "react";
 
-import { PolyForwardMemoComponent, PolyRefFunction } from "react-polymorphed";
+import { cloneElement, ComponentPropsWithRef, isValidElement, memo, ReactNode } from "react";
+
 import { VariantProps } from "tailwind-variants";
 
 import { WithRequired } from "@/types/helpers";
@@ -50,50 +44,43 @@ export type Props = {
    * Will hide children and show icons only
    */
   iconOnly?: boolean;
+
+  as?: ElementType;
 } & ComponentPropsWithRef<"a">;
 
-const polyRef = forwardRef as PolyRefFunction;
+const LinkButton: FC<WithRequired<Props, "children">> = ({
+  as: Element = "a",
+  variant,
+  size,
+  fullWidth,
+  iconOnly,
+  iconBefore,
+  iconAfter,
+  children,
+  ...props
+}) => {
+  const classes = button({ variant, size, fullWidth });
 
-const LinkButton = polyRef<"a", WithRequired<Props, "children">>(
-  (
-    {
-      as: Element = "a",
-      variant,
-      size,
-      fullWidth,
-      iconOnly,
-      iconBefore,
-      iconAfter,
-      children,
-      ...props
-    },
-    ref,
-  ) => {
-    const classes = button({ variant, size, fullWidth });
-
-    return (
-      <Element ref={ref} {...addClassNameToProps(props, classes.button(), styles.linkButton)}>
-        <span className={classes.content()}>
-          {isValidElement<Record<string, unknown>>(iconBefore) &&
-            cloneElement(iconBefore, {
-              "aria-hidden": "true",
-              className: classes.icon(),
-            })}
-          {iconOnly ? <VisuallyHidden>{children}</VisuallyHidden> : <span>{children}</span>}
-          {isValidElement<Record<string, unknown>>(iconAfter) &&
-            cloneElement(iconAfter, {
-              "aria-hidden": "true",
-              className: classes.icon(),
-            })}
-        </span>
-      </Element>
-    );
-  },
-);
-
-LinkButton.displayName = "LinkButton";
+  return (
+    <Element {...addClassNameToProps(props, classes.button(), styles.linkButton)}>
+      <span className={classes.content()}>
+        {isValidElement<Record<string, unknown>>(iconBefore) &&
+          cloneElement(iconBefore, {
+            "aria-hidden": "true",
+            className: classes.icon(),
+          })}
+        {iconOnly ? <VisuallyHidden>{children}</VisuallyHidden> : <span>{children}</span>}
+        {isValidElement<Record<string, unknown>>(iconAfter) &&
+          cloneElement(iconAfter, {
+            "aria-hidden": "true",
+            className: classes.icon(),
+          })}
+      </span>
+    </Element>
+  );
+};
 
 /**
  * LinkButton component
  */
-export default memo(LinkButton) as PolyForwardMemoComponent<"a", Props>;
+export default memo(LinkButton);

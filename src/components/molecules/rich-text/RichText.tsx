@@ -1,6 +1,8 @@
 "use client";
 
-import { forwardRef, memo, useCallback, useEffect, useRef, useState } from "react";
+import type { FC, Ref } from "react";
+
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
@@ -16,10 +18,9 @@ import RichTextToolbar from "./rich-text-toolbar/RichTextToolbar";
 
 import richTextStyles from "./RichText.module.css";
 
-const RichText = forwardRef<
-  HTMLDivElement,
-  Omit<EditorProviderProps, "children"> & { isError?: boolean }
->(({ isError, ...props }, ref) => {
+const RichText: FC<
+  { isError?: boolean } & Omit<EditorProviderProps, "children"> & { ref: Ref<HTMLDivElement> }
+> = ({ isError, ref, ...props }) => {
   const editorRef = useRef<Editor | null>(null);
   const [extensions] = useState(() => [StarterKit, Subscript, Superscript, Underline]);
   const [editorProps] = useState(() => ({
@@ -52,9 +53,7 @@ const RichText = forwardRef<
       />
     </div>
   );
-});
-
-RichText.displayName = "RichText";
+};
 
 /**
  * Rich text editor component

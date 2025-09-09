@@ -1,4 +1,6 @@
-import { ComponentPropsWithRef, forwardRef, memo } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo } from "react";
 
 import { useTranslations } from "next-intl";
 
@@ -7,8 +9,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Select.module.css";
 
-const Select = forwardRef<
-  HTMLSelectElement,
+const Select: FC<
   {
     /**
      * Add empty option as first item
@@ -16,11 +17,11 @@ const Select = forwardRef<
     addEmptyOption?: boolean | string;
     isError?: boolean;
   } & ComponentPropsWithRef<"select">
->(({ addEmptyOption = false, children, isError, ...props }, ref) => {
+> = ({ addEmptyOption = false, children, isError, ...props }) => {
   const t = useTranslations("common.form");
 
   return (
-    <select {...addClassNameToProps(props, baseInput({ isError }), styles.select)} ref={ref}>
+    <select {...addClassNameToProps(props, baseInput({ isError }), styles.select)}>
       {addEmptyOption ? (
         <>
           <option value="">
@@ -32,9 +33,7 @@ const Select = forwardRef<
       {children}
     </select>
   );
-});
-
-Select.displayName = "Select";
+};
 
 /**
  * Select field

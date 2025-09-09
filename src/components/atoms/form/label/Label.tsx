@@ -1,15 +1,16 @@
+import type { ElementType, FC } from "react";
+
 import { ComponentPropsWithRef, memo } from "react";
 
 import { useTranslations } from "next-intl";
-import { PolymorphicComponent } from "react-polymorphed";
 
 import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Label.module.css";
 
-const Label: PolymorphicComponent<
-  "label",
+const Label: FC<
   {
+    as?: ElementType;
     required?: boolean;
   } & ComponentPropsWithRef<"label">
 > = ({ required, as: Component = "label", children, ...props }) => {

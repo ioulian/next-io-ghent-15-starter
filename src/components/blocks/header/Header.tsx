@@ -1,4 +1,6 @@
-import { ComponentPropsWithRef, forwardRef, memo, ReactNode, useMemo } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo, ReactNode, useMemo } from "react";
 
 import { WithRequired } from "@/types/helpers";
 
@@ -13,13 +15,12 @@ import Mobile from "./mobile/Mobile";
 import stylesStickyShadow from "./../../utils/sticky-shadow/StickyShadow.module.css";
 import styles from "./Header.module.css";
 
-const Header = forwardRef<
-  HTMLElement,
+const Header: FC<
   { topMenu?: ReactNode; actions?: ReactNode } & WithRequired<
     ComponentPropsWithRef<"header">,
     "children"
   >
->(({ topMenu, actions, children, ...props }, ref) => {
+> = ({ topMenu, actions, children, ...props }) => {
   const headerStyle = useMemo(
     () => ({
       "--sticky-shadow": createSmoothShadow(presetDefault),
@@ -38,7 +39,6 @@ const Header = forwardRef<
     <header
       {...addClassNameToProps(props, styles.header, stylesStickyShadow.stickyShadow)}
       style={headerStyle}
-      ref={ref}
     >
       <HeaderContext value={contextValue}>
         <Desktop className={styles.desktop}>{children}</Desktop>
@@ -46,8 +46,6 @@ const Header = forwardRef<
       </HeaderContext>
     </header>
   );
-});
-
-Header.displayName = "Header";
+};
 
 export default memo(Header);

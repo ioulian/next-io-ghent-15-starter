@@ -1,6 +1,8 @@
 "use client";
 
-import { ComponentPropsWithRef, forwardRef, memo, useEffect, useState } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo, useEffect, useState } from "react";
 
 import { FloatingDelayGroup } from "@floating-ui/react";
 import { useCurrentEditor } from "@tiptap/react";
@@ -21,46 +23,42 @@ import ActionUnderline from "./ActionUnderline";
 
 import styles from "./RichTextToolbar.module.css";
 
-const RichTextToolbar = forwardRef<HTMLDivElement, ComponentPropsWithRef<"div">>(
-  ({ ...props }, ref) => {
-    const { editor } = useCurrentEditor();
-    const [delay] = useState(() => ({ open: 1000, close: 200 }));
+const RichTextToolbar: FC<ComponentPropsWithRef<"div">> = ({ ...props }) => {
+  const { editor } = useCurrentEditor();
+  const [delay] = useState(() => ({ open: 1000, close: 200 }));
 
-    useEffect(() => {
-      if (editor) {
-        editor.commands.blur();
-      }
-    }, [editor]);
-
-    if (!editor) {
-      return null;
+  useEffect(() => {
+    if (editor) {
+      editor.commands.blur();
     }
+  }, [editor]);
 
-    return (
-      <div {...addClassNameToProps(props, styles.toolbar)} ref={ref}>
-        <FloatingDelayGroup delay={delay}>
-          <ActionFormat />
-          <div role="separator" aria-orientation="vertical" className={styles.toolbarSeparator} />
-          <ActionBold />
-          <ActionItalic />
-          <ActionStrike />
-          <ActionUnderline />
-          <ActionSubscript />
-          <ActionSuperscript />
-          <div role="separator" aria-orientation="vertical" className={styles.toolbarSeparator} />
-          <ActionHardBreak />
-          <div role="separator" aria-orientation="vertical" className={styles.toolbarSeparator} />
-          <ActionBulletlist />
-          <ActionOrderedList />
-          <div role="separator" aria-orientation="vertical" className={styles.toolbarSeparator} />
-          <ActionHorizontalRule />
-        </FloatingDelayGroup>
-      </div>
-    );
-  },
-);
+  if (!editor) {
+    return null;
+  }
 
-RichTextToolbar.displayName = "RichTextToolbar";
+  return (
+    <div {...addClassNameToProps(props, styles.toolbar)}>
+      <FloatingDelayGroup delay={delay}>
+        <ActionFormat />
+        <div role="separator" aria-orientation="vertical" className={styles.toolbarSeparator} />
+        <ActionBold />
+        <ActionItalic />
+        <ActionStrike />
+        <ActionUnderline />
+        <ActionSubscript />
+        <ActionSuperscript />
+        <div role="separator" aria-orientation="vertical" className={styles.toolbarSeparator} />
+        <ActionHardBreak />
+        <div role="separator" aria-orientation="vertical" className={styles.toolbarSeparator} />
+        <ActionBulletlist />
+        <ActionOrderedList />
+        <div role="separator" aria-orientation="vertical" className={styles.toolbarSeparator} />
+        <ActionHorizontalRule />
+      </FloatingDelayGroup>
+    </div>
+  );
+};
 
 /**
  * Toolbar for RichTextEditor

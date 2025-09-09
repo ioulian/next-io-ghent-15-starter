@@ -1,4 +1,6 @@
-import { ComponentPropsWithRef, forwardRef, memo, ReactNode } from "react";
+import type { FC } from "react";
+
+import { ComponentPropsWithRef, memo, ReactNode } from "react";
 
 import { useTranslations } from "next-intl";
 
@@ -9,15 +11,14 @@ import Layout from "../../atoms/layout/Layout";
 
 import styles from "./Footer.module.css";
 
-const Footer = forwardRef<
-  HTMLDivElement,
+const Footer: FC<
   { showCreatedBy?: boolean; metaNav: ReactNode; siteName: string } & ComponentPropsWithRef<"div">
->(({ showCreatedBy, metaNav, siteName, children, ...props }, ref) => {
+> = ({ showCreatedBy, metaNav, siteName, children, ...props }) => {
   const t = useTranslations("common.footer");
   const year = new Date().getFullYear();
 
   return (
-    <footer {...addClassNameToProps(props, styles.footer)} ref={ref}>
+    <footer {...addClassNameToProps(props, styles.footer)}>
       <Layout>
         <Text>{children}</Text>
       </Layout>
@@ -34,8 +35,6 @@ const Footer = forwardRef<
       </div>
     </footer>
   );
-});
-
-Footer.displayName = "Footer";
+};
 
 export default memo(Footer);

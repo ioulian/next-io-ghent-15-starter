@@ -1,7 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
+
 import { action } from "storybook/actions";
 import { expect, userEvent, within } from "storybook/test";
-
-import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import { wait } from "@/utils/promises";

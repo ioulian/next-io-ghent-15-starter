@@ -1,6 +1,6 @@
-import iconSample2 from "@tabler/icons/outline/arrow-right-circle.svg";
-
 import type { Meta, StoryObj } from "@storybook/nextjs";
+
+import iconSample2 from "@tabler/icons/outline/arrow-right-circle.svg";
 
 import iconSample from "./../../../../public/img/logo-sprite.svg";
 import SvgSprite from "./SvgSprite";

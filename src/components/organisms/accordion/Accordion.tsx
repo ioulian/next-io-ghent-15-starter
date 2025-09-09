@@ -1,10 +1,11 @@
 "use client";
 
+import type { FC } from "react";
+
 import {
   Children,
   cloneElement,
   ComponentPropsWithRef,
-  forwardRef,
   isValidElement,
   memo,
   ReactElement,
@@ -15,8 +16,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Accordion.module.css";
 
-const Accordion = forwardRef<
-  HTMLDivElement,
+const Accordion: FC<
   {
     /**
      * Name to pass to children
@@ -25,12 +25,12 @@ const Accordion = forwardRef<
 
     children: ReactElement<{ name?: string }>[];
   } & Omit<ComponentPropsWithRef<"div">, "children">
->(({ name, children, ...props }, ref) => {
+> = ({ name, children, ...props }) => {
   const id = useId();
   const finalName = typeof name === "string" ? name : id;
 
   return (
-    <div {...addClassNameToProps(props, styles.accordion)} ref={ref}>
+    <div {...addClassNameToProps(props, styles.accordion)}>
       {Children.map(children, (child) =>
         isValidElement(child)
           ? cloneElement(child, {
@@ -41,8 +41,6 @@ const Accordion = forwardRef<
       )}
     </div>
   );
-});
-
-Accordion.displayName = "Accordion";
+};
 
 export default memo(Accordion);

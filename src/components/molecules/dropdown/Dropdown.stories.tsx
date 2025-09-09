@@ -1,10 +1,10 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
+
 import { useState } from "react";
 
 import iconChevron from "@tabler/icons/outline/chevron-right.svg";
 import { action } from "storybook/actions";
 import { expect, screen, userEvent, within } from "storybook/test";
-
-import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import Button from "@/components/atoms/button/Button";
