@@ -23,6 +23,7 @@ const withBundleAnalyzer = createBundleAnalyzer({
 const customBuildId = crypto.randomBytes(16).toString("hex");
 
 const nextConfig: NextConfig = {
+  typedRoutes: true,
   poweredByHeader: false,
   // If commit hooks are enabled, you can uncomment these lines, making builds faster
   eslint: {
