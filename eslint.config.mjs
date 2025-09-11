@@ -4,6 +4,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 
 import { FlatCompat } from "@eslint/eslintrc";
+import * as moduleReplacements from "eslint-plugin-depend";
 import i18next from "eslint-plugin-i18next";
 import reactYouMightNotNeedAnEffect from "eslint-plugin-react-you-might-not-need-an-effect";
 import sonarjs from "eslint-plugin-sonarjs";
@@ -102,6 +103,15 @@ const eslintConfig = [
   {
     // Inside your .eslintignore file
     ignores: ["!.storybook"],
+  },
+
+  // Suggest lighter alternatives for heavy dependencies
+  moduleReplacements.configs["flat/recommended"],
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    plugins: {
+      moduleReplacements,
+    },
   },
 ];
 

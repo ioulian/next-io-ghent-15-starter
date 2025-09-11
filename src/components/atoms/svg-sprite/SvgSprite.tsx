@@ -1,7 +1,6 @@
 import { FC, HTMLProps, memo, useId } from "react";
 
 import { SvgSymbolImport } from "@jebka/webpack-svg-sprite-loader";
-import omit from "lodash/omit";
 
 export type SvgSpirteSrc = SvgSymbolImport & { checksum: string };
 const KEY_MAPPING: Record<string, string> = {
@@ -31,10 +30,9 @@ const SvgSprite: FC<
 
   const titleId = useId();
 
-  const attributes = Object.entries(omit(src.attributes, ["width", "height", "xml:space"])).reduce(
-    (all, [key, value]) => ({ ...all, [KEY_MAPPING[key] ?? key]: value }),
-    {},
-  );
+  const attributes = Object.entries(src.attributes)
+    .filter(([key]) => !["width", "height", "xml:space"].includes(key))
+    .reduce((all, [key, value]) => ({ ...all, [KEY_MAPPING[key] ?? key]: value }), {});
 
   // This is needed as chrome (and maybe others) caches this very hard, hard refresh does not work,
   // You need to open a new tab to refresh this. However, using cache busting works.

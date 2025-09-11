@@ -1,10 +1,8 @@
 import { Metadata, ResolvedMetadata, ResolvingMetadata } from "next";
 
-import isEmpty from "lodash/isEmpty";
-import isNil from "lodash/isNil";
-import isObject from "lodash/isObject";
-import merge from "lodash/merge";
-import omitBy from "lodash/omitBy";
+import { merge } from "ts-deepmerge";
+
+import { isEmpty, isNil, isObject, omitBy } from "@/utils/data";
 
 /**
  * Helper function to resolve AND sanitize parent metadata
@@ -21,7 +19,7 @@ export const generateSanitizedMetadata = <T extends Record<string, unknown>>(
 
     // Merge new ones with the old ones
     return merge(
-      omitBy(parentMetadata, (value): boolean => {
+      omitBy(parentMetadata as unknown as Record<string, unknown>, (value): boolean => {
         return (
           isNil(value) ||
           // Empty objects

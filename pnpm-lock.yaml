@@ -73,9 +73,6 @@ importers:
       flattie:
         specifier: 1.1.1
         version: 1.1.1
-      lodash:
-        specifier: 4.17.21
-        version: 4.17.21
       next:
         specifier: 15.5.3
         version: 15.5.3(@babel/core@7.28.4)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -167,9 +164,6 @@ importers:
       "@testing-library/react":
         specifier: 16.3.0
         version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.1.9(@types/react@19.1.12))(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      "@types/lodash":
-        specifier: 4.17.20
-        version: 4.17.20
       "@types/node":
         specifier: 24.3.1
         version: 24.3.1
@@ -197,6 +191,9 @@ importers:
       eslint-config-next:
         specifier: 15.5.3
         version: 15.5.3(eslint@9.35.0(jiti@2.5.1))(typescript@5.9.2)
+      eslint-plugin-depend:
+        specifier: 1.2.0
+        version: 1.2.0
       eslint-plugin-i18next:
         specifier: 6.1.3
         version: 6.1.3
@@ -4406,12 +4403,6 @@ packages:
         integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==,
       }
 
-  "@types/lodash@4.17.20":
-    resolution:
-      {
-        integrity: sha512-H3MHACvFUEiujabxhaI/ImO6gUrd8oOurg7LQtS7mbwIXA/cUqWrvBsaeJ23aZEPk1TAYkurjfMbSELfoCXlGA==,
-      }
-
   "@types/markdown-it@14.1.2":
     resolution:
       {
@@ -7071,6 +7062,12 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
+  eslint-plugin-depend@1.2.0:
+    resolution:
+      {
+        integrity: sha512-nbG8AOTYk43kM/SLCFLNW8tvAssF3rrvE5W5dWLP9/joNdAvzJLMuTEx9GIahoRYVTFCQYLejg2tll0USSvFHg==,
+      }
+
   eslint-plugin-i18next@6.1.3:
     resolution:
       {
@@ -7410,6 +7407,12 @@ packages:
     resolution:
       {
         integrity: sha512-p5161BqbuCaSnB8jIbzQHOlpgsPmK5rJVDfDKO91Axs5NC1uu3HRQm6wt9cd9/+GtQQIO53JdGXXoyDpTAsgYA==,
+      }
+
+  fd-package-json@1.2.0:
+    resolution:
+      {
+        integrity: sha512-45LSPmWf+gC5tdCQMNH4s9Sr00bIkiD9aN7dc5hqkrEw1geRYyDQS1v1oMHAW3ysfxfndqGsrDREHHjNNbKUfA==,
       }
 
   fd-package-json@2.0.0:
@@ -9560,6 +9563,12 @@ packages:
         integrity: sha512-IXnMcJ6ZyTuhRmJSjzvHSRhlVPiN9Jwc6e59V0bEJ0ba6OBeX2L0E+mRN1QseeOF4mM+F1Rit6Nh7o+rl2Yn/A==,
       }
     engines: { node: ">0.9" }
+
+  module-replacements@2.9.0:
+    resolution:
+      {
+        integrity: sha512-Huqvn/LX14pkuMroDdYNzqSpFbyIneAZX+/y9qaVr3++Eo/CTm/PZKhLbwwJCPaZDL/ia/xSV492N2jPNuvfcQ==,
+      }
 
   mri@1.2.0:
     resolution:
@@ -13079,6 +13088,12 @@ packages:
       }
     engines: { node: 8.* || >= 10.* }
 
+  walk-up-path@3.0.1:
+    resolution:
+      {
+        integrity: sha512-9YlCL/ynK3CTlrSRrDxZvUauLzAswPCrsaCgilqFevUYpeEW0/3ScEjaa3kbW/T0ghhkEr7mv+fpjqn1Y1YuTA==,
+      }
+
   walk-up-path@4.0.0:
     resolution:
       {
@@ -16360,8 +16375,6 @@ snapshots:
 
   "@types/linkify-it@5.0.0": {}
 
-  "@types/lodash@4.17.20": {}
-
   "@types/markdown-it@14.1.2":
     dependencies:
       "@types/linkify-it": 5.0.0
@@ -18141,6 +18154,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  eslint-plugin-depend@1.2.0:
+    dependencies:
+      fd-package-json: 1.2.0
+      module-replacements: 2.9.0
+      semver: 7.7.2
+
   eslint-plugin-i18next@6.1.3:
     dependencies:
       lodash: 4.17.21
@@ -18422,6 +18441,10 @@ snapshots:
   fb-watchman@2.0.2:
     dependencies:
       bser: 2.1.1
+
+  fd-package-json@1.2.0:
+    dependencies:
+      walk-up-path: 3.0.1
 
   fd-package-json@2.0.0:
     dependencies:
@@ -19936,6 +19959,8 @@ snapshots:
   mkdirp@1.0.4: {}
 
   mktemp@0.4.0: {}
+
+  module-replacements@2.9.0: {}
 
   mri@1.2.0: {}
 
@@ -22381,6 +22406,8 @@ snapshots:
       ensure-posix-path: 1.1.1
       matcher-collection: 2.0.1
       minimatch: 3.1.2
+
+  walk-up-path@3.0.1: {}
 
   walk-up-path@4.0.0: {}
 

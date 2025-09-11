@@ -1,6 +1,5 @@
 import { ComponentPropsWithRef, FC, memo, useMemo } from "react";
 
-import merge from "lodash/merge";
 import { VariantProps } from "tailwind-variants";
 
 import { addClassNameToProps } from "@/utils/styles";
@@ -39,10 +38,10 @@ const Spinner: FC<
   ...props
 }) => {
   const spinnerStyle = useMemo(
-    () =>
-      merge(style ?? {}, {
-        [backgroundColorVar]: backgroundColor,
-      }),
+    () => ({
+      ...(style ?? {}),
+      [backgroundColorVar]: backgroundColor,
+    }),
     [backgroundColor, style],
   );
   const spinnerElementStyle = useMemo(
