@@ -1,6 +1,6 @@
 "use client";
 
-import type { ElementType, FC } from "react";
+import type { ElementType } from "react";
 
 import { cloneElement, ComponentPropsWithRef, isValidElement, memo, ReactNode } from "react";
 
@@ -14,7 +14,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./LinkButton.module.css";
 
-export type Props = {
+export type Props<C extends ElementType> = {
   /**
    * Variant of the button
    */
@@ -45,10 +45,10 @@ export type Props = {
    */
   iconOnly?: boolean;
 
-  as?: ElementType;
-} & ComponentPropsWithRef<"a">;
+  as?: C;
+} & ComponentPropsWithRef<C>;
 
-const LinkButton: FC<WithRequired<Props, "children">> = ({
+const LinkButton = <C extends React.ElementType = "a">({
   as: Element = "a",
   variant,
   size,
@@ -58,7 +58,7 @@ const LinkButton: FC<WithRequired<Props, "children">> = ({
   iconAfter,
   children,
   ...props
-}) => {
+}: WithRequired<Props<C>, "children">) => {
   const classes = button({ variant, size, fullWidth });
 
   return (
