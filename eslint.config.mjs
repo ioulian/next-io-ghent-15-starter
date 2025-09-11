@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 import * as moduleReplacements from "eslint-plugin-depend";
 import i18next from "eslint-plugin-i18next";
+import jsxA11yX from "eslint-plugin-jsx-a11y-x";
 import reactYouMightNotNeedAnEffect from "eslint-plugin-react-you-might-not-need-an-effect";
 import sonarjs from "eslint-plugin-sonarjs";
 import storybook from "eslint-plugin-storybook";
@@ -111,6 +112,21 @@ const eslintConfig = [
     files: ["**/*.ts", "**/*.tsx"],
     plugins: {
       moduleReplacements,
+    },
+  },
+
+  // jsx-a11y-x
+  {
+    files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+    plugins: {
+      "jsx-a11y-x": jsxA11yX,
+    },
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
   },
 ];
