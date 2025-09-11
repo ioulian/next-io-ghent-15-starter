@@ -1,12 +1,13 @@
-import { ReactNode } from "react";
+import type { LocaleType } from "@/i18n/types";
+
 import { Metadata, Viewport } from "next";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
-import { LocaleType } from "@/i18n/types";
 import { getNonce } from "@/utils/csp";
 
 import Providers from "./_components/Providers";
@@ -14,10 +15,6 @@ import { htmlFontClass } from "./_styles/fonts";
 import { getCss, getVariable } from "./_styles/variables";
 
 import "./_styles/globals.css";
-
-import dynamic from "next/dynamic";
-
-type Params = Promise<{ locale: LocaleType }>;
 
 export function generateViewport(): Viewport {
   return {
@@ -27,9 +24,15 @@ export function generateViewport(): Viewport {
   };
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: Omit<LayoutProps<"/[locale]">, "children">): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "app.defaultMeta" });
+  const t = await getTranslations({ locale: locale as LocaleType, namespace: "app.defaultMeta" });
 
   return {
     title: {
@@ -49,13 +52,7 @@ if (
   ReactScan = dynamic(() => import("./_components/ReactScan"));
 }
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: ReactNode;
-  params: Params;
-}) {
+export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {
   const { locale } = await params;
 
   // Ensure that the incoming `locale` is valid

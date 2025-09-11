@@ -1,29 +1,28 @@
+import type { LocaleType } from "@/i18n/types";
+
 import { NextPage } from "next";
 
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
-import { LocaleType } from "@/i18n/types";
 import { generateSanitizedMetadata } from "@/utils/next";
 
 import sampleSvgSprite from "./../../../public/img/logo-sprite.svg";
 
-type Props = Readonly<{
-  params: Promise<{ locale: LocaleType }>;
-}>;
+export const generateMetadata = generateSanitizedMetadata<Omit<PageProps<"/[locale]">, "children">>(
+  async ({ params }) => {
+    const { locale } = await params;
+    const t = await getTranslations({ locale: locale as LocaleType, namespace: "pages.home.meta" });
 
-export const generateMetadata = generateSanitizedMetadata<Props>(async ({ params }) => {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pages.home.meta" });
+    return {
+      title: t("title"),
+      description: t("description"),
+    };
+  },
+);
 
-  return {
-    title: t("title"),
-    description: t("description"),
-  };
-});
-
-const Page: NextPage<Props> = ({}) => {
+const Page: NextPage<PageProps<"/[locale]">> = ({}) => {
   const t = useTranslations("pages");
 
   return (
