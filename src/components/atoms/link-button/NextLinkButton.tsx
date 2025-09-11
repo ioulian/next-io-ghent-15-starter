@@ -2,8 +2,8 @@
 
 import { FC, memo, useCallback, useState } from "react";
 
-import type { Props as LBProps } from "./LinkButton";
 import { WithRequired } from "@/types/helpers";
+import type { Props as LBProps } from "./LinkButton";
 
 import { Link as LocalizedLink } from "@/i18n/navigation";
 
