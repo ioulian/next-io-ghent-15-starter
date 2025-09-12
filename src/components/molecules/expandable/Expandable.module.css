@@ -5,8 +5,8 @@
       &::details-content {
         height: 0;
         transition:
-          height var(--duration-slow),
-          content-visibility var(--duration-slow) allow-discrete;
+          height var(--duration-normal),
+          content-visibility var(--duration-normal) allow-discrete;
         overflow: clip;
       }
     }

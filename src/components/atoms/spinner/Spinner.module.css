@@ -33,7 +33,7 @@
     border-bottom-color: var(--spinner-secondary-color);
     border-left-color: var(--spinner-secondary-color);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 750ms linear infinite;
     width: 16px;
     height: 16px;
   }

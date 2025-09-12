@@ -11,6 +11,25 @@
       overflow-y: hidden;
       padding: 5px;
       margin: -5px -5px 1rem -5px;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 5px;
+        transition:
+          top var(--duration-normal) ease,
+          left var(--duration-normal) ease,
+          width var(--duration-normal) ease;
+        background-color: var(--color-primary-500);
+        position-anchor: --selected;
+        top: anchor(bottom);
+        left: anchor(left);
+        width: anchor-size(--selected width);
+        z-index: 1;
+      }
 
       > li {
         position: relative;
@@ -20,6 +39,14 @@
         margin-bottom: -1px;
         transition: color var(--duration-fast);
         outline-offset: 4px;
+
+        > span {
+          position: relative;
+          z-index: 1;
+          padding-bottom: 0.75rem;
+          display: block;
+          white-space: nowrap;
+        }
 
         &::after {
           content: "";
@@ -34,7 +61,6 @@
           transition:
             transform var(--duration-fast),
             background-color var(--duration-fast);
-          z-index: 1;
         }
 
         &:hover,
@@ -45,21 +71,9 @@
           }
         }
 
-        > span {
-          position: relative;
-          z-index: 1;
-          padding-bottom: 0.75rem;
-          display: block;
-          white-space: nowrap;
-        }
-
         &[aria-selected="true"] {
           color: var(--color-primary-500);
-
-          &::after {
-            transform: scaleY(3);
-            background-color: var(--color-primary-500);
-          }
+          anchor-name: --selected;
         }
 
         &[aria-disabled="true"] {

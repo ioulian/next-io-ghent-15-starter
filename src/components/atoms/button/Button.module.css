@@ -23,6 +23,14 @@
     }
   }
 
+  .pressAnimation {
+    transition: transform var(--duration-fast);
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
   .buttonPrimary {
     color: var(--color-white);
     background-color: var(--color-primary-500);

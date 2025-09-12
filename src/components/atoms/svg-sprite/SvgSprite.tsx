@@ -30,7 +30,7 @@ const SvgSprite: FC<
 
   const titleId = useId();
 
-  const attributes = Object.entries(src.attributes)
+  const attributes = Object.entries(src.attributes ?? {})
     .filter(([key]) => !["width", "height", "xml:space"].includes(key))
     .reduce((all, [key, value]) => ({ ...all, [KEY_MAPPING[key] ?? key]: value }), {});
 
