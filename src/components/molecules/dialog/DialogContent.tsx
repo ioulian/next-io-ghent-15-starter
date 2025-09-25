@@ -20,6 +20,10 @@ import { useTranslations } from "next-intl";
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import CloseButton from "@/components/atoms/close-button/CloseButton";
 import Floater from "@/components/atoms/floater/Floater";
+import {
+  dialogAnimation,
+  sheetSlideAnimation,
+} from "@/components/atoms/floater/Floater.animations";
 import Sheet from "@/components/atoms/sheet/Sheet";
 
 import { overlay } from "./Dialog.styles";
@@ -32,41 +36,9 @@ const DialogContent: FC<
   const context = useDialogContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
   const parentId = useFloatingParentNodeId();
-  const { isMounted, styles } = useTransitionStyles(context.context, {
-    duration: {
-      open: getVariableAsNumber("duration.normal"),
-      close: getVariableAsNumber("duration.fast"),
-    },
-  });
+  const { isMounted, styles } = useTransitionStyles(context.context, dialogAnimation);
 
-  const { styles: stylesSheet } = useTransitionStyles(context.context, {
-    duration: {
-      open: getVariableAsNumber("duration.normal"),
-      close: getVariableAsNumber("duration.fast"),
-    },
-    initial: ({ side }) => {
-      let transform: string | undefined;
-      if (side === "top") {
-        transform = "translate3d(0, -100%, 0)";
-      }
-
-      if (side === "bottom") {
-        transform = "translate3d(0, 100%, 0)";
-      }
-
-      if (side === "left") {
-        transform = "translate3d(-100%, 0, 0)";
-      }
-
-      if (side === "right") {
-        transform = "translate3d(100%, 0, 0)";
-      }
-
-      return {
-        transform,
-      };
-    },
-  });
+  const { styles: stylesSheet } = useTransitionStyles(context.context, sheetSlideAnimation);
 
   const onClick = useCallback(() => {
     context.setOpen(false);

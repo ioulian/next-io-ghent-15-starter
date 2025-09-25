@@ -15,9 +15,9 @@ import {
 } from "@floating-ui/react";
 import { useTranslations } from "next-intl";
 
-import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import CloseButton from "@/components/atoms/close-button/CloseButton";
 import Floater from "@/components/atoms/floater/Floater";
+import { zoomAnimation } from "@/components/atoms/floater/Floater.animations";
 
 import { usePopoverContext } from "./hooks";
 
@@ -28,12 +28,7 @@ const PopoverContent: FC<
   const context = usePopoverContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
   const parentId = useFloatingParentNodeId();
-  const { isMounted, styles } = useTransitionStyles(context.context, {
-    duration: {
-      open: getVariableAsNumber("duration.normal"),
-      close: getVariableAsNumber("duration.fast"),
-    },
-  });
+  const { isMounted, styles } = useTransitionStyles(context.context, zoomAnimation);
   const onClick = useCallback(() => {
     context.setOpen(false);
   }, [context]);

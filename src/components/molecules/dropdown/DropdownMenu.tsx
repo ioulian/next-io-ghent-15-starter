@@ -44,6 +44,7 @@ import {
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import Floater from "@/components/atoms/floater/Floater";
+import { zoomAnimation } from "@/components/atoms/floater/Floater.animations";
 
 import { DropdownMenuProps, MenuContext, WithTypeAheadKey } from "./Dropdown";
 import DropdownTrigger from "./DropdownTrigger";
@@ -202,12 +203,7 @@ const DropdownMenu: FC<DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButt
     };
   }, [allowHover]);
 
-  const { isMounted, styles: floaterStyles } = useTransitionStyles(context, {
-    duration: {
-      open: getVariableAsNumber("duration.normal"),
-      close: getVariableAsNumber("duration.fast"),
-    },
-  });
+  const { isMounted, styles: floaterStyles } = useTransitionStyles(context, zoomAnimation);
 
   const contextValue = useMemo(
     () => ({

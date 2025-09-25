@@ -23,7 +23,6 @@
       border-radius: var(--radius-01);
       box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
       border: 1px solid var(--form-input-border);
-
       flex-direction: column;
       gap: 3px;
     }

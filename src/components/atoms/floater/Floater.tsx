@@ -36,9 +36,8 @@ const Floater: FC<
       position: strategy ?? "relative",
       // eslint-disable-next-line sonarjs/no-nested-conditional
       visibility: position ? (position.x === null ? "hidden" : "visible") : undefined,
-      ...props.style,
     }),
-    [position, props.style, strategy],
+    [position, strategy],
   );
 
   const arrowStyle = useMemo(() => {
@@ -75,10 +74,12 @@ const Floater: FC<
 
   return (
     <div {...addClassNameToProps(props, styles.floater)} style={style}>
-      {children}
-      {showArrow && arrowCallback ? (
-        <div ref={arrowCallback} className={styles.arrow} style={arrowStyle} />
-      ) : null}
+      <div className={styles.content} style={props.style}>
+        {children}
+        {showArrow && arrowCallback ? (
+          <div ref={arrowCallback} className={styles.arrow} style={arrowStyle} />
+        ) : null}
+      </div>
     </div>
   );
 };
