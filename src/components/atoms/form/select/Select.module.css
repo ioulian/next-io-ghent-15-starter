@@ -1,14 +1,75 @@
 @layer atoms {
   .select {
-    appearance: none;
+    &,
+    &::picker(select) {
+      appearance: base-select;
+    }
+
     width: 100%;
-    background-position: right 1.5rem center;
-    background-repeat: no-repeat;
-    background-size: 0.75rem;
     height: 2.75rem;
     line-height: 1.5rem;
-    padding: 9px 3rem 9px 17px;
+    padding: 9px 17px 9px 17px;
     font-size: 1rem;
-    background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='12' height='8' viewBox='0 0 12 8' fill='%233C4346' xmlns='http://www.w3.org/2000/svg'><path d='M1.41 0.59L-2.62268e-07 2L6 8L12 2L10.59 0.59L6 5.17L1.41 0.59Z' /></svg>");
+    display: flex;
+    align-items: center;
+
+    &::picker(select) {
+      padding: 3px;
+      top: 3px;
+      bottom: 3px;
+      scrollbar-width: thin;
+      color: var(--form-input-color);
+      background-color: var(--form-input-background);
+      border-radius: var(--radius-01);
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--form-input-border);
+    }
+
+    hr {
+      margin: 3px -17px;
+      width: calc(100% + 34px);
+    }
+
+    option {
+      padding: 6px 14px;
+      border-radius: var(--radius-01);
+      outline-offset: 2px;
+
+      &::checkmark {
+        display: none;
+      }
+
+      &:hover,
+      &:focus-visible {
+        background-color: var(--color-secondary-400);
+        color: var(--form-input-color);
+      }
+
+      &:checked {
+        background-color: var(--color-primary-500);
+        color: var(--color-white);
+
+        &:hover,
+        &:focus-visible {
+          background-color: var(--color-primary-600);
+        }
+      }
+    }
+
+    optgroup {
+      &::before {
+        padding: 6px;
+      }
+    }
+
+    &::picker-icon {
+      background-image: url("data:image/svg+xml;charset=UTF-8,<svg width='12' height='8' viewBox='0 0 12 8' fill='%233C4346' xmlns='http://www.w3.org/2000/svg'><path d='M1.41 0.59L-2.62268e-07 2L6 8L12 2L10.59 0.59L6 5.17L1.41 0.59Z' /></svg>");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 0.75rem;
+      width: 0.75rem;
+      height: 0.75rem;
+      content: "";
+    }
   }
 }
