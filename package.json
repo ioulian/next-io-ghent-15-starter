@@ -30,7 +30,7 @@
   },
   "engines": {
     "node": "^22.0.0",
-    "pnpm": "^10.0.0"
+    "pnpm": "^10.16.0"
   },
   "dependencies": {
     "@bprogress/next": "3.2.12",
