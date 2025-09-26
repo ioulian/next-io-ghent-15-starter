@@ -30,6 +30,7 @@ export const zoomAnimation = {
       transform: `scale(0.96) ${translate}`,
       opacity: 0,
       transformOrigin,
+      transitionTimingFunction: "var(--easing-swift-in)",
     };
   },
   duration: {
@@ -39,6 +40,14 @@ export const zoomAnimation = {
 } as const;
 
 export const dialogAnimation = {
+  initial: { transform: "scale(0.96)" },
+  duration: {
+    open: getVariableAsNumber("duration.normal"),
+    close: getVariableAsNumber("duration.fast"),
+  },
+};
+
+export const dialogOverlayAnimation = {
   duration: {
     open: getVariableAsNumber("duration.normal"),
     close: getVariableAsNumber("duration.fast"),
@@ -70,6 +79,7 @@ export const sheetSlideAnimation = {
 
     return {
       transform,
+      transitionTimingFunction: "var(--easing-swift-in)",
     };
   },
 };

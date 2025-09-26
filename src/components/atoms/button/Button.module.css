@@ -25,6 +25,7 @@
 
   .pressAnimation {
     transition: transform var(--duration-fast);
+    transition-timing-function: var(--easing-swift-out);
 
     &:active {
       transform: scale(0.98);

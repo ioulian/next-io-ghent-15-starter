@@ -22,6 +22,7 @@ import CloseButton from "@/components/atoms/close-button/CloseButton";
 import Floater from "@/components/atoms/floater/Floater";
 import {
   dialogAnimation,
+  dialogOverlayAnimation,
   sheetSlideAnimation,
 } from "@/components/atoms/floater/Floater.animations";
 import Sheet from "@/components/atoms/sheet/Sheet";
@@ -37,6 +38,7 @@ const DialogContent: FC<
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
   const parentId = useFloatingParentNodeId();
   const { isMounted, styles } = useTransitionStyles(context.context, dialogAnimation);
+  const { styles: overlayStyles } = useTransitionStyles(context.context, dialogOverlayAnimation);
 
   const { styles: stylesSheet } = useTransitionStyles(context.context, sheetSlideAnimation);
 
@@ -45,8 +47,8 @@ const DialogContent: FC<
   }, [context]);
 
   const style = useMemo(
-    () => ({ ...styles, overflow: asSheet ? "hidden" : "auto" }),
-    [styles, asSheet],
+    () => ({ ...overlayStyles, overflow: asSheet ? "hidden" : "auto" }),
+    [overlayStyles, asSheet],
   );
 
   // This will disable focus manager during animation thus preventing focussing items outside the viewport
@@ -103,6 +105,7 @@ const DialogContent: FC<
                   aria-labelledby={context.labelId}
                   aria-describedby={context.descriptionId}
                   {...context.getFloatingProps(props)}
+                  style={styles}
                 >
                   {props.children}
                   {withCloseButton ? (

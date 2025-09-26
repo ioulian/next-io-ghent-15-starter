@@ -20,9 +20,9 @@
         left: 0;
         height: 5px;
         transition:
-          top var(--duration-normal) ease,
-          left var(--duration-normal) ease,
-          width var(--duration-normal) ease;
+          top var(--duration-normal) var(--easing-swift-out),
+          left var(--duration-normal) var(--easing-swift-out),
+          width var(--duration-normal) var(--easing-swift-out);
         background-color: var(--color-primary-500);
         position-anchor: --selected;
         top: anchor(bottom);
@@ -59,7 +59,7 @@
           background-color: var(--color-secondary-300);
           transform-origin: bottom center;
           transition:
-            transform var(--duration-fast),
+            transform var(--duration-fast) var(--easing-swift-out),
             background-color var(--duration-fast);
         }
 

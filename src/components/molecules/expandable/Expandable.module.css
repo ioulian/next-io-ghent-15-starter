@@ -5,8 +5,8 @@
       &::details-content {
         height: 0;
         transition:
-          height var(--duration-normal),
-          content-visibility var(--duration-normal) allow-discrete;
+          height var(--duration-normal) var(--easing-swift-move),
+          content-visibility var(--duration-normal) allow-discrete var(--easing-swift-out);
         overflow: clip;
       }
     }
@@ -27,7 +27,7 @@
   .icon {
     width: 1.5rem;
     height: 1.5rem;
-    transition: transform var(--duration-normal);
+    transition: transform var(--duration-normal) var(--easing-swift-out);
   }
 
   .container {

@@ -4,6 +4,7 @@
     left: 0;
     max-width: calc(100vw - var(--floater-shift) * 2);
     z-index: var(--zIndex-floater);
+    transition-timing-function: var(--easing-swift-out);
 
     &:focus-visible {
       outline: none;
