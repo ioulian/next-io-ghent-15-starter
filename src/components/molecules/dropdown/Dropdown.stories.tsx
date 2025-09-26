@@ -31,21 +31,21 @@ const play: Story["play"] = async ({ canvasElement, step }) => {
 
   await step("Dropdown open", async () => {
     await userEvent.click(canvas.getByTestId("trigger"));
-    await wait(getVariableAsNumber("duration.normal"));
+    await wait(getVariableAsNumber("duration.normal") + 50);
     await expect(screen.getByTestId("trigger2")).toBeVisible();
 
     await userEvent.hover(screen.getByTestId("trigger2"));
-    await wait(getVariableAsNumber("duration.normal"));
+    await wait(getVariableAsNumber("duration.normal") + 50);
     await expect(screen.getByTestId("trigger3")).toBeVisible();
 
     await userEvent.hover(screen.getByTestId("trigger3"));
-    await wait(getVariableAsNumber("duration.normal"));
+    await wait(getVariableAsNumber("duration.normal") + 50);
     await expect(screen.getByTestId("trigger4")).toBeVisible();
   });
 
   await step("Dropdown close", async () => {
     await userEvent.click(screen.getByTestId("trigger4"));
-    await wait(getVariableAsNumber("duration.fast"));
+    await wait(getVariableAsNumber("duration.fast") + 50);
     await expect(screen.queryByTestId("trigger4")).toBeNull();
   });
 };
