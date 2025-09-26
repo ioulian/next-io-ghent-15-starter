@@ -23,6 +23,10 @@ It contains a lot of useful presets and common components to be used in your pro
 - Use with PNPM (preferred) or NPM;
 - Translations checks with [i18n-check](https://github.com/lingualdev/i18n-check) (Custom checks are still under scripts if needed, as they will check source files too. Custom check can be removed when https://github.com/lingualdev/i18n-check/issues/36 will be fixed)
 - Default security headers with CSP and NONCE
+- Components:
+  - Styled with vanilla css (CSS modules with postcss). Easily customizable.
+  - Components are written with performance, a11y and DX in mind. Micro animations where needed. Each component is correctly memoized so no unneccessary rerenders happen. A lot of components work with compound components, so each part of a component is customizable.
+  - Styles are managed with CVA using [tailwind-variants](https://github.com/heroui-inc/tailwind-variants). This library also supports slots for more complex components.
 
 ## Getting Started
 
