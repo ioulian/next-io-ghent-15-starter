@@ -12,22 +12,22 @@ export const button = tv({
   variants: {
     variant: {
       primary: {
-        button: [styles.buttonPrimary, styles.pressAnimation],
+        button: [styles.buttonPrimary],
       },
       secondary: {
-        button: [styles.buttonSecondary, styles.pressAnimation],
+        button: [styles.buttonSecondary],
       },
       positive: {
-        button: [styles.buttonPositive, styles.pressAnimation],
+        button: [styles.buttonPositive],
       },
       negative: {
-        button: [styles.buttonNegative, styles.pressAnimation],
+        button: [styles.buttonNegative],
       },
       outline: {
-        button: [styles.buttonOutline, styles.pressAnimation],
+        button: [styles.buttonOutline],
       },
       ghost: {
-        button: [styles.buttonGhost, styles.pressAnimation],
+        button: [styles.buttonGhost],
       },
       simple: {
         button: styles.buttonSimple,
