@@ -1,8 +1,11 @@
 @layer atoms {
   .select {
-    &,
-    &::picker(select) {
-      appearance: base-select;
+    appearance: none;
+    @supports (appearance: base-select) {
+      &,
+      &::picker(select) {
+        appearance: base-select;
+      }
     }
 
     width: 100%;
@@ -25,11 +28,19 @@
       border: 1px solid var(--form-input-border);
       flex-direction: column;
       gap: 3px;
+      transition: opacity var(--duration-fast);
+      opacity: 0;
+      overflow: clip;
     }
 
     &:open {
       &::picker(select) {
         display: flex;
+        opacity: 1;
+
+        @starting-style {
+          opacity: 0;
+        }
       }
     }
 
