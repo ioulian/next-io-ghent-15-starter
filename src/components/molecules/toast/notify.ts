@@ -1,3 +1,5 @@
+import type { ToastOptions } from "react-toastify";
+
 import { ToastContent } from "react-toastify";
 
 /**
@@ -8,17 +10,17 @@ const toastify = () => import("./toastify");
 /**
  * Shows success toast
  */
-export const success = (content: ToastContent) => {
+export const success = (content: ToastContent, options?: ToastOptions) => {
   return toastify().then((toast) => {
-    toast.success(content);
+    toast.success(content, options);
   });
 };
 
 /**
  * Shows error toast
  */
-export const error = (content: ToastContent) => {
+export const error = (content: ToastContent, options?: ToastOptions) => {
   return toastify().then((toast) => {
-    toast.error(content);
+    toast.error(content, options);
   });
 };
