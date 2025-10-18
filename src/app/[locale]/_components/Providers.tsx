@@ -15,7 +15,7 @@ const Providers: FC<PropsWithChildren<{ nonce?: string }>> = ({ children, nonce 
       shouldCompareComplexProps
       shallowRouting
       delay={LOADER_DELAY}
-      color={getVariable("color.primary.400")}
+      color={getVariable("color.blue.400")}
       nonce={nonce}
     >
       {children}

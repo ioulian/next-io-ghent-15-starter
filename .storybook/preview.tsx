@@ -5,7 +5,7 @@ import React from "react";
 import { NextIntlClientProvider } from "next-intl";
 
 import { htmlFontClass } from "@/app/[locale]/_styles/fonts";
-import { getCss } from "@/app/[locale]/_styles/variables";
+import { getCss, getThemeCss } from "@/app/[locale]/_styles/variables";
 
 import messages from "../messages/en-GB/common.json";
 
@@ -30,10 +30,11 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => {
-      document.documentElement.classList.add(...htmlFontClass.split(" "));
+      document.documentElement.classList.add(...htmlFontClass.split(" "), "theme--default");
       return (
         <>
           <style>{getCss()}</style>
+          <style>{getThemeCss()}</style>
           <NextIntlClientProvider locale="en-GB" messages={messages}>
             <Story />
           </NextIntlClientProvider>

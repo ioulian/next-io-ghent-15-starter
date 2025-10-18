@@ -24,7 +24,11 @@
   }
 
   .pressAnimation {
-    transition: transform var(--duration-fast);
+    transition:
+      transform var(--duration-fast),
+      color var(--duration-fast),
+      background-color var(--duration-fast),
+      border-color var(--duration-fast);
     transition-timing-function: var(--easing-swift-out);
 
     &:active {
@@ -33,73 +37,76 @@
   }
 
   .buttonPrimary {
-    color: var(--color-white);
-    background-color: var(--color-primary-500);
-    border-color: var(--color-primary-500);
+    color: var(--button-primary-color);
+    background-color: var(--button-primary-background);
+    border-color: var(--button-primary-border);
 
     &:hover,
     &:focus-visible {
-      background-color: var(--color-primary-400);
-      border-color: var(--color-primary-400);
+      background-color: var(--button-primary-hover-background);
+      border-color: var(--button-primary-hover-border);
+      color: var(--button-primary-hover-color);
     }
   }
 
   .buttonSecondary {
-    color: var(--color-body);
-    background-color: var(--color-secondary-500);
-    border-color: var(--color-secondary-500);
+    color: var(--button-secondary-color);
+    background-color: var(--button-secondary-background);
+    border-color: var(--button-secondary-border);
 
     &:hover,
     &:focus-visible {
-      background-color: var(--color-secondary-400);
-      border-color: var(--color-secondary-400);
-    }
-  }
-
-  .buttonPositive {
-    color: var(--color-white);
-    background-color: var(--color-positive-500);
-    border-color: var(--color-positive-500);
-
-    &:hover,
-    &:focus-visible {
-      background-color: var(--color-positive-400);
-      border-color: var(--color-positive-400);
+      background-color: var(--button-secondary-hover-background);
+      border-color: var(--button-secondary-hover-border);
+      color: var(--button-secondary-hover-color);
     }
   }
 
   .buttonNegative {
-    color: var(--color-white);
-    background-color: var(--color-negative-500);
-    border-color: var(--color-negative-500);
+    color: var(--button-negative-color);
+    background-color: var(--button-negative-background);
+    border-color: var(--button-negative-border);
 
     &:hover,
     &:focus-visible {
-      background-color: var(--color-negative-400);
-      border-color: var(--color-negative-400);
+      background-color: var(--button-negative-hover-background);
+      border-color: var(--button-negative-hover-border);
+      color: var(--button-negative-hover-color);
+    }
+  }
+
+  .buttonPositive {
+    color: var(--button-positive-color);
+    background-color: var(--button-positive-background);
+    border-color: var(--button-positive-border);
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--button-positive-hover-background);
+      border-color: var(--button-positive-hover-border);
+      color: var(--button-positive-hover-color);
     }
   }
 
   .buttonOutline {
-    color: var(--color-body);
-    background-color: transparent;
-    border-color: var(--color-secondary-500);
+    color: var(--button-outline-color);
+    border-color: var(--button-outline-border);
 
     &:hover,
     &:focus-visible {
-      background-color: var(--color-secondary-400);
-      border-color: var(--color-secondary-400);
+      background-color: var(--button-outline-hover-background);
+      border-color: var(--button-outline-hover-border);
     }
   }
 
   .buttonGhost {
-    color: var(--color-body);
+    color: var(--button-ghost-color);
     border-color: transparent;
 
     &:hover,
     &:focus-visible {
-      background-color: var(--color-secondary-400);
-      border-color: var(--color-secondary-400);
+      background-color: var(--button-ghost-hover-background);
+      border-color: var(--button-ghost-hover-border);
     }
   }
 

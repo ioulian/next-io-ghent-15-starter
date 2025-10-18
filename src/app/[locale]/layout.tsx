@@ -12,13 +12,15 @@ import { getNonce } from "@/utils/csp";
 
 import Providers from "./_components/Providers";
 import { htmlFontClass } from "./_styles/fonts";
-import { getCss, getVariable } from "./_styles/variables";
+import { getCss, getThemeCss, getVariable } from "./_styles/variables";
 
 import "./_styles/globals.css";
 
+import { clsx } from "clsx";
+
 export function generateViewport(): Viewport {
   return {
-    themeColor: getVariable("color.primary.500"),
+    themeColor: getVariable("color.blue.500"),
     initialScale: 1,
     userScalable: true,
   };
@@ -63,9 +65,10 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const nonce = await getNonce();
 
   return (
-    <html lang={locale} className={htmlFontClass}>
+    <html lang={locale} className={clsx(htmlFontClass, "theme--default")}>
       <head>
         <style nonce={nonce}>{getCss()}</style>
+        <style nonce={nonce}>{getThemeCss()}</style>
       </head>
       <ReactScan />
       <body>

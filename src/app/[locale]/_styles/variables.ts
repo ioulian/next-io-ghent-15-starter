@@ -1,12 +1,31 @@
+import { get } from "es-toolkit/compat";
 import { flattie } from "flattie";
 
 import { Leaves } from "@/types/helpers";
+
+// Utils
+
+/**
+ * Converts css variable to number only.
+ */
+export const getVariableAsNumber = (name: VariableNameType): number => {
+  return parseInt(getVariable(name).replace("px", "").replace("rem", "").replace("ms", ""), 10);
+};
+
+export const themeColors = (path: string) => {
+  const value = get(cssVariables, path);
+
+  return Object.keys(value).reduce(
+    (all, current) => ({ ...all, [current]: `var(--${path.replaceAll(".", "-")}-${current})` }),
+    {},
+  );
+};
 
 export const cssVariables = {
   color: {
     white: "#fff",
     black: "#000",
-    primary: {
+    blue: {
       "50": "#F1F4F9",
       "100": "#E2E9F3",
       "200": "#C2D0E5",
@@ -19,7 +38,7 @@ export const cssVariables = {
       "900": "#111A27",
       "950": "#111A27",
     },
-    secondary: {
+    gray: {
       "50": "#FCFCFD",
       "100": "#FAFAFA",
       "200": "#F4F5F5",
@@ -32,7 +51,7 @@ export const cssVariables = {
       "900": "#686C74",
       "950": "#4D5056",
     },
-    positive: {
+    green: {
       "50": "#F1F9F4",
       "100": "#DCEFE3",
       "200": "#B5DEC4",
@@ -45,7 +64,7 @@ export const cssVariables = {
       "900": "#173522",
       "950": "#132B1B",
     },
-    negative: {
+    red: {
       "50": "#FDF3F2",
       "100": "#FAE7E5",
       "200": "#F4CBC8",
@@ -58,9 +77,6 @@ export const cssVariables = {
       "900": "#49130E",
       "950": "#330D0A",
     },
-    body: "var(--color-secondary-950)",
-    background: "var(--color-white)",
-    overlay: "rgba(17, 26, 39, 0.7)",
   },
   duration: {
     "perceptive-instant": "85ms",
@@ -114,36 +130,11 @@ export const cssVariables = {
       padding: "10px",
     },
   },
-  form: {
-    input: {
-      color: "var(--color-body)",
-      border: "var(--color-secondary-900)",
-      background: "var(--color-secondary-50)",
-    },
-    select: {
-      indicator: "var(--color-body)",
-    },
-    asterisk: "var(--color-negative-500)",
-    outline: "var(--color-primary-600)",
-    checkbox: {
-      checked: {
-        border: "var(--color-primary-500)",
-        background: "var(--color-primary-500)",
-        color: "var(--color-white)",
-      },
-    },
-    error: "var(--color-negative-500)",
-    requiredMessage: {
-      value: "var(--form-error)",
-    },
-  },
 };
 
+// Base variables
 export type VariableNameType = Leaves<typeof cssVariables>;
-
 export const flatCssVariables: Record<VariableNameType, string> = flattie(cssVariables);
-
-export const getVariable = (name: VariableNameType): string => flatCssVariables[name];
 
 // We can also set delimiter to "-" in "flatten", but changing the type to support this syntax is more work
 export const getCss = () => `
@@ -155,10 +146,133 @@ export const getCss = () => `
   }
 }
 `;
+export const getVariable = (name: VariableNameType): string => flatCssVariables[name];
 
-/**
- * Converts css variable to number only.
- */
-export const getVariableAsNumber = (name: VariableNameType): number => {
-  return parseInt(getVariable(name).replace("px", "").replace("rem", "").replace("ms", ""), 10);
+// Theme variables (semantic variables)
+enum Theme {
+  Default = "default",
+}
+
+const themeVariables: Record<Theme, Record<string, unknown>> = {
+  default: {
+    color: {
+      body: "var(--color-gray-950)",
+      background: "var(--color-white)",
+      overlay: "rgba(17, 26, 39, 0.7)",
+      primary: themeColors("color.blue"),
+      secondary: themeColors("color.gray"),
+      positive: themeColors("color.green"),
+      negative: themeColors("color.red"),
+    },
+    button: {
+      primary: {
+        background: "var(--color-primary-500)",
+        border: "var(--color-primary-500)",
+        color: "var(--color-white)",
+        hover: {
+          background: "var(--color-primary-400)",
+          border: "var(--color-primary-400)",
+          color: "var(--color-white)",
+        },
+      },
+      secondary: {
+        background: "var(--color-secondary-500)",
+        border: "var(--color-secondary-500)",
+        color: "var(--color-body)",
+        hover: {
+          background: "var(--color-secondary-400)",
+          border: "var(--color-secondary-400)",
+          color: "var(--color-body)",
+        },
+      },
+      negative: {
+        background: "var(--color-negative-500)",
+        border: "var(--color-red-500)",
+        color: "var(--color-white)",
+        hover: {
+          background: "var(--color-negative-400)",
+          border: "var(--color-negative-400)",
+          color: "var(--color-white)",
+        },
+      },
+      positive: {
+        background: "var(--color-positive-500)",
+        border: "var(--color-positive-500)",
+        color: "var(--color-white)",
+        hover: {
+          background: "var(--color-positive-400)",
+          border: "var(--color-positive-400)",
+          color: "var(--color-white)",
+        },
+      },
+      outline: {
+        border: "var(--color-secondary-500)",
+        color: "var(--color-body)",
+        hover: {
+          border: "var(--color-secondary-400)",
+          color: "var(--color-body)",
+        },
+      },
+      ghost: {
+        color: "var(--color-body)",
+        hover: {
+          background: "var(--color-secondary-400)",
+          border: "var(--color-secondary-400)",
+        },
+      },
+    },
+    form: {
+      input: {
+        color: "var(--color-body)",
+        border: "var(--color-secondary-900)",
+        background: "var(--color-secondary-50)",
+      },
+      select: {
+        indicator: "var(--color-body)",
+      },
+      asterisk: "var(--color-negative-500)",
+      outline: "var(--color-primary-600)",
+      checkbox: {
+        checked: {
+          border: "var(--color-primary-500)",
+          background: "var(--color-primary-500)",
+          color: "var(--color-white)",
+        },
+      },
+      error: "var(--color-negative-500)",
+      requiredMessage: {
+        value: "var(--form-error)",
+      },
+    },
+  },
 };
+
+export type ThemeVariableNameType = Leaves<(typeof themeVariables)[Theme.Default]>;
+export const flatThemeVariables: Record<ThemeVariableNameType, string> = flattie(
+  themeVariables[Theme.Default],
+);
+
+export const getThemeClass = (theme: Theme) => `theme--${theme}`;
+export const getThemeCss = () => {
+  console.log(themeColors("color.blue"));
+  return `
+@layer theme {
+  ${Object.values(Theme)
+    .map(
+      (theme) => `
+    .${getThemeClass(theme)} {
+      ${Object.entries(flattie(themeVariables[theme]))
+        .map(
+          ([variable, value]) => `
+        --${variable.replaceAll(".", "-")}: ${value};
+      `,
+        )
+        .join("\n")}
+    }
+    `,
+    )
+    .join("\n")}
+}
+`;
+};
+export const getThemeVariable = (name: ThemeVariableNameType): string => flatThemeVariables[name];
