@@ -1,8 +1,7 @@
 import { Metadata, ResolvedMetadata, ResolvingMetadata } from "next";
 
+import { isEmpty, isNil, isObject, omitBy } from "es-toolkit/compat";
 import { merge } from "ts-deepmerge";
-
-import { isEmpty, isNil, isObject, omitBy } from "@/utils/data";
 
 /**
  * Helper function to resolve AND sanitize parent metadata
