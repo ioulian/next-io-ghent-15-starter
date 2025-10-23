@@ -1,4 +1,4 @@
-# next-io-ghent-15-starter kit (Next.js v15) (App router)
+# next-io-ghent-15-starter kit (Next.js v16) (App router)
 
 This is a [Next.js](https://nextjs.org/) starter kit created to be used as a template to start new projects in iO Ghent campus. The idea behind is that you can directly start on working on your project instead of setting up Next.js first.
 
