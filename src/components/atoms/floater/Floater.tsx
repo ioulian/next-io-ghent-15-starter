@@ -70,7 +70,7 @@ const Floater: FC<
         transform: rotation,
       };
     }
-  }, [arrowPosition?.x, arrowPosition?.y, placement]);
+  }, [arrowPosition, placement]);
 
   return (
     <div {...addClassNameToProps(props, styles.floater)} style={style}>

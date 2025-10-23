@@ -52,6 +52,7 @@ export const useTooltip = ({
         padding: getVariableAsNumber("floater.flip"),
       }),
       shift({ padding: getVariableAsNumber("floater.shift") }),
+      // eslint-disable-next-line react-hooks/refs
       arrow({
         element: arrowRef,
         padding: getVariableAsNumber("floater.arrow.padding"),

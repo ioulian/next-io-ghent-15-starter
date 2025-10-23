@@ -73,7 +73,6 @@ const Form = <
   // Subscribe to onChange event
   useEffect(() => {
     const subscription = watch((values) => {
-      // eslint-disable-next-line react-you-might-not-need-an-effect/no-pass-data-to-parent
       onChange?.(values);
     });
 
@@ -85,7 +84,6 @@ const Form = <
   // Show errors and set focus to first error field
   useEffect(() => {
     if (Array.isArray(fieldErrors) && fieldErrors.length !== 0) {
-      // eslint-disable-next-line react-you-might-not-need-an-effect/no-pass-data-to-parent
       fieldErrors.forEach(({ field, error: message }, i) => {
         setTimeout(() => {
           setError(field as Path<TFieldValues>, {

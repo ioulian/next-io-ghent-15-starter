@@ -60,6 +60,8 @@ const DialogContent: FC<
         setFocusDisabled(false);
       }, getVariableAsNumber("duration.normal"));
     } else {
+      // False positive
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFocusDisabled(true);
     }
 

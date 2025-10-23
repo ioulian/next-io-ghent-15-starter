@@ -254,7 +254,6 @@ export const flatThemeVariables: Record<ThemeVariableNameType, string> = flattie
 
 export const getThemeClass = (theme: Theme) => `theme--${theme}`;
 export const getThemeCss = () => {
-  console.log(themeColors("color.blue"));
   return `
 @layer theme {
   ${Object.values(Theme)

@@ -26,6 +26,7 @@ const useResizeObserver = <T extends HTMLElement = HTMLElement>() => {
 
   const [rect, setRect] = useState<ObserverRect>(defaultState);
 
+  // eslint-disable-next-line react-hooks/refs
   const [observer] = useState(() =>
     typeof window !== "undefined" && typeof window.ResizeObserver !== "undefined"
       ? new window.ResizeObserver((entries) => {

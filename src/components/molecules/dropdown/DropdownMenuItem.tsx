@@ -70,6 +70,8 @@ const DropdownMenuItem: FC<
   const closeParents = useCallback((parent: MenuContextType | null) => {
     parent?.setIsOpen(false);
     if (parent?.parent) {
+      // TODO: Fix this
+      // eslint-disable-next-line react-hooks/immutability
       closeParents(parent.parent);
     }
   }, []);

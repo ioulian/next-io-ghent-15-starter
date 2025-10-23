@@ -25,10 +25,11 @@ const customBuildId = crypto.randomBytes(16).toString("hex");
 const nextConfig: NextConfig = {
   typedRoutes: true,
   poweredByHeader: false,
+
+  // We should enable this when we can test it properly
+  // reactCompiler: true,
+
   // If commit hooks are enabled, you can uncomment these lines, making builds faster
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },

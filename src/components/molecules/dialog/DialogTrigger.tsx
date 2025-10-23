@@ -17,6 +17,7 @@ const DialogTrigger: FC<HTMLProps<HTMLElement>> = ({ children, ref: propRef, ...
 
   if (isValidElement<Record<string, unknown>>(children)) {
     return cloneElement(children, {
+      // eslint-disable-next-line react-hooks/refs
       ...context.getReferenceProps({
         ref,
         ...props,

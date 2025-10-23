@@ -29,6 +29,8 @@ const PasswordStrength: FC<{ name: string } & ComponentPropsWithRef<"div">> = ({
         setMessage(result.crackTimesDisplay.offlineSlowHashing1e4PerSecond);
       });
     } else {
+      // False positive
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setScore(-1);
       setMessage("");
     }
