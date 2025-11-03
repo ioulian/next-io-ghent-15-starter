@@ -49,28 +49,13 @@ export const Default: Story = {
 export const IconsOnly: Story = {
   render: (args) => (
     <ButtonBar {...args}>
-      <Button
-        data-testid="button1"
-        size="small"
-        iconBefore={<SvgSprite src={iconVariantNormal} />}
-        iconOnly
-      >
+      <Button data-testid="button1" size="small" iconBefore={<SvgSprite src={iconVariantNormal} />} iconOnly>
         Button 1
       </Button>
-      <Button
-        data-testid="button2"
-        size="small"
-        iconBefore={<SvgSprite src={iconVariantDanger} />}
-        iconOnly
-      >
+      <Button data-testid="button2" size="small" iconBefore={<SvgSprite src={iconVariantDanger} />} iconOnly>
         Button 2
       </Button>
-      <Button
-        data-testid="button3"
-        size="small"
-        iconBefore={<SvgSprite src={iconVariantSuccess} />}
-        iconOnly
-      >
+      <Button data-testid="button3" size="small" iconBefore={<SvgSprite src={iconVariantSuccess} />} iconOnly>
         Button 3
       </Button>
     </ButtonBar>

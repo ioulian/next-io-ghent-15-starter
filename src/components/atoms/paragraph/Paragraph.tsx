@@ -23,10 +23,7 @@ const Paragraph: FC<
   );
 
   return (
-    <p
-      {...addClassNameToProps(props, paragraph({ size, clamped: typeof maxLines === "number" }))}
-      style={style}
-    >
+    <p {...addClassNameToProps(props, paragraph({ size, clamped: typeof maxLines === "number" }))} style={style}>
       {children}
     </p>
   );

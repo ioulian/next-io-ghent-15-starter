@@ -2,15 +2,7 @@
 
 import { ComponentPropsWithRef, FormEvent, useCallback, useEffect } from "react";
 
-import {
-  DeepPartial,
-  FieldErrors,
-  FieldValues,
-  FormProvider,
-  Path,
-  useForm,
-  UseFormProps,
-} from "react-hook-form";
+import { DeepPartial, FieldErrors, FieldValues, FormProvider, Path, useForm, UseFormProps } from "react-hook-form";
 
 import { BE_VALIDATION } from "@/components/organisms/form/constants";
 import { FormFieldError } from "@/components/organisms/form/types";
@@ -136,12 +128,7 @@ const Form = <
 
   return (
     <FormProvider {...methods}>
-      <form
-        {...addClassNameToProps(props, styles.form)}
-        onSubmit={onSubmitCallback}
-        noValidate
-        aria-busy={isLoading}
-      >
+      <form {...addClassNameToProps(props, styles.form)} onSubmit={onSubmitCallback} noValidate aria-busy={isLoading}>
         {/*error && error.title ? <ApiFormError error={error} /> : null*/}
         {children}
       </form>

@@ -14,8 +14,7 @@ const TFoot = <T,>({
         <tr key={footerGroup.id}>
           {footerGroup.headers.map((header) => (
             <th key={header.id}>
-              {!header.isPlaceholder &&
-                flexRender(header.column.columnDef.footer, header.getContext())}
+              {!header.isPlaceholder && flexRender(header.column.columnDef.footer, header.getContext())}
             </th>
           ))}
         </tr>

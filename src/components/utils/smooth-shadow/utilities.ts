@@ -77,9 +77,7 @@ export const createSmoothShadow = ({
     }))
     .map(
       ({ x, y, blur, alpha }) =>
-        `${x.toFixed(1)}px ${y.toFixed(1)}px ${blur.toFixed(
-          2,
-        )}px rgba(${rgb.join(", ")}, ${alpha.toFixed(2)})`,
+        `${x.toFixed(1)}px ${y.toFixed(1)}px ${blur.toFixed(2)}px rgba(${rgb.join(", ")}, ${alpha.toFixed(2)})`,
     )
     .join(", ");
 };

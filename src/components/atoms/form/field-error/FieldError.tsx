@@ -9,11 +9,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./FieldError.module.css";
 
-const FieldError: FC<WithRequired<ComponentPropsWithRef<"div">, "id">> = ({
-  id,
-  children,
-  ...props
-}) => {
+const FieldError: FC<WithRequired<ComponentPropsWithRef<"div">, "id">> = ({ id, children, ...props }) => {
   const t = useTranslations("common.form");
 
   return (

@@ -7,12 +7,7 @@ import { useFloatingTree, useListItem, useMergeRefs } from "@floating-ui/react";
 import { MenuContext } from "../MenuBar.context";
 import { MenuContextType, MenuItemProps } from "../MenuBar.types";
 
-const MenuItem: FC<MenuItemProps & HTMLProps<HTMLButtonElement>> = ({
-  label,
-  disabled,
-  ref,
-  ...props
-}) => {
+const MenuItem: FC<MenuItemProps & HTMLProps<HTMLButtonElement>> = ({ label, disabled, ref, ...props }) => {
   const menu = useContext(MenuContext);
   const item = useListItem({ label: disabled ? null : label });
   const tree = useFloatingTree();

@@ -25,23 +25,19 @@ export const Default: Story = {
           Lorem ipsum dolores
         </Heading>
         <p>
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus
-          vel augue <strong>lacinia quam venenatis vestibulum</strong>. Donec id elit non mi porta
-          gravida at eget metus. Donec sed odio dui. Maecenas sed diam eget risus varius blandit sit
-          amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-          ut fermentum massa justo sit amet risus. Maecenas sed diam eget risus varius blandit sit
-          amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo
-          cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies
-          vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit
-          non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum
-          faucibus dolor auctor. Curabitur blandit tempus porttitor.
+          Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue{" "}
+          <strong>lacinia quam venenatis vestibulum</strong>. Donec id elit non mi porta gravida at eget metus. Donec
+          sed odio dui. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus
+          commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas sed diam eget risus
+          varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo
+          cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies vehicula ut id elit.
+          Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus.
+          Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Curabitur blandit tempus porttitor.
         </p>
         <ul>
           <li>Praesent commodo cursus magna vel scelerisque nisl consectetur et. </li>
           <li>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</li>
-          <li>
-            Donec id elit non mi porta gravida at eget metu donec sed odio dui maecenas sed diam
-          </li>
+          <li>Donec id elit non mi porta gravida at eget metu donec sed odio dui maecenas sed diam</li>
           <li>Eget risus varius blandit sit amet non magnafusce dapibus</li>
           <li>Tellus ac cursus commodo tortor mauris condimentum nibh ut fermentum </li>
         </ul>
@@ -49,9 +45,7 @@ export const Default: Story = {
         <ol>
           <li>Praesent commodo cursus magna vel scelerisque nisl consectetur et. </li>
           <li>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</li>
-          <li>
-            Donec id elit non mi porta gravida at eget metu donec sed odio dui maecenas sed diam
-          </li>
+          <li>Donec id elit non mi porta gravida at eget metu donec sed odio dui maecenas sed diam</li>
           <li>Eget risus varius blandit sit amet non magnafusce dapibus</li>
           <li>Tellus ac cursus commodo tortor mauris condimentum nibh ut fermentum </li>
         </ol>

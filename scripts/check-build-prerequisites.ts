@@ -22,9 +22,7 @@ if (
   process.env.SITE_URL.startsWith("https://localhost")
 ) {
   envFileError = true;
-  console.error(
-    getErrorMessage("SITE_URL is still set to LOCALHOST, please set this to the correct URL!"),
-  );
+  console.error(getErrorMessage("SITE_URL is still set to LOCALHOST, please set this to the correct URL!"));
 }
 
 // Check if manifest file contains default values
@@ -32,13 +30,10 @@ const manifestValues = defaultManifest();
 if (
   (typeof manifestValues.name === "string" && manifestValues.name === "iO Ghent") ||
   (typeof manifestValues.short_name === "string" && manifestValues.short_name === "iO Ghent") ||
-  (typeof manifestValues.description === "string" &&
-    manifestValues.description === "iO Ghent Next.js starter kit")
+  (typeof manifestValues.description === "string" && manifestValues.description === "iO Ghent Next.js starter kit")
 ) {
   manifestFileError = true;
-  console.error(
-    getErrorMessage("./src/app/manifest.ts contains default values, do not forget to update them!"),
-  );
+  console.error(getErrorMessage("./src/app/manifest.ts contains default values, do not forget to update them!"));
 }
 
 if ((envFileError === true || manifestFileError) && SHOULD_FAIL_ON_ERROR) {

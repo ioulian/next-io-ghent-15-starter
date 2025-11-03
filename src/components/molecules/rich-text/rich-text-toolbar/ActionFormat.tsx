@@ -52,15 +52,8 @@ const ActionFormat: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
         const level = (index + 1) as Level;
 
         return (
-          <DropdownMenuItem
-            typeaheadKey={t(`actions.format.${tagName}`)}
-            key={tagName}
-            onClick={actionHeading(level)}
-          >
-            <button
-              type="button"
-              className={button({ isActive: editor.isActive("heading", { level }) })}
-            >
+          <DropdownMenuItem typeaheadKey={t(`actions.format.${tagName}`)} key={tagName} onClick={actionHeading(level)}>
+            <button type="button" className={button({ isActive: editor.isActive("heading", { level }) })}>
               <Heading type="p" size={tagName}>
                 {t(`actions.format.${tagName}`)}
               </Heading>

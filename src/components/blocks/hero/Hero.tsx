@@ -7,11 +7,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Hero.module.css";
 
-const Hero: FC<{ media?: ReactNode } & ComponentPropsWithRef<"div">> = ({
-  media,
-  children,
-  ...props
-}) => {
+const Hero: FC<{ media?: ReactNode } & ComponentPropsWithRef<"div">> = ({ media, children, ...props }) => {
   return (
     <div {...addClassNameToProps(props, styles.hero)}>
       <div className={styles.background}>{media}</div>

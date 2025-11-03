@@ -89,9 +89,7 @@ export const Text: Story = {
 };
 
 export const NextLink: Story = {
-  render: (args) => (
-    <LinkButton as={Link} {...args} href="/test" target="_blank" rel="noreferrer" />
-  ),
+  render: (args) => <LinkButton as={Link} {...args} href="/test" target="_blank" rel="noreferrer" />,
   args: {
     variant: "primary",
     children: "Navigate to another page",

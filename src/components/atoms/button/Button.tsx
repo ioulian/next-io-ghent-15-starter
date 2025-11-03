@@ -79,10 +79,7 @@ const Button: FC<WithRequired<Props, "children">> = ({
 }) => {
   const t = useTranslations("common.button");
   const newOnClick = useCallback(
-    (
-      e: ReactMouseEvent<HTMLButtonElement, MouseEvent> &
-        ReactMouseEvent<HTMLAnchorElement, MouseEvent>,
-    ) => {
+    (e: ReactMouseEvent<HTMLButtonElement, MouseEvent> & ReactMouseEvent<HTMLAnchorElement, MouseEvent>) => {
       if (!isLoading && !disabled) {
         onClick?.(e);
       }

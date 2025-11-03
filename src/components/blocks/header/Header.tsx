@@ -16,10 +16,7 @@ import stylesStickyShadow from "./../../utils/sticky-shadow/StickyShadow.module.
 import styles from "./Header.module.css";
 
 const Header: FC<
-  { topMenu?: ReactNode; actions?: ReactNode } & WithRequired<
-    ComponentPropsWithRef<"header">,
-    "children"
-  >
+  { topMenu?: ReactNode; actions?: ReactNode } & WithRequired<ComponentPropsWithRef<"header">, "children">
 > = ({ topMenu, actions, children, ...props }) => {
   const headerStyle = useMemo(
     () => ({
@@ -36,10 +33,7 @@ const Header: FC<
   );
 
   return (
-    <header
-      {...addClassNameToProps(props, styles.header, stylesStickyShadow.stickyShadow)}
-      style={headerStyle}
-    >
+    <header {...addClassNameToProps(props, styles.header, stylesStickyShadow.stickyShadow)} style={headerStyle}>
       <HeaderContext value={contextValue}>
         <Desktop className={styles.desktop}>{children}</Desktop>
         <Mobile className={styles.mobile} />

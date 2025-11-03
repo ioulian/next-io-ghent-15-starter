@@ -21,12 +21,7 @@ const SvgSprite: FC<
   ...props
 }) => {
   // Remove unsupported attributes
-  const {
-    crossOrigin: _crossOrigin,
-    ref: _ref,
-    title,
-    ...typedProps
-  }: Partial<HTMLProps<SVGElement>> = props;
+  const { crossOrigin: _crossOrigin, ref: _ref, title, ...typedProps }: Partial<HTMLProps<SVGElement>> = props;
 
   const titleId = useId();
 
@@ -38,9 +33,7 @@ const SvgSprite: FC<
   // You need to open a new tab to refresh this. However, using cache busting works.
   // In development, it refreshes a lot more, in production every spritesheet will be cached.
   const cacheBust =
-    process.env.NODE_ENV === "production"
-      ? `?${process.env.NEXT_PUBLIC_CUSTOM_BUILD_ID}`
-      : `?${src.checksum}`;
+    process.env.NODE_ENV === "production" ? `?${process.env.NEXT_PUBLIC_CUSTOM_BUILD_ID}` : `?${src.checksum}`;
 
   return (
     <svg

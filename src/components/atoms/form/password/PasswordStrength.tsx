@@ -12,10 +12,7 @@ import { addClassNameToProps } from "@/utils/styles";
 import { passwordStrength } from "./PasswordStrength.styles";
 import { validatePassword } from "./utils";
 
-const PasswordStrength: FC<{ name: string } & ComponentPropsWithRef<"div">> = ({
-  name,
-  ...props
-}) => {
+const PasswordStrength: FC<{ name: string } & ComponentPropsWithRef<"div">> = ({ name, ...props }) => {
   const messages = useMessages();
   const value = useWatch({ name });
 

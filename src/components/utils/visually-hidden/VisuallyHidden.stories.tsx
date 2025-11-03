@@ -14,8 +14,7 @@ type Story = StoryObj<typeof VisuallyHidden>;
 export const Default: Story = {
   render: (args) => (
     <p>
-      The text between (<VisuallyHidden {...args} />) is visually hidden, but still readable by
-      screen readers.
+      The text between (<VisuallyHidden {...args} />) is visually hidden, but still readable by screen readers.
     </p>
   ),
   args: {

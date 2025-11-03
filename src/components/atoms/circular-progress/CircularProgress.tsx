@@ -23,12 +23,7 @@ const CircularProgress: FC<
      */
     percent: number;
   } & ComponentPropsWithRef<"svg">
-> = ({
-  mainColor = "currentColor",
-  backgroundColor = "var(--color-secondary-200)",
-  percent,
-  ...props
-}) => {
+> = ({ mainColor = "currentColor", backgroundColor = "var(--color-secondary-200)", percent, ...props }) => {
   const classes = circularProgress();
   const style = useMemo(
     () => ({

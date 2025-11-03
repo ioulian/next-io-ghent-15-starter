@@ -32,13 +32,11 @@ export const Default: Story = {
         >
           <Text>
             <p data-testid="test1">
-              Content 1. Praesent 1 commodo cursus magna 1, vel scelerisque nisl consectetur et.
-              Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec id elit
-              non mi porta gravida at eget metus. Donec sed odio dui. Maecenas sed diam eget risus
-              varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor
-              mauris condimentum nibh, ut feDonec id elit non mi porta gravida at eget metus.
-              Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Curabitur
-              blandit tempus porttitor.
+              Content 1. Praesent 1 commodo cursus magna 1, vel scelerisque nisl consectetur et. Vivamus sagittis lacus
+              vel augue laoreet rutrum faucibus dolor auctor. Donec id elit non mi porta gravida at eget metus. Donec
+              sed odio dui. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac
+              cursus commodo, tortor mauris condimentum nibh, ut feDonec id elit non mi porta gravida at eget metus.
+              Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Curabitur blandit tempus porttitor.
             </p>
           </Text>
         </Expandable>
@@ -51,9 +49,8 @@ export const Default: Story = {
         >
           <Text>
             <p data-testid="test2">
-              Content 2. Praesent 2 commodo cursus magna 2, vel scelerisque nisl consectetur et.
-              Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec id elit
-              non mi porta gravida at eget metus.
+              Content 2. Praesent 2 commodo cursus magna 2, vel scelerisque nisl consectetur et. Vivamus sagittis lacus
+              vel augue laoreet rutrum faucibus dolor auctor. Donec id elit non mi porta gravida at eget metus.
             </p>
           </Text>
         </Expandable>
@@ -66,17 +63,15 @@ export const Default: Story = {
         >
           <Text>
             <p data-testid="test3">
-              Content 3. Praesent 3 commodo cursus magna 3, vel scelerisque nisl consectetur et.
-              Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec id elit
-              non mi porta gravida at eget metus. Donec sed odio dui. Maecenas sed diam eget risus
-              varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor
-              mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas sed diam
-              eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-              Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis risus eget urna
-              mollis ornare vel eu leo. Donec id elit non mi porta gravida at eget metus. Vivamus
-              sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Curabitur blandit
-              tempus porttitor.
+              Content 3. Praesent 3 commodo cursus magna 3, vel scelerisque nisl consectetur et. Vivamus sagittis lacus
+              vel augue laoreet rutrum faucibus dolor auctor. Donec id elit non mi porta gravida at eget metus. Donec
+              sed odio dui. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac
+              cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Maecenas sed diam
+              eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies
+              vehicula ut id elit. Nullam quis risus eget urna mollis ornare vel eu leo. Donec id elit non mi porta
+              gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Curabitur
+              blandit tempus porttitor.
             </p>
           </Text>
         </Expandable>

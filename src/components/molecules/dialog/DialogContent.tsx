@@ -30,9 +30,13 @@ import Sheet from "@/components/atoms/sheet/Sheet";
 import { overlay } from "./Dialog.styles";
 import { useDialogContext } from "./hooks";
 
-const DialogContent: FC<
-  { withCloseButton?: boolean; asSheet?: boolean } & HTMLProps<HTMLDivElement>
-> = ({ withCloseButton, ref: propRef, asSheet = false, className, ...props }) => {
+const DialogContent: FC<{ withCloseButton?: boolean; asSheet?: boolean } & HTMLProps<HTMLDivElement>> = ({
+  withCloseButton,
+  ref: propRef,
+  asSheet = false,
+  className,
+  ...props
+}) => {
   const t = useTranslations("common.closeButton");
   const context = useDialogContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
@@ -46,10 +50,7 @@ const DialogContent: FC<
     context.setOpen(false);
   }, [context]);
 
-  const style = useMemo(
-    () => ({ ...overlayStyles, overflow: asSheet ? "hidden" : "auto" }),
-    [overlayStyles, asSheet],
-  );
+  const style = useMemo(() => ({ ...overlayStyles, overflow: asSheet ? "hidden" : "auto" }), [overlayStyles, asSheet]);
 
   // This will disable focus manager during animation thus preventing focussing items outside the viewport
   const [focusDisabled, setFocusDisabled] = useState<boolean>(true);
@@ -80,11 +81,7 @@ const DialogContent: FC<
     <Wrapper>
       <FloatingNode id={context.nodeId}>
         <FloatingPortal>
-          <FloatingOverlay
-            lockScroll
-            className={clsx(overlay({ asSheet }), className)}
-            style={style}
-          >
+          <FloatingOverlay lockScroll className={clsx(overlay({ asSheet }), className)} style={style}>
             <FloatingFocusManager context={context.context} modal disabled={focusDisabled}>
               {asSheet ? (
                 <Sheet
@@ -96,9 +93,7 @@ const DialogContent: FC<
                   style={stylesSheet}
                 >
                   {props.children}
-                  {withCloseButton ? (
-                    <CloseButton onClick={onClick}>{t("defaultLabel")}</CloseButton>
-                  ) : null}
+                  {withCloseButton ? <CloseButton onClick={onClick}>{t("defaultLabel")}</CloseButton> : null}
                 </Sheet>
               ) : (
                 <Floater
@@ -110,9 +105,7 @@ const DialogContent: FC<
                   style={styles}
                 >
                   {props.children}
-                  {withCloseButton ? (
-                    <CloseButton onClick={onClick}>{t("defaultLabel")}</CloseButton>
-                  ) : null}
+                  {withCloseButton ? <CloseButton onClick={onClick}>{t("defaultLabel")}</CloseButton> : null}
                 </Floater>
               )}
             </FloatingFocusManager>

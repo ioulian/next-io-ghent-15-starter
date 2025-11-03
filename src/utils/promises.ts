@@ -14,8 +14,5 @@ export const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
  * @returns Promise that will resolve with the result of the promise or reject with the timeout
  */
 export const race = (promise: Promise<unknown>, timeout: number = 1000) => {
-  return Promise.any([
-    promise,
-    new Promise<void>((resolve) => setTimeout(() => resolve(), timeout)),
-  ]);
+  return Promise.any([promise, new Promise<void>((resolve) => setTimeout(() => resolve(), timeout))]);
 };

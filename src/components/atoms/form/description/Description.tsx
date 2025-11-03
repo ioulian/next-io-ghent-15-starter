@@ -9,11 +9,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Description.module.css";
 
-const Description: FC<WithRequired<ComponentPropsWithRef<"div">, "id">> = ({
-  id,
-  children,
-  ...props
-}) => {
+const Description: FC<WithRequired<ComponentPropsWithRef<"div">, "id">> = ({ id, children, ...props }) => {
   const t = useTranslations("common.form");
 
   return (

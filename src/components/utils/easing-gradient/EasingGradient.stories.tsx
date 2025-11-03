@@ -13,14 +13,7 @@ const EasingGradient: FC<{
   direction?: number;
   stops?: number;
   easing?: string;
-}> = ({
-  from,
-  to,
-  useEasing = false,
-  stops = 16,
-  direction = 0,
-  easing = "cubic-bezier(0.5, 0, 0.5, 1)",
-}) => {
+}> = ({ from, to, useEasing = false, stops = 16, direction = 0, easing = "cubic-bezier(0.5, 0, 0.5, 1)" }) => {
   return (
     <div
       style={{

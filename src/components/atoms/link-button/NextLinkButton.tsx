@@ -12,23 +12,14 @@ import LinkButton from "./LinkButton";
 /**
  * Wrapper around next/link. Also changed prefetching to onHover
  */
-const NextLinkButton: FC<WithRequired<Omit<LBProps<typeof LocalizedLink>, "as">, "children">> = (
-  props,
-) => {
+const NextLinkButton: FC<WithRequired<Omit<LBProps<typeof LocalizedLink>, "as">, "children">> = (props) => {
   const [prefetch, setPrefetch] = useState<boolean>(false);
 
   const onMouseEnter = useCallback(() => {
     setPrefetch(true);
   }, []);
 
-  return (
-    <LinkButton
-      as={LocalizedLink}
-      prefetch={prefetch ? null : false}
-      onMouseEnter={onMouseEnter}
-      {...props}
-    />
-  );
+  return <LinkButton as={LocalizedLink} prefetch={prefetch ? null : false} onMouseEnter={onMouseEnter} {...props} />;
 };
 
 export default memo(NextLinkButton);

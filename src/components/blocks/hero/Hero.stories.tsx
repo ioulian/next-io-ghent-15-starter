@@ -30,9 +30,9 @@ export const Default: Story = {
             Lorem ipsum dolores
           </Heading>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue <strong>lacinia quam venenatis vestibulum</strong>. Donec id elit non mi
-            porta gravida at eget metus. Donec sed odio dui.
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue{" "}
+            <strong>lacinia quam venenatis vestibulum</strong>. Donec id elit non mi porta gravida at eget metus. Donec
+            sed odio dui.
           </p>
           <p>
             <Button>Button</Button>

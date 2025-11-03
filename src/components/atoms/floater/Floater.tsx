@@ -18,16 +18,7 @@ const Floater: FC<
     arrowCallback?: (node: HTMLDivElement | null) => void;
     showArrow?: boolean;
   } & ComponentPropsWithRef<"div">
-> = ({
-  children,
-  position,
-  arrowPosition,
-  strategy,
-  placement,
-  arrowCallback,
-  showArrow = true,
-  ...props
-}) => {
+> = ({ children, position, arrowPosition, strategy, placement, arrowCallback, showArrow = true, ...props }) => {
   const style = useMemo<CSSProperties>(
     () => ({
       transform: position
@@ -58,14 +49,8 @@ const Floater: FC<
         left: "rotate(45deg)",
       }[placementFirst] as string;
       return {
-        left:
-          typeof arrowPosition?.x !== "undefined" && arrowPosition?.x !== null
-            ? `${arrowPosition.x}px`
-            : "",
-        top:
-          typeof arrowPosition?.y !== "undefined" && arrowPosition?.y !== null
-            ? `${arrowPosition.y}px`
-            : "",
+        left: typeof arrowPosition?.x !== "undefined" && arrowPosition?.x !== null ? `${arrowPosition.x}px` : "",
+        top: typeof arrowPosition?.y !== "undefined" && arrowPosition?.y !== null ? `${arrowPosition.y}px` : "",
         [staticSide]: `-${getVariableAsNumber("floater.arrow.size") / 2}px`,
         transform: rotation,
       };
@@ -76,9 +61,7 @@ const Floater: FC<
     <div {...addClassNameToProps(props, styles.floater)} style={style}>
       <div className={styles.content} style={props.style}>
         {children}
-        {showArrow && arrowCallback ? (
-          <div ref={arrowCallback} className={styles.arrow} style={arrowStyle} />
-        ) : null}
+        {showArrow && arrowCallback ? <div ref={arrowCallback} className={styles.arrow} style={arrowStyle} /> : null}
       </div>
     </div>
   );

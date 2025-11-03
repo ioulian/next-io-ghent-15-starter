@@ -76,27 +76,26 @@ const DropdownMenu: FC<DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButt
 
   const isNested = parentId !== null;
 
-  const { x, y, refs, context, update, strategy, placement, middlewareData } =
-    useFloating<HTMLButtonElement>({
-      nodeId,
-      open: isOpen,
-      onOpenChange: setIsOpen,
-      placement: isNested ? "right-start" : "bottom-start",
-      middleware: [
-        offset({
-          mainAxis: getVariableAsNumber("dropdown.offset"),
-          alignmentAxis: getVariableAsNumber("dropdown.offset"),
-        }),
-        flip(),
-        shift({ padding: getVariableAsNumber("floater.shift") }),
-        // eslint-disable-next-line react-hooks/refs
-        arrow({
-          element: arrowRef,
-          padding: getVariableAsNumber("floater.arrow.padding"),
-        }),
-      ],
-      whileElementsMounted: autoUpdate,
-    });
+  const { x, y, refs, context, update, strategy, placement, middlewareData } = useFloating<HTMLButtonElement>({
+    nodeId,
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    placement: isNested ? "right-start" : "bottom-start",
+    middleware: [
+      offset({
+        mainAxis: getVariableAsNumber("dropdown.offset"),
+        alignmentAxis: getVariableAsNumber("dropdown.offset"),
+      }),
+      flip(),
+      shift({ padding: getVariableAsNumber("floater.shift") }),
+      // eslint-disable-next-line react-hooks/refs
+      arrow({
+        element: arrowRef,
+        padding: getVariableAsNumber("floater.arrow.padding"),
+      }),
+    ],
+    whileElementsMounted: autoUpdate,
+  });
 
   const arrowCallback = useCallback(
     (node: HTMLDivElement | null) => {

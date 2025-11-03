@@ -248,9 +248,7 @@ const themeVariables: Record<Theme, Record<string, unknown>> = {
 };
 
 export type ThemeVariableNameType = Leaves<(typeof themeVariables)[Theme.Default]>;
-export const flatThemeVariables: Record<ThemeVariableNameType, string> = flattie(
-  themeVariables[Theme.Default],
-);
+export const flatThemeVariables: Record<ThemeVariableNameType, string> = flattie(themeVariables[Theme.Default]);
 
 export const getThemeClass = (theme: Theme) => `theme--${theme}`;
 export const getThemeCss = () => {

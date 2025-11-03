@@ -65,9 +65,7 @@ describe("FormField", () => {
         <FormField name="test-name" description="test-description">
           {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            ({ field, props: { isError, ...props } }) => (
-              <span data-testid="test" {...field} {...props} />
-            )
+            ({ field, props: { isError, ...props } }) => <span data-testid="test" {...field} {...props} />
           }
         </FormField>
       </Form>,

@@ -6,11 +6,7 @@ import styles from "./ButtonGroupSeparator.module.css";
 
 const ButtonGroupSeparator: FC<ComponentPropsWithRef<"div">> = (props) => {
   return (
-    <div
-      role="separator"
-      aria-orientation="vertical"
-      {...addClassNameToProps(props, styles.buttonGroupSeparator)}
-    />
+    <div role="separator" aria-orientation="vertical" {...addClassNameToProps(props, styles.buttonGroupSeparator)} />
   );
 };
 

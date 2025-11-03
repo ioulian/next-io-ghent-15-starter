@@ -30,9 +30,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({
-  params,
-}: Omit<LayoutProps<"/[locale]">, "children">): Promise<Metadata> {
+export async function generateMetadata({ params }: Omit<LayoutProps<"/[locale]">, "children">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale: locale as LocaleType, namespace: "app.defaultMeta" });
 
@@ -47,10 +45,7 @@ export async function generateMetadata({
 
 let ReactScan: React.ComponentType = () => null;
 
-if (
-  process.env.NODE_ENV === "development" &&
-  process.env.NEXT_PUBLIC_REACT_SCAN_ENABLE === "true"
-) {
+if (process.env.NODE_ENV === "development" && process.env.NEXT_PUBLIC_REACT_SCAN_ENABLE === "true") {
   ReactScan = dynamic(() => import("./_components/ReactScan"));
 }
 

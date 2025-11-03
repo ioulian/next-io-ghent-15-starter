@@ -18,9 +18,7 @@ import { useFloatingTree, useListItem, useMergeRefs } from "@floating-ui/react";
 
 import { MenuContext, MenuContextType, WithTypeAheadKey } from "./Dropdown";
 
-const DropdownMenuItem: FC<
-  { closeOnClick?: boolean } & WithTypeAheadKey & HTMLProps<HTMLButtonElement>
-> = ({
+const DropdownMenuItem: FC<{ closeOnClick?: boolean } & WithTypeAheadKey & HTMLProps<HTMLButtonElement>> = ({
   children,
   typeaheadKey,
   disabled,

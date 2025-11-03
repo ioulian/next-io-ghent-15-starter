@@ -18,9 +18,11 @@ import RichTextToolbar from "./rich-text-toolbar/RichTextToolbar";
 
 import richTextStyles from "./RichText.module.css";
 
-const RichText: FC<
-  { isError?: boolean } & Omit<EditorProviderProps, "children"> & { ref: Ref<HTMLDivElement> }
-> = ({ isError, ref, ...props }) => {
+const RichText: FC<{ isError?: boolean } & Omit<EditorProviderProps, "children"> & { ref: Ref<HTMLDivElement> }> = ({
+  isError,
+  ref,
+  ...props
+}) => {
   const editorRef = useRef<Editor | null>(null);
   const [extensions] = useState(() => [StarterKit, Subscript, Superscript, Underline]);
   const [editorProps] = useState(() => ({

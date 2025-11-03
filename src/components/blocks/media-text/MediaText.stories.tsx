@@ -29,9 +29,8 @@ export const Default: Story = {
             Lorem ipsum dolores
           </Heading>
           <p>
-            Lorem ipum dolores ornare sem <strong>lacinia quam venenatis vestibulum</strong>. Morbi
-            leo risus, porta ac consectetur ac vestibulum purus sit amet fermentum. Fusce dapibus,
-            tellus ac cursus commodo.
+            Lorem ipum dolores ornare sem <strong>lacinia quam venenatis vestibulum</strong>. Morbi leo risus, porta ac
+            consectetur ac vestibulum purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo.
           </p>
           <p>
             <Button>Button</Button>
@@ -51,9 +50,8 @@ export const Reversed: Story = {
             Lorem ipsum dolores
           </Heading>
           <p>
-            Lorem ipum dolores ornare sem <strong>lacinia quam venenatis vestibulum</strong>. Morbi
-            leo risus, porta ac consectetur ac vestibulum purus sit amet fermentum. Fusce dapibus,
-            tellus ac cursus commodo.
+            Lorem ipum dolores ornare sem <strong>lacinia quam venenatis vestibulum</strong>. Morbi leo risus, porta ac
+            consectetur ac vestibulum purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo.
           </p>
           <p>
             <Button>Button</Button>
@@ -75,9 +73,8 @@ export const WithCoverMedia: Story = {
             Lorem ipsum dolores
           </Heading>
           <p>
-            Lorem ipum dolores ornare sem <strong>lacinia quam venenatis vestibulum</strong>. Morbi
-            leo risus, porta ac consectetur ac vestibulum purus sit amet fermentum. Fusce dapibus,
-            tellus ac cursus commodo.
+            Lorem ipum dolores ornare sem <strong>lacinia quam venenatis vestibulum</strong>. Morbi leo risus, porta ac
+            consectetur ac vestibulum purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo.
           </p>
           <p>
             <Button>Button</Button>

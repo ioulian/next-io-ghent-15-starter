@@ -140,13 +140,7 @@ export const Default: Story = {
       <FormField<SampleFormData> label="Email address" name="emailAddress" required>
         <Input type="email" data-testid="emailAddress" />
       </FormField>
-      <FormField<SampleFormData>
-        label="Hobbies"
-        name="hobbies"
-        asFieldSet
-        inputWrapper={List}
-        required
-      >
+      <FormField<SampleFormData> label="Hobbies" name="hobbies" asFieldSet inputWrapper={List} required>
         <Checkbox key="1" inputValue="value1" data-testid="firstCheckbox">
           Value 1
         </Checkbox>

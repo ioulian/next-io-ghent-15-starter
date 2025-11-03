@@ -155,10 +155,7 @@ export const CustomElements: Story = {
           <Button>Audio</Button>
         </DropdownMenuItem>
       </Dropdown>
-      <Dropdown
-        trigger={<Button iconAfter={<SvgSprite src={iconChevron} />}>Share</Button>}
-        typeaheadKey="Share"
-      >
+      <Dropdown trigger={<Button iconAfter={<SvgSprite src={iconChevron} />}>Share</Button>} typeaheadKey="Share">
         <DropdownMenuItem typeaheadKey="Mail">
           <Button>Mail</Button>
         </DropdownMenuItem>

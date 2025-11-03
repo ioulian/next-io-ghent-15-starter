@@ -1,15 +1,6 @@
 import type { FC } from "react";
 
-import {
-  Children,
-  cloneElement,
-  ComponentPropsWithRef,
-  isValidElement,
-  memo,
-  ReactNode,
-  useId,
-  useMemo,
-} from "react";
+import { Children, cloneElement, ComponentPropsWithRef, isValidElement, memo, ReactNode, useId, useMemo } from "react";
 
 import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
 import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";

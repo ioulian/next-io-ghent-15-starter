@@ -15,10 +15,7 @@ const TooltipContent: FC<HTMLProps<HTMLDivElement>> = ({ ref: propRef, ...props 
   const context = useTooltipContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
   const { isMounted, styles } = useTransitionStyles(context.context, zoomAnimation);
-  const position = useMemo(
-    () => ({ x: context.x ?? 0, y: context.y ?? 0 }),
-    [context.x, context.y],
-  );
+  const position = useMemo(() => ({ x: context.x ?? 0, y: context.y ?? 0 }), [context.x, context.y]);
 
   if (!isMounted) {
     return null;

@@ -19,12 +19,7 @@ describe("Input", () => {
   });
 
   it("renders with iconBefore and iconAfter", () => {
-    render(
-      <Input
-        iconBefore={<span data-testid="iconBefore" />}
-        iconAfter={<span data-testid="iconAfter" />}
-      />,
-    );
+    render(<Input iconBefore={<span data-testid="iconBefore" />} iconAfter={<span data-testid="iconAfter" />} />);
     expect(screen.getByTestId("iconBefore")).toBeInTheDocument();
     expect(screen.getByTestId("iconAfter")).toBeInTheDocument();
   });

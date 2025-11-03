@@ -24,9 +24,7 @@ const Select: FC<
     <select {...addClassNameToProps(props, baseInput({ isError }), styles.select)}>
       {addEmptyOption ? (
         <>
-          <option value="">
-            {typeof addEmptyOption === "string" ? addEmptyOption : t("select.emptyValue")}
-          </option>
+          <option value="">{typeof addEmptyOption === "string" ? addEmptyOption : t("select.emptyValue")}</option>
           <hr />
         </>
       ) : null}

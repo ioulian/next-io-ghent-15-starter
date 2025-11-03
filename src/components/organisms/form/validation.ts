@@ -10,5 +10,4 @@ export const createValidationMessage = <T extends Leaves<AppConfig["Messages"]>>
   message,
 });
 
-export const createZodResolver = <T extends z.ZodType<FieldValues, FieldValues>>(schema: T) =>
-  zodResolver(schema);
+export const createZodResolver = <T extends z.ZodType<FieldValues, FieldValues>>(schema: T) => zodResolver(schema);

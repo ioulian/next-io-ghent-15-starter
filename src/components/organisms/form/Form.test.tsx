@@ -21,10 +21,7 @@ describe("Form", () => {
         formSettings={{
           resolver: createZodResolver(
             z.object({
-              "test-name": z
-                .string()
-                .trim()
-                .min(1, createValidationMessage("common.form.validationErrors.required")),
+              "test-name": z.string().trim().min(1, createValidationMessage("common.form.validationErrors.required")),
             }),
           ),
         }}
@@ -50,12 +47,8 @@ describe("Form", () => {
     expect(input).toHaveFocus();
     expect(input).toHaveAttribute("aria-describedby");
     expect(input).toHaveAttribute("aria-invalid");
-    expect(
-      document.getElementById(input.getAttribute("aria-describedby")!.split(" ")[0]),
-    ).toBeInTheDocument();
-    expect(
-      document.getElementById(input.getAttribute("aria-describedby")!.split(" ")[1]),
-    ).toBeInTheDocument();
+    expect(document.getElementById(input.getAttribute("aria-describedby")!.split(" ")[0])).toBeInTheDocument();
+    expect(document.getElementById(input.getAttribute("aria-describedby")!.split(" ")[1])).toBeInTheDocument();
 
     await act(async () => {
       await userEvent.type(input, "test");

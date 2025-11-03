@@ -19,11 +19,7 @@ const ScrollProgress: FC<
      */
     backgroundColor?: string;
   } & ComponentPropsWithRef<"div">
-> = ({
-  mainColor = "var(--color-primary-200)",
-  backgroundColor = "var(--color-secondary-200)",
-  ...props
-}) => {
+> = ({ mainColor = "var(--color-primary-200)", backgroundColor = "var(--color-secondary-200)", ...props }) => {
   const style = useMemo(
     () => ({
       "--scroll-progress-main-color": mainColor,

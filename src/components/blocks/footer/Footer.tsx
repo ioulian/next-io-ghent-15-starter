@@ -11,9 +11,13 @@ import Layout from "../../atoms/layout/Layout";
 
 import styles from "./Footer.module.css";
 
-const Footer: FC<
-  { showCreatedBy?: boolean; metaNav: ReactNode; siteName: string } & ComponentPropsWithRef<"div">
-> = ({ showCreatedBy, metaNav, siteName, children, ...props }) => {
+const Footer: FC<{ showCreatedBy?: boolean; metaNav: ReactNode; siteName: string } & ComponentPropsWithRef<"div">> = ({
+  showCreatedBy,
+  metaNav,
+  siteName,
+  children,
+  ...props
+}) => {
   const t = useTranslations("common.footer");
   const year = new Date().getFullYear();
 

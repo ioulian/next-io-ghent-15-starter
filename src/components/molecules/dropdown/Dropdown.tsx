@@ -40,9 +40,7 @@ export interface DropdownMenuProps {
   children?: ReactNode;
 }
 
-const Dropdown: FC<DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButtonElement>> = (
-  props,
-) => {
+const Dropdown: FC<DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButtonElement>> = (props) => {
   const parentId = useFloatingParentNodeId();
 
   if (parentId === null) {

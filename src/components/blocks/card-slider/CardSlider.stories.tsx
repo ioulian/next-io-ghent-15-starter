@@ -58,9 +58,8 @@ export const Default: Story = {
             Lorem ipsum
           </Heading>
           <Paragraph>
-            Lorem ipum dolores ornare sem lacinia quam <strong>venenatis vestibulum</strong>. Morbi
-            leo risus, porta ac consectetur ac vestibulum purus sit amet fermentum. Fusce dapibus,
-            tellus ac cursus commodo.
+            Lorem ipum dolores ornare sem lacinia quam <strong>venenatis vestibulum</strong>. Morbi leo risus, porta ac
+            consectetur ac vestibulum purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo.
           </Paragraph>
         </Card>
         <Card
@@ -78,8 +77,8 @@ export const Default: Story = {
             Lorem ipsum
           </Heading>
           <Paragraph>
-            Lorem ipum dolores ornare sem lacinia quam <strong>venenatis vestibulum</strong>. Morbi
-            leo risus, porta ac consectet
+            Lorem ipum dolores ornare sem lacinia quam <strong>venenatis vestibulum</strong>. Morbi leo risus, porta ac
+            consectet
           </Paragraph>
         </Card>
         <Card
@@ -97,8 +96,8 @@ export const Default: Story = {
             Lorem ipsum
           </Heading>
           <Paragraph>
-            Lorem ipum dolores ornare sem lacinia quam <strong>venenatis vestibulum</strong>. Morbi
-            leo risus, porta ac consectet
+            Lorem ipum dolores ornare sem lacinia quam <strong>venenatis vestibulum</strong>. Morbi leo risus, porta ac
+            consectet
           </Paragraph>
         </Card>
         <Card
@@ -116,8 +115,8 @@ export const Default: Story = {
             Lorem ipsum
           </Heading>
           <Paragraph>
-            Lorem ipum dolores ornare sem lacinia quam <strong>venenatis vestibulum</strong>. Morbi
-            leo risus, porta ac consectet
+            Lorem ipum dolores ornare sem lacinia quam <strong>venenatis vestibulum</strong>. Morbi leo risus, porta ac
+            consectet
           </Paragraph>
         </Card>
       </CardSlider>

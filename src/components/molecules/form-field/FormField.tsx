@@ -154,15 +154,9 @@ const FormField = <T extends FieldValues = FieldValues>({
 
   return (
     // @ts-expect-error TODO: type me
-    <Component
-      {...addClassNameToProps(props, formField({ isHidden, isDisabled: disabled, isToggle }))}
-    >
+    <Component {...addClassNameToProps(props, formField({ isHidden, isDisabled: disabled, isToggle }))}>
       {label ? (
-        <Label
-          as={asFieldSet ? "legend" : "label"}
-          htmlFor={asFieldSet ? undefined : id}
-          required={required}
-        >
+        <Label as={asFieldSet ? "legend" : "label"} htmlFor={asFieldSet ? undefined : id} required={required}>
           {label}
         </Label>
       ) : null}

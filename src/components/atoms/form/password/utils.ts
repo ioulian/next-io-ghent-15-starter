@@ -1,9 +1,7 @@
 import { TranslationKeys, zxcvbn, zxcvbnOptions } from "@zxcvbn-ts/core";
 
 const loadOptions = async () => {
-  const zxcvbnCommonPackage = await import(
-    /* webpackChunkName: "zxcvbnCommonPackage" */ "@zxcvbn-ts/language-common"
-  );
+  const zxcvbnCommonPackage = await import(/* webpackChunkName: "zxcvbnCommonPackage" */ "@zxcvbn-ts/language-common");
 
   return {
     dictionary: {

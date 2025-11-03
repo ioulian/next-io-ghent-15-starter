@@ -11,11 +11,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Tabs.module.css";
 
-const Tabs: FC<{ tabsProps?: TabsProps } & ComponentPropsWithRef<"div">> = ({
-  children,
-  tabsProps,
-  ...props
-}) => {
+const Tabs: FC<{ tabsProps?: TabsProps } & ComponentPropsWithRef<"div">> = ({ children, tabsProps, ...props }) => {
   return (
     <div {...addClassNameToProps(props)}>
       <ReactTabs
@@ -23,10 +19,7 @@ const Tabs: FC<{ tabsProps?: TabsProps } & ComponentPropsWithRef<"div">> = ({
         className={clsx(styles.tabs)}
         disabledTabClassName={tabsProps?.disabledTabClassName}
         selectedTabClassName={tabsProps?.selectedTabClassName}
-        selectedTabPanelClassName={clsx(
-          styles.tabPanelSelected,
-          tabsProps?.selectedTabPanelClassName,
-        )}
+        selectedTabPanelClassName={clsx(styles.tabPanelSelected, tabsProps?.selectedTabPanelClassName)}
       >
         {children}
       </ReactTabs>

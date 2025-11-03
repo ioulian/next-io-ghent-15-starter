@@ -7,9 +7,7 @@ import { resolve } from "path";
 import { SvgSpritePlugin } from "@jebka/webpack-svg-sprite-loader";
 
 export const injectToWebpackConfig = (config) => {
-  const fileLoaderRule = config.module.rules.find(
-    (rule) => rule.test && rule.test.test && rule.test.test(".svg"),
-  );
+  const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test && rule.test.test(".svg"));
   fileLoaderRule.exclude = [/\@tabler\/icons\//, /-sprite\.svg$/];
   config.module.rules.push({
     test(path) {

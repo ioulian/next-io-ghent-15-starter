@@ -27,11 +27,7 @@ const Toggle: FC<{ isError?: boolean } & Omit<ComponentPropsWithRef<"input">, "c
         id={id ?? internalId}
         type="checkbox"
       />
-      <label
-        htmlFor={id ?? internalId}
-        className={clsx(baseInput({ isError }), styles.label)}
-        aria-hidden="true"
-      />
+      <label htmlFor={id ?? internalId} className={clsx(baseInput({ isError }), styles.label)} aria-hidden="true" />
     </div>
   );
 };

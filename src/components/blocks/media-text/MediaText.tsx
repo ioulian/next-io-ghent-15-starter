@@ -44,12 +44,7 @@ const MediaText: FC<{ coverMedia?: boolean } & ComponentPropsWithRef<"div">> = (
 
   return (
     <div
-      {...addClassNameToProps(
-        props,
-        styles.mediaText,
-        coverMedia && styles.coverMedia,
-        blockStyles.blockBase,
-      )}
+      {...addClassNameToProps(props, styles.mediaText, coverMedia && styles.coverMedia, blockStyles.blockBase)}
       ref={innerRef}
     >
       <Layout variant="twoCol">

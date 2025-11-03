@@ -2,15 +2,7 @@
 
 import type { FC } from "react";
 
-import {
-  ComponentPropsWithRef,
-  memo,
-  useCallback,
-  useEffect,
-  useId,
-  useMemo,
-  useState,
-} from "react";
+import { ComponentPropsWithRef, memo, useCallback, useEffect, useId, useMemo, useState } from "react";
 
 import { useTranslations } from "next-intl";
 import { useUpdateEffect } from "react-use";
@@ -87,23 +79,12 @@ const Ellipsis: FC<
           {children}
         </div>
         {/* This is a helper div to check collapsed dimensions against */}
-        <div
-          className={classes.helperContent()}
-          ref={contentRef}
-          aria-hidden="true"
-          style={numberOfLinesStyle}
-        >
+        <div className={classes.helperContent()} ref={contentRef} aria-hidden="true" style={numberOfLinesStyle}>
           {children}
         </div>
       </div>
       {showButton === true && (
-        <Button
-          size="base"
-          variant="simple"
-          aria-expanded={isOpen}
-          aria-controls={id}
-          onClick={onClick}
-        >
+        <Button size="base" variant="simple" aria-expanded={isOpen} aria-controls={id} onClick={onClick}>
           <span>{t(isOpen ? "collapse" : "expand")}</span>
         </Button>
       )}

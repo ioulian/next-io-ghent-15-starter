@@ -2,15 +2,7 @@
 
 import type { FC } from "react";
 
-import {
-  Children,
-  cloneElement,
-  ComponentPropsWithRef,
-  isValidElement,
-  memo,
-  ReactElement,
-  useId,
-} from "react";
+import { Children, cloneElement, ComponentPropsWithRef, isValidElement, memo, ReactElement, useId } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 

@@ -21,9 +21,12 @@ import { zoomAnimation } from "@/components/atoms/floater/Floater.animations";
 
 import { usePopoverContext } from "./hooks";
 
-const PopoverContent: FC<
-  { withCloseButton?: boolean; showArrow?: boolean } & HTMLProps<HTMLDivElement>
-> = ({ withCloseButton = false, showArrow, ref: propRef, ...props }) => {
+const PopoverContent: FC<{ withCloseButton?: boolean; showArrow?: boolean } & HTMLProps<HTMLDivElement>> = ({
+  withCloseButton = false,
+  showArrow,
+  ref: propRef,
+  ...props
+}) => {
   const t = useTranslations("common.closeButton");
   const context = usePopoverContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
@@ -33,10 +36,7 @@ const PopoverContent: FC<
     context.setOpen(false);
   }, [context]);
 
-  const position = useMemo(
-    () => ({ x: context.x ?? 0, y: context.y ?? 0 }),
-    [context.x, context.y],
-  );
+  const position = useMemo(() => ({ x: context.x ?? 0, y: context.y ?? 0 }), [context.x, context.y]);
 
   if (!isMounted) {
     return null;
@@ -63,9 +63,7 @@ const PopoverContent: FC<
               style={styles}
             >
               {props.children}
-              {withCloseButton ? (
-                <CloseButton onClick={onClick}>{t("defaultLabel")}</CloseButton>
-              ) : null}
+              {withCloseButton ? <CloseButton onClick={onClick}>{t("defaultLabel")}</CloseButton> : null}
             </Floater>
           </FloatingFocusManager>
         </FloatingPortal>

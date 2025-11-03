@@ -1,13 +1,6 @@
 import type { FC } from "react";
 
-import {
-  Children,
-  ComponentPropsWithRef,
-  ElementType,
-  memo,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import { Children, ComponentPropsWithRef, ElementType, memo, useImperativeHandle, useRef } from "react";
 
 import { useEffectOnce } from "react-use";
 import { VariantProps } from "tailwind-variants";
@@ -53,10 +46,7 @@ const Heading: FC<
   });
 
   return (
-    <Element
-      {...addClassNameToProps(props, layout({ variant }), showDebug && styles.debug)}
-      ref={innerRef}
-    >
+    <Element {...addClassNameToProps(props, layout({ variant }), showDebug && styles.debug)} ref={innerRef}>
       {children}
     </Element>
   );

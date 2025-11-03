@@ -9,17 +9,8 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./TextArea.module.css";
 
-const TextArea: FC<{ isError?: boolean } & ComponentPropsWithRef<"textarea">> = ({
-  isError,
-  ...props
-}) => {
-  return (
-    <textarea
-      cols={40}
-      rows={5}
-      {...addClassNameToProps(props, baseInput({ isError }), styles.textarea)}
-    />
-  );
+const TextArea: FC<{ isError?: boolean } & ComponentPropsWithRef<"textarea">> = ({ isError, ...props }) => {
+  return <textarea cols={40} rows={5} {...addClassNameToProps(props, baseInput({ isError }), styles.textarea)} />;
 };
 
 TextArea.displayName = "TextArea";

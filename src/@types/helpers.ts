@@ -1,10 +1,6 @@
 export type WithRequired<TType, Key extends keyof TType> = TType & { [P in Key]-?: TType[P] };
 
-export type Join<K, P> = K extends string
-  ? P extends string
-    ? `${K}${"" extends P ? "" : "."}${P}`
-    : never
-  : never;
+export type Join<K, P> = K extends string ? (P extends string ? `${K}${"" extends P ? "" : "."}${P}` : never) : never;
 
 export type Paths<T> = T extends object
   ? {
