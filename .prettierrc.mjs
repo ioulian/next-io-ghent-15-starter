@@ -3,14 +3,14 @@
 /** @type {import("prettier").Config} */
 const config = {
   arrowParens: "always",
-  printWidth: 100,
+  printWidth: 120,
   trailingComma: "all",
   tabWidth: 2,
   semi: true,
   singleQuote: false,
   plugins: ["@ianvs/prettier-plugin-sort-imports"],
   importOrderParserPlugins: ["typescript", "jsx"],
-  importOrderTypeScriptVersion: "5.9.2",
+  importOrderTypeScriptVersion: "5.9.3",
   importOrder: [
     "",
     "<BUILTIN_MODULES>",
