@@ -30,22 +30,23 @@ const play: Story["play"] = async ({ canvasElement, step }) => {
   const canvas = within(canvasElement);
 
   await step("Dropdown open", async () => {
+    // There is also a delay of 75ms in the useHover hook, so we add 100ms to the duration to be safe
     await userEvent.click(canvas.getByTestId("trigger"));
-    await wait(getVariableAsNumber("duration.normal") + 50);
+    await wait(getVariableAsNumber("duration.normal") + 100);
     await expect(screen.getByTestId("trigger2")).toBeVisible();
 
     await userEvent.hover(screen.getByTestId("trigger2"));
-    await wait(getVariableAsNumber("duration.normal") + 50);
+    await wait(getVariableAsNumber("duration.normal") + 100);
     await expect(screen.getByTestId("trigger3")).toBeVisible();
 
     await userEvent.hover(screen.getByTestId("trigger3"));
-    await wait(getVariableAsNumber("duration.normal") + 50);
+    await wait(getVariableAsNumber("duration.normal") + 100);
     await expect(screen.getByTestId("trigger4")).toBeVisible();
   });
 
   await step("Dropdown close", async () => {
     await userEvent.click(screen.getByTestId("trigger4"));
-    await wait(getVariableAsNumber("duration.fast") + 50);
+    await wait(getVariableAsNumber("duration.fast") + 100);
     await expect(screen.queryByTestId("trigger4")).toBeNull();
   });
 };
