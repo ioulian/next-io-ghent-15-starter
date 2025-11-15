@@ -37,6 +37,11 @@
     font-family: inherit;
   }
 
+  iframe {
+    border: 0;
+    display: block;
+  }
+
   hr {
     width: 100%;
     height: 1px;
