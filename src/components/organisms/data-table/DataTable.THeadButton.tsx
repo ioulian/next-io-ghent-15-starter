@@ -1,6 +1,6 @@
 "use client";
 
-import type { SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
+import type { SvgSpriteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
 
 import { ComponentPropsWithRef } from "react";
 
@@ -26,7 +26,7 @@ const THeadButton = <T,>({
   const canSort = header.column.getCanSort();
 
   let title: string | undefined = undefined;
-  let icon: SvgSpirteSrc | undefined = undefined;
+  let icon: SvgSpriteSrc | undefined = undefined;
   if (canSort) {
     // Title
     title = t("sorting.clear");

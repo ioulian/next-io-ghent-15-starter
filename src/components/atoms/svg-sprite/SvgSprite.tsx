@@ -2,7 +2,7 @@ import { FC, HTMLProps, memo, useId } from "react";
 
 import { SvgSymbolImport } from "@jebka/webpack-svg-sprite-loader";
 
-export type SvgSpirteSrc = SvgSymbolImport & { checksum: string };
+export type SvgSpriteSrc = SvgSymbolImport & { checksum: string };
 const KEY_MAPPING: Record<string, string> = {
   "xml:space": "xmlSpace",
   "stroke-linecap": "strokeLinecap",
@@ -12,7 +12,7 @@ const KEY_MAPPING: Record<string, string> = {
 
 const SvgSprite: FC<
   {
-    src: SvgSpirteSrc;
+    src: SvgSpriteSrc;
   } & Omit<HTMLProps<SVGElement>, "src">
 > = ({
   src,

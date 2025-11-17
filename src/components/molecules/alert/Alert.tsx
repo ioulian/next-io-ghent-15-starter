@@ -1,4 +1,4 @@
-import type { SvgSpirteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
+import type { SvgSpriteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
 import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, ReactNode } from "react";
@@ -13,7 +13,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { alert } from "./Alert.styles";
 
-const ICON_MAP: Record<Exclude<VariantProps<typeof alert>["variant"], undefined>, SvgSpirteSrc> = {
+const ICON_MAP: Record<Exclude<VariantProps<typeof alert>["variant"], undefined>, SvgSpriteSrc> = {
   normal: iconVariantNormal,
   info: iconVariantNormal,
   danger: iconVariantDanger,
