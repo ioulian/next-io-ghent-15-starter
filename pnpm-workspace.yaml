@@ -1,0 +1,9 @@
+minimumReleaseAge: 4320 # 3 days
+
+onlyBuiltDependencies:
+  - "@firebase/util"
+  - core-js-pure
+  - esbuild
+  - protobufjs
+  - sharp
+  - unrs-resolver
