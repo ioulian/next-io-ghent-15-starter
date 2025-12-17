@@ -8,7 +8,7 @@
     "postinstall": "husky",
     "// project": "echo 'Next.js specific stuff'",
     "dev": "pnpm svg-sprite:build && next dev --experimental-https",
-    "analyze": "cross-env ANALYZE=true pnpm build",
+    "analyze": "pnpm svg-sprite:build && cross-env ANALYZE=true pnpm build",
     "build": "pnpm check:build-prerequisites && pnpm svg-sprite:build && next build",
     "start": "next start",
     "// code": "echo 'Code checks, linters and formatters'",
