@@ -1,0 +1,103 @@
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { glob } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
+
+import SVGSpriter from "svg-sprite";
+
+import svgoConfig from "../../svgo.config.mjs";
+import { ID_SEPARATOR, NODE_MODULES_SPRITES, SPRITE_FILE, SPRITE_FOLDER } from "./constants";
+
+const getSpriter = () => {
+  return new SVGSpriter({
+    shape: {
+      id: {
+        // SVG shape ID related options
+        separator: ID_SEPARATOR, // Separator for directory name traversal
+        pseudo: "~", // File name separator for shape states (e.g. ':hover')
+      },
+      dimension: {
+        // Dimension related options
+        maxWidth: 2000, // Max. shape width
+        maxHeight: 2000, // Max. shape height
+        precision: 2, // Floating point precision
+        attributes: false, // Width and height attributes on embedded shapes
+      },
+      spacing: {
+        // Spacing related options
+        padding: 0, // Padding around all shapes
+        box: "content", // Padding strategy (similar to CSS `box-sizing`)
+      },
+      transform: [
+        {
+          svgo: {
+            // @ts-expect-error types are not fully supported
+            plugins: svgoConfig.plugins,
+          },
+        },
+      ],
+    },
+    mode: {
+      symbol: {
+        dest: SPRITE_FOLDER,
+        sprite: SPRITE_FILE,
+      },
+    },
+    svg: {
+      xmlDeclaration: true, // Add XML declaration to SVG sprite
+      doctypeDeclaration: true, // Add DOCTYPE declaration to SVG sprite
+      namespaceIDs: true, // Add namespace token to all IDs in SVG shapes
+      namespaceIDPrefix: "", // Add a prefix to the automatically generated namespaceIDs
+      namespaceClassnames: true, // Add namespace token to all CSS class names in SVG shapes
+      dimensionAttributes: true, // Width and height attributes on the sprite
+    },
+  });
+};
+
+const getCustomSprites = async (spriter: SVGSpriter.SVGSpriter) => {
+  const customSprites = await Array.fromAsync(glob("src/svg-sprites/**/*.svg", { cwd: resolve(__dirname, "../..") }));
+
+  return customSprites.map((customSprite) => {
+    const name = customSprite.replace("src/svg-sprites/", "");
+    spriter.add(customSprite, name, readFileSync(resolve(__dirname, "../..", customSprite), "utf-8"));
+
+    return name.replaceAll("/", ID_SEPARATOR).replace(".svg", "");
+  });
+};
+
+const getNodeModuleSprites = async (spriter: SVGSpriter.SVGSpriter) => {
+  return Object.entries(NODE_MODULES_SPRITES).map(([name, path]) => {
+    spriter.add(name, name, readFileSync(require.resolve(path), "utf-8"));
+
+    return name.replace(".svg", "");
+  });
+};
+
+const writeSprite = async (spriter: SVGSpriter.SVGSpriter) => {
+  const { result } = await spriter.compileAsync();
+  for (const mode of Object.values(result)) {
+    // @ts-expect-error types are not fully supported
+    for (const resource of Object.values(mode)) {
+      // @ts-expect-error types are not fully supported
+      mkdirSync(dirname(resource.path), { recursive: true });
+      // @ts-expect-error types are not fully supported
+      writeFileSync(resource.path, resource.contents);
+    }
+  }
+};
+
+const writeSpriteTypes = async (spriteNames: string[]) => {
+  // eslint-disable-next-line sonarjs/no-nested-template-literals
+  const content = `declare type SvgSpriteName = ${spriteNames.map((name) => `"${name}"`).join(" | ")};`;
+  writeFileSync("src/@types/svg-sprite.d.ts", content);
+};
+
+const getSprites = async () => {
+  const spriter = getSpriter();
+
+  const spriteNames = [...(await getCustomSprites(spriter)), ...(await getNodeModuleSprites(spriter))];
+
+  writeSpriteTypes(spriteNames);
+  writeSprite(spriter);
+};
+
+getSprites();

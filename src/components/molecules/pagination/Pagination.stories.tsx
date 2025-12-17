@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
-import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
-
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 
 import Pagination from "./Pagination";
@@ -20,9 +17,9 @@ export const Default: Story = {
   render: (args) => <Pagination {...args} />,
   args: {
     breakLabel: "...",
-    nextLabel: <SvgSprite src={iconChevronRight} />,
+    nextLabel: <SvgSprite name="tablerChevronRight" />,
     pageRangeDisplayed: 5,
     pageCount: 30,
-    previousLabel: <SvgSprite src={iconChevronLeft} />,
+    previousLabel: <SvgSprite name="tablerChevronLeft" />,
   },
 };

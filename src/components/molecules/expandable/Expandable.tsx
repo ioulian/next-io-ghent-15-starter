@@ -4,8 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, ReactNode } from "react";
 
-import iconChevron from "@tabler/icons/outline/chevron-down.svg";
-
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import { addClassNameToProps } from "@/utils/styles";
 
@@ -30,7 +28,7 @@ const Expandable: FC<
     <details {...addClassNameToProps(props, classes.expandable())} open={open}>
       <summary className={classes.summary()}>
         <span>{summary}</span>
-        <SvgSprite className={classes.icon()} src={iconChevron} aria-hidden />
+        <SvgSprite className={classes.icon()} name="tablerChevronDown" aria-hidden />
       </summary>
       <div className={classes.container()}>{children}</div>
     </details>

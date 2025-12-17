@@ -4,7 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, useCallback } from "react";
 
-import iconUnderline from "@tabler/icons/outline/underline.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
@@ -37,7 +36,7 @@ const ActionUnderline: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
           className={button({ isActive: editor.isActive("underline") })}
         >
           <VisuallyHidden>{t("actions.underline.text")}</VisuallyHidden>
-          <SvgSprite src={iconUnderline} />
+          <SvgSprite name="tablerUnderline" />
         </button>
       </TooltipTrigger>
       <TooltipContent>{t("actions.underline.tooltip")}</TooltipContent>

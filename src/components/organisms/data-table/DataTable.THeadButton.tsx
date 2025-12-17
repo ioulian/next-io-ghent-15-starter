@@ -1,12 +1,7 @@
 "use client";
 
-import type { SvgSpriteSrc } from "@/components/atoms/svg-sprite/SvgSprite";
-
 import { ComponentPropsWithRef } from "react";
 
-import iconSort from "@tabler/icons/outline/arrows-sort.svg";
-import iconSortAsc from "@tabler/icons/outline/sort-ascending.svg";
-import iconSortDesc from "@tabler/icons/outline/sort-descending.svg";
 import { flexRender, Header } from "@tanstack/react-table";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
@@ -26,7 +21,7 @@ const THeadButton = <T,>({
   const canSort = header.column.getCanSort();
 
   let title: string | undefined = undefined;
-  let icon: SvgSpriteSrc | undefined = undefined;
+  let icon: SvgSpriteName | undefined = undefined;
   if (canSort) {
     // Title
     title = t("sorting.clear");
@@ -37,13 +32,15 @@ const THeadButton = <T,>({
     }
 
     // Icon
-    icon = iconSort;
+    icon = "tablerArrowsSort";
     const isSorted = header.column.getIsSorted();
     if (isSorted !== false) {
-      icon = {
-        asc: iconSortAsc,
-        desc: iconSortDesc,
-      }[isSorted];
+      icon = (
+        {
+          asc: "tablerSortAscending",
+          desc: "tablerSortDescending",
+        } as const
+      )[isSorted];
     }
   }
 
@@ -56,7 +53,7 @@ const THeadButton = <T,>({
       title={title}
     >
       <span>{flexRender(header.column.columnDef.header, header.getContext())}</span>
-      {canSort && icon ? <SvgSprite src={icon} /> : null}
+      {canSort && icon ? <SvgSprite name={icon} /> : null}
     </button>
   );
 };

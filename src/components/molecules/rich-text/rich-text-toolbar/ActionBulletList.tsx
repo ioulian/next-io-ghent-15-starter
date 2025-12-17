@@ -4,7 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, useCallback } from "react";
 
-import iconBulletList from "@tabler/icons/outline/list.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
@@ -37,7 +36,7 @@ const ActionBulletList: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => 
           className={button({ isActive: editor.isActive("bulletList") })}
         >
           <VisuallyHidden>{t("actions.bulletList.text")}</VisuallyHidden>
-          <SvgSprite src={iconBulletList} />
+          <SvgSprite name="tablerList" />
         </button>
       </TooltipTrigger>
       <TooltipContent>{t("actions.bulletList.tooltip")}</TooltipContent>

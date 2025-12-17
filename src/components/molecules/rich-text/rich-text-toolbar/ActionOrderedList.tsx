@@ -4,7 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, useCallback } from "react";
 
-import iconOrderedList from "@tabler/icons/outline/list-numbers.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
@@ -37,7 +36,7 @@ const ActionOrderedList: FC<ComponentPropsWithRef<"button">> = ({ ...props }) =>
           className={button({ isActive: editor.isActive("orderedList") })}
         >
           <VisuallyHidden>{t("actions.orderedList.text")}</VisuallyHidden>
-          <SvgSprite src={iconOrderedList} />
+          <SvgSprite name="tablerListNumbers" />
         </button>
       </TooltipTrigger>
       <TooltipContent>{t("actions.orderedList.tooltip")}</TooltipContent>

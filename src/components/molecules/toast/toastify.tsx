@@ -1,5 +1,3 @@
-import iconVariantDanger from "@tabler/icons/outline/alert-circle.svg";
-import iconVariantSuccess from "@tabler/icons/outline/circle-check.svg";
 import { createRoot } from "react-dom/client";
 import { toast, ToastContainer, ToastContent, ToastOptions } from "react-toastify/unstyled";
 
@@ -26,7 +24,7 @@ const setup = () => {
 export const success = (content: ToastContent, options?: ToastOptions) => {
   setup();
   toast.success(content, {
-    icon: <SvgSprite src={iconVariantSuccess} />,
+    icon: <SvgSprite name="tablerCircleCheck" />,
     ...options,
   });
 };
@@ -34,7 +32,7 @@ export const success = (content: ToastContent, options?: ToastOptions) => {
 export const error = (content: ToastContent, options?: ToastOptions) => {
   setup();
   toast.error(content, {
-    icon: <SvgSprite src={iconVariantDanger} />,
+    icon: <SvgSprite name="tablerAlertCircle" />,
     ...options,
   });
 };

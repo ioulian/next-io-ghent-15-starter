@@ -1,7 +1,5 @@
 import { ComponentPropsWithRef, FC, memo } from "react";
 
-import iconX from "@tabler/icons/outline/x.svg";
-
 import { WithRequired } from "@/types/helpers";
 
 import Button from "@/components/atoms/button/Button";
@@ -15,7 +13,7 @@ const CloseButton: FC<WithRequired<ComponentPropsWithRef<typeof Button>, "childr
     <Button
       {...addClassNameToProps(props, styles.closeButton)}
       iconOnly
-      iconBefore={<SvgSprite src={iconX} />}
+      iconBefore={<SvgSprite name="tablerX" />}
       size="base"
       variant="simple"
     />

@@ -2,8 +2,6 @@ import type { FC } from "react";
 
 import { Children, cloneElement, ComponentPropsWithRef, isValidElement, memo, ReactNode, useId, useMemo } from "react";
 
-import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
-import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { A11y, Navigation, Pagination } from "swiper/modules";
@@ -72,7 +70,7 @@ const CardSlider: FC<
               type="button"
               aria-label={t("controls.prev.ariaLabel")}
             >
-              <SvgSprite src={iconChevronLeft} />
+              <SvgSprite name="tablerChevronLeft" />
             </button>
             <div className={clsx(controlsClasses.pagination(), paginationElId)} />
             <button
@@ -80,7 +78,7 @@ const CardSlider: FC<
               type="button"
               aria-label={t("controls.next.ariaLabel")}
             >
-              <SvgSprite src={iconChevronRight} />
+              <SvgSprite name="tablerChevronRight" />
             </button>
           </div>
         </div>

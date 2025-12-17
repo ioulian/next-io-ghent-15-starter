@@ -4,7 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, useCallback } from "react";
 
-import iconHardBreak from "@tabler/icons/outline/pilcrow.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
@@ -37,7 +36,7 @@ const ActionHardBreak: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
           className={button({ isActive: editor.isActive("setHardBreak") })}
         >
           <VisuallyHidden>{t("actions.hardBreak.text")}</VisuallyHidden>
-          <SvgSprite src={iconHardBreak} />
+          <SvgSprite name="tablerPilcrow" />
         </button>
       </TooltipTrigger>
       <TooltipContent>{t("actions.hardBreak.tooltip")}</TooltipContent>

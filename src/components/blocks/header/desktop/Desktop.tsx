@@ -9,7 +9,6 @@ import { Link } from "@/i18n/navigation";
 import { addClassNameToProps } from "@/utils/styles";
 
 import { useActions, useTopMenuItems } from "../Desktop.hooks";
-import logoSprite from "./../../../../../public/img/logo-sprite.svg";
 
 import styles from "./Desktop.module.css";
 
@@ -31,7 +30,7 @@ const Desktop: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
         <Layout variant="oneCol">
           <div className={styles.mainMenuInner}>
             <Link href="/" className={styles.logo}>
-              <SvgSprite src={logoSprite} />
+              <SvgSprite name="logo" />
             </Link>
             <div className={styles.mainNav}>{children}</div>
             {actions ? <div className={styles.actions}>{actions}</div> : null}

@@ -13,7 +13,7 @@ It contains a lot of useful presets and common components to be used in your pro
 - Bundle analyser (Provided by Next.js);
 - [NVM](https://github.com/nvm-sh/nvm) preset;
 - .env variables (Provided by Next.js);
-- [SVG Sprites](https://github.com/just-paja/svg-sprites/tree/master/packages/webpack-svg-sprite-loader) (Custom or with [Tabler icons](https://tabler-icons.io/)). SVG spritesheet is exported to .svg file;
+- SVG Sprites custom build script (Custom or with [Tabler icons](https://tabler-icons.io/)). SVG spritesheet is exported to .svg file;
 - Font optimisation (Provided by Next.js);
 - [Storybook](https://github.com/storybookjs/storybook) with a11y checks, next-intl support and Next.js support;
 - Common components preset (with a11y in mind): [https://ioulian.github.io/next-ui-ghent-app-starter/](https://ioulian.github.io/next-io-ghent-15-starter/);
@@ -67,6 +67,11 @@ npm run storybook
 ### Remove demo content
 
 - Remove content from `src/app/[locale]/page.tsx` and remove folders: `src/app/[locale]/serverside`, `src/app/[locale]/auth-only` and `src/app/[locale]/_components`
+
+### SVG Spritesheet definition
+
+SVG Sprites definition can be found in scripts/svg-sprite/constants.ts.
+To use custom svg sprites, put all your files in src/svg-sprites (you can create subfolders). When the sprites are generated (before dev/build/storybook) type declarations will also be generated automatically.
 
 ## Go live checklist
 

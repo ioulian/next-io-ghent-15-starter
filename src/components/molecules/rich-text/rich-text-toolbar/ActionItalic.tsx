@@ -4,7 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, useCallback } from "react";
 
-import iconItalic from "@tabler/icons/outline/italic.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
@@ -37,7 +36,7 @@ const ActionItalic: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
           className={button({ isActive: editor.isActive("italic") })}
         >
           <VisuallyHidden>{t("actions.italic.text")}</VisuallyHidden>
-          <SvgSprite src={iconItalic} />
+          <SvgSprite name="tablerItalic" />
         </button>
       </TooltipTrigger>
       <TooltipContent>{t("actions.italic.tooltip")}</TooltipContent>

@@ -4,8 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, useCallback, useState } from "react";
 
-import passwordHideIcon from "@tabler/icons/outline/eye-off.svg";
-import passwordShowIcon from "@tabler/icons/outline/eye.svg";
 import { useTranslations } from "next-intl";
 
 import Button from "../../button/Button";
@@ -31,7 +29,7 @@ const PasswordInput: FC<{ showStrengthMeter?: boolean } & ComponentPropsWithRef<
         type={showPassword ? "text" : "password"}
         iconAfter={
           <Button
-            iconBefore={<SvgSprite src={showPassword ? passwordHideIcon : passwordShowIcon} />}
+            iconBefore={<SvgSprite name={showPassword ? "tablerPasswordHideIcon" : "tablerPasswordShowIcon"} />}
             iconOnly
             size="base"
             variant="simple"

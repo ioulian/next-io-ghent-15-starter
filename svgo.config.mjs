@@ -7,6 +7,7 @@ const config = {
   plugins: [
     //"preset-default", // built-in plugins enabled by default
     { name: "removeAttrs", params: { attrs: ["*:class:*"] } },
+    { name: "removeStyleElement" },
   ],
 };
 

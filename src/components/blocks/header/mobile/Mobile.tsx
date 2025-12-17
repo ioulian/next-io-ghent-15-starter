@@ -2,7 +2,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo } from "react";
 
-import iconMenu from "@tabler/icons/outline/menu-2.svg";
 import { useTranslations } from "next-intl";
 
 import Button from "@/components/atoms/button/Button";
@@ -15,8 +14,6 @@ import DialogTrigger from "@/components/molecules/dialog/DialogTrigger";
 import { Link } from "@/i18n/navigation";
 import { addClassNameToProps } from "@/utils/styles";
 
-import logoSprite from "./../../../../../public/img/logo-sprite.svg";
-
 import styles from "./Mobile.module.css";
 
 const Mobile: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
@@ -27,13 +24,13 @@ const Mobile: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
       <Layout variant="oneCol">
         <div className={styles.menu}>
           <Link href="/" className={styles.logo}>
-            <SvgSprite src={logoSprite} />
+            <SvgSprite name="logo" />
           </Link>
 
           <div>
             <Dialog>
               <DialogTrigger>
-                <Button iconOnly iconBefore={<SvgSprite src={iconMenu} />}>
+                <Button iconOnly iconBefore={<SvgSprite name="tablerMenu2" />}>
                   {t("mobile.openButton.label")}
                 </Button>
               </DialogTrigger>

@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import searchIcon from "@tabler/icons/outline/search.svg";
-
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 
 import Input from "./Input";
@@ -53,6 +51,6 @@ export const WithIcon: Story = {
   render: (args) => <Input {...args} />,
   args: {
     type: "search",
-    iconBefore: <SvgSprite src={searchIcon} />,
+    iconBefore: <SvgSprite name="tablerSearch" />,
   },
 };

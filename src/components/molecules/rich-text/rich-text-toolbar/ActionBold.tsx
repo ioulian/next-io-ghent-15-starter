@@ -4,7 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, useCallback } from "react";
 
-import iconBold from "@tabler/icons/outline/bold.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
@@ -37,7 +36,7 @@ const ActionBold: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
           className={button({ isActive: editor.isActive("bold") })}
         >
           <VisuallyHidden>{t("actions.bold.text")}</VisuallyHidden>
-          <SvgSprite src={iconBold} />
+          <SvgSprite name="tablerBold" />
         </button>
       </TooltipTrigger>
       <TooltipContent>{t("actions.bold.tooltip")}</TooltipContent>

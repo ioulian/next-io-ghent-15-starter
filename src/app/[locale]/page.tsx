@@ -8,8 +8,6 @@ import { getTranslations } from "next-intl/server";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import { generateSanitizedMetadata } from "@/utils/next";
 
-import sampleSvgSprite from "./../../../public/img/logo-sprite.svg";
-
 export const generateMetadata = generateSanitizedMetadata<Omit<PageProps<"/[locale]">, "children">>(
   async ({ params }) => {
     const { locale } = await params;
@@ -28,7 +26,7 @@ const Page: NextPage<PageProps<"/[locale]">> = ({}) => {
   return (
     <div>
       <div>{t("home.title")}</div>
-      <SvgSprite src={sampleSvgSprite} />
+      <SvgSprite name="logo" />
     </div>
   );
 };

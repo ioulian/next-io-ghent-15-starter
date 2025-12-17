@@ -4,7 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, useCallback } from "react";
 
-import iconSubscript from "@tabler/icons/outline/subscript.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
@@ -37,7 +36,7 @@ const ActionSubscript: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
           className={button({ isActive: editor.isActive("subscript") })}
         >
           <VisuallyHidden>{t("actions.subscript.text")}</VisuallyHidden>
-          <SvgSprite src={iconSubscript} />
+          <SvgSprite name="tablerSubscript" />
         </button>
       </TooltipTrigger>
       <TooltipContent>{t("actions.subscript.tooltip")}</TooltipContent>

@@ -4,7 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, useCallback } from "react";
 
-import iconHorizontalRule from "@tabler/icons/outline/separator-horizontal.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
@@ -31,7 +30,7 @@ const ActionHorizontalRule: FC<ComponentPropsWithRef<"button">> = ({ ...props })
       <TooltipTrigger>
         <button type="button" {...props} onClick={action} className={button()}>
           <VisuallyHidden>{t("actions.horizontalRule.text")}</VisuallyHidden>
-          <SvgSprite src={iconHorizontalRule} />
+          <SvgSprite name="tablerHorizontalRule" />
         </button>
       </TooltipTrigger>
       <TooltipContent>{t("actions.horizontalRule.tooltip")}</TooltipContent>

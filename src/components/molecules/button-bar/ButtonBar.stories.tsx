@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import iconVariantDanger from "@tabler/icons/outline/alert-circle.svg";
-import iconVariantSuccess from "@tabler/icons/outline/circle-check.svg";
-import iconVariantNormal from "@tabler/icons/outline/info-circle.svg";
 import { expect, userEvent, within } from "storybook/test";
 
 import Button from "@/components/atoms/button/Button";
@@ -49,13 +46,13 @@ export const Default: Story = {
 export const IconsOnly: Story = {
   render: (args) => (
     <ButtonBar {...args}>
-      <Button data-testid="button1" size="small" iconBefore={<SvgSprite src={iconVariantNormal} />} iconOnly>
+      <Button data-testid="button1" size="small" iconBefore={<SvgSprite name="tablerInfoCircle" />} iconOnly>
         Button 1
       </Button>
-      <Button data-testid="button2" size="small" iconBefore={<SvgSprite src={iconVariantDanger} />} iconOnly>
+      <Button data-testid="button2" size="small" iconBefore={<SvgSprite name="tablerAlertCircle" />} iconOnly>
         Button 2
       </Button>
-      <Button data-testid="button3" size="small" iconBefore={<SvgSprite src={iconVariantSuccess} />} iconOnly>
+      <Button data-testid="button3" size="small" iconBefore={<SvgSprite name="tablerCircleCheck" />} iconOnly>
         Button 3
       </Button>
     </ButtonBar>

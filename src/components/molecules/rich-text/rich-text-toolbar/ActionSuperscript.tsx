@@ -4,7 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, useCallback } from "react";
 
-import iconSuperscript from "@tabler/icons/outline/superscript.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
@@ -37,7 +36,7 @@ const ActionSuperscript: FC<ComponentPropsWithRef<"button">> = ({ ...props }) =>
           className={button({ isActive: editor.isActive("superscript") })}
         >
           <VisuallyHidden>{t("actions.superscript.text")}</VisuallyHidden>
-          <SvgSprite src={iconSuperscript} />
+          <SvgSprite name="tablerSuperscript" />
         </button>
       </TooltipTrigger>
       <TooltipContent>{t("actions.superscript.tooltip")}</TooltipContent>

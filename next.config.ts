@@ -5,11 +5,6 @@ import type { NextConfig } from "next";
 import createBundleAnalyzer from "@next/bundle-analyzer";
 import createNextIntlPlugin from "next-intl/plugin";
 
-// This only gives error with TSGO
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { injectToWebpackConfig } from "./scripts/svg-sprite-sheet.mjs";
-
 const withNextIntl = createNextIntlPlugin({
   experimental: {
     // Provide the path to the messages that you're using in `AppConfig`
@@ -84,11 +79,6 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
-  },
-  webpack: (config) => {
-    injectToWebpackConfig(config);
-
-    return config;
   },
 };
 

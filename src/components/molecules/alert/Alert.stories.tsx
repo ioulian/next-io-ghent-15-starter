@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import iconSettings from "@tabler/icons/outline/settings.svg";
-
 import Heading from "@/components/atoms/heading/Heading";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import Text from "@/components/atoms/text/Text";
@@ -57,7 +55,7 @@ export const CustomIcon: Story = {
   render: (args) => <Alert {...args} />,
   args: {
     variant: "normal",
-    icon: <SvgSprite src={iconSettings} aria-hidden />,
+    icon: <SvgSprite name="tablerSettings" aria-hidden />,
     children: (
       <>
         <Heading type="h2" size="h3">

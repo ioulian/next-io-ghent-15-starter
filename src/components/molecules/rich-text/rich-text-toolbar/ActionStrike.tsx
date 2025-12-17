@@ -4,7 +4,6 @@ import type { FC } from "react";
 
 import { ComponentPropsWithRef, memo, useCallback } from "react";
 
-import iconStrikethrough from "@tabler/icons/outline/strikethrough.svg";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
@@ -37,7 +36,7 @@ const ActionStrike: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
           className={button({ isActive: editor.isActive("strike") })}
         >
           <VisuallyHidden>{t("actions.strike.text")}</VisuallyHidden>
-          <SvgSprite src={iconStrikethrough} />
+          <SvgSprite name="tablerStrikethrough" />
         </button>
       </TooltipTrigger>
       <TooltipContent>{t("actions.strike.tooltip")}</TooltipContent>

@@ -3,8 +3,6 @@
 
 import type { Meta, StoryObj } from "@storybook/nextjs";
 
-import iconChevron from "@tabler/icons/outline/chevron-down.svg";
-
 import Button from "@/components/atoms/button/Button";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import Dropdown from "@/components/molecules/dropdown/Dropdown";
@@ -36,7 +34,7 @@ export const Default: Story = {
           render={
             <Dropdown
               trigger={
-                <Button size="base" variant="simple" iconAfter={<SvgSprite src={iconChevron} />}>
+                <Button size="base" variant="simple" iconAfter={<SvgSprite name="tablerChevronDown" />}>
                   Item 4
                 </Button>
               }

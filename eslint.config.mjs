@@ -59,6 +59,7 @@ const eslintConfig = defineConfig([
         {
           varsIgnorePattern: "^_",
           destructuredArrayIgnorePattern: "^_",
+          argsIgnorePattern: "^_",
         },
       ],
       "react/jsx-no-constructed-context-values": "error",

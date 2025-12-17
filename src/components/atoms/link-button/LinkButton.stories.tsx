@@ -2,10 +2,6 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 
 import Link from "next/link";
 
-import iconChevronLeft from "@tabler/icons/outline/chevron-left.svg";
-import iconChevronRight from "@tabler/icons/outline/chevron-right.svg";
-import iconSettings from "@tabler/icons/outline/settings.svg";
-
 import Tooltip from "@/components/molecules/tooltip/Tooltip";
 import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
 import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
@@ -42,8 +38,8 @@ export const WithIcons: Story = {
     children: "Button",
     iconOnly: false,
     fullWidth: false,
-    iconBefore: <SvgSprite src={iconChevronLeft} title="test-title" />,
-    iconAfter: <SvgSprite src={iconChevronRight} title="test-title" />,
+    iconBefore: <SvgSprite name="tablerChevronLeft" title="test-title" />,
+    iconAfter: <SvgSprite name="tablerChevronRight" title="test-title" />,
   },
 };
 
@@ -54,7 +50,7 @@ export const IconOnly: Story = {
     variant: "simple",
     children: "Settings",
     fullWidth: false,
-    iconBefore: <SvgSprite src={iconSettings} />,
+    iconBefore: <SvgSprite name="tablerSettings" />,
     iconOnly: true,
   },
 };
@@ -73,7 +69,7 @@ export const AccessibleIconButton: Story = {
     variant: "simple",
     children: "Settings",
     fullWidth: false,
-    iconBefore: <SvgSprite src={iconSettings} />,
+    iconBefore: <SvgSprite name="tablerSettings" />,
     iconOnly: true,
   },
 };
@@ -96,6 +92,6 @@ export const NextLink: Story = {
     iconOnly: false,
     fullWidth: false,
     size: "normal",
-    iconAfter: <SvgSprite src={iconChevronRight} />,
+    iconAfter: <SvgSprite name="tablerChevronRight" />,
   },
 };

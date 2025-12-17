@@ -7,11 +7,6 @@ import type { StorybookConfig } from "@storybook/nextjs";
 
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
-// This only gives error with TSGO
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { injectToWebpackConfig } from "./../scripts/svg-sprite-sheet.mjs";
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -46,8 +41,6 @@ const config: StorybookConfig = {
   staticDirs: ["../public"],
 
   webpackFinal: async (config) => {
-    injectToWebpackConfig(config);
-
     if (config.resolve) {
       config.resolve.alias = {
         ...config.resolve.alias,
