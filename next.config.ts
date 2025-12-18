@@ -5,6 +5,8 @@ import type { NextConfig } from "next";
 import createBundleAnalyzer from "@next/bundle-analyzer";
 import createNextIntlPlugin from "next-intl/plugin";
 
+import { SPRITE_FILE } from "./scripts/svg-sprite/constants";
+
 const withNextIntl = createNextIntlPlugin({
   experimental: {
     // Provide the path to the messages that you're using in `AppConfig`
@@ -76,6 +78,15 @@ const nextConfig: NextConfig = {
           //   key: "X-XSS-Protection",
           //   value: "1; mode=block",
           // },
+        ],
+      },
+      {
+        source: `/${SPRITE_FILE}`,
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
         ],
       },
     ];
