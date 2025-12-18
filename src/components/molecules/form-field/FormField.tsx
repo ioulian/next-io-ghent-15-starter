@@ -100,7 +100,7 @@ type FormFieldProps<T extends FieldValues = FieldValues> = {
    * Normal children or render function (use this for third party components, or if you want more control of the data flow)
    */
   children?: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  | ReactElement<any, JSXElementConstructor<any>>
+    | ReactElement<any, JSXElementConstructor<any>>
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     | ReactElement<any, JSXElementConstructor<any>>[]
     | RenderProps<T>;
