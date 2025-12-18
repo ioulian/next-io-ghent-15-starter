@@ -1,7 +1,6 @@
-import { render, screen } from "@testing-library/react";
-
 import Input from "@/components/atoms/form/input/Input";
 import Form from "@/components/organisms/form/Form";
+import { render, screen } from "@/test/test-utils";
 
 import FormField from "./FormField";
 

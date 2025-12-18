@@ -1,6 +1,5 @@
-import { render, screen } from "@testing-library/react";
-
-import describeGeneralTests from "@/test/generalTests";
+import describeGeneralTests from "@/test/general-tests";
+import { render, screen } from "@/test/test-utils";
 
 import CardList from "./CardList";
 

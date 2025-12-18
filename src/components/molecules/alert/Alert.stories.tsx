@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import Heading from "@/components/atoms/heading/Heading";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";

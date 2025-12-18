@@ -1,4 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+
+import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
 
 import TextArea from "./TextArea";
 
@@ -11,5 +13,13 @@ export default meta;
 type Story = StoryObj<typeof TextArea>;
 
 export const Default: Story = {
-  args: {},
+  render: (args) => (
+    <>
+      <VisuallyHidden>
+        <label htmlFor={args.id}>Text area</label>
+      </VisuallyHidden>
+      <TextArea {...args} id={args.id} />
+    </>
+  ),
+  args: { id: "text-area" },
 };

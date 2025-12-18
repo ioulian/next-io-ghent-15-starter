@@ -6,7 +6,6 @@ import { memo, useCallback, useEffect, useRef, useState } from "react";
 
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
-import Underline from "@tiptap/extension-underline";
 import { Editor, EditorEvents, EditorProvider, EditorProviderProps } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import clsx from "clsx";
@@ -24,7 +23,7 @@ const RichText: FC<{ isError?: boolean } & Omit<EditorProviderProps, "children">
   ...props
 }) => {
   const editorRef = useRef<Editor | null>(null);
-  const [extensions] = useState(() => [StarterKit, Subscript, Superscript, Underline]);
+  const [extensions] = useState(() => [StarterKit, Subscript, Superscript]);
   const [editorProps] = useState(() => ({
     ref,
     attributes: {

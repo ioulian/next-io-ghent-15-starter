@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import Button from "@/components/atoms/button/Button";
 import Heading from "@/components/atoms/heading/Heading";

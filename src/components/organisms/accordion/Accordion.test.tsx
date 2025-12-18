@@ -1,7 +1,6 @@
-import { render, screen } from "@testing-library/react";
-
 import Expandable from "@/components/molecules/expandable/Expandable";
-import describeGeneralTests from "@/test/generalTests";
+import describeGeneralTests from "@/test/general-tests";
+import { render, screen } from "@/test/test-utils";
 
 import Accordion from "./Accordion";
 

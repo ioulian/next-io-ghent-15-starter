@@ -1,7 +1,6 @@
-import { render, screen } from "@testing-library/react";
-
 import Tag from "@/components/atoms/tag/Tag";
-import describeGeneralTests from "@/test/generalTests";
+import describeGeneralTests from "@/test/general-tests";
+import { render, screen } from "@/test/test-utils";
 
 import TagList from "./TagList";
 

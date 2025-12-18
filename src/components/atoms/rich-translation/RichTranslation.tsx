@@ -1,10 +1,13 @@
 import { FC, memo, ReactNode } from "react";
 
-import { RichTranslationValues } from "next-intl";
+type Tag = "p" | "strong" | "ol" | "ul" | "li" | "em" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "br";
 
-export const defaultTranslationValues: RichTranslationValues = {
+export const defaultTranslationValues: Record<Tag, (chunks: ReactNode) => ReactNode> = {
   p: (chunks) => <p>{chunks}</p>,
   strong: (chunks) => <strong>{chunks}</strong>,
+  ol: (chunks) => <ol>{chunks}</ol>,
+  ul: (chunks) => <ul>{chunks}</ul>,
+  li: (chunks) => <li>{chunks}</li>,
   em: (chunks) => <em>{chunks}</em>,
   h1: (chunks) => <h1>{chunks}</h1>,
   h2: (chunks) => <h2>{chunks}</h2>,
@@ -16,12 +19,10 @@ export const defaultTranslationValues: RichTranslationValues = {
 };
 
 const RichTranslation: FC<{
-  tags?: RichTranslationValues;
-  children: (tags: RichTranslationValues) => ReactNode;
-}> = ({ children, tags }) => {
+  children: (tags: Record<Tag, (chunks: ReactNode) => ReactNode>) => ReactNode;
+}> = ({ children }) => {
   return children({
     ...defaultTranslationValues,
-    ...(tags ?? {}),
   });
 };
 

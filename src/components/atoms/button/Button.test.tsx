@@ -1,7 +1,7 @@
-import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, vi } from "vitest";
 
-import describeGeneralTests from "@/test/generalTests";
+import describeGeneralTests from "@/test/general-tests";
+import { fireEvent, render, screen } from "@/test/test-utils";
 
 import Button from "./Button";
 

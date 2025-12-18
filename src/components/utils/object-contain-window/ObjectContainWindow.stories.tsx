@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import Dialog from "@/components/molecules/dialog/Dialog";
 import DialogContent from "@/components/molecules/dialog/DialogContent";

@@ -1,11 +1,11 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
 import { userEvent } from "storybook/test";
 import { z } from "zod";
 
 import Input from "@/components/atoms/form/input/Input";
 import FormField from "@/components/molecules/form-field/FormField";
 import { exampleErrors } from "@/components/organisms/form/data";
-import describeGeneralTests from "@/test/generalTests";
+import describeGeneralTests from "@/test/general-tests";
+import { act, fireEvent, render, screen } from "@/test/test-utils";
 
 import Form from "./Form";
 import { createValidationMessage, createZodResolver } from "./validation";

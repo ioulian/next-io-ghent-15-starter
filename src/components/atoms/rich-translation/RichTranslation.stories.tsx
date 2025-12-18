@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { FC } from "react";
 
@@ -19,18 +19,16 @@ const Example: FC = () => {
   const t = useTranslations("common");
 
   return (
-    <RichTranslation
-      tags={{
-        customLink: (chunks) => (
-          <a href="#" className="custom">
-            {chunks}
-          </a>
-        ),
-      }}
-    >
-      {
-        // @ts-expect-error FIXME
-        (tags) => t.rich("stories.richTranslation.value", tags)
+    <RichTranslation>
+      {(tags) =>
+        t.rich("stories.richTranslation.value", {
+          ...tags,
+          customLink: (chunks) => (
+            <a href="#" className="custom">
+              {chunks}
+            </a>
+          ),
+        })
       }
     </RichTranslation>
   );

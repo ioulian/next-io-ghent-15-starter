@@ -1,7 +1,6 @@
-import { render, screen } from "@testing-library/react";
-
 import MainContentLink from "@/components/molecules/main-content/MainContentLink";
-import describeGeneralTests from "@/test/generalTests";
+import describeGeneralTests from "@/test/general-tests";
+import { render, screen } from "@/test/test-utils";
 
 import MainContent from "./MainContent";
 

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import Spinner from "@/components/atoms/spinner/Spinner";
 import LoaderDelay from "@/components/utils/loader-delay/LoaderDelay";

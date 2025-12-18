@@ -1,6 +1,5 @@
-import { render } from "@testing-library/react";
-
-import describeGeneralTests from "@/test/generalTests";
+import describeGeneralTests from "@/test/general-tests";
+import { render } from "@/test/test-utils";
 
 import CloseButton from "./CloseButton";
 

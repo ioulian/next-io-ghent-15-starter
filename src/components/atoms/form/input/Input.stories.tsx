@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
+import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
 
 import Input from "./Input";
 
@@ -41,16 +42,32 @@ export default meta;
 type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
-  render: (args) => <Input {...args} />,
+  render: (args) => (
+    <>
+      <VisuallyHidden>
+        <label htmlFor={args.id}>Input field</label>
+      </VisuallyHidden>
+      <Input {...args} id={args.id} />
+    </>
+  ),
   args: {
     type: "text",
+    id: "input-field",
   },
 };
 
 export const WithIcon: Story = {
-  render: (args) => <Input {...args} />,
+  render: (args) => (
+    <>
+      <VisuallyHidden>
+        <label htmlFor={args.id}>Input field</label>
+      </VisuallyHidden>
+      <Input {...args} id={args.id} />
+    </>
+  ),
   args: {
     type: "search",
     iconBefore: <SvgSprite name="tablerSearch" />,
+    id: "input-field-with-icon",
   },
 };

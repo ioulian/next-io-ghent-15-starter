@@ -1,6 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-
-import describeGeneralTests from "@/test/generalTests";
+import describeGeneralTests from "@/test/general-tests";
+import { fireEvent, render, screen } from "@/test/test-utils";
 
 import Ellipsis from "./Ellipsis";
 

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { expect, fn, userEvent, within } from "storybook/test";
 import { z, ZodType } from "zod";
@@ -11,7 +11,7 @@ import PasswordInput from "@/components/atoms/form/password/PasswordInput";
 import SingleCheckbox from "@/components/atoms/form/single-checkbox/SingleCheckbox";
 import Heading from "@/components/atoms/heading/Heading";
 import FormField from "@/components/molecules/form-field/FormField";
-import { createZodResolver } from "@/components/organisms/form/validation";
+import { createValidationMessage, createZodResolver } from "@/components/organisms/form/validation";
 import { wait } from "@/utils/promises";
 
 import Form from "./Form";
@@ -41,22 +41,24 @@ type SampleFormData = {
   privacy: boolean;
 };
 
-const REQUIRED_MESSAGE = "This field is required";
-const EMAIL_MESSAGE = "This is not a valid email";
+const REQUIRED_MESSAGE = createValidationMessage("common.form.validationErrors.required");
+const EMAIL_MESSAGE = createValidationMessage("common.form.validationErrors.email");
 const BASIC_STRING_VALIDATION = z.string(REQUIRED_MESSAGE);
 
 const schema: ZodType<SampleFormData, SampleFormData> = z
   .object({
-    firstName: BASIC_STRING_VALIDATION.min(1),
+    firstName: BASIC_STRING_VALIDATION.min(1, createValidationMessage("common.form.validationErrors.required")),
     lastName: BASIC_STRING_VALIDATION.nullish(),
     emailAddress: z.email(EMAIL_MESSAGE),
-    hobbies: z.array(z.string(), REQUIRED_MESSAGE).min(1, "Select at least one"),
-    password: BASIC_STRING_VALIDATION.min(6),
-    passwordRepeat: BASIC_STRING_VALIDATION.min(6),
+    hobbies: z
+      .array(z.string(), REQUIRED_MESSAGE)
+      .min(1, createValidationMessage("common.form.validationErrors.required")),
+    password: BASIC_STRING_VALIDATION.min(6, createValidationMessage("common.form.validationErrors.password")),
+    passwordRepeat: BASIC_STRING_VALIDATION.min(6, createValidationMessage("common.form.validationErrors.password")),
     privacy: z.boolean(),
   })
   .refine((obj) => obj.password === obj.passwordRepeat, {
-    message: "Passwords must match!",
+    ...createValidationMessage("common.form.validationErrors.passwordMatch"),
     path: ["passwordRepeat"],
   });
 
@@ -79,8 +81,8 @@ export const Default: Story = {
     });
 
     await step("Check for errors", async () => {
-      await expect(canvas.getByText(EMAIL_MESSAGE)).toBeInTheDocument();
-      await expect(canvas.getByText(REQUIRED_MESSAGE)).toBeInTheDocument();
+      await expect(canvas.getByTestId("emailAddress")).toHaveAttribute("aria-invalid", "true");
+      await expect(canvas.getByTestId("firstCheckbox")).toHaveAttribute("aria-invalid", "true");
     });
 
     await step("Fill in form correctly", async () => {
@@ -165,7 +167,7 @@ export const Default: Story = {
           }}
           label="Password"
           name="password"
-          description="At least 8 chars, lowercase, uppercase, special char and number"
+          description="At least 6 chars, lowercase, uppercase, special char and number"
           required
         >
           <PasswordInput data-testid="password" />

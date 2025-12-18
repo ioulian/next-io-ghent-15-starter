@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import Text from "@/components/atoms/text/Text";
 import { presetDefault } from "@/components/utils/smooth-shadow/presets";

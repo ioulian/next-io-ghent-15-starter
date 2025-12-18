@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank  */
 // button-has-type will be handled by mega menu
 
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import Button from "@/components/atoms/button/Button";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
