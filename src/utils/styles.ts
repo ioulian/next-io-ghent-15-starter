@@ -13,6 +13,8 @@ export const addClassNameToProps = <T extends PropsWithClassName>(
 });
 
 export const roundByDPR = (value: number): number => {
+  // Too bad new IE (safari)... But fallback is fine.
+  // eslint-disable-next-line baseline-js/use-baseline
   const dpr = window.devicePixelRatio || 1;
 
   return Math.round(value * dpr) / dpr;

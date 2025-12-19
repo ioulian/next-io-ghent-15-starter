@@ -1,7 +1,7 @@
 /**
  * Name mapping for SVG sprites loaded from node_modules.
  */
-export const NODE_MODULES_SPRITES = {
+export const NODE_MODULES_SPRITES: Record<string, string> = {
   tablerChevronLeft: "@tabler/icons/outline/chevron-left.svg",
   tablerChevronRight: "@tabler/icons/outline/chevron-right.svg",
   tablerChevronDown: "@tabler/icons/outline/chevron-down.svg",

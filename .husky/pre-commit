@@ -1,1 +1,1 @@
-pnpm test:lint && pnpm test:types && pnpm check:translations
+pnpm test:lint && pnpm test:types && pnpm check:translations && pnpm format:code

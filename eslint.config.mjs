@@ -2,6 +2,7 @@
 
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
+import baselineJs from "eslint-plugin-baseline-js";
 import * as moduleReplacements from "eslint-plugin-depend";
 import i18next from "eslint-plugin-i18next";
 import jsxA11yX from "eslint-plugin-jsx-a11y-x";
@@ -76,6 +77,7 @@ const eslintConfig = defineConfig([
   },
 
   // i18next
+  // @ts-expect-error - i18next config is not typed
   i18next.configs["flat/recommended"],
   {
     files: ["**/*.stories.tsx", "**/*.test.tsx"],
@@ -127,6 +129,13 @@ const eslintConfig = defineConfig([
         },
       },
     },
+  },
+
+  // eslint-plugin-baseline-js
+  baselineJs.configs["recommended-ts"]({ available: "widely", level: "error" }),
+  {
+    files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+    plugins: { "baseline-js": baselineJs },
   },
 ]);
 
