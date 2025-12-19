@@ -1,4 +1,4 @@
-import type { Placement } from "@floating-ui/react";
+import type { Placement, UseTransitionStylesProps } from "@floating-ui/react";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 
@@ -37,7 +37,7 @@ export const zoomAnimation = {
     open: getVariableAsNumber("duration.normal"),
     close: getVariableAsNumber("duration.fast"),
   },
-} as const;
+} satisfies UseTransitionStylesProps;
 
 export const dialogAnimation = {
   initial: { transform: "scale(0.96)" },
@@ -45,14 +45,14 @@ export const dialogAnimation = {
     open: getVariableAsNumber("duration.normal"),
     close: getVariableAsNumber("duration.fast"),
   },
-};
+} satisfies UseTransitionStylesProps;
 
 export const dialogOverlayAnimation = {
   duration: {
     open: getVariableAsNumber("duration.normal"),
     close: getVariableAsNumber("duration.fast"),
   },
-};
+} satisfies UseTransitionStylesProps;
 
 export const sheetSlideAnimation = {
   duration: {
@@ -82,4 +82,4 @@ export const sheetSlideAnimation = {
       transitionTimingFunction: "var(--easing-swift-in)",
     };
   },
-};
+} satisfies UseTransitionStylesProps;

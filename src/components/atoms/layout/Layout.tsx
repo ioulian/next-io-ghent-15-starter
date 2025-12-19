@@ -10,7 +10,7 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Layout.module.css";
 
-const Heading: FC<
+const Layout: FC<
   {
     /**
      * Tag of the element
@@ -52,4 +52,4 @@ const Heading: FC<
   );
 };
 
-export default memo(Heading);
+export default memo(Layout);

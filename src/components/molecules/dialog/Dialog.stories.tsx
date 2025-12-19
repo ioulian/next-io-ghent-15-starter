@@ -6,7 +6,9 @@ import { expect, screen, userEvent, within } from "storybook/test";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import Button from "@/components/atoms/button/Button";
+import { sheetSlideAnimation } from "@/components/atoms/floater/Floater.animations";
 import Heading from "@/components/atoms/heading/Heading";
+import Sheet from "@/components/atoms/sheet/Sheet";
 import Text from "@/components/atoms/text/Text";
 import { wait } from "@/utils/promises";
 
@@ -151,7 +153,7 @@ export const AsSheet: Story = {
   render: (args) => (
     <Dialog {...args}>
       <DialogTrigger>My trigger</DialogTrigger>
-      <DialogContent withCloseButton asSheet>
+      <DialogContent withCloseButton wrapper={Sheet} overlayRendering="hidden" animation={sheetSlideAnimation}>
         <DialogHeading>My dialog heading</DialogHeading>
         <DialogDescription>My dialog description</DialogDescription>
         <DialogClose>Close</DialogClose>
@@ -291,11 +293,7 @@ const ControlledOverlayComponent = () => {
         <SampleLargeText />
       </div>
       <Dialog open={isOpen} onOpenChange={(isNewOpen) => setIsOpen(isNewOpen)}>
-        <DialogContent withCloseButton>
-          <DialogHeading>My dialog heading</DialogHeading>
-          <DialogDescription>
-            <SampleLargeText />
-          </DialogDescription>
+        <DialogContent>
           <DialogClose
             onClick={() => {
               setIsOpen(false);
@@ -303,6 +301,10 @@ const ControlledOverlayComponent = () => {
           >
             Close
           </DialogClose>
+          <DialogHeading>My dialog heading</DialogHeading>
+          <DialogDescription>
+            <SampleLargeText />
+          </DialogDescription>
         </DialogContent>
       </Dialog>
     </>

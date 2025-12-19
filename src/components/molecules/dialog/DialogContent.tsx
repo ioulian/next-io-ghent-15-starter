@@ -1,8 +1,10 @@
 "use client";
 
-import type { FC } from "react";
+import type { Placement } from "@floating-ui/react";
+import type { ComponentPropsWithRef, FC } from "react";
+import type { VariantProps } from "tailwind-variants";
 
-import { Fragment, HTMLProps, memo, useCallback, useEffect, useMemo, useState } from "react";
+import { Fragment, HTMLProps, memo, useCallback, useEffect, useState } from "react";
 
 import {
   FloatingFocusManager,
@@ -13,6 +15,7 @@ import {
   useFloatingParentNodeId,
   useMergeRefs,
   useTransitionStyles,
+  UseTransitionStylesProps,
 } from "@floating-ui/react";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
@@ -20,37 +23,39 @@ import { useTranslations } from "next-intl";
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import CloseButton from "@/components/atoms/close-button/CloseButton";
 import Floater from "@/components/atoms/floater/Floater";
-import {
-  dialogAnimation,
-  dialogOverlayAnimation,
-  sheetSlideAnimation,
-} from "@/components/atoms/floater/Floater.animations";
-import Sheet from "@/components/atoms/sheet/Sheet";
+import { dialogAnimation, dialogOverlayAnimation } from "@/components/atoms/floater/Floater.animations";
 
 import { overlay } from "./Dialog.styles";
 import { useDialogContext } from "./hooks";
 
-const DialogContent: FC<{ withCloseButton?: boolean; asSheet?: boolean } & HTMLProps<HTMLDivElement>> = ({
+export type DialogContentWrapperProps = FC<ComponentPropsWithRef<"div"> & { placement: Placement }>;
+
+const DialogContent: FC<
+  {
+    withCloseButton?: boolean;
+    wrapper?: DialogContentWrapperProps;
+    animation?: UseTransitionStylesProps;
+    overlayRendering?: VariantProps<typeof overlay>["rendering"];
+  } & HTMLProps<HTMLDivElement>
+> = ({
   withCloseButton,
   ref: propRef,
-  asSheet = false,
   className,
+  overlayRendering = "centerDialog",
+  wrapper: DialogContentWrapper = Floater,
+  animation = dialogAnimation,
   ...props
 }) => {
   const t = useTranslations("common.closeButton");
   const context = useDialogContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
   const parentId = useFloatingParentNodeId();
-  const { isMounted, styles } = useTransitionStyles(context.context, dialogAnimation);
+  const { isMounted, styles } = useTransitionStyles(context.context, animation);
   const { styles: overlayStyles } = useTransitionStyles(context.context, dialogOverlayAnimation);
-
-  const { styles: stylesSheet } = useTransitionStyles(context.context, sheetSlideAnimation);
 
   const onClick = useCallback(() => {
     context.setOpen(false);
   }, [context]);
-
-  const style = useMemo(() => ({ ...overlayStyles, overflow: asSheet ? "hidden" : "auto" }), [overlayStyles, asSheet]);
 
   // This will disable focus manager during animation thus preventing focussing items outside the viewport
   const [focusDisabled, setFocusDisabled] = useState<boolean>(true);
@@ -61,7 +66,6 @@ const DialogContent: FC<{ withCloseButton?: boolean; asSheet?: boolean } & HTMLP
         setFocusDisabled(false);
       }, getVariableAsNumber("duration.normal"));
     } else {
-      // False positive
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setFocusDisabled(true);
     }
@@ -69,7 +73,7 @@ const DialogContent: FC<{ withCloseButton?: boolean; asSheet?: boolean } & HTMLP
     return () => {
       clearTimeout(timeout);
     };
-  }, [isMounted, asSheet]);
+  }, [isMounted]);
 
   if (!isMounted) {
     return null;
@@ -81,33 +85,23 @@ const DialogContent: FC<{ withCloseButton?: boolean; asSheet?: boolean } & HTMLP
     <Wrapper>
       <FloatingNode id={context.nodeId}>
         <FloatingPortal>
-          <FloatingOverlay lockScroll className={clsx(overlay({ asSheet }), className)} style={style}>
+          <FloatingOverlay
+            lockScroll
+            className={clsx(overlay({ rendering: overlayRendering }), className)}
+            style={overlayStyles}
+          >
             <FloatingFocusManager context={context.context} modal disabled={focusDisabled}>
-              {asSheet ? (
-                <Sheet
-                  ref={ref}
-                  placement={context.placement}
-                  aria-labelledby={context.labelId}
-                  aria-describedby={context.descriptionId}
-                  {...context.getFloatingProps(props)}
-                  style={stylesSheet}
-                >
-                  {props.children}
-                  {withCloseButton ? <CloseButton onClick={onClick}>{t("defaultLabel")}</CloseButton> : null}
-                </Sheet>
-              ) : (
-                <Floater
-                  ref={ref}
-                  placement={context.placement}
-                  aria-labelledby={context.labelId}
-                  aria-describedby={context.descriptionId}
-                  {...context.getFloatingProps(props)}
-                  style={styles}
-                >
-                  {props.children}
-                  {withCloseButton ? <CloseButton onClick={onClick}>{t("defaultLabel")}</CloseButton> : null}
-                </Floater>
-              )}
+              <DialogContentWrapper
+                ref={ref}
+                placement={context.placement}
+                aria-labelledby={context.labelId}
+                aria-describedby={context.descriptionId}
+                {...context.getFloatingProps(props)}
+                style={styles}
+              >
+                {props.children}
+                {withCloseButton ? <CloseButton onClick={onClick}>{t("defaultLabel")}</CloseButton> : null}
+              </DialogContentWrapper>
             </FloatingFocusManager>
           </FloatingOverlay>
         </FloatingPortal>

@@ -5,8 +5,9 @@ import styles from "./Dialog.module.css";
 export const overlay = tv({
   base: styles.overlay,
   variants: {
-    asSheet: {
-      false: styles.centerDialog,
+    rendering: {
+      centerDialog: styles.centerDialog,
+      hidden: styles.overlayHidden,
     },
   },
 });
