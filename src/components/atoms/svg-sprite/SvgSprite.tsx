@@ -2,7 +2,7 @@ import type { ComponentPropsWithRef } from "react";
 
 import { FC, memo, useId } from "react";
 
-import { SPRITE_FILE } from "../../../../scripts/svg-sprite/constants";
+import { ID_SEPARATOR, SPRITE_FILE } from "../../../../scripts/svg-sprite/constants";
 
 const SvgSprite: FC<
   {
@@ -26,7 +26,7 @@ const SvgSprite: FC<
       aria-labelledby={title ? titleId : undefined}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <use xlinkHref={`/${SPRITE_FILE}${cacheBust}#${name}`} />
+      <use xlinkHref={`/${SPRITE_FILE}${cacheBust}#${name.replace("/", ID_SEPARATOR)}`} />
     </svg>
   );
 };

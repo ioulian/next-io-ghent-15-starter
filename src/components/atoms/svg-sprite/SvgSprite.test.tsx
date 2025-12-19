@@ -19,4 +19,12 @@ describe("SvgSprite", () => {
     const title = screen.getByText("test title");
     expect(screen.getByTestId("test")).toHaveAttribute("aria-labelledby", title.id);
   });
+
+  it("renders with a directory separator in the name", () => {
+    render(<SvgSprite data-testid="test" name="test/logo" />);
+    expect(screen.getByTestId("test").querySelector("use")).toHaveAttribute(
+      "xlink:href",
+      expect.stringContaining("test--logo"),
+    );
+  });
 });

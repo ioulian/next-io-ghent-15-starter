@@ -60,7 +60,7 @@ const getCustomSprites = async (spriter: SVGSpriter.SVGSpriter) => {
     const name = customSprite.replace("src/svg-sprites/", "");
     spriter.add(customSprite, name, readFileSync(resolve(__dirname, "../..", customSprite), "utf-8"));
 
-    return name.replaceAll("/", ID_SEPARATOR).replace(".svg", "");
+    return name.replace(".svg", "");
   });
 };
 
