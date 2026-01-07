@@ -29,7 +29,7 @@
     "test:project-storybook": "vitest --watch false --project=storybook",
     "test:watch": "vitest --watch --project=default",
     "// SVG Sprites": "echo 'SVG Sprites'",
-    "svg-sprite:build": "tsx scripts/svg-sprite/index.ts"
+    "svg-sprite:build": "tsx scripts/svg-sprite/index.ts && prettier --write ./svg-sprite.d.ts"
   },
   "engines": {
     "node": "^22.0.0",
