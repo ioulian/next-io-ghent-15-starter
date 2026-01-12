@@ -29,7 +29,9 @@ const SvgSprite: FC<
       viewBox={SVG_SPRITE_DEFINITIONS[name]?.viewBox ?? undefined}
     >
       {title ? <title id={titleId}>{title}</title> : null}
-      <use xlinkHref={`/${SPRITE_FILE}${cacheBust}#${name.replace("/", ID_SEPARATOR)}`} />
+      <use
+        xlinkHref={`${process.env.SPRITE_ROOT ?? ""}/${SPRITE_FILE}${cacheBust}#${name.replace("/", ID_SEPARATOR)}`}
+      />
     </svg>
   );
 };
