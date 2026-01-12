@@ -36,7 +36,7 @@ jobs:
       - id: build-publish
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         env:
-          SPRITE_ROOT: "/next-io-ghent-15-starter"
+          NEXT_PUBLIC_SPRITE_ROOT: "/next-io-ghent-15-starter"
         with:
           install_command: pnpm install # default: npm ci
           build_command: pnpm build-storybook # default: npm run build-storybook

@@ -30,7 +30,7 @@ const SvgSprite: FC<
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <use
-        xlinkHref={`${process.env.SPRITE_ROOT ?? ""}/${SPRITE_FILE}${cacheBust}#${name.replace("/", ID_SEPARATOR)}`}
+        xlinkHref={`${process.env.NEXT_PUBLIC_SPRITE_ROOT ?? ""}/${SPRITE_FILE}${cacheBust}#${name.replace("/", ID_SEPARATOR)}`}
       />
     </svg>
   );
