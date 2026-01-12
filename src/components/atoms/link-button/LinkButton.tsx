@@ -48,7 +48,7 @@ export type Props<C extends ElementType> = {
   as?: C;
 } & ComponentPropsWithRef<C>;
 
-const LinkButton = <C extends React.ElementType = "a">({
+const LinkButton = <C extends ElementType = "a">({
   as: Element = "a",
   variant,
   size,
