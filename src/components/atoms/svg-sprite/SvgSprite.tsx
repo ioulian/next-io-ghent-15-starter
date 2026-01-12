@@ -2,7 +2,9 @@ import type { ComponentPropsWithRef } from "react";
 
 import { FC, memo, useId } from "react";
 
-import { ID_SEPARATOR, SPRITE_FILE } from "../../../../scripts/svg-sprite/constants";
+import type { SvgSpriteName } from "./SvgSprite.generated";
+
+import { ID_SEPARATOR, SPRITE_FILE, SVG_SPRITE_DEFINITIONS } from "./SvgSprite.generated";
 
 const SvgSprite: FC<
   {
@@ -24,6 +26,7 @@ const SvgSprite: FC<
       role={title ? "img" : undefined}
       aria-hidden={!title ? true : undefined}
       aria-labelledby={title ? titleId : undefined}
+      viewBox={SVG_SPRITE_DEFINITIONS[name]?.viewBox ?? undefined}
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <use xlinkHref={`/${SPRITE_FILE}${cacheBust}#${name.replace("/", ID_SEPARATOR)}`} />

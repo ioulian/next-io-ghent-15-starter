@@ -62,9 +62,9 @@ export const createSmoothShadow = ({
   const alphaCoordinates = easingCoordinates(alphaEasing, layers);
   const parsedColor = new Color(parse(color));
   const rgb: [number, number, number] = [
-    Math.floor(parsedColor.srgb.r * 255),
-    Math.floor(parsedColor.srgb.g * 255),
-    Math.floor(parsedColor.srgb.b * 255),
+    Math.floor((parsedColor.srgb?.r ?? 0) * 255),
+    Math.floor((parsedColor.srgb?.g ?? 0) * 255),
+    Math.floor((parsedColor.srgb?.b ?? 0) * 255),
   ];
 
   return Array(layers)

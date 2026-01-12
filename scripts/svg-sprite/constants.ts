@@ -33,3 +33,5 @@ export const ID_SEPARATOR = "--";
 
 export const SPRITE_FOLDER = "public";
 export const SPRITE_FILE = "sprite.svg";
+
+export const SPRITE_MODULE_PATH = "./src/components/atoms/svg-sprite";
