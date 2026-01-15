@@ -9,7 +9,7 @@ import { FloatingPortal, useMergeRefs, useTransitionStyles } from "@floating-ui/
 import Floater from "@/components/atoms/floater/Floater";
 import { zoomAnimation } from "@/components/atoms/floater/Floater.animations";
 
-import { useTooltipContext } from "./hooks";
+import { useTooltipContext } from "./Tooltip.hooks";
 
 const TooltipContent: FC<HTMLProps<HTMLDivElement>> = ({ ref: propRef, ...props }) => {
   const context = useTooltipContext();

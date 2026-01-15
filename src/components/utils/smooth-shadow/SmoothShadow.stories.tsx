@@ -4,8 +4,8 @@ import { FC } from "react";
 
 import { easings } from "@/utils/easings";
 
-import { presetDefault } from "./presets";
-import { createSmoothShadow, SmoothShadowOptionsType } from "./utilities";
+import { presetDefault } from "./SmoothShadow.presets";
+import { createSmoothShadow, SmoothShadowOptionsType } from "./SmoothShadow.utilities";
 
 const SmoothShadow: FC<SmoothShadowOptionsType> = (options) => {
   return (

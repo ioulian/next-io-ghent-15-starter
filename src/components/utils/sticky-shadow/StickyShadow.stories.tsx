@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import Text from "@/components/atoms/text/Text";
-import { presetDefault } from "@/components/utils/smooth-shadow/presets";
-import { createSmoothShadow } from "@/components/utils/smooth-shadow/utilities";
+import { presetDefault } from "@/components/utils/smooth-shadow/SmoothShadow.presets";
+import { createSmoothShadow } from "@/components/utils/smooth-shadow/SmoothShadow.utilities";
 
 import stylesBackdrop from "./../blurred-backdrop/BlurredBackdrop.module.css";
 import styles from "./StickyShadow.module.css";

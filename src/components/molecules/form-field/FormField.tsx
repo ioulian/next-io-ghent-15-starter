@@ -30,8 +30,8 @@ import {
 import Description from "@/components/atoms/form/description/Description";
 import FieldError from "@/components/atoms/form/field-error/FieldError";
 import Label from "@/components/atoms/form/label/Label";
-import { getAriaDescribedBy } from "@/components/molecules/form-field/utils";
-import { BE_VALIDATION } from "@/components/organisms/form/constants";
+import { getAriaDescribedBy } from "@/components/molecules/form-field/FormField.utils";
+import { BE_VALIDATION } from "@/components/organisms/form/Form.constants";
 import { addClassNameToProps } from "@/utils/styles";
 
 import { formField } from "./FormField.styles";
@@ -50,7 +50,7 @@ type RenderProps<T extends FieldValues = FieldValues> = (props: {
   };
 }) => ReactElement;
 
-type FormFieldProps<T extends FieldValues = FieldValues> = {
+export type FormFieldProps<T extends FieldValues = FieldValues> = {
   /**
    * Render this field as a toggle (toggle or checkbox), meaning it will put the input first and label next on the same line
    */

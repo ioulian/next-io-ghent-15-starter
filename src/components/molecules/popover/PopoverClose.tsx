@@ -4,7 +4,7 @@ import type { FC } from "react";
 
 import { cloneElement, HTMLProps, isValidElement, memo, useCallback } from "react";
 
-import { usePopoverContext } from "./hooks";
+import { usePopoverContext } from "./Popover.hooks";
 
 const PopoverClose: FC<HTMLProps<HTMLButtonElement>> = ({ children, ...props }) => {
   const state = usePopoverContext();

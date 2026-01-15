@@ -6,7 +6,7 @@ import { cloneElement, HTMLProps, isValidElement, memo } from "react";
 
 import { useMergeRefs } from "@floating-ui/react";
 
-import { usePopoverContext } from "./hooks";
+import { usePopoverContext } from "./Popover.hooks";
 
 const PopoverTrigger: FC<HTMLProps<HTMLElement>> = ({ children, ref: propRef, ...props }) => {
   const context = usePopoverContext();

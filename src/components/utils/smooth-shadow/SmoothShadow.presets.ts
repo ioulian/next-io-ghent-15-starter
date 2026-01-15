@@ -1,6 +1,6 @@
 import { easings } from "@/utils/easings";
 
-import { SmoothShadowOptionsType } from "./utilities";
+import { SmoothShadowOptionsType } from "./SmoothShadow.utilities";
 
 export const presetDefault: SmoothShadowOptionsType = {
   color: "#000",

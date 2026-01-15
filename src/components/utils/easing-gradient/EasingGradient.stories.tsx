@@ -4,7 +4,7 @@ import { FC } from "react";
 
 import { easings } from "@/utils/easings";
 
-import { createEasingGradient } from "./utilities";
+import { createEasingGradient } from "./EasingGradient.utilities";
 
 const EasingGradient: FC<{
   from: string;

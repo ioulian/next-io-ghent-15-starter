@@ -6,7 +6,7 @@ import { cloneElement, HTMLProps, isValidElement, memo } from "react";
 
 import { useMergeRefs } from "@floating-ui/react";
 
-import { useDialogContext } from "./hooks";
+import { useDialogContext } from "./Dialog.hooks";
 
 const DialogTrigger: FC<HTMLProps<HTMLElement>> = ({ children, ref: propRef, ...props }) => {
   const context = useDialogContext();

@@ -2,7 +2,7 @@
 
 import { FC, memo, PropsWithChildren } from "react";
 
-import { DialogContext, DialogOptions, useDialog } from "./hooks";
+import { DialogContext, DialogOptions, useDialog } from "./Dialog.hooks";
 
 // Based on: https://floating-ui.com/docs/popover
 const Dialog: FC<PropsWithChildren & DialogOptions> = ({ children, ...options }) => {

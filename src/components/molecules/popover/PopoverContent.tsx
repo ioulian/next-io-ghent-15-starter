@@ -19,7 +19,7 @@ import CloseButton from "@/components/atoms/close-button/CloseButton";
 import Floater from "@/components/atoms/floater/Floater";
 import { zoomAnimation } from "@/components/atoms/floater/Floater.animations";
 
-import { usePopoverContext } from "./hooks";
+import { usePopoverContext } from "./Popover.hooks";
 
 const PopoverContent: FC<{ withCloseButton?: boolean; showArrow?: boolean } & HTMLProps<HTMLDivElement>> = ({
   withCloseButton = false,

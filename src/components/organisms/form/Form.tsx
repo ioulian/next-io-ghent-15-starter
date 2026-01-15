@@ -4,11 +4,25 @@ import { ComponentPropsWithRef, FormEvent, useCallback, useEffect } from "react"
 
 import { DeepPartial, FieldErrors, FieldValues, FormProvider, Path, useForm, UseFormProps } from "react-hook-form";
 
-import { BE_VALIDATION } from "@/components/organisms/form/constants";
-import { FormFieldError } from "@/components/organisms/form/types";
+import { BE_VALIDATION } from "@/components/organisms/form/Form.constants";
+import { FormFieldError } from "@/components/organisms/form/Form.types";
 import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Form.module.css";
+
+export type FormProps<
+  TFieldValues extends FieldValues = FieldValues,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  TContext = any,
+  TTransformedValues = TFieldValues,
+> = {
+  fieldErrors?: FormFieldError<TFieldValues>[];
+  isLoading?: boolean;
+  onSubmit?: (data: TTransformedValues, submitter?: HTMLElement) => void;
+  onError?: (errors: FieldErrors<TFieldValues>) => void;
+  onChange?: (data?: DeepPartial<TFieldValues> | TFieldValues) => void;
+  formSettings?: UseFormProps<TFieldValues, TContext, TTransformedValues>;
+} & Omit<ComponentPropsWithRef<"form">, "onChange" | "onSubmit">;
 
 /**
  * Wrapper around `react-hook-form`.
@@ -47,14 +61,7 @@ const Form = <
   children,
   formSettings,
   ...props
-}: {
-  fieldErrors?: FormFieldError<TFieldValues>[];
-  isLoading?: boolean;
-  onSubmit?: (data: TTransformedValues, submitter?: HTMLElement) => void;
-  onError?: (errors: FieldErrors<TFieldValues>) => void;
-  onChange?: (data?: DeepPartial<TFieldValues> | TFieldValues) => void;
-  formSettings?: UseFormProps<TFieldValues, TContext, TTransformedValues>;
-} & Omit<ComponentPropsWithRef<"form">, "onChange" | "onSubmit">) => {
+}: FormProps<TFieldValues, TContext, TTransformedValues>) => {
   const methods = useForm<TFieldValues, TContext, TTransformedValues>({
     mode: "onSubmit",
     ...formSettings,

@@ -25,8 +25,8 @@ import CloseButton from "@/components/atoms/close-button/CloseButton";
 import Floater from "@/components/atoms/floater/Floater";
 import { dialogAnimation, dialogOverlayAnimation } from "@/components/atoms/floater/Floater.animations";
 
+import { useDialogContext } from "./Dialog.hooks";
 import { overlay } from "./Dialog.styles";
-import { useDialogContext } from "./hooks";
 
 export type DialogContentWrapperProps = FC<ComponentPropsWithRef<"div"> & { placement: Placement }>;
 

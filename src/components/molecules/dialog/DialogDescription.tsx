@@ -6,7 +6,7 @@ import { cloneElement, HTMLProps, isValidElement, memo, useLayoutEffect } from "
 
 import { useId } from "@floating-ui/react";
 
-import { useDialogContext } from "./hooks";
+import { useDialogContext } from "./Dialog.hooks";
 
 const DialogDescription: FC<HTMLProps<HTMLParagraphElement>> = ({ children, ...props }) => {
   const { setDescriptionId } = useDialogContext();

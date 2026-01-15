@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { FC } from "react";
 
-import { getAvatarInitials } from "./utilities";
+import { getAvatarInitials } from "./AvatarInitials.utilities";
 
 const AvatarInitials: FC<{
   initials: string;

@@ -6,7 +6,7 @@ import { cloneElement, HTMLProps, isValidElement, memo, useLayoutEffect } from "
 
 import { useId } from "@floating-ui/react";
 
-import { usePopoverContext } from "./hooks";
+import { usePopoverContext } from "./Popover.hooks";
 
 const PopoverDescription: FC<HTMLProps<HTMLParagraphElement>> = ({ children, ...props }) => {
   const { setDescriptionId } = usePopoverContext();

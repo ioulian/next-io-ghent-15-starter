@@ -10,11 +10,11 @@ import Input from "@/components/atoms/form/input/Input";
 import PasswordInput from "@/components/atoms/form/password/PasswordInput";
 import SingleCheckbox from "@/components/atoms/form/single-checkbox/SingleCheckbox";
 import Heading from "@/components/atoms/heading/Heading";
-import FormField from "@/components/molecules/form-field/FormField";
-import { createValidationMessage, createZodResolver } from "@/components/organisms/form/validation";
+import { createValidationMessage, createZodResolver } from "@/components/organisms/form/Form.validation";
 import { wait } from "@/utils/promises";
 
 import Form from "./Form";
+import { createForm } from "./Form.utils";
 
 const meta: Meta<typeof Form> = {
   title: "UI/Organisms/Form",
@@ -62,6 +62,8 @@ const schema: ZodType<SampleFormData, SampleFormData> = z
     path: ["passwordRepeat"],
   });
 
+const SampleForm = createForm<SampleFormData>();
+
 export const Default: Story = {
   play: async ({ args, canvasElement, step }) => {
     const canvas = within(canvasElement);
@@ -102,7 +104,7 @@ export const Default: Story = {
     });
   },
   render: (args) => (
-    <Form<SampleFormData>
+    <SampleForm.Form
       formSettings={{
         defaultValues: {},
         resolver: createZodResolver(schema),
@@ -119,7 +121,7 @@ export const Default: Story = {
           gap: "1.25rem",
         }}
       >
-        <FormField<SampleFormData>
+        <SampleForm.FormField
           style={{
             flexGrow: 1,
           }}
@@ -128,8 +130,8 @@ export const Default: Story = {
           required
         >
           <Input data-testid="firstName" />
-        </FormField>
-        <FormField<SampleFormData>
+        </SampleForm.FormField>
+        <SampleForm.FormField
           style={{
             flexGrow: 1,
           }}
@@ -137,12 +139,12 @@ export const Default: Story = {
           name="lastName"
         >
           <Input />
-        </FormField>
+        </SampleForm.FormField>
       </div>
-      <FormField<SampleFormData> label="Email address" name="emailAddress" required>
+      <SampleForm.FormField label="Email address" name="emailAddress" required>
         <Input type="email" data-testid="emailAddress" />
-      </FormField>
-      <FormField<SampleFormData> label="Hobbies" name="hobbies" asFieldSet inputWrapper={List} required>
+      </SampleForm.FormField>
+      <SampleForm.FormField label="Hobbies" name="hobbies" asFieldSet inputWrapper={List} required>
         <Checkbox key="1" inputValue="value1" data-testid="firstCheckbox">
           Value 1
         </Checkbox>
@@ -152,7 +154,7 @@ export const Default: Story = {
         <Checkbox key="3" inputValue="value3">
           Value 3
         </Checkbox>
-      </FormField>
+      </SampleForm.FormField>
 
       <div
         style={{
@@ -161,7 +163,7 @@ export const Default: Story = {
           gap: "1.25rem",
         }}
       >
-        <FormField<SampleFormData>
+        <SampleForm.FormField
           style={{
             flexGrow: 1,
           }}
@@ -171,8 +173,8 @@ export const Default: Story = {
           required
         >
           <PasswordInput data-testid="password" />
-        </FormField>
-        <FormField<SampleFormData>
+        </SampleForm.FormField>
+        <SampleForm.FormField
           style={{
             flexGrow: 1,
           }}
@@ -181,20 +183,20 @@ export const Default: Story = {
           required
         >
           <Input type="password" data-testid="passwordRepeat" />
-        </FormField>
+        </SampleForm.FormField>
       </div>
-      <FormField<SampleFormData>
+      <SampleForm.FormField
         label="I accept privacy policy"
         description="Read terms and conditions first"
         name="privacy"
         isToggle
       >
         <SingleCheckbox />
-      </FormField>
+      </SampleForm.FormField>
       <Button type="submit" data-testid="submit-button">
         Submit
       </Button>
-    </Form>
+    </SampleForm.Form>
   ),
   args: {},
 };

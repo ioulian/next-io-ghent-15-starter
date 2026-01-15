@@ -2,7 +2,7 @@
 
 import { FC, memo, PropsWithChildren } from "react";
 
-import { TooltipContext, TooltipOptions, useTooltip } from "./hooks";
+import { TooltipContext, TooltipOptions, useTooltip } from "./Tooltip.hooks";
 
 // Based on: https://floating-ui.com/docs/tooltip
 const Tooltip: FC<PropsWithChildren & TooltipOptions> = ({ children, ...options }) => {

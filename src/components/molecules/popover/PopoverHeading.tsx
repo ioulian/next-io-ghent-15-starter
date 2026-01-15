@@ -6,7 +6,7 @@ import { cloneElement, HTMLProps, isValidElement, memo, useLayoutEffect } from "
 
 import { useId } from "@floating-ui/react";
 
-import { usePopoverContext } from "./hooks";
+import { usePopoverContext } from "./Popover.hooks";
 
 const PopoverHeading: FC<HTMLProps<HTMLHeadingElement>> = ({ children, ...props }) => {
   const { setLabelId } = usePopoverContext();

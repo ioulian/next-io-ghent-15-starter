@@ -1,4 +1,4 @@
-import { getAvatarInitials } from "./utilities";
+import { getAvatarInitials } from "./AvatarInitials.utilities";
 
 describe("utilities", () => {
   it("generates a correct svg", () => {

@@ -1,5 +1,5 @@
-import { presetDefault } from "./presets";
-import { createSmoothShadow } from "./utilities";
+import { presetDefault } from "./SmoothShadow.presets";
+import { createSmoothShadow } from "./SmoothShadow.utilities";
 
 describe("utilities", () => {
   it("generates a correct easing gradient", () => {

@@ -1,6 +1,6 @@
 import { easings } from "@/utils/easings";
 
-import { createEasingGradient } from "./utilities";
+import { createEasingGradient } from "./EasingGradient.utilities";
 
 describe("utilities", () => {
   it("generates a correct easing gradient", () => {

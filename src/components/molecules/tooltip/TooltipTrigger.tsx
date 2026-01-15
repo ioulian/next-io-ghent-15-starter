@@ -6,7 +6,7 @@ import { cloneElement, HTMLProps, isValidElement, memo } from "react";
 
 import { useMergeRefs } from "@floating-ui/react";
 
-import { useTooltipContext } from "./hooks";
+import { useTooltipContext } from "./Tooltip.hooks";
 
 const TooltipTrigger: FC<HTMLProps<HTMLElement>> = ({ children, ref: propRef, ...props }) => {
   const context = useTooltipContext();

@@ -5,8 +5,8 @@ import { ComponentPropsWithRef, memo, ReactNode, useMemo } from "react";
 import { WithRequired } from "@/types/helpers";
 
 import { HeaderContext } from "@/components/blocks/header/Header.context";
-import { presetDefault } from "@/components/utils/smooth-shadow/presets";
-import { createSmoothShadow } from "@/components/utils/smooth-shadow/utilities";
+import { presetDefault } from "@/components/utils/smooth-shadow/SmoothShadow.presets";
+import { createSmoothShadow } from "@/components/utils/smooth-shadow/SmoothShadow.utilities";
 import { addClassNameToProps } from "@/utils/styles";
 
 import Desktop from "./desktop/Desktop";
