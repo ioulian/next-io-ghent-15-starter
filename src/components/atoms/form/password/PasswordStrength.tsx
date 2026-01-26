@@ -2,11 +2,13 @@
 
 import type { FC } from "react";
 
-import { ComponentPropsWithRef, memo, useEffect, useState } from "react";
+import { ComponentPropsWithRef, memo, useState } from "react";
 
 import { useMessages } from "next-intl";
 import { useWatch } from "react-hook-form";
+import { useDebounce } from "react-use";
 
+import { INPUT_DEBOUNCE_DELAY } from "@/utils/constants";
 import { addClassNameToProps } from "@/utils/styles";
 
 import { passwordStrength } from "./PasswordStrength.styles";
@@ -19,19 +21,23 @@ const PasswordStrength: FC<{ name: string } & ComponentPropsWithRef<"div">> = ({
   const [score, setScore] = useState<number>(-1);
   const [message, setMessage] = useState<string>("");
 
-  useEffect(() => {
-    if (typeof value === "string" && value.length > 0) {
-      validatePassword(value, messages.common.form.passwordStrength.messages).then((result) => {
-        setScore(result.score);
-        setMessage(result.crackTimesDisplay.offlineSlowHashing1e4PerSecond);
-      });
-    } else {
-      // False positive
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setScore(-1);
-      setMessage("");
-    }
-  }, [value, messages.common.form.passwordStrength.messages]);
+  useDebounce(
+    () => {
+      if (typeof value === "string" && value.length > 0) {
+        validatePassword(value, messages.common.form.passwordStrength.messages).then((result) => {
+          setScore(result.score);
+          setMessage(result.crackTimesDisplay.offlineSlowHashing1e4PerSecond);
+        });
+      } else {
+        // False positive
+
+        setScore(-1);
+        setMessage("");
+      }
+    },
+    INPUT_DEBOUNCE_DELAY,
+    [value, messages.common.form.passwordStrength.messages],
+  );
 
   const classes = passwordStrength();
 
