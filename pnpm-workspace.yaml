@@ -1,4 +1,4 @@
-minimumReleaseAge: 0 # 3 days
+minimumReleaseAge: 4320 # 3 days
 
 onlyBuiltDependencies:
   - "@firebase/util"
