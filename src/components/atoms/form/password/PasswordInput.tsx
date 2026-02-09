@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { ComponentPropsWithRef, memo, useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
 import { useTranslations } from "next-intl";
 

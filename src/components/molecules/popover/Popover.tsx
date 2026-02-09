@@ -1,8 +1,12 @@
 "use client";
 
-import { FC, memo, PropsWithChildren } from "react";
+import type { FC, PropsWithChildren } from "react";
 
-import { PopoverContext, PopoverOptions, usePopover } from "./Popover.hooks";
+import { memo } from "react";
+
+import type { PopoverOptions } from "./Popover.hooks";
+
+import { PopoverContext, usePopover } from "./Popover.hooks";
 
 // Based on: https://floating-ui.com/docs/popover
 const Popover: FC<PropsWithChildren & PopoverOptions> = ({ children, modal = true, ...restOptions }) => {

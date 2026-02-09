@@ -1,6 +1,6 @@
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { Children, cloneElement, ComponentPropsWithRef, isValidElement, memo } from "react";
+import { Children, cloneElement, isValidElement, memo } from "react";
 
 import { useTranslations } from "next-intl";
 
@@ -19,7 +19,7 @@ const Breadcrumb: FC<ComponentPropsWithRef<"nav">> = ({ children, ...props }) =>
             return null;
           }
 
-          const isCurrent = !Array.isArray(children) || i === children?.length - 1;
+          const isCurrent = !Array.isArray(children) || i === children.length - 1;
 
           return (
             <li key={i} className={styles.breadcrumbItem}>

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { FC } from "react";
 
-import { FC, useState } from "react";
+import { useState } from "react";
 
 import { expect, screen, userEvent, within } from "storybook/test";
 

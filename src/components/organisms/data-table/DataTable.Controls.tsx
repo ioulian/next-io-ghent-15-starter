@@ -1,8 +1,10 @@
 "use client";
 
-import { ChangeEvent, ComponentPropsWithRef, useCallback } from "react";
+import type { Table } from "@tanstack/react-table";
+import type { ChangeEvent, ComponentPropsWithRef } from "react";
 
-import { Table } from "@tanstack/react-table";
+import { useCallback } from "react";
+
 import { useTranslations } from "next-intl";
 
 import Select from "@/components/atoms/form/select/Select";

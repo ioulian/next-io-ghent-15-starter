@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { ComponentPropsWithRef, memo, useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 import { FloatingDelayGroup } from "@floating-ui/react";
 import { useCurrentEditor } from "@tiptap/react";

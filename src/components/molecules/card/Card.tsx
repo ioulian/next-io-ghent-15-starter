@@ -1,8 +1,7 @@
-import type { FC } from "react";
+import type { ComponentPropsWithRef, ElementType, FC, ReactNode } from "react";
+import type { VariantProps } from "tailwind-variants";
 
-import { ComponentPropsWithRef, ElementType, memo, ReactNode } from "react";
-
-import { VariantProps } from "tailwind-variants";
+import { memo } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 

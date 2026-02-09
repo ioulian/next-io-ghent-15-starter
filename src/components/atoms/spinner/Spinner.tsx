@@ -1,6 +1,7 @@
-import { ComponentPropsWithRef, FC, memo, useMemo } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
+import type { VariantProps } from "tailwind-variants";
 
-import { VariantProps } from "tailwind-variants";
+import { memo, useMemo } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 

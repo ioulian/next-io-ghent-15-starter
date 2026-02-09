@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { FC, HTMLProps } from "react";
 
-import { cloneElement, HTMLProps, isValidElement, memo, useCallback } from "react";
+import { cloneElement, isValidElement, memo, useCallback } from "react";
 
 import { usePopoverContext } from "./Popover.hooks";
 

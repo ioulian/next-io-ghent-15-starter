@@ -30,8 +30,10 @@ export const Default: Story = {
         }
         actions={<Button>Contact</Button>}
       >
-        {// @ts-expect-error We know it works
-        MenuBarStory?.render()}
+        {
+          // @ts-expect-error We know it works
+          MenuBarStory.render()
+        }
       </Header>
     );
   },

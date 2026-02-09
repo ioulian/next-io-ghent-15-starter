@@ -1,8 +1,7 @@
-import type { FC } from "react";
+import type { Placement } from "@floating-ui/react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { ComponentPropsWithRef, memo } from "react";
-
-import { Placement } from "@floating-ui/react";
+import { memo } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 

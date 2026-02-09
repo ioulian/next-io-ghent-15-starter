@@ -1,11 +1,12 @@
-import type { FC } from "react";
+import type { FC, FocusEvent, HTMLProps, MouseEvent } from "react";
 
-import { FocusEvent, HTMLProps, memo, MouseEvent, useContext } from "react";
+import { memo, useContext } from "react";
 
 import { useFloatingTree, useListItem, useMergeRefs } from "@floating-ui/react";
 
+import type { MenuContextType, MenuItemProps } from "../MenuBar.types";
+
 import { MenuContext } from "../MenuBar.context";
-import { MenuContextType, MenuItemProps } from "../MenuBar.types";
 
 const MenuItem: FC<MenuItemProps & HTMLProps<HTMLButtonElement>> = ({ label, disabled, ref, ...props }) => {
   const menu = useContext(MenuContext);

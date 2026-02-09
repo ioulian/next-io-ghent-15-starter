@@ -1,9 +1,9 @@
-import type { FC } from "react";
+import type { ComponentPropsWithRef, ElementType, FC } from "react";
+import type { VariantProps } from "tailwind-variants";
 
-import { Children, ComponentPropsWithRef, ElementType, memo, useImperativeHandle, useRef } from "react";
+import { Children, memo, useImperativeHandle, useRef } from "react";
 
 import { useEffectOnce } from "react-use";
-import { VariantProps } from "tailwind-variants";
 
 import { layout } from "@/components/atoms/layout/Layout.styles";
 import { addClassNameToProps } from "@/utils/styles";

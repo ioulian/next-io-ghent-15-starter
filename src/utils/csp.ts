@@ -1,5 +1,7 @@
+import type { NextRequest } from "next/server";
+
 import { headers } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 import { merge } from "ts-deepmerge";
 

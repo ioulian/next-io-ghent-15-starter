@@ -1,6 +1,4 @@
-import type { ToastOptions } from "react-toastify";
-
-import { ToastContent } from "react-toastify";
+import type { ToastContent, ToastOptions } from "react-toastify";
 
 /**
  * If you want named chunks, use: import(webpackChunkName: "toastify" ...)

@@ -36,6 +36,7 @@ if (
   console.error(getErrorMessage("./src/app/manifest.ts contains default values, do not forget to update them!"));
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 if ((envFileError === true || manifestFileError) && SHOULD_FAIL_ON_ERROR) {
   process.exit(1);
 }

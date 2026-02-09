@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC, ReactNode } from "react";
 
-import { ComponentPropsWithRef, memo, ReactNode } from "react";
+import { memo } from "react";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import { addClassNameToProps } from "@/utils/styles";

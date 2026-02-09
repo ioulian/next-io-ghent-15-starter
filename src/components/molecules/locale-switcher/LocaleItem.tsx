@@ -1,11 +1,13 @@
 "use client";
 
-import React, { FC, memo } from "react";
+import type { LocaleType } from "@/i18n/types";
+import type { FC } from "react";
+
+import React, { memo } from "react";
 
 import { useLocale, useTranslations } from "next-intl";
 
 import { Link, usePathname } from "@/i18n/navigation";
-import { LocaleType } from "@/i18n/types";
 
 import { localeItem } from "./LocaleItem.styles";
 

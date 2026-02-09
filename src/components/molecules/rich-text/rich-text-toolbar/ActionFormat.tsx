@@ -1,13 +1,14 @@
 "use client";
 
-import type { FC } from "react";
+import type { HeadingType } from "@/components/atoms/heading/Heading";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { ComponentPropsWithRef, memo, useCallback } from "react";
+import { memo, useCallback } from "react";
 
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";
 
-import Heading, { HeadingType } from "@/components/atoms/heading/Heading";
+import Heading from "@/components/atoms/heading/Heading";
 import Dropdown from "@/components/molecules/dropdown/Dropdown";
 import DropdownMenuItem from "@/components/molecules/dropdown/DropdownMenuItem";
 import { button } from "@/components/molecules/rich-text/rich-text-toolbar/RichTextToolbar.styles";

@@ -1,7 +1,7 @@
+import type { Leaves } from "@/types/helpers";
+
 import { get } from "es-toolkit/compat";
 import { flattie } from "flattie";
-
-import { Leaves } from "@/types/helpers";
 
 // Utils
 

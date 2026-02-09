@@ -1,8 +1,7 @@
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
+import type { VariantProps } from "tailwind-variants";
 
-import { ComponentPropsWithRef, memo } from "react";
-
-import { VariantProps } from "tailwind-variants";
+import { memo } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 
@@ -16,7 +15,7 @@ const ButtonGroup: FC<
     align?: VariantProps<typeof buttonGroup>["align"];
   } & ComponentPropsWithRef<"div">
 > = ({ align = "start", ...props }) => {
-  return <div {...addClassNameToProps(props, buttonGroup({ align }))} />;
+  return <div {...addClassNameToProps(props, buttonGroup({ align }))} role="group" />;
 };
 
 /**

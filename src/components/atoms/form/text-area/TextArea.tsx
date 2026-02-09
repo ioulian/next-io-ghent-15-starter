@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { ComponentPropsWithRef, memo } from "react";
+import { memo } from "react";
 
 import { baseInput } from "@/components/atoms/form/base-input/BaseInput.styles";
 import { addClassNameToProps } from "@/utils/styles";

@@ -1,10 +1,10 @@
 "use client";
 
-import type { Placement } from "@floating-ui/react";
-import type { ComponentPropsWithRef, FC } from "react";
+import type { Placement, UseTransitionStylesProps } from "@floating-ui/react";
+import type { ComponentPropsWithRef, FC, HTMLProps } from "react";
 import type { VariantProps } from "tailwind-variants";
 
-import { Fragment, HTMLProps, memo, useCallback, useEffect, useState } from "react";
+import { Fragment, memo, useCallback, useEffect, useState } from "react";
 
 import {
   FloatingFocusManager,
@@ -15,7 +15,6 @@ import {
   useFloatingParentNodeId,
   useMergeRefs,
   useTransitionStyles,
-  UseTransitionStylesProps,
 } from "@floating-ui/react";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";

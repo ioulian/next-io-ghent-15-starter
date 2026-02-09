@@ -1,6 +1,6 @@
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { ComponentPropsWithRef, memo } from "react";
+import { memo } from "react";
 
 import Text from "@/components/atoms/text/Text";
 import BaseBlock from "@/components/blocks/base-block/BaseBlock";

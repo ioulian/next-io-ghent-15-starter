@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { FC, HTMLProps } from "react";
 
-import { cloneElement, HTMLProps, isValidElement, memo, useLayoutEffect } from "react";
+import { cloneElement, isValidElement, memo, useLayoutEffect } from "react";
 
 import { useId } from "@floating-ui/react";
 

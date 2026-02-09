@@ -21,11 +21,29 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "coverage/**",
+    "postcss.config.js",
+    ".prettierrc.mjs",
+    "eslint.config.mjs",
   ]),
 
   // Default
   {
+    linterOptions: {
+      reportUnusedDisableDirectives: true,
+    },
+    languageOptions: { parserOptions: { projectService: true } },
     rules: {
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        { prefer: "type-imports", fixStyle: "separate-type-imports" },
+      ],
+      "@typescript-eslint/no-unnecessary-condition": [
+        "error",
+        {
+          allowConstantLoopConditions: true,
+        },
+      ],
       "padding-line-between-statements": [
         "error",
         {
@@ -93,6 +111,7 @@ const eslintConfig = defineConfig([
       "sonarjs/fixme-tag": "warn",
       "sonarjs/todo-tag": "warn",
       "sonarjs/no-unused-vars": "off",
+      "sonarjs/function-return-type": "off",
       // As we use generic tests
       "sonarjs/no-empty-test-file": "off",
     },

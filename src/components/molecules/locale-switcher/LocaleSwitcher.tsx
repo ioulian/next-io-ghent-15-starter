@@ -1,4 +1,6 @@
-import React, { FC, memo } from "react";
+import type { FC } from "react";
+
+import React, { memo } from "react";
 
 import { locales } from "@/i18n/constants";
 

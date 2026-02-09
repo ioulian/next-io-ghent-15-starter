@@ -1,6 +1,7 @@
-import { ComponentPropsWithRef, FC, memo } from "react";
+import type { WithRequired } from "@/types/helpers";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { WithRequired } from "@/types/helpers";
+import { memo } from "react";
 
 import Button from "@/components/atoms/button/Button";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";

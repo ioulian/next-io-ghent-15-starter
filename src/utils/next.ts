@@ -1,4 +1,4 @@
-import { Metadata, ResolvedMetadata, ResolvingMetadata } from "next";
+import type { Metadata, ResolvedMetadata, ResolvingMetadata } from "next";
 
 import { isEmpty, isNil, isObject, omitBy } from "es-toolkit/compat";
 import { merge } from "ts-deepmerge";

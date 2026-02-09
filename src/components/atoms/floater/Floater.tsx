@@ -1,8 +1,7 @@
-import type { FC } from "react";
+import type { Coords, Placement, Strategy } from "@floating-ui/react";
+import type { ComponentPropsWithRef, CSSProperties, FC } from "react";
 
-import { ComponentPropsWithRef, CSSProperties, memo, useMemo } from "react";
-
-import { Coords, Placement, Strategy } from "@floating-ui/react";
+import { memo, useMemo } from "react";
 
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import { addClassNameToProps, roundByDPR } from "@/utils/styles";
@@ -49,8 +48,8 @@ const Floater: FC<
         left: "rotate(45deg)",
       }[placementFirst] as string;
       return {
-        left: typeof arrowPosition?.x !== "undefined" && arrowPosition?.x !== null ? `${arrowPosition.x}px` : "",
-        top: typeof arrowPosition?.y !== "undefined" && arrowPosition?.y !== null ? `${arrowPosition.y}px` : "",
+        left: typeof arrowPosition?.x !== "undefined" ? `${arrowPosition.x}px` : "",
+        top: typeof arrowPosition?.y !== "undefined" ? `${arrowPosition.y}px` : "",
         [staticSide]: `-${getVariableAsNumber("floater.arrow.size") / 2}px`,
         transform: rotation,
       };

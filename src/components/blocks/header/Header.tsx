@@ -1,8 +1,7 @@
-import type { FC } from "react";
+import type { WithRequired } from "@/types/helpers";
+import type { ComponentPropsWithRef, FC, ReactNode } from "react";
 
-import { ComponentPropsWithRef, memo, ReactNode, useMemo } from "react";
-
-import { WithRequired } from "@/types/helpers";
+import { memo, useMemo } from "react";
 
 import { HeaderContext } from "@/components/blocks/header/Header.context";
 import { presetDefault } from "@/components/utils/smooth-shadow/SmoothShadow.presets";

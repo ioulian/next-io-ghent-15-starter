@@ -1,6 +1,7 @@
-import { ComponentPropsWithRef } from "react";
+import type { Table } from "@tanstack/react-table";
+import type { ComponentPropsWithRef } from "react";
 
-import { flexRender, Table } from "@tanstack/react-table";
+import { flexRender } from "@tanstack/react-table";
 
 const TFoot = <T,>({
   table,

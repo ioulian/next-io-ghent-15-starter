@@ -1,6 +1,5 @@
-import { ComponentPropsWithRef } from "react";
-
-import { Table } from "@tanstack/react-table";
+import type { Table } from "@tanstack/react-table";
+import type { ComponentPropsWithRef } from "react";
 
 import THeadButton from "@/components/organisms/data-table/DataTable.THeadButton";
 

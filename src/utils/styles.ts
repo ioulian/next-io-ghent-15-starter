@@ -1,4 +1,6 @@
-import clsx, { ClassValue } from "clsx";
+import type { ClassValue } from "clsx";
+
+import clsx from "clsx";
 
 export interface PropsWithClassName {
   className?: string;

@@ -20,11 +20,11 @@ describe("Select", () => {
 
   it("renders with default empty option", () => {
     render(<Select data-testid="test" data-foo="bar" addEmptyOption />);
-    expect((document.querySelector("select > option") as HTMLOptionElement)?.value).toBe("");
+    expect((document.querySelector("select > option") as HTMLSelectElement | null)?.value).toBe("");
   });
 
   it("renders with custom empty option", () => {
     render(<Select data-testid="test" data-foo="bar" addEmptyOption="test" />);
-    expect((document.querySelector("select > option") as HTMLOptionElement)?.innerHTML).toBe("test");
+    expect((document.querySelector("select > option") as HTMLOptionElement | null)?.innerHTML).toBe("test");
   });
 });

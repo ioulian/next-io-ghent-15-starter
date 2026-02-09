@@ -1,6 +1,6 @@
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { FC, memo, useId } from "react";
+import { memo, useId } from "react";
 
 import type { SvgSpriteName } from "./SvgSprite.generated";
 
@@ -26,7 +26,7 @@ const SvgSprite: FC<
       role={title ? "img" : undefined}
       aria-hidden={!title ? true : undefined}
       aria-labelledby={title ? titleId : undefined}
-      viewBox={SVG_SPRITE_DEFINITIONS[name]?.viewBox ?? undefined}
+      viewBox={SVG_SPRITE_DEFINITIONS[name].viewBox}
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <use

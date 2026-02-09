@@ -1,9 +1,8 @@
-import { Metadata } from "next";
+import type { LocaleType } from "@/i18n/types";
+import type { Metadata } from "next";
 
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-
-import { LocaleType } from "@/i18n/types";
 
 type Props = Readonly<{
   params: { locale: LocaleType };

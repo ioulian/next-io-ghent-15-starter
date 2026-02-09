@@ -1,4 +1,6 @@
-import { FC, memo, ReactNode } from "react";
+import type { FC, ReactNode } from "react";
+
+import { memo } from "react";
 
 type Tag = "p" | "strong" | "ol" | "ul" | "li" | "em" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "br";
 

@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { ComponentPropsWithRef, memo, useState } from "react";
+import { memo, useState } from "react";
 
 import { useMessages } from "next-intl";
 import { useWatch } from "react-hook-form";

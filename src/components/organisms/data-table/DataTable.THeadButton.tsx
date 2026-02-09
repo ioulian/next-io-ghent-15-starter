@@ -1,8 +1,9 @@
 "use client";
 
-import { ComponentPropsWithRef } from "react";
+import type { Header } from "@tanstack/react-table";
+import type { ComponentPropsWithRef } from "react";
 
-import { flexRender, Header } from "@tanstack/react-table";
+import { flexRender } from "@tanstack/react-table";
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 

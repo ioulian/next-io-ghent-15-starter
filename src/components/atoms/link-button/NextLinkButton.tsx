@@ -1,8 +1,10 @@
 "use client";
 
-import { FC, memo, useCallback, useState } from "react";
+import type { WithRequired } from "@/types/helpers";
+import type { FC } from "react";
 
-import { WithRequired } from "@/types/helpers";
+import { memo, useCallback, useState } from "react";
+
 import type { Props as LBProps } from "./LinkButton";
 
 import { Link as LocalizedLink } from "@/i18n/navigation";

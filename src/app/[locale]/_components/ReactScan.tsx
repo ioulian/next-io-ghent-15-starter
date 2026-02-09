@@ -4,7 +4,9 @@
 // prettier-ignore
 import { scan } from "react-scan";
 
-import { JSX, useEffect } from "react";
+import type { JSX } from "react";
+
+import { useEffect } from "react";
 
 const ReactScan = (): JSX.Element => {
   useEffect(() => {

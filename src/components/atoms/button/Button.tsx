@@ -1,20 +1,12 @@
 "use client";
 
-import type { FC, ReactNode } from "react";
+import type { WithRequired } from "@/types/helpers";
+import type { ComponentPropsWithRef, FC, MouseEvent as ReactMouseEvent, ReactNode } from "react";
+import type { VariantProps } from "tailwind-variants";
 
-import {
-  cloneElement,
-  ComponentPropsWithRef,
-  isValidElement,
-  memo,
-  MouseEvent as ReactMouseEvent,
-  useCallback,
-} from "react";
+import { cloneElement, isValidElement, memo, useCallback } from "react";
 
 import { useTranslations } from "next-intl";
-import { VariantProps } from "tailwind-variants";
-
-import { WithRequired } from "@/types/helpers";
 
 import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
 import { addClassNameToProps } from "@/utils/styles";

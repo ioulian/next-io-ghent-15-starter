@@ -1,6 +1,8 @@
 "use client";
 
-import { FC, memo, PropsWithChildren, useEffect, useState } from "react";
+import type { FC, PropsWithChildren } from "react";
+
+import { memo, useEffect, useState } from "react";
 
 import { LOADER_DELAY } from "@/utils/constants";
 

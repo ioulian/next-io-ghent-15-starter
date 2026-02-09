@@ -16,7 +16,7 @@
     "check:code": "knip --config knip.config.ts",
     "check:translations": "i18n-check -s en-GB --locales messages/",
     "check:build-prerequisites": "tsx scripts/check-build-prerequisites.ts",
-    "test:lint": "eslint --fix --report-unused-disable-directives .",
+    "test:lint": "eslint --fix .",
     "test:types": "pnpm svg-sprite:build && next typegen && tsc --noemit --extendedDiagnostics",
     "test:types:go": "pnpm svg-sprite:build && tsgo --noemit --extendedDiagnostics",
     "format:code": "prettier --write .",

@@ -1,11 +1,12 @@
 "use client";
 
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
+import type { TabsProps } from "react-tabs";
 
-import { ComponentPropsWithRef, memo } from "react";
+import { memo } from "react";
 
 import clsx from "clsx";
-import { Tabs as ReactTabs, TabsProps } from "react-tabs";
+import { Tabs as ReactTabs } from "react-tabs";
 
 import { addClassNameToProps } from "@/utils/styles";
 

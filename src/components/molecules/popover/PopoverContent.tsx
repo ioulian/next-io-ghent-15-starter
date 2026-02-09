@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { FC, HTMLProps } from "react";
 
-import { Fragment, HTMLProps, memo, useCallback, useMemo } from "react";
+import { Fragment, memo, useCallback, useMemo } from "react";
 
 import {
   FloatingFocusManager,
@@ -36,7 +36,7 @@ const PopoverContent: FC<{ withCloseButton?: boolean; showArrow?: boolean } & HT
     context.setOpen(false);
   }, [context]);
 
-  const position = useMemo(() => ({ x: context.x ?? 0, y: context.y ?? 0 }), [context.x, context.y]);
+  const position = useMemo(() => ({ x: context.x, y: context.y }), [context.x, context.y]);
 
   if (!isMounted) {
     return null;

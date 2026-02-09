@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { Dispatch, FC, HTMLProps, ReactNode, SetStateAction } from "react";
 
-import { createContext, Dispatch, HTMLProps, memo, ReactNode, SetStateAction } from "react";
+import { createContext, memo } from "react";
 
 import { FloatingTree, useFloatingParentNodeId } from "@floating-ui/react";
 

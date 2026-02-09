@@ -1,8 +1,7 @@
 "use client";
 
-import { ComponentPropsWithRef } from "react";
-
-import { Table } from "@tanstack/react-table";
+import type { Table } from "@tanstack/react-table";
+import type { ComponentPropsWithRef } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 

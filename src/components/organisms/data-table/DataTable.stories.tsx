@@ -1,17 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { ColumnDef } from "@tanstack/react-table";
 
 import { useMemo } from "react";
 
-import {
-  ColumnDef,
-  getCoreRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import { getCoreRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
+
+import type { Person } from "./DataTable.data";
 
 import DataTable from "./DataTable";
-import { makeData, Person } from "./DataTable.data";
+import { makeData } from "./DataTable.data";
 
 const StoryView = () => {
   const data = useMemo(() => makeData(10_000), []);

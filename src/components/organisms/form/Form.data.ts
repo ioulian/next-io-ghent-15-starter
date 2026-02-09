@@ -1,4 +1,4 @@
-import { FormFieldError } from "@/components/organisms/form/Form.types";
+import type { FormFieldError } from "@/components/organisms/form/Form.types";
 
 export const exampleErrors: FormFieldError[] = [
   {

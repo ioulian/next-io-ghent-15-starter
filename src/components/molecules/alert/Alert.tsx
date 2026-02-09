@@ -1,8 +1,7 @@
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { VariantProps } from "tailwind-variants";
 
-import { ComponentPropsWithRef, memo, ReactNode } from "react";
-
-import { VariantProps } from "tailwind-variants";
+import { memo } from "react";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import { addClassNameToProps } from "@/utils/styles";

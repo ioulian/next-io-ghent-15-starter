@@ -1,6 +1,8 @@
 "use client";
 
-import { FC, memo, PropsWithChildren } from "react";
+import type { FC, PropsWithChildren } from "react";
+
+import { memo } from "react";
 
 import { AppProgressProvider as ProgressProvider } from "@bprogress/next";
 

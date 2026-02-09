@@ -29,28 +29,46 @@ export const Default: Story = {
   render: () => {
     return (
       <div>
-        {// @ts-expect-error We know it works
-        HeaderStory?.render()}
-        {// @ts-expect-error We know it works
-        HeroStory?.render()}
-        {// @ts-expect-error We know it works
-        RichTextStory?.render()}
-        {// @ts-expect-error We know it works
-        MediaText1?.render()}
-        {// @ts-expect-error We know it works
-        MediaText2?.render()}
+        {
+          // @ts-expect-error We know it works
+          HeaderStory.render()
+        }
+        {
+          // @ts-expect-error We know it works
+          HeroStory.render()
+        }
+        {
+          // @ts-expect-error We know it works
+          RichTextStory.render()
+        }
+        {
+          // @ts-expect-error We know it works
+          MediaText1.render()
+        }
+        {
+          // @ts-expect-error We know it works
+          MediaText2.render()
+        }
         <BaseBlock>
-          {// @ts-expect-error We know it works
-          TabsStory?.render()}
+          {
+            // @ts-expect-error We know it works
+            TabsStory.render()
+          }
         </BaseBlock>
         <BaseBlock>
-          {// @ts-expect-error We know it works
-          AccordionStory?.render()}
+          {
+            // @ts-expect-error We know it works
+            AccordionStory.render()
+          }
         </BaseBlock>
-        {// @ts-expect-error We know it works
-        CardSliderStory?.render()}
-        {// @ts-expect-error We know it works
-        FooterStory?.render()}
+        {
+          // @ts-expect-error We know it works
+          CardSliderStory.render()
+        }
+        {
+          // @ts-expect-error We know it works
+          FooterStory.render()
+        }
       </div>
     );
   },

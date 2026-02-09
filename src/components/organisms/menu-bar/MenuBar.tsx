@@ -1,8 +1,9 @@
-import type { FC } from "react";
+import type { CompositeProps } from "@floating-ui/react";
+import type { FC, HTMLAttributes, HTMLProps } from "react";
 
-import { HTMLAttributes, HTMLProps, memo, useCallback } from "react";
+import { memo, useCallback } from "react";
 
-import { Composite, CompositeProps } from "@floating-ui/react";
+import { Composite } from "@floating-ui/react";
 
 import { addClassNameToProps } from "@/utils/styles";
 

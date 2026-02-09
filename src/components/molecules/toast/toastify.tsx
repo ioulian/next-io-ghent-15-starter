@@ -1,5 +1,7 @@
+import type { ToastContent, ToastOptions } from "react-toastify/unstyled";
+
 import { createRoot } from "react-dom/client";
-import { toast, ToastContainer, ToastContent, ToastOptions } from "react-toastify/unstyled";
+import { toast, ToastContainer } from "react-toastify/unstyled";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-
-import { FC } from "react";
+import type { FC } from "react";
 
 import { useTranslations } from "next-intl";
 

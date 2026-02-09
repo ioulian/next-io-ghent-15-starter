@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { ComponentPropsWithRef, memo, useCallback } from "react";
+import { memo, useCallback } from "react";
 
 import { useCurrentEditor } from "@tiptap/react";
 import { useTranslations } from "next-intl";

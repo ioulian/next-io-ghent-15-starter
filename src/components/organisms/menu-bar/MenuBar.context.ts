@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-import { MenuContextType } from "./MenuBar.types";
+import type { MenuContextType } from "./MenuBar.types";
 
 export const MenuContext = createContext<MenuContextType>({
   getItemProps: () => ({}),

@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { FC, HTMLProps } from "react";
 
-import { cloneElement, HTMLProps, isValidElement, memo } from "react";
+import { cloneElement, isValidElement, memo } from "react";
 
 import { useMergeRefs } from "@floating-ui/react";
 
@@ -21,7 +21,7 @@ const TooltipTrigger: FC<HTMLProps<HTMLElement>> = ({ children, ref: propRef, ..
       ...context.getReferenceProps({
         ref,
         ...props,
-        ...(children.props ?? {}),
+        ...children.props,
       }),
       "data-state": context.open ? "open" : "closed",
     });

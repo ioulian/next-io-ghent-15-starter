@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { ComponentPropsWithRef, memo, useId } from "react";
+import { memo, useId } from "react";
 
 import clsx from "clsx";
 

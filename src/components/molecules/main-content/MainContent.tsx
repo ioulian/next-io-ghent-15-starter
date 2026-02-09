@@ -1,6 +1,8 @@
 "use client";
 
-import { ComponentPropsWithRef, FC, memo } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
+
+import { memo } from "react";
 
 import { useEffectOnce } from "react-use";
 

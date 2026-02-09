@@ -1,6 +1,9 @@
-import { cloneElement, ReactElement, ReactNode } from "react";
+import type { RenderResult } from "@testing-library/react";
+import type { ReactElement, ReactNode } from "react";
 
-import { RenderResult, screen } from "@testing-library/react";
+import { cloneElement } from "react";
+
+import { screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 const describeGeneralTests = (

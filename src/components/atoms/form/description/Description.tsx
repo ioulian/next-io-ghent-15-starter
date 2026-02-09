@@ -1,8 +1,9 @@
-import { ComponentPropsWithRef, FC, memo } from "react";
+import type { WithRequired } from "@/types/helpers";
+import type { ComponentPropsWithRef, FC } from "react";
+
+import { memo } from "react";
 
 import { useTranslations } from "next-intl";
-
-import { WithRequired } from "@/types/helpers";
 
 import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
 import { addClassNameToProps } from "@/utils/styles";

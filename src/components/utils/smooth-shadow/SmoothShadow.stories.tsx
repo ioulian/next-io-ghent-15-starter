@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { FC } from "react";
 
-import { FC } from "react";
+import type { SmoothShadowOptionsType } from "./SmoothShadow.utilities";
 
 import { easings } from "@/utils/easings";
 
 import { presetDefault } from "./SmoothShadow.presets";
-import { createSmoothShadow, SmoothShadowOptionsType } from "./SmoothShadow.utilities";
+import { createSmoothShadow } from "./SmoothShadow.utilities";
 
 const SmoothShadow: FC<SmoothShadowOptionsType> = (options) => {
   return (

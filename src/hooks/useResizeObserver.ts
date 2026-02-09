@@ -30,14 +30,12 @@ const useResizeObserver = <T extends HTMLElement = HTMLElement>() => {
   const [observer] = useState(() =>
     typeof window !== "undefined" && typeof window.ResizeObserver !== "undefined"
       ? new window.ResizeObserver((entries) => {
-          const entry = entries[0];
-
-          if (entry) {
+          if (entries.length !== 0) {
             cancelAnimationFrame(frameID.current);
 
             frameID.current = requestAnimationFrame(() => {
               if (ref.current) {
-                setRect(entry.contentRect);
+                setRect(entries[0].contentRect);
               }
             });
           }

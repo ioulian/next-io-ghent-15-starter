@@ -1,12 +1,13 @@
 "use client";
 
+import type { Editor, EditorEvents, EditorProviderProps } from "@tiptap/react";
 import type { FC, Ref } from "react";
 
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
-import { Editor, EditorEvents, EditorProvider, EditorProviderProps } from "@tiptap/react";
+import { EditorProvider } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import clsx from "clsx";
 
@@ -38,7 +39,7 @@ const RichText: FC<{ isError?: boolean } & Omit<EditorProviderProps, "children">
   // Only set content when not focussed (when new data is available or when form reset has been triggered)
   // Otherwise user is writing and it's already correctly reflected
   useEffect(() => {
-    if (editorRef.current !== null && !editorRef.current?.isFocused) {
+    if (editorRef.current !== null && !editorRef.current.isFocused) {
       editorRef.current.commands.setContent(props.content ?? "<p></p>");
     }
   }, [props.content]);

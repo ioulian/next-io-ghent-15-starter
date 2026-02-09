@@ -1,6 +1,6 @@
 import type { LocaleType } from "@/i18n/types";
+import type { Metadata, Viewport } from "next";
 
-import { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 

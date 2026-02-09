@@ -1,22 +1,14 @@
 "use client";
 
-import type { FC } from "react";
+import type { FC, FocusEvent, HTMLProps, KeyboardEvent, MouseEvent } from "react";
 
-import {
-  cloneElement,
-  FocusEvent,
-  HTMLProps,
-  isValidElement,
-  KeyboardEvent,
-  memo,
-  MouseEvent,
-  useCallback,
-  useContext,
-} from "react";
+import { cloneElement, isValidElement, memo, useCallback, useContext } from "react";
 
 import { useFloatingTree, useListItem, useMergeRefs } from "@floating-ui/react";
 
-import { MenuContext, MenuContextType, WithTypeAheadKey } from "./Dropdown";
+import type { MenuContextType, WithTypeAheadKey } from "./Dropdown";
+
+import { MenuContext } from "./Dropdown";
 
 const DropdownMenuItem: FC<{ closeOnClick?: boolean } & WithTypeAheadKey & HTMLProps<HTMLButtonElement>> = ({
   children,

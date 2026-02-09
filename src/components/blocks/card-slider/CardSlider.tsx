@@ -1,14 +1,13 @@
-import type { FC } from "react";
+import type { WithRequired } from "@/types/helpers";
+import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { SwiperOptions } from "swiper/types";
 
-import { Children, cloneElement, ComponentPropsWithRef, isValidElement, memo, ReactNode, useId, useMemo } from "react";
+import { Children, cloneElement, isValidElement, memo, useId, useMemo } from "react";
 
 import clsx from "clsx";
 import { useTranslations } from "next-intl";
 import { A11y, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { SwiperOptions } from "swiper/types";
-
-import { WithRequired } from "@/types/helpers";
 
 import Layout from "@/components/atoms/layout/Layout";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";

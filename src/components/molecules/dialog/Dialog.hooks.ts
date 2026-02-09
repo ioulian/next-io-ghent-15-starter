@@ -1,16 +1,11 @@
 "use client";
 
-import { createContext, Dispatch, SetStateAction, useContext, useMemo, useState } from "react";
+import type { Side } from "@floating-ui/react";
+import type { Dispatch, SetStateAction } from "react";
 
-import {
-  Side,
-  useClick,
-  useDismiss,
-  useFloating,
-  useFloatingNodeId,
-  useInteractions,
-  useRole,
-} from "@floating-ui/react";
+import { createContext, useContext, useMemo, useState } from "react";
+
+import { useClick, useDismiss, useFloating, useFloatingNodeId, useInteractions, useRole } from "@floating-ui/react";
 
 export interface DialogOptions {
   initialOpen?: boolean;

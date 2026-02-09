@@ -1,4 +1,6 @@
-import { ComponentPropsWithRef, FC, memo } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
+
+import { memo } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 

@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC, ReactElement } from "react";
 
-import { Children, cloneElement, ComponentPropsWithRef, isValidElement, memo, ReactElement, useId } from "react";
+import { Children, cloneElement, isValidElement, memo, useId } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 

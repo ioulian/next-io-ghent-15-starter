@@ -1,14 +1,6 @@
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import {
-  Children,
-  cloneElement,
-  ComponentPropsWithRef,
-  isValidElement,
-  memo,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import { Children, cloneElement, isValidElement, memo, useImperativeHandle, useRef } from "react";
 
 import { useEffectOnce } from "react-use";
 

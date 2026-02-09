@@ -1,12 +1,10 @@
 "use client";
 
-import type { ElementType } from "react";
+import type { WithRequired } from "@/types/helpers";
+import type { ComponentPropsWithRef, ElementType, ReactNode } from "react";
+import type { VariantProps } from "tailwind-variants";
 
-import { cloneElement, ComponentPropsWithRef, isValidElement, memo, ReactNode } from "react";
-
-import { VariantProps } from "tailwind-variants";
-
-import { WithRequired } from "@/types/helpers";
+import { cloneElement, isValidElement, memo } from "react";
 
 import { button } from "@/components/atoms/button/Button.styles";
 import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";

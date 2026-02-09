@@ -1,5 +1,7 @@
 "use client";
 
+import type { Placement } from "@floating-ui/react";
+
 import { createContext, useCallback, useContext, useMemo, useRef, useState } from "react";
 
 import {
@@ -7,7 +9,6 @@ import {
   autoUpdate,
   flip,
   offset,
-  Placement,
   shift,
   useClick,
   useDismiss,

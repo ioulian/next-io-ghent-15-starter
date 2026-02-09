@@ -1,11 +1,14 @@
 "use client";
 
-import { ComponentPropsWithRef, FormEvent, useCallback, useEffect } from "react";
+import type { FormFieldError } from "@/components/organisms/form/Form.types";
+import type { ComponentPropsWithRef, SubmitEventHandler } from "react";
+import type { DeepPartial, FieldErrors, FieldValues, Path, UseFormProps } from "react-hook-form";
 
-import { DeepPartial, FieldErrors, FieldValues, FormProvider, Path, useForm, UseFormProps } from "react-hook-form";
+import { useCallback, useEffect } from "react";
+
+import { FormProvider, useForm } from "react-hook-form";
 
 import { BE_VALIDATION } from "@/components/organisms/form/Form.constants";
-import { FormFieldError } from "@/components/organisms/form/Form.types";
 import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Form.module.css";
@@ -18,7 +21,7 @@ export type FormProps<
 > = {
   fieldErrors?: FormFieldError<TFieldValues>[];
   isLoading?: boolean;
-  onSubmit?: (data: TTransformedValues, submitter?: HTMLElement) => void;
+  onSubmit?: (data: TTransformedValues, submitter?: HTMLElement | null) => void;
   onError?: (errors: FieldErrors<TFieldValues>) => void;
   onChange?: (data?: DeepPartial<TFieldValues> | TFieldValues) => void;
   formSettings?: UseFormProps<TFieldValues, TContext, TTransformedValues>;
@@ -109,15 +112,14 @@ const Form = <
   // This is a workaround as by default react-hook-form is uncontrolled
   useEffect(() => {
     if (formSettings?.values && Array.isArray(fieldErrors) && fieldErrors.length !== 0) {
-      reset(formSettings?.values);
+      reset(formSettings.values);
     }
   }, [formSettings?.values, reset, fieldErrors]);
 
-  const onSubmitCallback = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
+  const onSubmitCallback = useCallback<SubmitEventHandler<HTMLFormElement>>(
+    (e) => {
       if (!isLoading) {
         if (onSubmit) {
-          // @ts-expect-error submitter exists, needs checking in types
           const submitter = e.nativeEvent.submitter;
 
           handleSubmit((data) => {

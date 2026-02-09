@@ -1,6 +1,6 @@
-import type { ElementType, FC } from "react";
+import type { ComponentPropsWithRef, ElementType, FC } from "react";
 
-import { ComponentPropsWithRef, memo } from "react";
+import { memo } from "react";
 
 import { useTranslations } from "next-intl";
 

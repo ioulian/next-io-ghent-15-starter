@@ -1,6 +1,8 @@
 "use client";
 
-import { ReactNode, useContext } from "react";
+import type { ReactNode } from "react";
+
+import { useContext } from "react";
 
 import { HeaderContext } from "./Header.context";
 

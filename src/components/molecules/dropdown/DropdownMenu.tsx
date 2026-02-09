@@ -1,19 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { FC, FocusEvent, HTMLProps, MouseEvent } from "react";
 
-import {
-  FocusEvent,
-  HTMLProps,
-  memo,
-  MouseEvent,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { memo, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import {
   arrow,
@@ -42,11 +31,13 @@ import {
   useTypeahead,
 } from "@floating-ui/react";
 
+import type { DropdownMenuProps, WithTypeAheadKey } from "./Dropdown";
+
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import Floater from "@/components/atoms/floater/Floater";
 import { zoomAnimation } from "@/components/atoms/floater/Floater.animations";
 
-import { DropdownMenuProps, MenuContext, WithTypeAheadKey } from "./Dropdown";
+import { MenuContext } from "./Dropdown";
 import DropdownTrigger from "./DropdownTrigger";
 
 import styles from "./Dropdown.module.css";

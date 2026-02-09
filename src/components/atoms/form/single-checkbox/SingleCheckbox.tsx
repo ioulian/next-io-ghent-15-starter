@@ -1,8 +1,8 @@
 "use client";
 
-import type { FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { ComponentPropsWithRef, memo, useEffect, useImperativeHandle, useRef } from "react";
+import { memo, useEffect, useImperativeHandle, useRef } from "react";
 
 import { baseInput } from "@/components/atoms/form/base-input/BaseInput.styles";
 import { addClassNameToProps } from "@/utils/styles";
@@ -18,7 +18,7 @@ const SingleCheckbox: FC<
 
   const isIndeterminate = !props.checked && indeterminate === true;
   useEffect(() => {
-    if (innerRef?.current) {
+    if (innerRef.current) {
       innerRef.current.indeterminate = isIndeterminate;
     }
   }, [innerRef, isIndeterminate]);
