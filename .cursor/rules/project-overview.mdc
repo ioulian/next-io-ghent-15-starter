@@ -1,0 +1,34 @@
+---
+description: Project overview and where things live in the repo
+alwaysApply: true
+---
+
+# next-io-ghent-15-starter - overview
+
+This is a **Next.js 16 boilerplate** (App Router) used as a template for iO Ghent. It provides shared UI components, i18n, and conventions. After install, treat it as the base: add pages, new components, and translations following existing patterns.
+
+## Structure
+
+- **`src/app/`** - Next.js App Router. Locale segment: `src/app/[locale]/`. Root `page.tsx`/`layout.tsx` redirect/shell.
+- **`src/components/`** - UI library:
+  - `atoms/` - buttons, inputs, headings, tags, spinners, etc.
+  - `molecules/` - cards, dialogs, dropdowns, form fields, tabs, etc.
+  - `organisms/` - accordion, data table, form, menu bar, etc.
+  - `blocks/` - header, footer, hero, card list, media blocks, etc.
+  - `utils/` - VisuallyHidden, LoaderDelay, SmoothShadow, etc.
+- **`src/i18n/`** - next-intl: `request.ts`, `routing.ts`, `constants.ts`, `navigation.ts`, `types.ts`.
+- **`messages/{locale}/`** - Translation JSON: `common.json`, `app.json`. Types are generated (e.g. `common.d.json.ts`).
+- **`scripts/svg-sprite/`** - SVG sprite build; sprites go to `public/sprite.svg`, types to `src/components/atoms/svg-sprite/SvgSprite.generated.ts`.
+
+## Tech stack
+
+- Next.js 16, React 19, TypeScript.
+- **next-intl** for i18n; **tailwind-variants** (CVA) + **CSS modules** for component styles.
+- Storybook, Vitest/Jest, ESLint, Prettier, Husky. Prefer **PNPM**.
+
+## Before changing things
+
+- **When writing or modifying code**: Read and apply the agent skills in `.agents/skills/` as described in `.cursor/rules/agent-skills.mdc` (vercel-react-best-practices, vercel-composition-patterns, web-design-guidelines).
+- Adding a locale: update `src/i18n/constants.ts` and ensure middleware (if present) matches.
+- Adding message namespaces: add JSON under `messages/{locale}/`, then run `pnpm dev` or `next typegen` so `src/i18n/types.ts` and generated `.d.json.ts` stay in sync.
+- New components: follow patterns in `.cursor/rules/components.mdc` and match existing folder level (atoms/molecules/organisms/blocks/utils).

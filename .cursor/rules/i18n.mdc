@@ -1,0 +1,39 @@
+---
+description: How i18n and translations work (next-intl, messages, navigation)
+globs: src/i18n/**/*,messages/**/*
+alwaysApply: false
+---
+
+# i18n (next-intl)
+
+## Locales and config
+
+- Locales: **`src/i18n/constants.ts`** - `locales` array and `defaultLocale`. If you add/remove locales, keep middleware (if any) in sync.
+- Request config: **`src/i18n/request.ts`** - loads messages per locale from `messages/{locale}/common.json` and `app.json`.
+- Navigation: use **`Link`**, **`redirect`**, **`usePathname`**, **`useRouter`**, **`getPathname`** from **`@/i18n/navigation`**, not from `next/navigation` or `next/link`, so the active locale is preserved.
+
+## Message files
+
+- **`messages/{locale}/common.json`** - shared strings (buttons, labels, footer, header, etc.).
+- **`messages/{locale}/app.json`** - app-specific strings.
+- Types are generated (e.g. **`messages/en-GB/common.d.json.ts`**). After editing JSON, run **`next typegen`** (or `pnpm dev` / `pnpm build`) so TypeScript and `useTranslations` stay typed.
+
+## Using translations in code
+
+- **Client**: `import { useTranslations } from "next-intl";` then `const t = useTranslations("common.button");` and `t("key")` or `t("key", { param: value })`.
+- **Server**: `import { getTranslations } from "next-intl/server";` then `const t = await getTranslations("namespace");`.
+- Namespace = top-level key in the merged messages (e.g. `common`, `app`). Use nested keys: `useTranslations("common.button")` → `t("spinner.aria-label")` for `common.button.spinner.aria-label`.
+
+## Adding or changing keys
+
+1. Edit **`messages/en-GB/common.json`** or **`messages/en-GB/app.json`** (and other locales if present).
+2. Run **`pnpm check:translations`** (i18n-check) to keep locales in sync; source locale is `en-GB`.
+3. Run **`next typegen`** so generated message types are updated.
+
+## Rich text and components in messages
+
+- Use **`<ComponentName>`** placeholders in JSON and **`RichTranslation`** (or next-intl rich text APIs) with a components map when you need inline components (e.g. links) inside translated strings.
+
+## Type safety
+
+- **`src/i18n/types.ts`** extends next-intl’s `AppConfig` with `Locale` and `Messages` so `useTranslations` and `getTranslations` are typed from the JSON files.

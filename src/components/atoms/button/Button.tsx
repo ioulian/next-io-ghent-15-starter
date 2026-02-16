@@ -54,9 +54,9 @@ type Props = {
    * Should the element be able to be clicked on
    */
   disabled?: boolean;
-} & ComponentPropsWithRef<"button">;
+} & WithRequired<ComponentPropsWithRef<"button">, "children">;
 
-const Button: FC<WithRequired<Props, "children">> = ({
+const Button: FC<Props> = ({
   variant,
   size,
   fullWidth,
