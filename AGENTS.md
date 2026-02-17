@@ -20,19 +20,19 @@ The Cursor rule **`.cursor/rules/agent-skills.mdc`** is always applied and instr
 
 ## Where to look
 
-| Concern                        | Location                                                      |
-| ------------------------------ | ------------------------------------------------------------- |
-| Project overview & conventions | `.cursor/rules/project-overview.mdc` (always applied)         |
-| Agent skills (when writing code) | `.cursor/rules/agent-skills.mdc` (always applied), `.agents/skills/` |
-| Creating/editing components    | `.cursor/rules/components.mdc`                                |
-| Unit tests                     | `.cursor/rules/testing.mdc`                                   |
-| i18n / translations            | `.cursor/rules/i18n.mdc`                                      |
-| App routes & layout            | `src/app/` (locale segment: `[locale]`)                       |
-| i18n config                    | `src/i18n/` (request, routing, constants, navigation, types)  |
-| Translation JSON               | `messages/{locale}/common.json`, `messages/{locale}/app.json` |
-| SVG sprites                    | `scripts/svg-sprite/`, `src/components/atoms/svg-sprite/`     |
-| Shared styles / theme          | `src/app/[locale]/_styles/base.css`                           |
-| Test helpers                   | `src/test/test-utils.tsx` (render), `src/test/general-tests.tsx` (describeGeneralTests) |
+| Concern                          | Location                                                                                |
+| -------------------------------- | --------------------------------------------------------------------------------------- |
+| Project overview & conventions   | `.cursor/rules/project-overview.mdc` (always applied)                                   |
+| Agent skills (when writing code) | `.cursor/rules/agent-skills.mdc` (always applied), `.agents/skills/`                    |
+| Creating/editing components      | `.cursor/rules/components.mdc`                                                          |
+| Unit tests                       | `.cursor/rules/testing.mdc`                                                             |
+| i18n / translations              | `.cursor/rules/i18n.mdc`                                                                |
+| App routes & layout              | `src/app/` (locale segment: `[locale]`)                                                 |
+| i18n config                      | `src/i18n/` (request, routing, constants, navigation, types)                            |
+| Translation JSON                 | `messages/{locale}/common.json`, `messages/{locale}/app.json`                           |
+| SVG sprites                      | `scripts/svg-sprite/`, `src/components/atoms/svg-sprite/`                               |
+| Shared styles / theme            | `src/app/[locale]/_styles/base.css`                                                     |
+| Test helpers                     | `src/test/test-utils.tsx` (render), `src/test/general-tests.tsx` (describeGeneralTests) |
 
 ## Conventions (summary)
 
