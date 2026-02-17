@@ -18,6 +18,8 @@ import "./_styles/globals.css";
 
 import { clsx } from "clsx";
 
+import { env } from "@/env.mjs";
+
 export function generateViewport(): Viewport {
   return {
     themeColor: getVariable("color.blue.500"),
@@ -45,7 +47,7 @@ export async function generateMetadata({ params }: Omit<LayoutProps<"/[locale]">
 
 let ReactScan: React.ComponentType = () => null;
 
-if (process.env.NODE_ENV === "development" && process.env.NEXT_PUBLIC_REACT_SCAN_ENABLE === "true") {
+if (process.env.NODE_ENV === "development" && env.NEXT_PUBLIC_REACT_SCAN_ENABLE) {
   ReactScan = dynamic(() => import("./_components/ReactScan"));
 }
 

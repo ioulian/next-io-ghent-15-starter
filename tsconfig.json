@@ -38,6 +38,7 @@
     "*.js",
     "**/*.ts",
     "**/*.tsx",
+    "src/env.mjs",
     ".next/types/**/*.ts",
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx",
