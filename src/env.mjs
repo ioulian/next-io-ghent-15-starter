@@ -1,6 +1,9 @@
 import { createEnv } from "@t3-oss/env-nextjs"; // or core package
-import { z } from "zod";
+import * as z from "zod/v4-mini";
 
+// TODO: treeshaking does not work, this should be disabled when working on a production build
+// or until https://github.com/colinhacks/zod/issues/5561 is fixed
+// or only use it on server
 export const env = createEnv({
   /*
    * Serverside Environment variables, not available on the client.
