@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
+import LocaleSwitcher from "@/components/molecules/locale-switcher/LocaleSwitcher";
 import { generateSanitizedMetadata } from "@/utils/next";
 
 export const generateMetadata = generateSanitizedMetadata<Omit<PageProps<"/[locale]">, "children">>(
@@ -25,6 +26,7 @@ const Page: NextPage<PageProps<"/[locale]">> = ({}) => {
   return (
     <div>
       <div>{t("home.title")}</div>
+      <LocaleSwitcher />
       <SvgSprite name="logo" />
     </div>
   );
