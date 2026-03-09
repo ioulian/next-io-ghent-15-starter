@@ -26,7 +26,6 @@ const eslintConfig = defineConfig([
     ".prettierrc.mjs",
     "eslint.config.mjs",
   ]),
-
   // Default
   {
     linterOptions: {
