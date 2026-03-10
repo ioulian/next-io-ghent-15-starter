@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "clinyong.vscode-css-modules",
+    "mikestead.dotenv",
+    "editorconfig.editorconfig",
+    "usernamehw.errorlens",
+    "aaron-bond.better-comments",
+    "mkxml.vscode-filesize",
+    "nhoizey.gremlins",
+    "wengerk.highlight-bad-chars",
+    "wix.vscode-import-cost",
+    "yoavbls.pretty-ts-errors",
+    "lokalise.i18n-ally",
+    "vitest.explorer",
+    "ms-playwright.playwright"
+  ]
+}

@@ -35,7 +35,7 @@
     "svg-sprite:build": "tsx scripts/svg-sprite/index.ts && prettier --write ./src/components/atoms/svg-sprite/SvgSprite.generated.ts"
   },
   "engines": {
-    "node": "^22.0.0",
+    "node": "^24.0.0",
     "pnpm": "^10.16.0"
   },
   "dependencies": {
