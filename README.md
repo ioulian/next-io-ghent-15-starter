@@ -88,3 +88,12 @@ Issues and TODO's can be found here: <https://github.com/ioulian/next-io-ghent-1
 ## Component export convention
 
 We use `export default` in an component, see discussion here: <https://esdiscuss.org/topic/moduleimport>
+
+## Precommit hooks
+
+Add into `~/.config/husky/init.sh`:
+
+```
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+```
