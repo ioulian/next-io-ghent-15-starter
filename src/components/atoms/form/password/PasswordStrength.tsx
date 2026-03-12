@@ -8,6 +8,8 @@ import { useMessages } from "next-intl";
 import { useWatch } from "react-hook-form";
 import { useDebounce } from "react-use";
 
+import { isString } from "@/types/type-guards";
+
 import { INPUT_DEBOUNCE_DELAY } from "@/utils/constants";
 import { addClassNameToProps } from "@/utils/styles";
 
@@ -23,7 +25,7 @@ const PasswordStrength: FC<{ name: string } & ComponentPropsWithRef<"div">> = ({
 
   useDebounce(
     () => {
-      if (typeof value === "string" && value.length > 0) {
+      if (isString(value) && value.length > 0) {
         validatePassword(value, messages.common.form.passwordStrength.messages).then((result) => {
           setScore(result.score);
           setMessage(result.crackTimesDisplay.offlineSlowHashing1e4PerSecond);

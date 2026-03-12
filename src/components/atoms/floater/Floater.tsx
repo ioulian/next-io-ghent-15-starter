@@ -3,6 +3,8 @@ import type { ComponentPropsWithRef, CSSProperties, FC } from "react";
 
 import { memo, useMemo } from "react";
 
+import { isNumber } from "@/types/type-guards";
+
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 import { addClassNameToProps, roundByDPR } from "@/utils/styles";
 
@@ -48,8 +50,8 @@ const Floater: FC<
         left: "rotate(45deg)",
       }[placementFirst] as string;
       return {
-        left: typeof arrowPosition?.x !== "undefined" ? `${arrowPosition.x}px` : "",
-        top: typeof arrowPosition?.y !== "undefined" ? `${arrowPosition.y}px` : "",
+        left: isNumber(arrowPosition?.x) ? `${arrowPosition.x}px` : "",
+        top: isNumber(arrowPosition?.y) ? `${arrowPosition.y}px` : "",
         [staticSide]: `-${getVariableAsNumber("floater.arrow.size") / 2}px`,
         transform: rotation,
       };

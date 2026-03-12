@@ -19,6 +19,8 @@ import {
   useRole,
 } from "@floating-ui/react";
 
+import { isUndefined } from "@/types/type-guards";
+
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 
 export interface TooltipOptions {
@@ -74,11 +76,11 @@ export const useTooltip = ({
 
   const hover = useHover(context, {
     move: false,
-    enabled: typeof controlledOpen === "undefined",
+    enabled: isUndefined(controlledOpen),
     delay,
   });
   const focus = useFocus(context, {
-    enabled: typeof controlledOpen === "undefined",
+    enabled: isUndefined(controlledOpen),
   });
   const dismiss = useDismiss(context);
   const role = useRole(context, { role: "tooltip" });

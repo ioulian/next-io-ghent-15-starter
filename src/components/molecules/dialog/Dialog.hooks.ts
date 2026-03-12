@@ -7,6 +7,8 @@ import { createContext, useContext, useMemo, useState } from "react";
 
 import { useClick, useDismiss, useFloating, useFloatingNodeId, useInteractions, useRole } from "@floating-ui/react";
 
+import { isUndefined } from "@/types/type-guards";
+
 export interface DialogOptions {
   initialOpen?: boolean;
   open?: boolean;
@@ -38,7 +40,7 @@ export const useDialog = ({
   const context = data.context;
 
   const click = useClick(context, {
-    enabled: typeof controlledOpen === "undefined",
+    enabled: isUndefined(controlledOpen),
   });
   const dismiss = useDismiss(context, {
     outsidePressEvent: "pointerdown",

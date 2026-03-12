@@ -3,6 +3,8 @@ import type { VariantProps } from "tailwind-variants";
 
 import { memo, useMemo } from "react";
 
+import { isString } from "@/types/type-guards";
+
 import { addClassNameToProps } from "@/utils/styles";
 
 import { backgroundColorVar, primaryColorVar, secondaryColorVar, spinner } from "./Spinner.styles";
@@ -59,7 +61,7 @@ const Spinner: FC<
     <span
       role="progressbar"
       aria-busy
-      aria-label={typeof children === "string" ? children : undefined}
+      aria-label={isString(children) ? children : undefined}
       {...addClassNameToProps(props, classes.spinner())}
       style={spinnerStyle}
     >

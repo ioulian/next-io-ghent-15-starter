@@ -1,6 +1,8 @@
 import { ColorItem, ColorPalette, Meta, Title } from "@storybook/addon-docs/blocks";
 import { isObject } from "es-toolkit/compat";
 
+import { isString } from "@/types/type-guards";
+
 import { cssVariables } from "./../../app/[locale]/_styles/variables.ts";
 
 <Meta title="Colors" />
@@ -9,7 +11,7 @@ import { cssVariables } from "./../../app/[locale]/_styles/variables.ts";
 
 <ColorPalette>
   {Object.entries(cssVariables.color).map(([key, value]) => {
-    if (typeof value === "string") {
+    if (isString(value)) {
       // if (value.startsWith("var(")) {
       //   return null;
       // }

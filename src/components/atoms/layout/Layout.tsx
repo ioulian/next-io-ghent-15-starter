@@ -5,6 +5,8 @@ import { Children, memo, useImperativeHandle, useRef } from "react";
 
 import { useEffectOnce } from "react-use";
 
+import { isUndefined } from "@/types/type-guards";
+
 import { layout } from "@/components/atoms/layout/Layout.styles";
 import { addClassNameToProps } from "@/utils/styles";
 
@@ -28,7 +30,7 @@ const Layout: FC<
 
   useEffectOnce(() => {
     // For development only, show warning if number of columns does not correspond with correct variant
-    if (process.env.NODE_ENV !== "production" && typeof variant !== "undefined") {
+    if (process.env.NODE_ENV !== "production" && !isUndefined(variant)) {
       const childrenLength = Children.count(children);
 
       const oneColError = variant === "oneCol" && childrenLength !== 1;

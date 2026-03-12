@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+import { isUndefined } from "@/types/type-guards";
+
 // From: https://mantine.dev/hooks/use-resize-observer/
 
 type ObserverRect = Omit<DOMRectReadOnly, "toJSON">;
@@ -28,7 +30,7 @@ const useResizeObserver = <T extends HTMLElement = HTMLElement>() => {
 
   // eslint-disable-next-line react-hooks/refs
   const [observer] = useState(() =>
-    typeof window !== "undefined" && typeof window.ResizeObserver !== "undefined"
+    !isUndefined(window) && !isUndefined(window.ResizeObserver)
       ? new window.ResizeObserver((entries) => {
           if (entries.length !== 0) {
             cancelAnimationFrame(frameID.current);

@@ -4,6 +4,8 @@ import { memo } from "react";
 
 import { useTranslations } from "next-intl";
 
+import { isString } from "@/types/type-guards";
+
 import { baseInput } from "@/components/atoms/form/base-input/BaseInput.styles";
 import { addClassNameToProps } from "@/utils/styles";
 
@@ -24,7 +26,7 @@ const Select: FC<
     <select {...addClassNameToProps(props, baseInput({ isError }), styles.select)}>
       {addEmptyOption ? (
         <>
-          <option value="">{typeof addEmptyOption === "string" ? addEmptyOption : t("select.emptyValue")}</option>
+          <option value="">{isString(addEmptyOption) ? addEmptyOption : t("select.emptyValue")}</option>
           <hr />
         </>
       ) : null}

@@ -23,6 +23,8 @@ import { Children, cloneElement, isValidElement, useEffect, useId } from "react"
 import { useTranslations } from "next-intl";
 import { Controller, useFormContext } from "react-hook-form";
 
+import { isFunction } from "@/types/type-guards";
+
 import Description from "@/components/atoms/form/description/Description";
 import FieldError from "@/components/atoms/form/field-error/FieldError";
 import Label from "@/components/atoms/form/label/Label";
@@ -157,7 +159,7 @@ const FormField = <T extends FieldValues = FieldValues>({
         </Label>
       ) : null}
       <InputWrapper>
-        {typeof children === "function" ? (
+        {isFunction(children) ? (
           <Controller<T>
             control={control}
             name={name}

@@ -18,6 +18,8 @@ import {
   useRole,
 } from "@floating-ui/react";
 
+import { isUndefined } from "@/types/type-guards";
+
 import { getVariableAsNumber } from "@/app/[locale]/_styles/variables";
 
 export interface PopoverOptions {
@@ -76,7 +78,7 @@ export const usePopover = ({
   const context = data.context;
 
   const click = useClick(context, {
-    enabled: typeof controlledOpen === "undefined",
+    enabled: isUndefined(controlledOpen),
   });
   const dismiss = useDismiss(context);
   const role = useRole(context);

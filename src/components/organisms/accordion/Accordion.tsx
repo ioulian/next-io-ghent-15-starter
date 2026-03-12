@@ -4,6 +4,8 @@ import type { ComponentPropsWithRef, FC, ReactElement } from "react";
 
 import { Children, cloneElement, isValidElement, memo, useId } from "react";
 
+import { isString } from "@/types/type-guards";
+
 import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Accordion.module.css";
@@ -19,7 +21,7 @@ const Accordion: FC<
   } & Omit<ComponentPropsWithRef<"div">, "children">
 > = ({ name, children, ...props }) => {
   const id = useId();
-  const finalName = typeof name === "string" ? name : id;
+  const finalName = isString(name) ? name : id;
 
   return (
     <div {...addClassNameToProps(props, styles.accordion)}>

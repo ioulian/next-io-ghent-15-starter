@@ -3,6 +3,8 @@ import type { VariantProps } from "tailwind-variants";
 
 import { memo, useMemo } from "react";
 
+import { isNumber } from "@/types/type-guards";
+
 import { addClassNameToProps } from "@/utils/styles";
 
 import { paragraph } from "./Paragraph.styles";
@@ -15,14 +17,14 @@ const Paragraph: FC<
     maxLines?: number;
   } & ComponentPropsWithRef<"p">
 > = ({ size, children, maxLines, ...props }) => {
-  const isClamped = typeof maxLines === "number";
+  const isClamped = isNumber(maxLines);
   const style = useMemo(
     () => (isClamped ? { ["--paragraph-number-of-lines"]: maxLines } : undefined),
     [maxLines, isClamped],
   );
 
   return (
-    <p {...addClassNameToProps(props, paragraph({ size, clamped: typeof maxLines === "number" }))} style={style}>
+    <p {...addClassNameToProps(props, paragraph({ size, clamped: isNumber(maxLines) }))} style={style}>
       {children}
     </p>
   );
