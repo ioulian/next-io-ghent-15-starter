@@ -20,6 +20,7 @@ const config = {
       "src/pages/**/*.{js,jsx,ts,tsx}",
     ],
   },
+  ignoreDependencies: ["@vitest/coverage-v8", "lint-staged", "react-docgen-typescript", "svgo-loader", "@tabler/icons"],
 };
 
 export default config;

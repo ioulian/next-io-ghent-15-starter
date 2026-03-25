@@ -2,7 +2,7 @@ import type { ClassValue } from "clsx";
 
 import clsx from "clsx";
 
-export interface PropsWithClassName {
+interface PropsWithClassName {
   className?: string;
 }
 
