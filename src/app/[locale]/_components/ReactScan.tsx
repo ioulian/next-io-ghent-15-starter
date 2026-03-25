@@ -13,7 +13,7 @@ const ReactScan = (): JSX.Element => {
     scan({
       enabled: true,
       animationSpeed: "slow",
-      trackUnnecessaryRenders: true,
+      // trackUnnecessaryRenders: true,
     });
   }, []);
 

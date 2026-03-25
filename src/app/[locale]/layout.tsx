@@ -62,7 +62,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const nonce = await getNonce();
 
   return (
-    <html lang={locale} className={clsx(htmlFontClass, "theme--default")}>
+    <html lang={locale} className={clsx(htmlFontClass, "theme--default")} data-scroll-behavior="smooth">
       <head>
         <style nonce={nonce}>{getCss()}</style>
         <style nonce={nonce}>{getThemeCss()}</style>
