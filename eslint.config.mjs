@@ -25,6 +25,7 @@ const eslintConfig = defineConfig([
     "postcss.config.js",
     ".prettierrc.mjs",
     "eslint.config.mjs",
+    "lint-staged.config.js",
   ]),
   // Default
   {

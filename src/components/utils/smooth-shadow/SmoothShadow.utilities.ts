@@ -70,10 +70,10 @@ export const createSmoothShadow = ({
   return Array(layers)
     .fill(0)
     .map((_, i) => ({
-      x: distanceCoordinates[i].y * x,
-      y: distanceCoordinates[i].y * y,
-      blur: startBlur + blurCoordinates[i].y * (endBlur - startBlur),
-      alpha: startAlpha + alphaCoordinates[i].y * (endAlpha - startAlpha),
+      x: distanceCoordinates[i]!.y * x,
+      y: distanceCoordinates[i]!.y * y,
+      blur: startBlur + blurCoordinates[i]!.y * (endBlur - startBlur),
+      alpha: startAlpha + alphaCoordinates[i]!.y * (endAlpha - startAlpha),
     }))
     .map(
       ({ x, y, blur, alpha }) =>

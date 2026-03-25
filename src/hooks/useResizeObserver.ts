@@ -37,7 +37,7 @@ const useResizeObserver = <T extends HTMLElement = HTMLElement>() => {
 
             frameID.current = requestAnimationFrame(() => {
               if (ref.current) {
-                setRect(entries[0].contentRect);
+                setRect(entries[0]!.contentRect);
               }
             });
           }

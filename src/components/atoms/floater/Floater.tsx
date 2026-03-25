@@ -37,25 +37,30 @@ const Floater: FC<
     let rotation: string | undefined;
     if (placement) {
       const placementFirst = placement.split("-")[0];
-      staticSide = {
-        top: "bottom",
-        right: "left",
-        bottom: "top",
-        left: "right",
-      }[placementFirst] as string;
-      rotation = {
-        top: "rotate(135deg)",
-        right: "rotate(-135deg)",
-        bottom: "rotate(-45deg)",
-        left: "rotate(45deg)",
-      }[placementFirst] as string;
-      return {
-        left: isNumber(arrowPosition?.x) ? `${arrowPosition.x}px` : "",
-        top: isNumber(arrowPosition?.y) ? `${arrowPosition.y}px` : "",
-        [staticSide]: `-${getVariableAsNumber("floater.arrow.size") / 2}px`,
-        transform: rotation,
-      };
+      if (placementFirst) {
+        staticSide = {
+          top: "bottom",
+          right: "left",
+          bottom: "top",
+          left: "right",
+        }[placementFirst] as string;
+        rotation = {
+          top: "rotate(135deg)",
+          right: "rotate(-135deg)",
+          bottom: "rotate(-45deg)",
+          left: "rotate(45deg)",
+        }[placementFirst] as string;
+
+        return {
+          left: isNumber(arrowPosition?.x) ? `${arrowPosition.x}px` : "",
+          top: isNumber(arrowPosition?.y) ? `${arrowPosition.y}px` : "",
+          [staticSide]: `-${getVariableAsNumber("floater.arrow.size") / 2}px`,
+          transform: rotation,
+        };
+      }
     }
+
+    return {};
   }, [arrowPosition, placement]);
 
   return (

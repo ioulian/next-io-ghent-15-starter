@@ -272,4 +272,4 @@ export const getThemeCss = () => {
 }
 `;
 };
-export const getThemeVariable = (name: ThemeVariableNameType): string => flatThemeVariables[name];
+export const getThemeVariable = (name: ThemeVariableNameType): string => flatThemeVariables[name]!;

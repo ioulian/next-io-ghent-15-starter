@@ -47,8 +47,8 @@ describe("Form", () => {
     expect(input).toHaveFocus();
     expect(input).toHaveAttribute("aria-describedby");
     expect(input).toHaveAttribute("aria-invalid");
-    expect(document.getElementById(input.getAttribute("aria-describedby")!.split(" ")[0])).toBeInTheDocument();
-    expect(document.getElementById(input.getAttribute("aria-describedby")!.split(" ")[1])).toBeInTheDocument();
+    expect(document.getElementById(input.getAttribute("aria-describedby")!.split(" ")[0]!)).toBeInTheDocument();
+    expect(document.getElementById(input.getAttribute("aria-describedby")!.split(" ")[1]!)).toBeInTheDocument();
 
     await act(async () => {
       await userEvent.type(input, "test");
@@ -100,7 +100,7 @@ describe("Form", () => {
     });
 
     expect(spy).toHaveBeenCalled();
-    expect(spy.mock.results[spy.mock.results.length - 1].value).toBe("test");
+    expect(spy.mock.results[spy.mock.results.length - 1]!.value).toBe("test");
   });
 
   it("should not trigger onSubmit when loading", async () => {

@@ -3,7 +3,7 @@
 import type { LocaleType } from "@/i18n/types";
 import type { FC } from "react";
 
-import React, { memo } from "react";
+import { memo } from "react";
 
 import { useLocale, useTranslations } from "next-intl";
 
