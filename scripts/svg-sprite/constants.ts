@@ -8,8 +8,10 @@ export const NODE_MODULES_SPRITES: Record<string, string> = {
   tablerSettings: "@tabler/icons/outline/settings.svg",
   tablerX: "@tabler/icons/outline/x.svg",
   tablerSearch: "@tabler/icons/outline/search.svg",
-  tablerPasswordHideIcon: "@tabler/icons/outline/eye-off.svg", // eslint-disable-line sonarjs/no-hardcoded-passwords
-  tablerPasswordShowIcon: "@tabler/icons/outline/eye.svg", // eslint-disable-line sonarjs/no-hardcoded-passwords
+
+  tablerPasswordHideIcon: "@tabler/icons/outline/eye-off.svg",
+
+  tablerPasswordShowIcon: "@tabler/icons/outline/eye.svg",
   tablerAlertCircle: "@tabler/icons/outline/alert-circle.svg",
   tablerCircleCheck: "@tabler/icons/outline/circle-check.svg",
   tablerInfoCircle: "@tabler/icons/outline/info-circle.svg",
