@@ -22,6 +22,9 @@ export default defineConfig({
         pretendToBeVisual: true,
       },
     },
+    coverage: {
+      provider: "v8",
+    },
     env: {
       VITEST: "true",
     },
@@ -47,7 +50,6 @@ export default defineConfig({
               },
             ],
           },
-          setupFiles: [".storybook/vitest.setup.ts"],
         },
       },
       {

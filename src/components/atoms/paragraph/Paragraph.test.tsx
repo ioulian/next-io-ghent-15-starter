@@ -14,4 +14,9 @@ describe("Paragraph", () => {
     );
     expect(screen.getByTestId("test")).toBeInTheDocument();
   });
+
+  it("clamps the number of lines", () => {
+    render(<Paragraph maxLines={2}>test</Paragraph>);
+    expect(screen.getByText("test").style.getPropertyValue("--paragraph-number-of-lines")).toBe("2");
+  });
 });

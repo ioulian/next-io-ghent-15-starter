@@ -27,4 +27,30 @@ describe("SvgSprite", () => {
       expect.stringContaining("test--logo"),
     );
   });
+
+  describe("cache busting", () => {
+    const originalEnv = process.env;
+
+    afterEach(() => {
+      process.env = originalEnv;
+    });
+
+    it("uses 'v1' as cache buster when NEXT_PUBLIC_CUSTOM_BUILD_ID is not set", () => {
+      delete process.env.NEXT_PUBLIC_CUSTOM_BUILD_ID;
+      render(<SvgSprite data-testid="test" name="logo" />);
+      expect(screen.getByTestId("test").querySelector("use")).toHaveAttribute(
+        "xlink:href",
+        expect.stringContaining("?v1#"),
+      );
+    });
+
+    it("uses NEXT_PUBLIC_CUSTOM_BUILD_ID as cache buster when set", () => {
+      process.env = { ...originalEnv, NEXT_PUBLIC_CUSTOM_BUILD_ID: "abc123" };
+      render(<SvgSprite data-testid="test" name="logo" />);
+      expect(screen.getByTestId("test").querySelector("use")).toHaveAttribute(
+        "xlink:href",
+        expect.stringContaining("?abc123#"),
+      );
+    });
+  });
 });

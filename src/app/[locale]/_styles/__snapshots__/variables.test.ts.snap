@@ -84,3 +84,281 @@ exports[`variables > generates correct css 1`] = `
 }
 "
 `;
+
+exports[`variables > generates correct theme css 1`] = `
+"
+@layer theme {
+  
+    .theme--default {
+      
+        --color-body: var(--color-gray-950);
+      
+
+        --color-background: var(--color-white);
+      
+
+        --color-overlay: rgba(17, 26, 39, 0.7);
+      
+
+        --color-primary-50: var(--color-blue-50);
+      
+
+        --color-primary-100: var(--color-blue-100);
+      
+
+        --color-primary-200: var(--color-blue-200);
+      
+
+        --color-primary-300: var(--color-blue-300);
+      
+
+        --color-primary-400: var(--color-blue-400);
+      
+
+        --color-primary-500: var(--color-blue-500);
+      
+
+        --color-primary-600: var(--color-blue-600);
+      
+
+        --color-primary-700: var(--color-blue-700);
+      
+
+        --color-primary-800: var(--color-blue-800);
+      
+
+        --color-primary-900: var(--color-blue-900);
+      
+
+        --color-primary-950: var(--color-blue-950);
+      
+
+        --color-secondary-50: var(--color-gray-50);
+      
+
+        --color-secondary-100: var(--color-gray-100);
+      
+
+        --color-secondary-200: var(--color-gray-200);
+      
+
+        --color-secondary-300: var(--color-gray-300);
+      
+
+        --color-secondary-400: var(--color-gray-400);
+      
+
+        --color-secondary-500: var(--color-gray-500);
+      
+
+        --color-secondary-600: var(--color-gray-600);
+      
+
+        --color-secondary-700: var(--color-gray-700);
+      
+
+        --color-secondary-800: var(--color-gray-800);
+      
+
+        --color-secondary-900: var(--color-gray-900);
+      
+
+        --color-secondary-950: var(--color-gray-950);
+      
+
+        --color-positive-50: var(--color-green-50);
+      
+
+        --color-positive-100: var(--color-green-100);
+      
+
+        --color-positive-200: var(--color-green-200);
+      
+
+        --color-positive-300: var(--color-green-300);
+      
+
+        --color-positive-400: var(--color-green-400);
+      
+
+        --color-positive-500: var(--color-green-500);
+      
+
+        --color-positive-600: var(--color-green-600);
+      
+
+        --color-positive-700: var(--color-green-700);
+      
+
+        --color-positive-800: var(--color-green-800);
+      
+
+        --color-positive-900: var(--color-green-900);
+      
+
+        --color-positive-950: var(--color-green-950);
+      
+
+        --color-negative-50: var(--color-red-50);
+      
+
+        --color-negative-100: var(--color-red-100);
+      
+
+        --color-negative-200: var(--color-red-200);
+      
+
+        --color-negative-300: var(--color-red-300);
+      
+
+        --color-negative-400: var(--color-red-400);
+      
+
+        --color-negative-500: var(--color-red-500);
+      
+
+        --color-negative-600: var(--color-red-600);
+      
+
+        --color-negative-700: var(--color-red-700);
+      
+
+        --color-negative-800: var(--color-red-800);
+      
+
+        --color-negative-900: var(--color-red-900);
+      
+
+        --color-negative-950: var(--color-red-950);
+      
+
+        --button-primary-background: var(--color-primary-500);
+      
+
+        --button-primary-border: var(--color-primary-500);
+      
+
+        --button-primary-color: var(--color-white);
+      
+
+        --button-primary-hover-background: var(--color-primary-400);
+      
+
+        --button-primary-hover-border: var(--color-primary-400);
+      
+
+        --button-primary-hover-color: var(--color-white);
+      
+
+        --button-secondary-background: var(--color-secondary-500);
+      
+
+        --button-secondary-border: var(--color-secondary-500);
+      
+
+        --button-secondary-color: var(--color-body);
+      
+
+        --button-secondary-hover-background: var(--color-secondary-400);
+      
+
+        --button-secondary-hover-border: var(--color-secondary-400);
+      
+
+        --button-secondary-hover-color: var(--color-body);
+      
+
+        --button-negative-background: var(--color-negative-500);
+      
+
+        --button-negative-border: var(--color-red-500);
+      
+
+        --button-negative-color: var(--color-white);
+      
+
+        --button-negative-hover-background: var(--color-negative-400);
+      
+
+        --button-negative-hover-border: var(--color-negative-400);
+      
+
+        --button-negative-hover-color: var(--color-white);
+      
+
+        --button-positive-background: var(--color-positive-500);
+      
+
+        --button-positive-border: var(--color-positive-500);
+      
+
+        --button-positive-color: var(--color-white);
+      
+
+        --button-positive-hover-background: var(--color-positive-400);
+      
+
+        --button-positive-hover-border: var(--color-positive-400);
+      
+
+        --button-positive-hover-color: var(--color-white);
+      
+
+        --button-outline-border: var(--color-secondary-500);
+      
+
+        --button-outline-color: var(--color-body);
+      
+
+        --button-outline-hover-border: var(--color-secondary-400);
+      
+
+        --button-outline-hover-color: var(--color-body);
+      
+
+        --button-ghost-color: var(--color-body);
+      
+
+        --button-ghost-hover-background: var(--color-secondary-400);
+      
+
+        --button-ghost-hover-border: var(--color-secondary-400);
+      
+
+        --form-input-color: var(--color-body);
+      
+
+        --form-input-border: var(--color-secondary-900);
+      
+
+        --form-input-background: var(--color-secondary-50);
+      
+
+        --form-select-indicator: var(--color-body);
+      
+
+        --form-asterisk: var(--color-negative-500);
+      
+
+        --form-outline: var(--color-primary-600);
+      
+
+        --form-checkbox-checked-border: var(--color-primary-500);
+      
+
+        --form-checkbox-checked-background: var(--color-primary-500);
+      
+
+        --form-checkbox-checked-color: var(--color-white);
+      
+
+        --form-error: var(--color-negative-500);
+      
+
+        --form-requiredMessage-value: var(--form-error);
+      
+    }
+    
+}
+"
+`;

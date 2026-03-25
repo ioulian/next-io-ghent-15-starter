@@ -24,6 +24,12 @@ describe("CardList", () => {
     expect(screen.getByTestId("test")).toBeInTheDocument();
   });
 
+  it("does not render body layout when no children are provided", () => {
+    const { container } = render(<CardList />);
+    const wrapper = container.firstElementChild!;
+    expect(wrapper.children).toHaveLength(0);
+  });
+
   it("renders with footer", () => {
     render(
       <CardList footer={<span data-testid="test">test</span>}>

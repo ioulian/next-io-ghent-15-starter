@@ -23,12 +23,31 @@ describe("Layout", () => {
   it("warns when variant cols and children.length mismatch", () => {
     const consoleSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
 
+    render(<Layout variant="oneCol" />);
+    expect(consoleSpy).toHaveBeenCalled();
+
     render(
       <Layout variant="twoCol">
         <div>test</div>
       </Layout>,
     );
+    expect(consoleSpy).toHaveBeenCalled();
 
+    render(
+      <Layout variant="threeCol">
+        <div>test</div>
+        <div>test</div>
+      </Layout>,
+    );
+    expect(consoleSpy).toHaveBeenCalled();
+
+    render(
+      <Layout variant="fourCol">
+        <div>test</div>
+        <div>test</div>
+        <div>test</div>
+      </Layout>,
+    );
     expect(consoleSpy).toHaveBeenCalled();
   });
 });
