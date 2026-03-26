@@ -19,14 +19,16 @@ const SvgSprite: FC<
   // You need to open a new tab to refresh this. However, using cache busting works.
   // In development, it refreshes a lot more, in production every spritesheet will be cached.
   const cacheBust = `?${process.env.NEXT_PUBLIC_CUSTOM_BUILD_ID ?? "v1"}`;
+  const isAriaHidden = !title ? true : undefined;
 
   return (
     <svg
       {...rest}
       role={title ? "img" : undefined}
-      aria-hidden={!title ? true : undefined}
+      aria-hidden={isAriaHidden}
       aria-labelledby={title ? titleId : undefined}
       viewBox={SVG_SPRITE_DEFINITIONS[name].viewBox}
+      focusable={isAriaHidden}
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <use

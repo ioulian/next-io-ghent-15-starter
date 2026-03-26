@@ -4,7 +4,7 @@ import { render, screen } from "@/test/test-utils";
 
 import Accordion from "./Accordion";
 
-describe("Ellipsis", () => {
+describe("Accordion", () => {
   describeGeneralTests(
     <Accordion>
       <Expandable summary="summary 1">content 1</Expandable>

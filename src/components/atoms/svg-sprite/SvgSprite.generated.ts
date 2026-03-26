@@ -8,6 +8,7 @@ export type SvgSpriteName =
   | "tablerAlertCircle"
   | "tablerArrowsSort"
   | "tablerBold"
+  | "tablerCheck"
   | "tablerChevronDown"
   | "tablerChevronLeft"
   | "tablerChevronRight"
@@ -37,6 +38,7 @@ export const SVG_SPRITE_DEFINITIONS: Record<SvgSpriteName, { viewBox: string }> 
   tablerAlertCircle: { viewBox: "0 0 24 24" },
   tablerArrowsSort: { viewBox: "0 0 24 24" },
   tablerBold: { viewBox: "0 0 24 24" },
+  tablerCheck: { viewBox: "0 0 24 24" },
   tablerChevronDown: { viewBox: "0 0 24 24" },
   tablerChevronLeft: { viewBox: "0 0 24 24" },
   tablerChevronRight: { viewBox: "0 0 24 24" },

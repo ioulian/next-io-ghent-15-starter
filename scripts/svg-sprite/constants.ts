@@ -8,6 +8,7 @@ export const NODE_MODULES_SPRITES: Record<string, string> = {
   tablerSettings: "@tabler/icons/outline/settings.svg",
   tablerX: "@tabler/icons/outline/x.svg",
   tablerSearch: "@tabler/icons/outline/search.svg",
+  tablerCheck: "@tabler/icons/outline/check.svg",
 
   tablerPasswordHideIcon: "@tabler/icons/outline/eye-off.svg",
 
