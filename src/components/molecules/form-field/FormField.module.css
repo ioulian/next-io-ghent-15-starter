@@ -1,5 +1,3 @@
-@value container from "./../../atoms/form/toggle/Toggle.module.css";
-
 @layer molecules {
   .field {
     border-width: 0;
@@ -26,31 +24,6 @@
     input,
     textarea {
       cursor: not-allowed;
-    }
-  }
-
-  .isToggle {
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-
-    > label {
-      margin-bottom: 0 !important;
-      margin-left: 0.5rem;
-    }
-
-    > input,
-    > .container {
-      order: -1;
-    }
-
-    > input + * {
-      margin-top: 0.25rem;
-    }
-
-    > input ~ * {
-      width: 100%;
     }
   }
 }

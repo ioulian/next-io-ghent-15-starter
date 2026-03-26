@@ -11,8 +11,5 @@ export const formField = tv({
     isHidden: {
       true: styles.isHidden,
     },
-    isToggle: {
-      true: styles.isToggle,
-    },
   },
 });

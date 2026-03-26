@@ -5,11 +5,11 @@ import type { ComponentPropsWithRef, FC } from "react";
 import { memo } from "react";
 
 import Label from "../../label/Label";
-import SingleCheckbox from "../../single-checkbox/SingleCheckbox";
+import SingleToggle from "../../single-toggle/SingleToggle";
 
-import styles from "./Checkbox.module.css";
+import styles from "./../checkbox/Checkbox.module.css";
 
-const Checkbox: FC<
+const Toggle: FC<
   { isError?: boolean; labelProps?: ComponentPropsWithRef<typeof Label> } & ComponentPropsWithRef<"input">
 > = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -24,7 +24,7 @@ const Checkbox: FC<
 
   return (
     <div className={styles.container}>
-      <SingleCheckbox {...props} id={linkedId} name={name} value={value} />
+      <SingleToggle {...props} id={linkedId} name={name} value={value} />
       <Label htmlFor={linkedId} {...labelProps}>
         {children}
       </Label>
@@ -33,6 +33,6 @@ const Checkbox: FC<
 };
 
 /**
- * Checkbox field
+ * Toggle field
  */
-export default memo(Checkbox);
+export default memo(Toggle);

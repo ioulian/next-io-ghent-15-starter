@@ -5,7 +5,6 @@ import type { ComponentPropsWithRef, FC } from "react";
 import { memo, useState } from "react";
 
 import { useMessages } from "next-intl";
-import { useWatch } from "react-hook-form";
 import { useDebounce } from "react-use";
 
 import { isString } from "@/types/type-guards";
@@ -16,13 +15,13 @@ import { addClassNameToProps } from "@/utils/styles";
 import { passwordStrength } from "./PasswordStrength.styles";
 import { validatePassword } from "./PasswordStrength.utils";
 
-const PasswordStrength: FC<{ name: string } & ComponentPropsWithRef<"div">> = ({ name, ...props }) => {
+const PasswordStrength: FC<{ value?: string } & ComponentPropsWithRef<"div">> = ({ value, ...props }) => {
   const messages = useMessages();
-  const value = useWatch({ name });
 
   const [score, setScore] = useState<number>(-1);
   const [message, setMessage] = useState<string>("");
 
+  // TODO: use deferred value? or transition
   useDebounce(
     () => {
       if (isString(value) && value.length > 0) {

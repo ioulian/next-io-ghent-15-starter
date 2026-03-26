@@ -15,16 +15,16 @@ import checkboxStyles from "../checkbox/Checkbox.module.css";
 import inputStyles from "./../../input/Input.module.css";
 import styles from "./Radio.module.css";
 
-const Radio: FC<{ inputValue: string; isError?: boolean } & ComponentPropsWithRef<"input">> = ({
+const Radio: FC<{ isError?: boolean } & ComponentPropsWithRef<"input">> = ({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   id,
   name,
-  inputValue,
+  value,
   children,
   isError,
   ...props
 }) => {
-  const linkedId = `${name}-${inputValue}`;
+  const linkedId = `${name}-${value}`;
 
   return (
     <div className={clsx(checkboxStyles.container, styles.container)}>
@@ -33,7 +33,7 @@ const Radio: FC<{ inputValue: string; isError?: boolean } & ComponentPropsWithRe
         name={name}
         type="radio"
         id={linkedId}
-        value={inputValue}
+        value={value}
       />
       <Label htmlFor={linkedId}>{children}</Label>
     </div>

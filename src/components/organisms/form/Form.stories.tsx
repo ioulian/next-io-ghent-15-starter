@@ -9,7 +9,6 @@ import Checkbox from "@/components/atoms/form/collection/checkbox/Checkbox";
 import List from "@/components/atoms/form/collection/List";
 import Input from "@/components/atoms/form/input/Input";
 import PasswordInput from "@/components/atoms/form/password/PasswordInput";
-import SingleCheckbox from "@/components/atoms/form/single-checkbox/SingleCheckbox";
 import Heading from "@/components/atoms/heading/Heading";
 import { createValidationMessage, createZodResolver } from "@/components/organisms/form/Form.validation";
 import { wait } from "@/utils/promises";
@@ -61,6 +60,10 @@ const schema: ZodType<SampleFormData, SampleFormData> = z
   .refine((obj) => obj.password === obj.passwordRepeat, {
     ...createValidationMessage("common.form.validationErrors.passwordMatch"),
     path: ["passwordRepeat"],
+  })
+  .refine((obj) => obj.privacy, {
+    message: "Privacy policy is required",
+    path: ["privacy"],
   });
 
 const SampleForm = createForm<SampleFormData>();
@@ -93,6 +96,7 @@ export const Default: Story = {
       await userEvent.click(canvas.getByTestId("firstCheckbox"));
       await userEvent.type(canvas.getByTestId("password"), "foobar");
       await userEvent.type(canvas.getByTestId("passwordRepeat"), "foobar");
+      await userEvent.click(canvas.getByTestId("privacy"));
 
       // Wait a bit for react hook form to pickup changes
       await wait(100);
@@ -122,7 +126,7 @@ export const Default: Story = {
           gap: "1.25rem",
         }}
       >
-        <SampleForm.FormField
+        <SampleForm.Field
           style={{
             flexGrow: 1,
           }}
@@ -131,8 +135,8 @@ export const Default: Story = {
           required
         >
           <Input data-testid="firstName" />
-        </SampleForm.FormField>
-        <SampleForm.FormField
+        </SampleForm.Field>
+        <SampleForm.Field
           style={{
             flexGrow: 1,
           }}
@@ -140,22 +144,22 @@ export const Default: Story = {
           name="lastName"
         >
           <Input />
-        </SampleForm.FormField>
+        </SampleForm.Field>
       </div>
-      <SampleForm.FormField label="Email address" name="emailAddress" required>
+      <SampleForm.Field label="Email address" name="emailAddress" required>
         <Input type="email" data-testid="emailAddress" />
-      </SampleForm.FormField>
-      <SampleForm.FormField label="Hobbies" name="hobbies" asFieldSet inputWrapper={List} required>
-        <Checkbox key="1" inputValue="value1" data-testid="firstCheckbox">
+      </SampleForm.Field>
+      <SampleForm.Field label="Hobbies" name="hobbies" asFieldSet inputWrapper={List} required>
+        <Checkbox key="1" value="value1" data-testid="firstCheckbox">
           Value 1
         </Checkbox>
-        <Checkbox key="2" inputValue="value2">
+        <Checkbox key="2" value="value2">
           Value 2
         </Checkbox>
-        <Checkbox key="3" inputValue="value3">
+        <Checkbox key="3" value="value3">
           Value 3
         </Checkbox>
-      </SampleForm.FormField>
+      </SampleForm.Field>
 
       <div
         style={{
@@ -164,7 +168,7 @@ export const Default: Story = {
           gap: "1.25rem",
         }}
       >
-        <SampleForm.FormField
+        <SampleForm.Field
           style={{
             flexGrow: 1,
           }}
@@ -174,8 +178,8 @@ export const Default: Story = {
           required
         >
           <PasswordInput data-testid="password" />
-        </SampleForm.FormField>
-        <SampleForm.FormField
+        </SampleForm.Field>
+        <SampleForm.Field
           style={{
             flexGrow: 1,
           }}
@@ -184,16 +188,11 @@ export const Default: Story = {
           required
         >
           <Input type="password" data-testid="passwordRepeat" />
-        </SampleForm.FormField>
+        </SampleForm.Field>
       </div>
-      <SampleForm.FormField
-        label="I accept privacy policy"
-        description="Read terms and conditions first"
-        name="privacy"
-        isToggle
-      >
-        <SingleCheckbox />
-      </SampleForm.FormField>
+      <SampleForm.Field label="I accept privacy policy" description="Read terms and conditions first" name="privacy">
+        <Checkbox data-testid="privacy" />
+      </SampleForm.Field>
       <Button type="submit" data-testid="submit-button">
         Submit
       </Button>

@@ -2,11 +2,11 @@ import { userEvent } from "storybook/test";
 import { z } from "zod";
 
 import Input from "@/components/atoms/form/input/Input";
-import FormField from "@/components/molecules/form-field/FormField";
 import { exampleErrors } from "@/components/organisms/form/Form.data";
 import describeGeneralTests from "@/test/general-tests";
 import { act, fireEvent, render, screen } from "@/test/test-utils";
 
+import Field from "./field/Field";
 import Form from "./Form";
 import { createValidationMessage, createZodResolver } from "./Form.validation";
 
@@ -28,9 +28,9 @@ describe("Form", () => {
         data-testid="test"
         noValidate
       >
-        <FormField name="test-name" required description="test">
+        <Field name="test-name" required description="test">
           <Input />
-        </FormField>
+        </Field>
         <button type="submit" data-testid="submit">
           Submit
         </button>
@@ -62,9 +62,9 @@ describe("Form", () => {
     const spy = vi.fn();
     render(
       <Form onSubmit={spy} data-testid="test" fieldErrors={exampleErrors}>
-        <FormField name="emailAddress">
+        <Field name="emailAddress">
           <Input />
-        </FormField>
+        </Field>
         <button type="submit" data-testid="submit">
           Submit
         </button>
@@ -87,9 +87,9 @@ describe("Form", () => {
     const spy = vi.fn((data) => data.emailAddress);
     render(
       <Form data-testid="test" onChange={spy}>
-        <FormField name="emailAddress">
+        <Field name="emailAddress">
           <Input />
-        </FormField>
+        </Field>
       </Form>,
     );
 

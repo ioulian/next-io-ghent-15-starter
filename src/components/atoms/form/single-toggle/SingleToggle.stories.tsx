@@ -2,15 +2,15 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
 
-import Toggle from "./Toggle";
+import SingleToggle from "./SingleToggle";
 
-const meta: Meta<typeof Toggle> = {
-  title: "UI/Atoms/Form/Toggle",
-  component: Toggle,
+const meta: Meta<typeof SingleToggle> = {
+  title: "UI/Atoms/Form/Single Toggle",
+  component: SingleToggle,
   tags: ["autodocs"],
 };
 export default meta;
-type Story = StoryObj<typeof Toggle>;
+type Story = StoryObj<typeof SingleToggle>;
 
 export const Default: Story = {
   render: (args) => (
@@ -18,7 +18,7 @@ export const Default: Story = {
       <VisuallyHidden>
         <label htmlFor={args.id}>Toggle</label>
       </VisuallyHidden>
-      <Toggle {...args} id={args.id} />
+      <SingleToggle {...args} id={args.id} />
     </>
   ),
   args: { id: "toggle" },

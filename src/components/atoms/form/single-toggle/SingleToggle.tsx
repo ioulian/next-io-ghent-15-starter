@@ -10,9 +10,9 @@ import { baseInput } from "@/components/atoms/form/base-input/BaseInput.styles";
 import { addClassNameToProps } from "@/utils/styles";
 
 import stylesVisuallyHidden from "./../../../utils/visually-hidden/VisuallyHidden.module.css";
-import styles from "./Toggle.module.css";
+import styles from "./SingleToggle.module.css";
 
-const Toggle: FC<{ isError?: boolean } & Omit<ComponentPropsWithRef<"input">, "children">> = ({
+const SingleToggle: FC<{ isError?: boolean } & Omit<ComponentPropsWithRef<"input">, "children">> = ({
   isError,
   id,
   ...props
@@ -35,4 +35,4 @@ const Toggle: FC<{ isError?: boolean } & Omit<ComponentPropsWithRef<"input">, "c
 /**
  * Checkbox component styled as a toggle
  */
-export default memo(Toggle);
+export default memo(SingleToggle);
