@@ -28,7 +28,7 @@ const SvgSprite: FC<
       aria-hidden={isAriaHidden}
       aria-labelledby={title ? titleId : undefined}
       viewBox={SVG_SPRITE_DEFINITIONS[name].viewBox}
-      focusable={isAriaHidden}
+      focusable={isAriaHidden ? undefined : false}
     >
       {title ? <title id={titleId}>{title}</title> : null}
       <use

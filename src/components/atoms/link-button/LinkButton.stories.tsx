@@ -38,8 +38,8 @@ export const WithIcons: Story = {
     children: "Button",
     iconOnly: false,
     fullWidth: false,
-    iconBefore: <SvgSprite name="tablerChevronLeft" title="test-title" />,
-    iconAfter: <SvgSprite name="tablerChevronRight" title="test-title" />,
+    iconBefore: <SvgSprite name="tablerChevronLeft" />,
+    iconAfter: <SvgSprite name="tablerChevronRight" />,
   },
 };
 
@@ -69,6 +69,7 @@ export const AccessibleIconButton: Story = {
     variant: "simple",
     children: "Settings",
     fullWidth: false,
+    href: "/test",
     iconBefore: <SvgSprite name="tablerSettings" />,
     iconOnly: true,
   },

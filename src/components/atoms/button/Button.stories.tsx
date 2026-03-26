@@ -57,8 +57,8 @@ export const WithIcons: Story = {
     disabled: false,
     iconOnly: false,
     fullWidth: false,
-    iconBefore: <SvgSprite name="tablerChevronLeft" title="test-title" />,
-    iconAfter: <SvgSprite name="tablerChevronRight" title="test-title" />,
+    iconBefore: <SvgSprite name="tablerChevronLeft" />,
+    iconAfter: <SvgSprite name="tablerChevronRight" />,
   },
 };
 

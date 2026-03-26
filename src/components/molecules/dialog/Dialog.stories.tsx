@@ -294,7 +294,7 @@ const ControlledOverlayComponent = () => {
         <SampleLargeText />
       </div>
       <Dialog open={isOpen} onOpenChange={(isNewOpen) => setIsOpen(isNewOpen)}>
-        <DialogContent>
+        <DialogContent withCloseButton>
           <DialogClose
             onClick={() => {
               setIsOpen(false);

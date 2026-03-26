@@ -1,23 +1,21 @@
-import type { WithRequired } from "@/types/helpers";
+import type Button from "@/components/atoms/button/Button";
 import type { ComponentPropsWithRef, FC } from "react";
 
 import { memo } from "react";
 
-import Button from "@/components/atoms/button/Button";
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./CloseButton.module.css";
 
-const CloseButton: FC<WithRequired<ComponentPropsWithRef<typeof Button>, "children">> = (props) => {
+const CloseButton: FC<{ children: string } & Omit<ComponentPropsWithRef<typeof Button>, "children">> = ({
+  children,
+  ...props
+}) => {
   return (
-    <Button
-      {...addClassNameToProps(props, styles.closeButton)}
-      iconOnly
-      iconBefore={<SvgSprite name="tablerX" />}
-      size="base"
-      variant="simple"
-    />
+    <button type="button" {...addClassNameToProps(props, styles.closeButton)} aria-label={children} title={children}>
+      <SvgSprite name="tablerX" />
+    </button>
   );
 };
 
