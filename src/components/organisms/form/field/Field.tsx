@@ -142,7 +142,6 @@ const Field = <T extends FieldValues = FieldValues>({
     "aria-invalid": !!error ? ("true" as const) : undefined,
   };
 
-  // TODO: add toggle
   const isCheckboxOrToggle =
     !isFunction(children) &&
     Children.count(children) === 1 &&
