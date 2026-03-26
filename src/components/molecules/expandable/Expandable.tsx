@@ -1,5 +1,3 @@
-"use client";
-
 import type { ComponentPropsWithRef, FC, ReactNode } from "react";
 
 import { memo } from "react";
@@ -22,7 +20,7 @@ const Expandable: FC<
     open?: boolean;
   } & ComponentPropsWithRef<"details">
 > = ({ summary, children, open = false, ...props }) => {
-  const classes = expandable({ isOpen: open });
+  const classes = expandable();
 
   return (
     <details {...addClassNameToProps(props, classes.expandable())} open={open}>

@@ -1,5 +1,3 @@
-"use client";
-
 import type { ComponentPropsWithRef, FC, ReactNode } from "react";
 
 import { memo } from "react";

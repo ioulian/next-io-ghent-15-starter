@@ -9,11 +9,4 @@ export const expandable = tv({
     container: styles.container,
     summary: styles.summary,
   },
-  variants: {
-    isOpen: {
-      true: {
-        icon: styles.iconOpen,
-      },
-    },
-  },
 });

@@ -1,5 +1,3 @@
-"use client";
-
 import type { WithRequired } from "@/types/helpers";
 import type { ComponentPropsWithRef, ElementType, ReactNode } from "react";
 import type { VariantProps } from "tailwind-variants";

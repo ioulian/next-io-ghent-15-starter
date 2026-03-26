@@ -70,7 +70,6 @@ const Form = <
     ...formSettings,
   });
   const { handleSubmit, setError, clearErrors, watch, setFocus, reset } = methods;
-  // The double onChange callback is only in dev (probably with strict mode), we set this to true only for development
 
   // Subscribe to onChange event
   useEffect(() => {
@@ -118,16 +117,12 @@ const Form = <
 
   const onSubmitCallback = useCallback<SubmitEventHandler<HTMLFormElement>>(
     (e) => {
-      if (!isLoading) {
-        if (onSubmit) {
-          const submitter = e.nativeEvent.submitter;
+      if (!isLoading && onSubmit) {
+        const submitter = e.nativeEvent.submitter;
 
-          handleSubmit((data) => {
-            onSubmit(data, submitter);
-          }, onError)(e);
-        } else {
-          e.preventDefault();
-        }
+        handleSubmit((data) => {
+          onSubmit(data, submitter);
+        }, onError)(e);
       } else {
         e.preventDefault();
       }
