@@ -26,7 +26,6 @@ describe("Form", () => {
           ),
         }}
         data-testid="test"
-        noValidate
       >
         <Field name="test-name" required description="test">
           <Input />

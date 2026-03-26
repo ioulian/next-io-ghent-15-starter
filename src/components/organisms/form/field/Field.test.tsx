@@ -4,7 +4,7 @@ import { render, screen } from "@/test/test-utils";
 
 import Field from "./Field";
 
-describe("FormField", () => {
+describe("Field", () => {
   it("renders", () => {
     render(
       <Form>

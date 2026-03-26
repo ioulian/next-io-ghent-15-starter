@@ -3,6 +3,6 @@ import { render } from "@/test/test-utils";
 
 import CloseButton from "./CloseButton";
 
-describe("CircularProgress", () => {
+describe("CloseButton", () => {
   describeGeneralTests(<CloseButton>close</CloseButton>, () => ({ render }));
 });

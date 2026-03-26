@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from "@/test/test-utils";
 
 import Expandable from "./Expandable";
 
-describe("Ellipsis", () => {
+describe("Expandable", () => {
   describeGeneralTests(<Expandable summary="test" />, () => ({ render }));
 
   it("renders with items", () => {

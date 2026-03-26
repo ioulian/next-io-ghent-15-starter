@@ -2,7 +2,7 @@ import { render, screen } from "@/test/test-utils";
 
 import Error from "./FieldError";
 
-describe("Error", () => {
+describe("FieldError", () => {
   it("renders", () => {
     render(<Error id="test" data-testid="test" />);
     expect(screen.getByTestId("test")).toBeInTheDocument();
