@@ -1,7 +1,9 @@
 "use client";
 
 import type { Header } from "@tanstack/react-table";
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, ReactElement } from "react";
+
+import { memo } from "react";
 
 import { flexRender } from "@tanstack/react-table";
 import clsx from "clsx";
@@ -11,12 +13,11 @@ import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 
 import styles from "./DataTable.module.css";
 
-const THeadButton = <T,>({
-  header,
-  ...props
-}: {
+type THeadButtonProps<T> = {
   header: Header<T, unknown>;
-} & ComponentPropsWithRef<"button">) => {
+} & ComponentPropsWithRef<"button">;
+
+const THeadButton = <T,>({ header, ...props }: THeadButtonProps<T>) => {
   const t = useTranslations("common.dataTable");
 
   const canSort = header.column.getCanSort();
@@ -59,4 +60,4 @@ const THeadButton = <T,>({
   );
 };
 
-export default THeadButton;
+export default memo(THeadButton) as <T>(props: THeadButtonProps<T>) => ReactElement;

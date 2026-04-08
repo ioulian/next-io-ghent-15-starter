@@ -1,14 +1,15 @@
 import type { Table } from "@tanstack/react-table";
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, ReactElement } from "react";
+
+import { memo } from "react";
 
 import { flexRender } from "@tanstack/react-table";
 
-const TBody = <T,>({
-  table,
-  ...props
-}: {
+type TBodyProps<T> = {
   table: Table<T>;
-} & ComponentPropsWithRef<"tbody">) => {
+} & ComponentPropsWithRef<"tbody">;
+
+const TBody = <T,>({ table, ...props }: TBodyProps<T>) => {
   return (
     <tbody {...props}>
       {table.getRowModel().rows.map((row) => (
@@ -22,4 +23,4 @@ const TBody = <T,>({
   );
 };
 
-export default TBody;
+export default memo(TBody) as <T>(props: TBodyProps<T>) => ReactElement;

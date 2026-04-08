@@ -1,14 +1,15 @@
 import type { Table } from "@tanstack/react-table";
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, ReactElement } from "react";
+
+import { memo } from "react";
 
 import THeadButton from "@/components/organisms/data-table/DataTable.THeadButton";
 
-const THead = <T,>({
-  table,
-  ...props
-}: {
+type THeadProps<T> = {
   table: Table<T>;
-} & ComponentPropsWithRef<"thead">) => {
+} & ComponentPropsWithRef<"thead">;
+
+const THead = <T,>({ table, ...props }: THeadProps<T>) => {
   return (
     <thead {...props}>
       {table.getHeaderGroups().map((headerGroup) => (
@@ -22,4 +23,4 @@ const THead = <T,>({
   );
 };
 
-export default THead;
+export default memo(THead) as <T>(props: THeadProps<T>) => ReactElement;

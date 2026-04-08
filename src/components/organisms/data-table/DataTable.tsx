@@ -1,5 +1,7 @@
 import type { Table } from "@tanstack/react-table";
-import type { ComponentPropsWithRef } from "react";
+import type { ComponentPropsWithRef, ReactElement } from "react";
+
+import { memo } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 
@@ -10,16 +12,7 @@ import THead from "./DataTable.THead";
 
 import styles from "./DataTable.module.css";
 
-/**
- * Table to be used for tanstack table
- */
-const DataTable = <T,>({
-  table,
-  showPagination = false,
-  showPerPages,
-  showFooter = false,
-  ...props
-}: {
+export type DataTableProps<T> = {
   /**
    * (Tanstack) Table to render
    */
@@ -39,7 +32,18 @@ const DataTable = <T,>({
    * Show selector for page size, provide an array of page sizes
    */
   showPerPages?: number[];
-} & ComponentPropsWithRef<"div">) => {
+} & ComponentPropsWithRef<"div">;
+
+/**
+ * Table to be used for tanstack table
+ */
+const DataTable = <T,>({
+  table,
+  showPagination = false,
+  showPerPages,
+  showFooter = false,
+  ...props
+}: DataTableProps<T>) => {
   return (
     <div {...addClassNameToProps(props, styles.container)}>
       <table className={styles.table}>
@@ -52,4 +56,4 @@ const DataTable = <T,>({
   );
 };
 
-export default DataTable;
+export default memo(DataTable) as <T>(props: DataTableProps<T>) => ReactElement;
