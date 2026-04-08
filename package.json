@@ -130,7 +130,7 @@
     "svgo-loader": "4.0.0",
     "ts-deepmerge": "7.0.3",
     "tsx": "4.21.0",
-    "typescript": "5.9.3",
+    "typescript": "6.0.2",
     "vite-tsconfig-paths": "6.1.1",
     "vitest": "4.1.3"
   },
