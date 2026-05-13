@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from "next";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 
+import { RscBoundaryProvider } from "@rsc-boundary/next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
@@ -70,7 +71,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       <ReactScan />
       <body>
         <NextIntlClientProvider>
-          <Providers nonce={nonce || undefined}>{children}</Providers>
+          <RscBoundaryProvider>
+            <Providers nonce={nonce || undefined}>{children}</Providers>
+          </RscBoundaryProvider>
         </NextIntlClientProvider>
       </body>
     </html>

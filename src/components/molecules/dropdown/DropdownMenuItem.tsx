@@ -80,6 +80,7 @@ const DropdownMenuItem: FC<{ closeOnClick?: boolean } & WithTypeAheadKey & HTMLP
   );
 
   if (isValidElement<Record<string, unknown>>(children)) {
+    // eslint-disable-next-line react-hooks/refs
     return cloneElement(children, {
       ref,
       ...props,

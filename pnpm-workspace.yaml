@@ -1,9 +1,9 @@
-minimumReleaseAge: 0 #4320 # 3 days
+allowBuilds:
+  "@parcel/watcher": true
+  "@swc/core": true
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
 
-onlyBuiltDependencies:
-  - "@firebase/util"
-  - core-js-pure
-  - esbuild
-  - protobufjs
-  - sharp
-  - unrs-resolver
+minimumReleaseAge: 0 #4320 # 3 days
+autoInstallPeers: true
