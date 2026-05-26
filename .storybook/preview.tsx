@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/nextjs-vite";
 
-import { htmlFontClass } from "@/app/[locale]/_styles/fonts";
+// import { htmlFontClass } from "@/app/[locale]/_styles/fonts";
 import { getCss, getThemeCss } from "@/app/[locale]/_styles/variables";
 
 import nextIntl from "./next-intl";
@@ -45,7 +45,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => {
-      document.documentElement.classList.add(...htmlFontClass.split(" "), "theme--default");
+      document.documentElement.classList.add(/*...htmlFontClass.split(" "),*/ "theme--default");
       return (
         <>
           <style>{getCss()}</style>

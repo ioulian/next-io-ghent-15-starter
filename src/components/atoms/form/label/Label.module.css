@@ -6,5 +6,10 @@
 
   .asterisk {
     color: var(--form-asterisk);
+    margin-left: 0.25rem;
+
+    > abbr {
+      text-decoration: none;
+    }
   }
 }

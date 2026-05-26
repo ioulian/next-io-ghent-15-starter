@@ -18,10 +18,9 @@ const Input: FC<
      * Add a node after
      */
     iconAfter?: ReactNode;
-    isError?: boolean;
   } & ComponentPropsWithRef<"input">
-> = ({ iconBefore, iconAfter, isError, ...props }) => {
-  const element = <input {...addClassNameToProps(props, baseInput({ isError }), styles.input)} />;
+> = ({ iconBefore, iconAfter, ...props }) => {
+  const element = <input {...addClassNameToProps(props, baseInput(), styles.input)} />;
 
   if ((iconBefore || iconAfter) && !["checkbox", "radio"].includes(props.type ?? "")) {
     return (

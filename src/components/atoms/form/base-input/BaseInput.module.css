@@ -8,16 +8,16 @@
     border: 1px solid var(--form-input-border);
     margin: 0;
 
-    & + *:not(button, label) {
+    > & + *:not(button, label) {
       margin-top: 0.25rem;
     }
-  }
 
-  .isError {
-    border-color: var(--form-error);
+    &[aria-invalid="true"] {
+      border-color: var(--form-error);
 
-    &:focus-visible {
-      outline-color: var(--form-error);
+      &:focus-visible {
+        outline-color: var(--form-error);
+      }
     }
   }
 }

@@ -62,7 +62,7 @@
         "prefix": "Error:"
       },
       "label": {
-        "required": "(required)"
+        "required": "Required"
       },
       "select": {
         "emptyValue": "Select..."

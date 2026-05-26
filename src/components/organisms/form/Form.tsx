@@ -1,143 +1,46 @@
 "use client";
 
-import type { FormFieldError } from "@/components/organisms/form/Form.types";
-import type { ComponentPropsWithRef, SubmitEventHandler } from "react";
-import type { DeepPartial, FieldErrors, FieldValues, Path, UseFormProps } from "react-hook-form";
+import type { ComponentPropsWithRef, FC, SubmitEventHandler } from "react";
 
-import { useCallback, useEffect } from "react";
+import { memo, useCallback } from "react";
 
-import { FormProvider, useForm } from "react-hook-form";
+import { useStore } from "@tanstack/react-form";
 
-import { BE_VALIDATION } from "@/components/organisms/form/Form.constants";
 import { addClassNameToProps } from "@/utils/styles";
+
+import { useFormContext } from "./Form.utils";
 
 import styles from "./Form.module.css";
 
-export type FormProps<
-  TFieldValues extends FieldValues = FieldValues,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  TContext = any,
-  TTransformedValues = TFieldValues,
-> = {
-  fieldErrors?: FormFieldError<TFieldValues>[];
-  isLoading?: boolean;
-  onSubmit?: (data: TTransformedValues, submitter?: HTMLElement | null) => void;
-  onError?: (errors: FieldErrors<TFieldValues>) => void;
-  onChange?: (data?: DeepPartial<TFieldValues> | TFieldValues) => void;
-  formSettings?: UseFormProps<TFieldValues, TContext, TTransformedValues>;
-} & Omit<ComponentPropsWithRef<"form">, "onChange" | "onSubmit">;
-
-/**
- * Wrapper around `react-hook-form`.
- */
-const Form = <
-  TFieldValues extends FieldValues = FieldValues,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  TContext = any,
-  TTransformedValues = TFieldValues,
->({
-  /**
-   * Is current form loading, will not trigger onSubmit when loading
-   */
-  isLoading,
-
-  /**
-   * Form field errors
-   */
-  fieldErrors,
-
-  /**
-   * Triggered on form submit
-   */
-  onSubmit,
-
-  /**
-   * When form can't be submitted when there are errors
-   */
-  onError,
-
-  /**
-   * Triggered on change of any field
-   */
-  onChange,
-
+const Form: FC<{} & Omit<ComponentPropsWithRef<"form">, "onSubmit">> = ({
   children,
-  formSettings,
+
   ...props
-}: FormProps<TFieldValues, TContext, TTransformedValues>) => {
-  const methods = useForm<TFieldValues, TContext, TTransformedValues>({
-    mode: "onSubmit",
-    ...formSettings,
-  });
-  const { handleSubmit, setError, clearErrors, watch, setFocus, reset } = methods;
+}) => {
+  const form = useFormContext();
 
-  // Subscribe to onChange event
-  useEffect(() => {
-    const subscription = watch((values) => {
-      onChange?.(values);
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, [watch, onChange]);
-
-  // Show errors and set focus to first error field
-  useEffect(() => {
-    if (Array.isArray(fieldErrors) && fieldErrors.length !== 0) {
-      fieldErrors.forEach(({ field, error: message }, i) => {
-        setTimeout(() => {
-          setError(field as Path<TFieldValues>, {
-            type: BE_VALIDATION,
-            message,
-          });
-        }, 0);
-
-        if (i === 0) {
-          try {
-            // Can fail on HMR
-            setFocus(field as Path<TFieldValues>);
-            /* c8 ignore next */ // eslint-disable-next-line sonarjs/no-ignored-exceptions, @typescript-eslint/no-unused-vars
-          } catch (e) {}
-        }
-      });
-    } else {
-      clearErrors();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fieldErrors]);
-
-  // Update form when values are passed so we always have correct values showing in the fields
-  // This is a workaround as by default react-hook-form is uncontrolled
-  useEffect(() => {
-    if (formSettings?.values && Array.isArray(fieldErrors) && fieldErrors.length !== 0) {
-      reset(formSettings.values);
-    }
-  }, [formSettings?.values, reset, fieldErrors]);
-
-  const onSubmitCallback = useCallback<SubmitEventHandler<HTMLFormElement>>(
+  const onSubmit = useCallback<SubmitEventHandler<HTMLFormElement>>(
     (e) => {
-      if (!isLoading && onSubmit) {
-        const submitter = e.nativeEvent.submitter;
+      e.preventDefault();
+      e.stopPropagation();
 
-        handleSubmit((data) => {
-          onSubmit(data, submitter);
-        }, onError)(e);
-      } else {
-        e.preventDefault();
-      }
+      form.handleSubmit();
     },
-    [handleSubmit, isLoading, onSubmit, onError],
+    [form],
   );
+  const isSubmitting = useStore(form.store, (state) => state.isSubmitting);
+  const isFormValidating = useStore(form.store, (state) => state.isFormValidating);
 
   return (
-    <FormProvider {...methods}>
-      <form {...addClassNameToProps(props, styles.form)} onSubmit={onSubmitCallback} noValidate aria-busy={isLoading}>
-        {/*error && error.title ? <ApiFormError error={error} /> : null*/}
-        {children}
-      </form>
-    </FormProvider>
+    <form
+      {...addClassNameToProps(props, styles.form)}
+      onSubmit={onSubmit}
+      noValidate
+      aria-busy={isSubmitting || isFormValidating}
+    >
+      {children}
+    </form>
   );
 };
 
-export default Form;
+export default memo(Form);

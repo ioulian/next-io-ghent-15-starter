@@ -1,19 +1,41 @@
-import type { FormProps } from "@/components/organisms/form/Form";
-import type { ReactElement } from "react";
-import type { FieldValues } from "react-hook-form";
+import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
 
-import type { FormFieldProps } from "./field/Field";
+import InputBooleanCheckbox from "./field/InputBooleanCheckbox";
+import InputBooleanToggle from "./field/InputBooleanToggle";
+import InputCheckbox from "./field/InputCheckbox";
+import InputPassword from "./field/InputPassword";
+import InputRadio from "./field/InputRadio";
+import InputRichText from "./field/InputRichText";
+import InputText from "./field/InputText";
+import InputTextArea from "./field/InputTextArea";
+import InputToggle from "./field/InputToggle";
+import InputField from "./input-field/InputField";
+import Submit from "./submit/Submit";
 
-import Form from "@/components/organisms/form/Form";
+export const { fieldContext, formContext, useFormContext, useFieldContext } = createFormHookContexts();
 
-import Field from "./field/Field";
+export const { useAppForm, useTypedAppFormContext } = createFormHook({
+  fieldContext,
+  formContext,
+  fieldComponents: {
+    InputText,
+    InputField,
+    InputPassword,
+    InputTextArea,
+    InputBooleanCheckbox,
+    InputCheckbox,
+    InputRadio,
+    InputBooleanToggle,
+    InputToggle,
+    InputRichText,
+  },
+  formComponents: {
+    // NextButton,
+    Submit,
+  },
+});
 
-export const createForm = <
-  TFieldValues extends FieldValues = FieldValues,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  TContext = any,
-  TTransformedValues = TFieldValues,
->(): {
-  Form: (props: FormProps<TFieldValues, TContext, TTransformedValues>) => ReactElement;
-  Field: (props: FormFieldProps<TFieldValues>) => ReactElement;
-} => ({ Form, Field });
+export const focusOnFirstError = () => {
+  const invalidInput = document.querySelector('[aria-invalid="true"]') as HTMLInputElement | null;
+  invalidInput?.focus();
+};

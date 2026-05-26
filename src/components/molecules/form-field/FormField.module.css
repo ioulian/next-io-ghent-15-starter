@@ -2,14 +2,13 @@
   .field {
     border-width: 0;
     padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 
     &:not(:last-child) {
       margin-bottom: 1.25rem;
-    }
-
-    > label,
-    > legend {
-      margin-bottom: 0.5rem;
     }
   }
 

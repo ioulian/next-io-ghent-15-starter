@@ -2,7 +2,7 @@
 
 import type { ComponentPropsWithRef, FC } from "react";
 
-import { memo, useState } from "react";
+import { memo, useState, useTransition } from "react";
 
 import { useMessages } from "next-intl";
 import { useDebounce } from "react-use";
@@ -15,23 +15,26 @@ import { addClassNameToProps } from "@/utils/styles";
 import { passwordStrength } from "./PasswordStrength.styles";
 import { validatePassword } from "./PasswordStrength.utils";
 
-const PasswordStrength: FC<{ value?: string } & ComponentPropsWithRef<"div">> = ({ value, ...props }) => {
+export type PasswordStrengthProps = { value?: string } & ComponentPropsWithRef<"div">;
+
+const PasswordStrength: FC<PasswordStrengthProps> = ({ value, ...props }) => {
   const messages = useMessages();
 
   const [score, setScore] = useState<number>(-1);
   const [message, setMessage] = useState<string>("");
+  const [, start] = useTransition();
 
-  // TODO: use deferred value? or transition
+  // TODO: use deferred value?
   useDebounce(
     () => {
       if (isString(value) && value.length > 0) {
-        validatePassword(value, messages.common.form.passwordStrength.messages).then((result) => {
-          setScore(result.score);
-          setMessage(result.crackTimesDisplay.offlineSlowHashing1e4PerSecond);
+        start(() => {
+          validatePassword(value, messages.common.form.passwordStrength.messages).then((result) => {
+            setScore(result.score);
+            setMessage(result.crackTimesDisplay.offlineSlowHashing1e4PerSecond);
+          });
         });
       } else {
-        // False positive
-
         setScore(-1);
         setMessage("");
       }

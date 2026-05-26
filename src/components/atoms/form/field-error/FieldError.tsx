@@ -1,4 +1,3 @@
-import type { WithRequired } from "@/types/helpers";
 import type { ComponentPropsWithRef, FC } from "react";
 
 import { memo } from "react";
@@ -10,11 +9,11 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./FieldError.module.css";
 
-const FieldError: FC<WithRequired<ComponentPropsWithRef<"div">, "id">> = ({ id, children, ...props }) => {
+const FieldError: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
   const t = useTranslations("common.form");
 
   return (
-    <div {...addClassNameToProps(props, styles.error)} id={id} role="alert">
+    <div {...addClassNameToProps(props, styles.error)} role="alert">
       <VisuallyHidden>{t("error.prefix")}</VisuallyHidden>
       {children}
     </div>

@@ -27,7 +27,7 @@ const Page: NextPage<PageProps<"/[locale]">> = ({}) => {
     <div>
       <div>{t("home.title")}</div>
       <LocaleSwitcher />
-      <SvgSprite name="logo" />
+      <SvgSprite name="logo" title="iO Logo" />
     </div>
   );
 };

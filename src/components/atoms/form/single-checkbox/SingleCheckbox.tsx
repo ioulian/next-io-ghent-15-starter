@@ -10,14 +10,17 @@ import { addClassNameToProps } from "@/utils/styles";
 import inputStyles from "./../input/Input.module.css";
 import styles from "./SingleCheckbox.module.css";
 
-const SingleCheckbox: FC<
-  { isError?: boolean; indeterminate?: boolean } & Omit<ComponentPropsWithRef<"input">, "children">
-> = ({ isError, indeterminate, ref, ...props }) => {
+const SingleCheckbox: FC<{ indeterminate?: boolean } & Omit<ComponentPropsWithRef<"input">, "children">> = ({
+  indeterminate,
+  ref,
+  ...props
+}) => {
   const innerRef = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => innerRef.current!, []);
 
   const isIndeterminate = !props.checked && indeterminate === true;
   useEffect(() => {
+    /* v8 ignore next */
     if (innerRef.current) {
       innerRef.current.indeterminate = isIndeterminate;
     }
@@ -25,12 +28,7 @@ const SingleCheckbox: FC<
 
   return (
     <input
-      {...addClassNameToProps(
-        props,
-        baseInput({ isError }),
-        inputStyles.input,
-        isIndeterminate && styles.indeterminate,
-      )}
+      {...addClassNameToProps(props, baseInput(), inputStyles.input, isIndeterminate && styles.indeterminate)}
       type="checkbox"
       ref={innerRef}
     />

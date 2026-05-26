@@ -1,52 +1,35 @@
 "use client";
 
-import type { ChangeEvent, ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useState } from "react";
 
 import { useTranslations } from "next-intl";
+
+import { isString } from "@/types/type-guards";
+import type { PasswordStrengthProps } from "./PasswordStrength";
 
 import Button from "../../button/Button";
 import SvgSprite from "../../svg-sprite/SvgSprite";
 import Input from "../input/Input";
 import PasswordStrength from "./PasswordStrength";
 
-const PasswordInput: FC<{ showStrengthMeter?: boolean } & ComponentPropsWithRef<"input">> = ({
-  showStrengthMeter,
-  value,
-  onChange,
-  ...props
-}) => {
+const PasswordInput: FC<
+  { showStrengthMeter?: boolean; strengthMeterProps?: PasswordStrengthProps } & ComponentPropsWithRef<"input">
+> = ({ showStrengthMeter, value, strengthMeterProps, ...props }) => {
   const t = useTranslations("common.form");
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [localValue, setLocalValue] = useState<string | undefined>(value as string | undefined);
 
   const onClickCallback = useCallback(() => {
     setShowPassword((newShowPassword) => !newShowPassword);
   }, []);
-
-  const newOnChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      onChange?.(event);
-      setLocalValue(event.target.value);
-    },
-    [onChange],
-  );
-
-  // TODO: maybe move passwordstrength somewhere to not have localValue here
-  useEffect(() => {
-    // We need to update local state when value changes
-    // eslint-disable-next-line react-you-might-not-need-an-effect/no-derived-state, react-hooks/set-state-in-effect
-    setLocalValue(value as string | undefined);
-  }, [value]);
 
   return (
     <>
       <Input
         {...props}
         type={showPassword ? "text" : "password"}
-        value={localValue}
-        onChange={newOnChange}
+        value={value}
         iconAfter={
           <Button
             iconBefore={<SvgSprite name={showPassword ? "tablerPasswordHideIcon" : "tablerPasswordShowIcon"} />}
@@ -59,7 +42,9 @@ const PasswordInput: FC<{ showStrengthMeter?: boolean } & ComponentPropsWithRef<
           </Button>
         }
       />
-      {showStrengthMeter ? <PasswordStrength value={localValue} /> : null}
+      {showStrengthMeter ? (
+        <PasswordStrength {...strengthMeterProps} value={isString(value) ? value : undefined} />
+      ) : null}
     </>
   );
 };

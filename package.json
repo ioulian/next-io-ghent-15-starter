@@ -43,9 +43,9 @@
   "dependencies": {
     "@bprogress/next": "3.2.12",
     "@floating-ui/react": "0.27.19",
-    "@hookform/resolvers": "5.2.2",
     "@t3-oss/env-nextjs": "0.13.11",
     "@tabler/icons": "3.41.1",
+    "@tanstack/react-form": "1.32.0",
     "@tanstack/react-table": "8.21.3",
     "@tiptap/extension-subscript": "3.22.2",
     "@tiptap/extension-superscript": "3.22.2",
@@ -63,7 +63,6 @@
     "next-intl": "4.9.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-hook-form": "7.72.1",
     "react-paginate": "8.3.0",
     "react-tabs": "6.1.1",
     "react-toastify": "11.0.5",

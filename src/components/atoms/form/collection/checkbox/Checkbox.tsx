@@ -9,16 +9,8 @@ import styles from "./Checkbox.module.css";
 
 const Checkbox: FC<
   { isError?: boolean; labelProps?: ComponentPropsWithRef<typeof Label> } & ComponentPropsWithRef<"input">
-> = ({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  id,
-  name,
-  value,
-  children,
-  labelProps,
-  ...props
-}) => {
-  const linkedId = `${name}-${value}`;
+> = ({ id, name, value, children, labelProps, ...props }) => {
+  const linkedId = value ? `${id}-${value}` : id;
 
   return (
     <div className={styles.container}>

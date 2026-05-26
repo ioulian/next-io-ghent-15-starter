@@ -1,30 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { FC } from "react";
 import type { ZodType } from "zod";
 
+import { useTranslations } from "next-intl";
 import { expect, fn, userEvent, within } from "storybook/test";
 import { z } from "zod";
 
 import Button from "@/components/atoms/button/Button";
-import Checkbox from "@/components/atoms/form/collection/checkbox/Checkbox";
-import List from "@/components/atoms/form/collection/List";
-import Input from "@/components/atoms/form/input/Input";
-import PasswordInput from "@/components/atoms/form/password/PasswordInput";
 import Heading from "@/components/atoms/heading/Heading";
-import { createValidationMessage, createZodResolver } from "@/components/organisms/form/Form.validation";
 import { wait } from "@/utils/promises";
 
 import Form from "./Form";
-import { createForm } from "./Form.utils";
+import { focusOnFirstError, useAppForm } from "./Form.utils";
+import InputList from "./input-list/InputList";
 
 const meta: Meta<typeof Form> = {
   title: "UI/Organisms/Form",
   component: Form,
   tags: ["autodocs"],
-  args: {
-    onSubmit: fn(),
-    onError: fn(),
-    onChange: fn(),
-  },
 };
 
 export default meta;
@@ -32,171 +25,222 @@ type Story = StoryObj<typeof Form>;
 
 type SampleFormData = {
   firstName: string;
-  lastName?: string | null;
+  lastName?: string;
   emailAddress: string;
-  hobbies: string[];
-  //color: ColourOption;
   password: string;
   passwordRepeat: string;
-  privacy: boolean;
+  privacyPolicy: boolean;
+  hobbies: string[];
+  selectOne: "1" | "2" | "3";
 };
 
-const REQUIRED_MESSAGE = createValidationMessage("common.form.validationErrors.required");
-const EMAIL_MESSAGE = createValidationMessage("common.form.validationErrors.email");
-const BASIC_STRING_VALIDATION = z.string(REQUIRED_MESSAGE);
+const getSchema = (t: ReturnType<typeof useTranslations>) => {
+  const REQUIRED_MESSAGE = {
+    // @ts-expect-error - Ignore
+    message: t("common.form.validationErrors.required"),
+  };
+  const EMAIL_MESSAGE = {
+    // @ts-expect-error - Ignore
+    message: t("common.form.validationErrors.email"),
+  };
+  const BASIC_STRING_VALIDATION = z.string(REQUIRED_MESSAGE);
 
-const schema: ZodType<SampleFormData, SampleFormData> = z
-  .object({
-    firstName: BASIC_STRING_VALIDATION.min(1, createValidationMessage("common.form.validationErrors.required")),
-    lastName: BASIC_STRING_VALIDATION.nullish(),
-    emailAddress: z.email(EMAIL_MESSAGE),
-    hobbies: z
-      .array(z.string(), REQUIRED_MESSAGE)
-      .min(1, createValidationMessage("common.form.validationErrors.required")),
-    password: BASIC_STRING_VALIDATION.min(6, createValidationMessage("common.form.validationErrors.password")),
-    passwordRepeat: BASIC_STRING_VALIDATION.min(6, createValidationMessage("common.form.validationErrors.password")),
-    privacy: z.boolean(),
-  })
-  .refine((obj) => obj.password === obj.passwordRepeat, {
-    ...createValidationMessage("common.form.validationErrors.passwordMatch"),
-    path: ["passwordRepeat"],
-  })
-  .refine((obj) => obj.privacy, {
-    message: "Privacy policy is required",
-    path: ["privacy"],
+  const schema: ZodType<SampleFormData, SampleFormData> = z
+    .object({
+      firstName: BASIC_STRING_VALIDATION.min(1, REQUIRED_MESSAGE),
+      lastName: BASIC_STRING_VALIDATION.optional(),
+      emailAddress: z.email(EMAIL_MESSAGE),
+      selectOne: z.enum(["1", "2", "3"], REQUIRED_MESSAGE),
+      hobbies: z.array(z.string(), REQUIRED_MESSAGE).min(1, REQUIRED_MESSAGE),
+      password: BASIC_STRING_VALIDATION.min(6, {
+        // @ts-expect-error - Ignore
+        message: t("common.form.validationErrors.password"),
+      }),
+      passwordRepeat: BASIC_STRING_VALIDATION.min(6, {
+        // @ts-expect-error - Ignore
+        message: t("common.form.validationErrors.password"),
+      }),
+      privacyPolicy: z.boolean(),
+    })
+    .refine((obj) => obj.password === obj.passwordRepeat, {
+      // @ts-expect-error - Ignore
+      message: t("common.form.validationErrors.passwordMatch"),
+      path: ["passwordRepeat"],
+    })
+    .refine((obj) => obj.privacyPolicy, {
+      message: "Privacy policy is required",
+      path: ["privacyPolicy"],
+    });
+
+  return schema;
+};
+
+const onSubmitCallback = fn();
+const onErrorCallback = fn();
+
+const ASYNC_DELAY = 1000;
+
+const SampleForm: FC = () => {
+  const t = useTranslations();
+  const form = useAppForm({
+    defaultValues: {
+      firstName: "",
+      lastName: undefined,
+      emailAddress: "",
+      password: "",
+      passwordRepeat: "",
+      privacyPolicy: false,
+    } as SampleFormData,
+    validators: {
+      onSubmit: getSchema(t),
+    },
+    onSubmitInvalid() {
+      focusOnFirstError();
+      onErrorCallback();
+    },
+    onSubmit: async ({ value }) => {
+      await wait(ASYNC_DELAY);
+      onSubmitCallback();
+      console.log(value);
+    },
   });
 
-const SampleForm = createForm<SampleFormData>();
+  return (
+    <form.AppForm>
+      <Form>
+        <Heading>Register here</Heading>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            gap: "1.25rem",
+          }}
+        >
+          <form.AppField name="firstName">
+            {(field) => (
+              <field.InputField label="First name" required>
+                <field.InputText data-testid="firstName" />
+              </field.InputField>
+            )}
+          </form.AppField>
+          <form.AppField name="lastName">
+            {(field) => (
+              <field.InputField label="Last name">
+                <field.InputText />
+              </field.InputField>
+            )}
+          </form.AppField>
+        </div>
+        <form.AppField name="emailAddress">
+          {(field) => (
+            <field.InputField label="Email address" required>
+              <field.InputText data-testid="emailAddress" />
+            </field.InputField>
+          )}
+        </form.AppField>
+        <form.AppField name="hobbies">
+          {(field) => (
+            <field.InputField label="Hobbies" asFieldSet required>
+              <InputList>
+                <field.InputCheckbox value="1" label="Hobby 1" data-testid="firstCheckbox" />
+                <field.InputCheckbox value="2" label="Hobby 2" />
+                <field.InputCheckbox value="3" label="Hobby 3" />
+              </InputList>
+            </field.InputField>
+          )}
+        </form.AppField>
+        <form.AppField name="selectOne">
+          {(field) => (
+            <field.InputField label="Select one" asFieldSet required>
+              <InputList>
+                <field.InputRadio value="1" label="Option 1" data-testid="firstRadio" />
+                <field.InputRadio value="2" label="Option 2" />
+                <field.InputRadio value="3" label="Option 3" />
+              </InputList>
+            </field.InputField>
+          )}
+        </form.AppField>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            gap: "1.25rem",
+          }}
+        >
+          <form.AppField name="password">
+            {(field) => (
+              <field.InputField label="Password" required>
+                <field.InputPassword data-testid="password" />
+              </field.InputField>
+            )}
+          </form.AppField>
+          <form.AppField name="passwordRepeat">
+            {(field) => (
+              <field.InputField label="Password repeat" required>
+                <field.InputText type="password" data-testid="passwordRepeat" />
+              </field.InputField>
+            )}
+          </form.AppField>
+        </div>
+        <form.AppField name="privacyPolicy">
+          {(field) => (
+            <field.InputField label="I accept the privacy policy" passLabelToChildren required>
+              <field.InputBooleanCheckbox data-testid="privacy" />
+            </field.InputField>
+          )}
+        </form.AppField>
+        <form.Submit>
+          {(canSubmit, isSubmitting, isFormValidating) => (
+            <Button
+              type="submit"
+              disabled={!canSubmit}
+              isLoading={isSubmitting || isFormValidating}
+              data-testid="submit-button"
+            >
+              Submit
+            </Button>
+          )}
+        </form.Submit>
+      </Form>
+    </form.AppForm>
+  );
+};
 
 export const Default: Story = {
-  play: async ({ args, canvasElement, step }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
     await step("Fill in form but not completely", async () => {
       await userEvent.type(canvas.getByTestId("firstName"), "Yulian");
       await userEvent.type(canvas.getByTestId("emailAddress"), "myemail");
-
-      // Wait a bit for react hook form to pickup changes
-      await wait(100);
     });
 
     await step("Submit form", async () => {
       await userEvent.click(canvas.getByTestId("submit-button"));
-      await expect(args.onError).toBeCalled();
-      await expect(args.onSubmit).not.toBeCalled();
+      await expect(onErrorCallback).toBeCalled();
+      await expect(onSubmitCallback).not.toBeCalled();
     });
 
     await step("Check for errors", async () => {
       await expect(canvas.getByTestId("emailAddress")).toHaveAttribute("aria-invalid", "true");
-      await expect(canvas.getByTestId("firstCheckbox")).toHaveAttribute("aria-invalid", "true");
     });
 
     await step("Fill in form correctly", async () => {
       await userEvent.type(canvas.getByTestId("emailAddress"), "@domain.com");
       await userEvent.click(canvas.getByTestId("firstCheckbox"));
+      await userEvent.click(canvas.getByTestId("firstRadio"));
       await userEvent.type(canvas.getByTestId("password"), "foobar");
       await userEvent.type(canvas.getByTestId("passwordRepeat"), "foobar");
       await userEvent.click(canvas.getByTestId("privacy"));
-
-      // Wait a bit for react hook form to pickup changes
-      await wait(100);
     });
 
     await step("Submit form again", async () => {
       await userEvent.click(canvas.getByTestId("submit-button"));
-      await expect(args.onSubmit).toBeCalled();
-      await expect(args.onError).toHaveBeenCalledTimes(1); // Previous call when form was invalid
+      await wait(ASYNC_DELAY + 100);
+      await expect(onSubmitCallback).toBeCalled();
+      await expect(onErrorCallback).toHaveBeenCalledTimes(1); // Previous call when form was invalid
     });
   },
-  render: (args) => (
-    <SampleForm.Form
-      formSettings={{
-        defaultValues: {},
-        resolver: createZodResolver(schema),
-      }}
-      onSubmit={args.onSubmit}
-      onChange={args.onChange}
-      onError={args.onError}
-    >
-      <Heading>Register here</Heading>
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          gap: "1.25rem",
-        }}
-      >
-        <SampleForm.Field
-          style={{
-            flexGrow: 1,
-          }}
-          label="First name"
-          name="firstName"
-          required
-        >
-          <Input data-testid="firstName" />
-        </SampleForm.Field>
-        <SampleForm.Field
-          style={{
-            flexGrow: 1,
-          }}
-          label="Last name"
-          name="lastName"
-        >
-          <Input />
-        </SampleForm.Field>
-      </div>
-      <SampleForm.Field label="Email address" name="emailAddress" required>
-        <Input type="email" data-testid="emailAddress" />
-      </SampleForm.Field>
-      <SampleForm.Field label="Hobbies" name="hobbies" asFieldSet inputWrapper={List} required>
-        <Checkbox key="1" value="value1" data-testid="firstCheckbox">
-          Value 1
-        </Checkbox>
-        <Checkbox key="2" value="value2">
-          Value 2
-        </Checkbox>
-        <Checkbox key="3" value="value3">
-          Value 3
-        </Checkbox>
-      </SampleForm.Field>
-
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          gap: "1.25rem",
-        }}
-      >
-        <SampleForm.Field
-          style={{
-            flexGrow: 1,
-          }}
-          label="Password"
-          name="password"
-          description="At least 6 chars, lowercase, uppercase, special char and number"
-          required
-        >
-          <PasswordInput data-testid="password" />
-        </SampleForm.Field>
-        <SampleForm.Field
-          style={{
-            flexGrow: 1,
-          }}
-          label="Repeat password"
-          name="passwordRepeat"
-          required
-        >
-          <Input type="password" data-testid="passwordRepeat" />
-        </SampleForm.Field>
-      </div>
-      <SampleForm.Field label="I accept privacy policy" description="Read terms and conditions first" name="privacy">
-        <Checkbox data-testid="privacy" />
-      </SampleForm.Field>
-      <Button type="submit" data-testid="submit-button">
-        Submit
-      </Button>
-    </SampleForm.Form>
-  ),
+  render: (args) => <SampleForm {...args} />,
   args: {},
 };

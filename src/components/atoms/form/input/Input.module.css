@@ -63,10 +63,6 @@
   .iconContainer {
     position: relative;
 
-    & + *:not(button, label) {
-      margin-top: 0.25rem;
-    }
-
     > svg {
       width: 1rem;
       height: 1rem;

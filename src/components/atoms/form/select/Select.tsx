@@ -17,13 +17,12 @@ const Select: FC<
      * Add empty option as first item
      */
     addEmptyOption?: boolean | string;
-    isError?: boolean;
   } & ComponentPropsWithRef<"select">
-> = ({ addEmptyOption = false, children, isError, ...props }) => {
+> = ({ addEmptyOption = false, children, ...props }) => {
   const t = useTranslations("common.form");
 
   return (
-    <select {...addClassNameToProps(props, baseInput({ isError }), styles.select)}>
+    <select {...addClassNameToProps(props, baseInput(), styles.select)}>
       {addEmptyOption ? (
         <>
           <option value="">{isString(addEmptyOption) ? addEmptyOption : t("select.emptyValue")}</option>
