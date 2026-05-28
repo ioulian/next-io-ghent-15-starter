@@ -15,7 +15,7 @@ const InputTextArea: FC<InputTextAreaProps> = ({ ...props }) => {
   const field = useFieldContext<string>();
   const onChange = useBaseChangeHandler<string, HTMLTextAreaElement>();
 
-  return <TextArea {...props} value={field.state.value} onChange={onChange} />;
+  return <TextArea {...props} value={field.state.value} onChange={onChange} onBlur={field.handleBlur} />;
 };
 
 export default memo(InputTextArea);

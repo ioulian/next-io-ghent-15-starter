@@ -8,6 +8,7 @@ import { z } from "zod";
 
 import Button from "@/components/atoms/button/Button";
 import Heading from "@/components/atoms/heading/Heading";
+import ButtonGroup from "@/components/molecules/button-group/ButtonGroup";
 import { wait } from "@/utils/promises";
 
 import Form from "./Form";
@@ -34,6 +35,7 @@ type SampleFormData = {
   selectOne: "1" | "2" | "3";
 };
 
+// Do not use translations like this, better option would be: https://zod.dev/error-customization?id=global-error-customization#global-error-customization
 const getSchema = (t: ReturnType<typeof useTranslations>) => {
   const REQUIRED_MESSAGE = {
     // @ts-expect-error - Ignore
@@ -189,18 +191,27 @@ const SampleForm: FC = () => {
             </field.InputField>
           )}
         </form.AppField>
-        <form.Submit>
-          {(canSubmit, isSubmitting, isFormValidating) => (
-            <Button
-              type="submit"
-              disabled={!canSubmit}
-              isLoading={isSubmitting || isFormValidating}
-              data-testid="submit-button"
-            >
-              Submit
-            </Button>
-          )}
-        </form.Submit>
+        <ButtonGroup>
+          <form.Submit>
+            {(canSubmit, isSubmitting, isFormValidating) => (
+              <Button
+                type="submit"
+                disabled={!canSubmit}
+                isLoading={isSubmitting || isFormValidating}
+                data-testid="submit-button"
+              >
+                Submit
+              </Button>
+            )}
+          </form.Submit>
+          <form.Reset>
+            {(reset, canReset) => (
+              <Button type="reset" disabled={!canReset} onClick={reset} variant="secondary">
+                Reset
+              </Button>
+            )}
+          </form.Reset>
+        </ButtonGroup>
       </Form>
     </form.AppForm>
   );

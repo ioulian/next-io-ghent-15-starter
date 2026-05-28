@@ -15,7 +15,7 @@ const InputPassword: FC<InputPasswordProps> = ({ ...props }) => {
   const field = useFieldContext<string>();
   const onChange = useBaseChangeHandler<string, HTMLInputElement>();
 
-  return <PasswordInput {...props} value={field.state.value} onChange={onChange} />;
+  return <PasswordInput {...props} value={field.state.value} onChange={onChange} onBlur={field.handleBlur} />;
 };
 
 export default memo(InputPassword);

@@ -10,16 +10,19 @@ import InputText from "./field/InputText";
 import InputTextArea from "./field/InputTextArea";
 import InputToggle from "./field/InputToggle";
 import InputField from "./input-field/InputField";
+import Reset from "./reset/Reset";
 import Submit from "./submit/Submit";
 
 export const { fieldContext, formContext, useFormContext, useFieldContext } = createFormHookContexts();
 
+// If you want to change values here, you can extend the form:
+// https://tanstack.com/form/latest/docs/framework/react/guides/form-composition#extending-custom-appform
 export const { useAppForm, useTypedAppFormContext } = createFormHook({
   fieldContext,
   formContext,
   fieldComponents: {
-    InputText,
     InputField,
+    InputText,
     InputPassword,
     InputTextArea,
     InputBooleanCheckbox,
@@ -30,8 +33,8 @@ export const { useAppForm, useTypedAppFormContext } = createFormHook({
     InputRichText,
   },
   formComponents: {
-    // NextButton,
     Submit,
+    Reset,
   },
 });
 
