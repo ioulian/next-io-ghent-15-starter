@@ -32,7 +32,7 @@ const Ellipsis: FC<
      */
     onToggle?: (isOpen: boolean) => void;
   } & ComponentPropsWithRef<"div">
-> = ({ children, open = false, onToggle, numberOfLines = 2, ...props }) => {
+> = ({ children, open = false, onToggle, numberOfLines = 2, style, ...props }) => {
   const t = useTranslations("common.ellipsis");
   const [isOpen, setIsOpen] = useState<boolean>(open);
   const [showButton, setShowButton] = useState<boolean>(true);
@@ -65,9 +65,10 @@ const Ellipsis: FC<
 
   const numberOfLinesStyle = useMemo(
     () => ({
+      ...(style ?? {}),
       [numberOfLinesVar]: numberOfLines.toString(),
     }),
-    [numberOfLines],
+    [numberOfLines, style],
   );
 
   const classes = ellipsis({ isOpen });

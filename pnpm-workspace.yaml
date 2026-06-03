@@ -2,8 +2,15 @@ allowBuilds:
   "@parcel/watcher": true
   "@swc/core": true
   esbuild: true
+  msgpackr-extract: true
   sharp: true
   unrs-resolver: true
 
 minimumReleaseAge: 0 #4320 # 3 days
 autoInstallPeers: true
+patchedDependencies:
+  react-paginate: patches/react-paginate.patch
+overrides:
+  js-cookie@<=3.0.5: ^3.0.6
+  postcss@<8.5.10: ^8.5.10
+  uuid@<11.1.1: ^11.1.1

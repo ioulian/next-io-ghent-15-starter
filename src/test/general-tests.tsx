@@ -41,6 +41,18 @@ const describeGeneralTests = (
       );
       expect(screen.getByTestId("test")).toHaveAttribute("data-foo", "bar");
     });
+
+    it("renders with custom style", () => {
+      render(
+        cloneElement(Element, {
+          "data-testid": "test",
+          style: {
+            color: "rgb(255, 0, 0)",
+          },
+        }),
+      );
+      expect(screen.getByTestId("test")).toHaveStyle({ color: "rgb(255, 0, 0)" });
+    });
   });
 };
 

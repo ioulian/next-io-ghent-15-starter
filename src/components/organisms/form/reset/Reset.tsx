@@ -2,8 +2,6 @@ import type { FC, MouseEventHandler, ReactNode } from "react";
 
 import { memo, useCallback } from "react";
 
-import { useStore } from "@tanstack/react-form";
-
 import { useFormContext } from "@/components/organisms/form/Form.utils";
 
 const Reset: FC<{
@@ -11,7 +9,6 @@ const Reset: FC<{
 }> = ({ children }) => {
   const form = useFormContext();
 
-  const canReset = useStore(form.store, (state) => !state.isDefaultValue);
   const reset = useCallback<MouseEventHandler<HTMLButtonElement>>(
     (e) => {
       e.preventDefault();
@@ -21,7 +18,11 @@ const Reset: FC<{
     [form],
   );
 
-  return children(reset, canReset);
+  return (
+    <form.Subscribe selector={useCallback((state) => state.isDefaultValue, [])}>
+      {(isDefaultValue) => children(reset, !isDefaultValue)}
+    </form.Subscribe>
+  );
 };
 
 export default memo(Reset);

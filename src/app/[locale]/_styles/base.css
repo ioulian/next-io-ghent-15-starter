@@ -14,13 +14,17 @@
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
-    scroll-behavior: smooth;
+
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-body);
     scrollbar-gutter: stable;
+    min-height: 100vh;
   }
 
   img,
@@ -96,23 +100,6 @@
 
     &:focus-visible {
       outline: 2px solid currentColor;
-    }
-  }
-
-  /* Remove animations and transitions on devices that are low on resources or battery
-  From: https://hankchizljaw.com/wrote/a-modern-css-reset/ */
-  @media (prefers-reduced-motion: reduce) {
-    html:focus-within {
-      scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.001ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.001ms !important;
-      scroll-behavior: auto !important;
     }
   }
 }

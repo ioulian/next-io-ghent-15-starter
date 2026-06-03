@@ -4,8 +4,6 @@ import type { ComponentPropsWithRef, FC, SubmitEventHandler } from "react";
 
 import { memo, useCallback } from "react";
 
-import { useStore } from "@tanstack/react-form";
-
 import { addClassNameToProps } from "@/utils/styles";
 
 import { useFormContext } from "./Form.utils";
@@ -28,18 +26,20 @@ const Form: FC<{} & Omit<ComponentPropsWithRef<"form">, "onSubmit">> = ({
     },
     [form],
   );
-  const isSubmitting = useStore(form.store, (state) => state.isSubmitting);
-  const isFormValidating = useStore(form.store, (state) => state.isFormValidating);
 
   return (
-    <form
-      {...addClassNameToProps(props, styles.form)}
-      onSubmit={onSubmit}
-      noValidate
-      aria-busy={isSubmitting || isFormValidating}
-    >
-      {children}
-    </form>
+    <form.Subscribe selector={useCallback((state) => [state.isSubmitting, state.isFormValidating], [])}>
+      {([isSubmitting, isFormValidating]) => (
+        <form
+          {...addClassNameToProps(props, styles.form)}
+          onSubmit={onSubmit}
+          noValidate
+          aria-busy={isSubmitting || isFormValidating}
+        >
+          {children}
+        </form>
+      )}
+    </form.Subscribe>
   );
 };
 

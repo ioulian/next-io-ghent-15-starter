@@ -19,16 +19,17 @@ const ScrollProgress: FC<
      */
     backgroundColor?: string;
   } & ComponentPropsWithRef<"div">
-> = ({ mainColor = "var(--color-primary-200)", backgroundColor = "var(--color-secondary-200)", ...props }) => {
-  const style = useMemo(
+> = ({ mainColor = "var(--color-primary-200)", backgroundColor = "var(--color-secondary-200)", style, ...props }) => {
+  const newStyle = useMemo(
     () => ({
+      ...(style ?? {}),
       "--scroll-progress-main-color": mainColor,
       "--scroll-progress-background-color": backgroundColor,
     }),
-    [mainColor, backgroundColor],
+    [mainColor, backgroundColor, style],
   );
 
-  return <div {...addClassNameToProps(props, styles.scrollProgress)} style={style} />;
+  return <div {...addClassNameToProps(props, styles.scrollProgress)} style={newStyle} />;
 };
 
 /**

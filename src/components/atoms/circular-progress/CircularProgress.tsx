@@ -33,22 +33,24 @@ const CircularProgress: FC<
   backgroundColor = "var(--color-secondary-200)",
   percent,
   hideOnZero = false,
+  style,
   ...props
 }) => {
   const classes = circularProgress();
-  const style = useMemo(
+  const newStyle = useMemo(
     () => ({
+      ...(style ?? {}),
       [mainColorVar]: mainColor,
       [backgroundColorVar]: backgroundColor,
     }),
-    [mainColor, backgroundColor],
+    [mainColor, backgroundColor, style],
   );
 
   // Clamp between 0 and 1
   const finalPercent = Math.min(1, Math.max(0, percent));
 
   return (
-    <svg {...addClassNameToProps(props, classes.circularProgress())} style={style}>
+    <svg {...addClassNameToProps(props, classes.circularProgress())} style={newStyle}>
       <circle cx="50%" cy="50%" r="42%" className={classes.background()} fill="none" />
       {!hideOnZero || finalPercent > 0 ? (
         <circle

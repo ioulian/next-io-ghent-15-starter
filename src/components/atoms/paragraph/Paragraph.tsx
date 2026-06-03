@@ -16,15 +16,18 @@ const Paragraph: FC<
     size?: ParagraphSize;
     maxLines?: number;
   } & ComponentPropsWithRef<"p">
-> = ({ size, children, maxLines, ...props }) => {
+> = ({ size, children, maxLines, style, ...props }) => {
   const isClamped = isNumber(maxLines);
-  const style = useMemo(
-    () => (isClamped ? { ["--paragraph-number-of-lines"]: maxLines } : undefined),
-    [maxLines, isClamped],
+  const newStyle = useMemo(
+    () => ({
+      ...(style ?? {}),
+      ...(isClamped ? { ["--paragraph-number-of-lines"]: maxLines } : undefined),
+    }),
+    [maxLines, isClamped, style],
   );
 
   return (
-    <p {...addClassNameToProps(props, paragraph({ size, clamped: isNumber(maxLines) }))} style={style}>
+    <p {...addClassNameToProps(props, paragraph({ size, clamped: isNumber(maxLines) }))} style={newStyle}>
       {children}
     </p>
   );
