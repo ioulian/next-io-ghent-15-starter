@@ -8,7 +8,7 @@ describe("Alert", () => {
 
   it("renders without icon", () => {
     render(<Alert icon={false}>test</Alert>);
-    expect(screen.getByRole("alert").querySelector("svg")).toBe(null);
+    expect(screen.getByRole("alert").querySelector("svg")).toBeNull();
   });
 
   it("renders with customIcon", () => {

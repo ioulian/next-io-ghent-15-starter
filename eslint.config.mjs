@@ -112,6 +112,8 @@ const eslintConfig = defineConfig([
       "sonarjs/todo-tag": "warn",
       "sonarjs/no-unused-vars": "off",
       "sonarjs/function-return-type": "off",
+      // This is a good idea, but if ? is not set on an attribute, it is required even if it accepts undefined...
+      "sonarjs/no-redundant-optional": "off",
       // As we use generic tests
       "sonarjs/no-empty-test-file": "off",
     },

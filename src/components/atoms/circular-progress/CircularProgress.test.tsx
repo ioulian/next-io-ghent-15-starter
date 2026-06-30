@@ -15,6 +15,6 @@ describe("CircularProgress", () => {
   it("strokeLinecap is undefined when at 100%", () => {
     const { container } = render(<CircularProgress percent={1} />);
     const svg = container.querySelector("svg");
-    expect(svg?.querySelectorAll("circle")[1]?.getAttribute("stroke-linecap")).toBe(null);
+    expect(svg?.querySelectorAll("circle")[1]?.getAttribute("stroke-linecap")).toBeNull();
   });
 });

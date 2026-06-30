@@ -43,6 +43,7 @@ export const Default: Story = {
         <li>Tellus ac cursus commodo tortor mauris condimentum nibh ut fermentum </li>
       </ol>
       <Parallax {...args} style={{ width: "100%", height: "500px" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80"
           alt=""

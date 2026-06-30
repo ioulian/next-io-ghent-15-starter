@@ -51,7 +51,7 @@ const Ellipsis: FC<
 
   useEffect(() => {
     // False positive, this should update internal state
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // eslint-disable-next-line react-hooks/set-state-in-effect, react-you-might-not-need-an-effect/no-derived-state
     setIsOpen(open);
   }, [open]);
 
