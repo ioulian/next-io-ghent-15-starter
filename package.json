@@ -105,6 +105,7 @@
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.9",
     "eslint-plugin-baseline-js": "0.6.2",
+    "eslint-plugin-css-modules-next": "1.5.1",
     "eslint-plugin-depend": "1.5.0",
     "eslint-plugin-i18next": "6.1.5",
     "eslint-plugin-jsx-a11y-x": "0.2.0",

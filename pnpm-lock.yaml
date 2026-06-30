@@ -213,6 +213,9 @@ importers:
       eslint-plugin-baseline-js:
         specifier: 0.6.2
         version: 0.6.2(eslint@9.39.4(jiti@2.7.0))
+      eslint-plugin-css-modules-next:
+        specifier: 1.5.1
+        version: 1.5.1
       eslint-plugin-depend:
         specifier: 1.5.0
         version: 1.5.0(eslint@9.39.4(jiti@2.7.0))
@@ -4854,6 +4857,10 @@ packages:
     peerDependencies:
       eslint: '>=9.29.0 <11'
 
+  eslint-plugin-css-modules-next@1.5.1:
+    resolution: {integrity: sha512-L8hik6O6/9tmfxIpwj5lWov7BD4sn/TbqT586rbQazUdMyVfm4YEi9gEIctKi9NqVSI8LbO1pAs5f+nmFShLoA==}
+    engines: {node: '>=20.19.0'}
+
   eslint-plugin-depend@1.5.0:
     resolution: {integrity: sha512-i3UeLYmclf1Icp35+6W7CR4Bp2PIpDgBuf/mpmXK5UeLkZlvYJ21VuQKKHHAIBKRTPivPGX/gZl5JGno1o9Y0A==}
     peerDependencies:
@@ -6630,6 +6637,12 @@ packages:
     peerDependencies:
       postcss: ^8.5.10
 
+  postcss-less@6.0.0:
+    resolution: {integrity: sha512-FPX16mQLyEjLzEuuJtxA8X3ejDLNGGEG503d2YGZR5Ask1SpDN8KmZUMpzCvyalWRywAn1n1VOA5dcqfCLo5rg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      postcss: ^8.5.10
+
   postcss-logical@9.0.0:
     resolution: {integrity: sha512-A4LNd9dk3q/juEUA9Gd8ALhBO3TeOeYurnyHLlf2aAToD94VHR8c5Uv7KNmf8YVRhTxvWsyug4c5fKtARzyIRQ==}
     engines: {node: '>=20.19.0'}
@@ -6787,6 +6800,12 @@ packages:
 
   postcss-replace-overflow-wrap@4.0.0:
     resolution: {integrity: sha512-KmF7SBPphT4gPPcKZc7aDkweHiKEEO8cla/GjcBK+ckKxiZslIu3C4GCRW3DNfL0o7yW7kMQu9xlZ1kXRXLXtw==}
+    peerDependencies:
+      postcss: ^8.5.10
+
+  postcss-scss@4.0.9:
+    resolution: {integrity: sha512-AjKOeiwAitL/MXxQW2DliT28EKukvvbEWx3LBmJIRN8KfBGZbRTxNYW0kSqi1COiTZ57nZ9NW06S6ux//N1c9A==}
+    engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.5.10
 
@@ -12363,6 +12382,12 @@ snapshots:
       eslint: 9.39.4(jiti@2.7.0)
       eslint-plugin-es-x: 9.6.0(eslint@9.39.4(jiti@2.7.0))
 
+  eslint-plugin-css-modules-next@1.5.1:
+    dependencies:
+      postcss: 8.5.16
+      postcss-less: 6.0.0(postcss@8.5.16)
+      postcss-scss: 4.0.9(postcss@8.5.16)
+
   eslint-plugin-depend@1.5.0(eslint@9.39.4(jiti@2.7.0)):
     dependencies:
       empathic: 2.0.1
@@ -14629,6 +14654,10 @@ snapshots:
       '@csstools/utilities': 3.0.0(postcss@8.5.16)
       postcss: 8.5.16
 
+  postcss-less@6.0.0(postcss@8.5.16):
+    dependencies:
+      postcss: 8.5.16
+
   postcss-logical@9.0.0(postcss@8.5.16):
     dependencies:
       postcss: 8.5.16
@@ -14847,6 +14876,10 @@ snapshots:
       postcss-value-parser: 4.2.0
 
   postcss-replace-overflow-wrap@4.0.0(postcss@8.5.16):
+    dependencies:
+      postcss: 8.5.16
+
+  postcss-scss@4.0.9(postcss@8.5.16):
     dependencies:
       postcss: 8.5.16
 

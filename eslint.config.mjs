@@ -3,6 +3,7 @@
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import baselineJs from "eslint-plugin-baseline-js";
+import cssModules from "eslint-plugin-css-modules-next";
 import * as moduleReplacements from "eslint-plugin-depend";
 import i18next from "eslint-plugin-i18next";
 import jsxA11yX from "eslint-plugin-jsx-a11y-x";
@@ -157,6 +158,16 @@ const eslintConfig = defineConfig([
   {
     files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
     plugins: { "baseline-js": baselineJs },
+  },
+
+  // eslint-plugin-css-modules-next
+  cssModules.configs.recommended,
+  {
+    rules: {
+      "css-modules-next/invalid-css-module-filepath": "off",
+      // Good idea, but as we can import generic modules, we don't use all classes...
+      "css-modules-next/no-unused-class": "off",
+    },
   },
 ]);
 
