@@ -1,7 +1,5 @@
 import type { TranslationKeys } from "@zxcvbn-ts/core";
 
-import { zxcvbn, zxcvbnOptions } from "@zxcvbn-ts/core";
-
 const loadOptions = async () => {
   const zxcvbnCommonPackage = await import(/* webpackChunkName: "zxcvbnCommonPackage" */ "@zxcvbn-ts/language-common");
 
@@ -17,8 +15,10 @@ export const validatePassword = async (
   value: string,
   timeEstimationTranslations: TranslationKeys["timeEstimation"],
 ) => {
+  const { ZxcvbnFactory } = await import(/* webpackChunkName: "zxcvbn" */ "@zxcvbn-ts/core");
   const options = await loadOptions();
-  zxcvbnOptions.setOptions({
+
+  const zxcvbn = new ZxcvbnFactory({
     ...options,
     translations: {
       warnings: {
@@ -59,5 +59,5 @@ export const validatePassword = async (
     },
   });
 
-  return zxcvbn(value);
+  return zxcvbn.check(value);
 };

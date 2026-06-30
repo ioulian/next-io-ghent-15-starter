@@ -31,7 +31,7 @@ const PasswordStrength: FC<PasswordStrengthProps> = ({ value, ...props }) => {
         start(() => {
           validatePassword(value, messages.common.form.passwordStrength.messages).then((result) => {
             setScore(result.score);
-            setMessage(result.crackTimesDisplay.offlineSlowHashing1e4PerSecond);
+            setMessage(result.crackTimes.offlineSlowHashingXPerSecond.display);
           });
         });
       } else {
