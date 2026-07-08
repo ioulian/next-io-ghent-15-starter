@@ -4,7 +4,7 @@
     background-color: var(--form-input-background);
     border-radius: var(--radius-01);
     outline-color: var(--form-outline);
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
     border: 1px solid var(--form-input-border);
     margin: 0;
 

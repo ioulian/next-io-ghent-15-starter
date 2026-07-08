@@ -1,11 +1,11 @@
 @layer atoms {
   .container {
-    & + *:not(button, label) {
-      margin-top: 0.25rem;
-    }
-
     & ~ * {
       width: 100%;
+    }
+
+    & + *:not(button, label) {
+      margin-top: 0.25rem;
     }
   }
 

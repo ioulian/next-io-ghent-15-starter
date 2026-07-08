@@ -3,15 +3,15 @@
     display: flex;
     align-items: center;
 
-    > input {
-      &:disabled + label {
-        cursor: "not-allowed";
-      }
-    }
-
     label {
       padding-left: 0.5rem; /* We use padding instead of gap so that you can still "click" the empty space */
       margin-bottom: 0;
+    }
+
+    > input {
+      &:disabled + label {
+        cursor: not-allowed;
+      }
     }
   }
 }

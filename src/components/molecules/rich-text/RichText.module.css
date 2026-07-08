@@ -10,7 +10,7 @@
     outline-offset: 10px;
 
     &:focus-visible {
-      outline: 2px solid currentColor;
+      outline: 2px solid currentcolor;
     }
   }
 }

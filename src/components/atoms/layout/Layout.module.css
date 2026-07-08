@@ -6,7 +6,7 @@
 
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: var(--layout-gap);
+    gap: var(--layout-gap);
     max-width: var(--layout-max-width);
     margin-inline: auto;
     padding-inline: var(--layout-padding);
@@ -34,7 +34,7 @@
     }
 
     > div {
-      background-color: rgba(0, 0, 0, 0.03);
+      background-color: rgb(0 0 0 / 3%);
     }
   }
 

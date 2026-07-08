@@ -1,6 +1,7 @@
 @layer atoms {
   .select {
     appearance: none;
+
     @supports (appearance: base-select) {
       &,
       &::picker(select) {
@@ -11,7 +12,7 @@
     width: 100%;
     height: 2.75rem;
     line-height: 1.5rem;
-    padding: 9px 17px 9px 17px;
+    padding: 9px 17px;
     font-size: 1rem;
     display: flex;
     align-items: center;
@@ -24,7 +25,7 @@
       color: var(--form-input-color);
       background-color: var(--form-input-background);
       border-radius: var(--radius-01);
-      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
       border: 1px solid var(--form-input-border);
       flex-direction: column;
       gap: 3px;

@@ -1,6 +1,6 @@
 @layer molecules {
   .alert {
-    border: 1px solid currentColor;
+    border: 1px solid currentcolor;
     display: flex;
     align-items: flex-start;
     gap: 1rem;
@@ -31,7 +31,7 @@
     > svg {
       width: 1.5rem;
       height: 1.5rem;
-      color: currentColor;
+      color: currentcolor;
     }
   }
 

@@ -65,6 +65,7 @@
     ".storybook/**/*.tsx",
     "scripts/**/*.ts",
     "postcss.config.js",
+    "stylelint.config.mjs",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": ["**/node_modules", "lint-staged.config.js", "postcss.config.js"]

@@ -5,7 +5,8 @@
     justify-content: center;
     text-decoration: none;
     position: relative;
-    /*font-family: "body";*/
+
+    /* font-family: "body"; */
     font-weight: 700;
     appearance: none;
     cursor: pointer;

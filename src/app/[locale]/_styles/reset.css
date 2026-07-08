@@ -1,4 +1,5 @@
 /* From: https://www.joshwcomeau.com/css/custom-css-reset/ */
+
 /* From: https://piccalil.li/blog/a-more-modern-css-reset/ */
 
 @layer reset {
@@ -73,7 +74,7 @@
     text-decoration-skip-ink: auto;
 
     &:not([class]) {
-      color: currentColor;
+      color: currentcolor;
     }
   }
 

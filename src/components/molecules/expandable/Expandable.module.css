@@ -1,5 +1,26 @@
 @layer molecules {
   .expandable {
+    .icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      transition: transform var(--duration-normal) var(--easing-swift-out);
+    }
+
+    .container {
+      padding-top: 1rem;
+    }
+
+    .summary {
+      font-weight: 700;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+    }
+
     /* See: https://codepen.io/utilitybend/pen/PoMyBbj */
     @supports selector(::details-content) {
       &::details-content {
@@ -22,26 +43,5 @@
         }
       }
     }
-  }
-
-  .icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    transition: transform var(--duration-normal) var(--easing-swift-out);
-  }
-
-  .container {
-    padding-top: 1rem;
-  }
-
-  .summary {
-    font-weight: 700;
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
   }
 }

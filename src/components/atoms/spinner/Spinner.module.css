@@ -28,10 +28,8 @@
     display: block;
     border-width: 2px;
     border-style: solid;
-    border-top-color: var(--spinner-primary-color);
-    border-right-color: var(--spinner-secondary-color);
-    border-bottom-color: var(--spinner-secondary-color);
-    border-left-color: var(--spinner-secondary-color);
+    border-color: var(--spinner-primary-color) var(--spinner-secondary-color) var(--spinner-secondary-color)
+      var(--spinner-secondary-color);
     border-radius: 50%;
     animation: spin 750ms linear infinite;
     width: 16px;

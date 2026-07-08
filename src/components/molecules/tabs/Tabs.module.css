@@ -7,17 +7,14 @@
       gap: 1rem;
       list-style: none;
       border-bottom: 1px solid var(--color-secondary-300);
-      overflow-x: auto;
-      overflow-y: hidden;
+      overflow: auto hidden;
       padding: 5px;
-      margin: -5px -5px 1rem -5px;
+      margin: -5px -5px 1rem;
       position: relative;
 
       &::before {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
         height: 5px;
         transition:
           top var(--duration-normal) var(--easing-swift-out),

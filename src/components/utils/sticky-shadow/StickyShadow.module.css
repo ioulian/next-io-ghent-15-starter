@@ -3,11 +3,9 @@
     --sticky-shadow: var(--shadow-normal);
 
     @supports (animation-timeline: scroll()) {
-      & {
-        animation: sticky-scroll-shadow linear both;
-        animation-timeline: scroll();
-        animation-range: 0 2rem;
-      }
+      animation: sticky-scroll-shadow linear both;
+      animation-timeline: scroll();
+      animation-range: 0 2rem;
     }
   }
 
