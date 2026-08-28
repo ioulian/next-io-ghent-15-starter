@@ -1,16 +1,10 @@
-import type { LocaleType } from "@/i18n/types";
 import type { Metadata } from "next";
 
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
-type Props = Readonly<{
-  params: { locale: LocaleType };
-}>;
-
-export async function generateMetadata({ params }: Omit<Props, "children">): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "pages" });
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("pages");
 
   return {
     title: t("notFound.meta.title"),
@@ -20,7 +14,7 @@ export async function generateMetadata({ params }: Omit<Props, "children">): Pro
 
 // Note that `app/[locale]/[...rest]/page.tsx`
 // is necessary for this page to render.
-export default function NotFoundPage({}: Props) {
+export default function NotFoundPage() {
   const t = useTranslations("pages");
 
   return (

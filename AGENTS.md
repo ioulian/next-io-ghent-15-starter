@@ -1,4 +1,14 @@
-# AGENTS.md — Project conventions for next-io-ghent-15-starter
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes - APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` - verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
+
+# AGENTS.md - Project conventions for next-io-ghent-15-starter
 
 This document describes the conventions used in this Next.js boilerplate. **When extending or installing this project, follow these patterns so the codebase stays consistent.**
 
@@ -10,19 +20,19 @@ This document describes the conventions used in this Next.js boilerplate. **When
 
 - **One component per folder.** Folder name = component name in **PascalCase** (e.g. `Button`, `FormField`, `DataTable`).
 - **Files in that folder:**
-  - `ComponentName.tsx` — main component
-  - `ComponentName.styles.ts` — tailwind-variants + optional CSS module imports
-  - `ComponentName.module.css` — component-scoped styles (when needed)
-  - `ComponentName.hooks.ts` — hooks and context for that component (e.g. `Dialog.hooks.ts`, `Popover.hooks.ts`)
-  - `ComponentName.test.tsx` — Vitest unit/integration tests
-  - `ComponentName.stories.tsx` — Storybook stories
+  - `ComponentName.tsx` - main component
+  - `ComponentName.styles.ts` - tailwind-variants + optional CSS module imports
+  - `ComponentName.module.css` - component-scoped styles (when needed)
+  - `ComponentName.hooks.ts` - hooks and context for that component (e.g. `Dialog.hooks.ts`, `Popover.hooks.ts`)
+  - `ComponentName.test.tsx` - Vitest unit/integration tests
+  - `ComponentName.stories.tsx` - Storybook stories
 - **Subcomponents** of a compound component can use a dot: `DataTable.THead.tsx`, `DataTable.TBody.tsx`, `DataTable.Controls.tsx`. Keep them in the same folder as the root (e.g. `organisms/data-table/`) or you can create subfolder(s) for them following atomic design patterns (e.g. `organisms/data-table/atoms/`).
 
 ### Other source files
 
 - **Utils:** `kebab-case.ts` or `kebab-case/` with an `index.ts` where appropriate.
 - **Types:** In `src/@types/` with `.d.ts` or `.ts`; use existing path alias `@/types/*`.
-- **i18n:** `src/i18n/` — `routing.ts`, `request.ts`, `navigation.ts`, `constants.ts`, `types.ts`.
+- **i18n:** `src/i18n/` - `routing.ts`, `request.ts`, `navigation.ts`, `constants.ts`, `types.ts`.
 
 ### Path aliases (tsconfig)
 
@@ -43,17 +53,17 @@ Use these instead of relative paths when leaving the current component area:
 
 ### `src/` layout
 
-- **`app/`** — Next.js App Router. Locale segment: `app/[locale]/` (see next-intl).
-- **`components/`** — Atomic design: `atoms/`, `molecules/`, `organisms/`, `blocks/`, `utils/`.
-- **`i18n/`** — next-intl routing, request config, navigation wrappers, locale types.
-- **`test/`** — Shared test utilities (e.g. `test-utils.tsx` with `NextIntlClientProvider`), `general-tests.tsx` for base UI API tests.
-- **`@types/`** — Global or module augmentation (e.g. `svg-sprite.d.ts`, types for next-intl `AppConfig` in `i18n/types.ts`).
+- **`app/`** - Next.js App Router. Locale segment: `app/[locale]/` (see next-intl).
+- **`components/`** - Atomic design: `atoms/`, `molecules/`, `organisms/`, `blocks/`, `utils/`.
+- **`i18n/`** - next-intl routing, request config, navigation wrappers, locale types.
+- **`test/`** - Shared test utilities (e.g. `test-utils.tsx` with `NextIntlClientProvider`), `general-tests.tsx` for base UI API tests.
+- **`@types/`** - Global or module augmentation (e.g. `svg-sprite.d.ts`, types for next-intl `AppConfig` in `i18n/types.ts`).
 
 ### Root
 
-- **`messages/`** — JSON per locale (e.g. `en-GB/common.json`, `en-GB/app.json`). One folder per locale.
-- **`e2e-tests/`** — Playwright specs (e.g. `svg-sprite.spec.ts`).
-- **`scripts/`** — Build/CLI scripts (e.g. `scripts/svg-sprite/` for sprite generation).
+- **`messages/`** - JSON per locale (e.g. `en-GB/common.json`, `en-GB/app.json`). One folder per locale.
+- **`e2e-tests/`** - Playwright specs (e.g. `svg-sprite.spec.ts`).
+- **`scripts/`** - Build/CLI scripts (e.g. `scripts/svg-sprite/` for sprite generation).
 
 ---
 
@@ -69,10 +79,10 @@ Use these instead of relative paths when leaving the current component area:
 
 - **Stable props for memoized children:** If a parent passes **objects**, **arrays**, or **functions** to a `memo()`-wrapped child, those props are compared by reference. To avoid unnecessary re-renders:
   - **Callbacks:** Use `useCallback` when the callback is passed to a memoized child or appears in a dependency array and you need a stable reference across parent re-renders.
-  - **Objects/arrays:** Use `useMemo` for derived objects or arrays passed as props (e.g. style, config, or context value) so the same reference is kept when dependencies don’t change.
-- **Render props / compound APIs:** When a component accepts a render prop or a “default render” function (e.g. MenuBar’s `defaultRender`), pass a stable function (e.g. via `useCallback`) so the parent’s re-renders don’t force the child to re-render.
+  - **Objects/arrays:** Use `useMemo` for derived objects or arrays passed as props (e.g. style, config, or context value) so the same reference is kept when dependencies don't change.
+- **Render props / compound APIs:** When a component accepts a render prop or a "default render" function (e.g. MenuBar's `defaultRender`), pass a stable function (e.g. via `useCallback`) so the parent's re-renders don't force the child to re-render.
 
-- **Don’t overdo it:** Use `useCallback` / `useMemo` where referential stability actually affects re-renders (memoized children, effect deps, context). Avoid wrapping every handler or variable “just in case.”
+- **Don't overdo it:** Use `useCallback` / `useMemo` where referential stability actually affects re-renders (memoized children, effect deps, context). Avoid wrapping every handler or variable "just in case."
 
 ### Composition over props
 
@@ -103,15 +113,15 @@ Use these instead of relative paths when leaving the current component area:
 
 ### Setup (already in boilerplate)
 
-- **Routing:** `src/i18n/routing.ts` — `defineRouting` with `locales`, `defaultLocale`, `localePrefix: "as-needed"`.
-- **Request config:** `src/i18n/request.ts` — `getRequestConfig` loads messages per locale from `messages/${locale}/common.json` and `app.json`.
-- **Navigation:** `src/i18n/navigation.ts` — `Link`, `redirect`, `usePathname`, `useRouter`, `getPathname` from `createNavigation(routing)`; use these instead of raw Next.js navigation for locale-aware URLs.
+- **Routing:** `src/i18n/routing.ts` - `defineRouting` with `locales`, `defaultLocale`, `localePrefix: "as-needed"`.
+- **Request config:** `src/i18n/request.ts` - `getRequestConfig` loads messages per locale from `messages/${locale}/common.json` and `app.json`.
+- **Navigation:** `src/i18n/navigation.ts` - `Link`, `redirect`, `usePathname`, `useRouter`, `getPathname` from `createNavigation(routing)`; use these instead of raw Next.js navigation for locale-aware URLs.
 - **Middleware:** `src/proxy.ts` (or root middleware) uses `createMiddleware(routing)` from `next-intl/middleware`.
-- **Layout:** Root layout under `app/[locale]/` wraps children with `NextIntlClientProvider` (no `locale`/`messages` needed in client — they come from request config).
+- **Layout:** Root layout under `app/[locale]/` wraps children with `NextIntlClientProvider` (no `locale`/`messages` needed in client - they come from request config).
 
 ### Usage in code
 
-- **Client components:** `useTranslations("namespace")` — namespace can be a dotted key (e.g. `"common.button"`, `"common.dataTable"`). Call `t("key")` for strings.
+- **Client components:** `useTranslations("namespace")` - namespace can be a dotted key (e.g. `"common.button"`, `"common.dataTable"`). Call `t("key")` for strings.
 - **Server components / async:** `getTranslations({ locale, namespace: "..." })` (e.g. in `generateMetadata`, or server page).
 - **Locale:** `useLocale()` when needed on the client.
 - **Types:** `src/i18n/types.ts` augments `next-intl` `AppConfig` with `Locale` and `Messages`; keep locale and message types in sync with `messages/` and `i18n/constants.ts`.
@@ -120,7 +130,7 @@ Use these instead of relative paths when leaving the current component area:
 
 - **One namespace per file:** e.g. `common.json` → `useTranslations("common")` or `useTranslations("common.button")`.
 - **Page-specific:** e.g. `pages.home.meta` in `getTranslations` for metadata; keep page strings under a `pages` namespace if shared with client.
-- **Check translations:** `pnpm check:translations` (i18n-check) — run before commits.
+- **Check translations:** `pnpm check:translations` (i18n-check) - run before commits.
 
 ---
 
@@ -150,10 +160,10 @@ Use these instead of relative paths when leaving the current component area:
 
 ### Vitest (unit / integration)
 
-- **Config:** `vitest.config.ts` — projects: default (jsdom) and storybook (browser/Playwright). Setup: `vitest.setup.ts` (e.g. `@testing-library/jest-dom`).
+- **Config:** `vitest.config.ts` - projects: default (jsdom) and storybook (browser/Playwright). Setup: `vitest.setup.ts` (e.g. `@testing-library/jest-dom`).
 - **Test files:** `**/*.test.tsx` or `**/*.test.ts` next to the code.
 - **Render:** Use the custom **`render`** from `src/test/test-utils.tsx`, which wraps the tree in **`NextIntlClientProvider`** with locale and default messages so that `useTranslations` works.
-- **Reusable “base API” tests:** Use **`describeGeneralTests(Element, () => ({ render }))`** from `src/test/general-tests.tsx` to assert render, custom `className`, and custom props (see e.g. `SvgSprite.test.tsx`).
+- **Reusable "base API" tests:** Use **`describeGeneralTests(Element, () => ({ render }))`** from `src/test/general-tests.tsx` to assert render, custom `className`, and custom props (see e.g. `SvgSprite.test.tsx`).
 - **Run:** `pnpm test` (default project), `pnpm test:watch`, `pnpm test:project-storybook` for Storybook-based tests.
 
 ### Playwright (e2e)
@@ -169,15 +179,15 @@ Use these instead of relative paths when leaving the current component area:
 
 ## 7. Libraries to be aware of
 
-- **Next.js 16** — App Router, `[locale]` segment, server/client components.
-- **next-intl** — i18n, routing, `useTranslations`, `getTranslations`, `NextIntlClientProvider`, middleware, typed messages/locales.
-- **SVG sprites** — `svg-sprite` (build), `SvgSprite` component and `SvgSprite.generated.ts`, `public/sprite.svg`.
-- **Vitest** — Unit/integration tests, jsdom and Storybook projects; custom render with next-intl.
-- **Playwright** — E2E in `e2e-tests/`.
-- **tailwind-variants** — Component variants and slots; use with CSS modules where needed.
-- **@floating-ui/react** — Dialogs, popovers, dropdowns, tooltips; compound components use its context and hooks.
-- **React 19** — Current patterns (e.g. ref as prop, no legacy context API) are compatible.
-- **TypeScript** — Strict mode; use types from the project (`LocaleType`, `SvgSpriteName`, `VariantProps<typeof X>`, etc.).
+- **Next.js 16** - App Router, `[locale]` segment, server/client components.
+- **next-intl** - i18n, routing, `useTranslations`, `getTranslations`, `NextIntlClientProvider`, middleware, typed messages/locales.
+- **SVG sprites** - `svg-sprite` (build), `SvgSprite` component and `SvgSprite.generated.ts`, `public/sprite.svg`.
+- **Vitest** - Unit/integration tests, jsdom and Storybook projects; custom render with next-intl.
+- **Playwright** - E2E in `e2e-tests/`.
+- **tailwind-variants** - Component variants and slots; use with CSS modules where needed.
+- **@floating-ui/react** - Dialogs, popovers, dropdowns, tooltips; compound components use its context and hooks.
+- **React 19** - Current patterns (e.g. ref as prop, no legacy context API) are compatible.
+- **TypeScript** - Strict mode; use types from the project (`LocaleType`, `SvgSpriteName`, `VariantProps<typeof X>`, etc.).
 
 ---
 

@@ -1,12 +1,10 @@
-import type { LocaleType } from "@/i18n/types";
 import type { Metadata, Viewport } from "next";
 
 import dynamic from "next/dynamic";
-import { notFound } from "next/navigation";
 
 import { RscBoundaryProvider } from "@rsc-boundary/next";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { routing } from "@/i18n/routing";
 import { getNonce } from "@/utils/csp";
@@ -33,9 +31,8 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({ params }: Omit<LayoutProps<"/[locale]">, "children">): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale: locale as LocaleType, namespace: "app.defaultMeta" });
+export async function generateMetadata({}: Omit<LayoutProps<"/[locale]">, "children">): Promise<Metadata> {
+  const t = await getTranslations("app.defaultMeta");
 
   return {
     title: {
@@ -52,13 +49,8 @@ if (process.env.NODE_ENV === "development" && env.NEXT_PUBLIC_REACT_SCAN_ENABLE)
   ReactScan = dynamic(() => import("./_components/ReactScan"));
 }
 
-export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {
-  const { locale } = await params;
-
-  // Ensure that the incoming `locale` is valid
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
+export default async function LocaleLayout({ children }: LayoutProps<"/[locale]">) {
+  const locale = await getLocale();
 
   const nonce = await getNonce();
 

@@ -54,7 +54,6 @@ const getSpriter = () => {
 };
 
 const getCustomSprites = async (spriter: SVGSpriter.SVGSpriter) => {
-  // eslint-disable-next-line baseline-js/use-baseline
   const customSprites = await Array.fromAsync(glob("src/svg-sprites/**/*.svg", { cwd: resolve(__dirname, "../..") }));
 
   return customSprites.map((customSprite) => {

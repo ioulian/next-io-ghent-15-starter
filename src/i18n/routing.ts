@@ -1,6 +1,6 @@
 import { defineRouting } from "next-intl/routing";
 
-import { defaultLocale, locales } from "@/i18n/constants";
+import { defaultLocale, locales } from "./constants";
 
 export const routing = defineRouting({
   // A list of all locales that are supported
