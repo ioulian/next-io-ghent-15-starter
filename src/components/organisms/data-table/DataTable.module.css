@@ -33,6 +33,7 @@
         display: flex;
         align-items: center;
         gap: 0.25rem;
+        cursor: pointer;
 
         svg {
           width: 1rem;
@@ -42,10 +43,6 @@
         }
       }
     }
-  }
-
-  .headButtonIsSortable {
-    cursor: pointer;
   }
 
   .controls {

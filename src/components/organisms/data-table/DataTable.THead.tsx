@@ -1,21 +1,32 @@
-import type { Table } from "@tanstack/react-table";
-import type { ComponentPropsWithRef, ReactElement } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
 import { memo } from "react";
 
-import THeadButton from "@/components/organisms/data-table/DataTable.THeadButton";
+import { useTableContext } from "@/components/organisms/data-table/DataTable.utils";
 
-type THeadProps<T> = {
-  table: Table<T>;
-} & ComponentPropsWithRef<"thead">;
+type THeadProps = {} & ComponentPropsWithRef<"thead">;
 
-const THead = <T,>({ table, ...props }: THeadProps<T>) => {
+const THead: FC<THeadProps> = ({ ...props }: THeadProps) => {
+  const table = useTableContext();
+
   return (
     <thead {...props}>
       {table.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id}>
-          {headerGroup.headers.map((header) => (
-            <th key={header.id}>{!header.isPlaceholder && <THeadButton<T> header={header} />}</th>
+          {headerGroup.headers.map((h) => (
+            <table.AppHeader header={h} key={h.id}>
+              {(header) => (
+                <th
+                  colSpan={header.colSpan}
+                  className={header.column.getCanSort() ? "sortable-header" : ""}
+                  onClick={header.column.getToggleSortingHandler()}
+                >
+                  {header.isPlaceholder ? null : (
+                    <div>{header.column.getCanSort() ? <header.SortButton /> : <header.FlexRender />}</div>
+                  )}
+                </th>
+              )}
+            </table.AppHeader>
           ))}
         </tr>
       ))}
@@ -23,4 +34,4 @@ const THead = <T,>({ table, ...props }: THeadProps<T>) => {
   );
 };
 
-export default memo(THead) as <T>(props: THeadProps<T>) => ReactElement;
+export default memo(THead);

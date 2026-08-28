@@ -1,15 +1,18 @@
-import type { Table } from "@tanstack/react-table";
+import type { RowData, Table, TableFeatures } from "@tanstack/react-table";
 import type { ComponentPropsWithRef, ReactElement } from "react";
 
 import { memo } from "react";
 
 import { flexRender } from "@tanstack/react-table";
 
-type TFootProps<T> = {
-  table: Table<T>;
+type TFootProps<TFeatures extends TableFeatures, TData extends RowData> = {
+  table: Table<TFeatures, TData>;
 } & ComponentPropsWithRef<"tfoot">;
 
-const TFoot = <T,>({ table, ...props }: TFootProps<T>) => {
+const TFoot = <TFeatures extends TableFeatures, TData extends RowData>({
+  table,
+  ...props
+}: TFootProps<TFeatures, TData>) => {
   return (
     <tfoot {...props}>
       {table.getFooterGroups().map((footerGroup) => (
@@ -25,4 +28,6 @@ const TFoot = <T,>({ table, ...props }: TFootProps<T>) => {
   );
 };
 
-export default memo(TFoot) as <T>(props: TFootProps<T>) => ReactElement;
+export default memo(TFoot) as <TFeatures extends TableFeatures, TData extends RowData>(
+  props: TFootProps<TFeatures, TData>,
+) => ReactElement;

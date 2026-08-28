@@ -1,21 +1,26 @@
-import type { Table } from "@tanstack/react-table";
-import type { ComponentPropsWithRef, ReactElement } from "react";
+import type { ComponentPropsWithRef, FC } from "react";
 
 import { memo } from "react";
 
-import { flexRender } from "@tanstack/react-table";
+import { useTableContext } from "@/components/organisms/data-table/DataTable.utils";
 
-type TBodyProps<T> = {
-  table: Table<T>;
-} & ComponentPropsWithRef<"tbody">;
+type TBodyProps = {} & ComponentPropsWithRef<"tbody">;
 
-const TBody = <T,>({ table, ...props }: TBodyProps<T>) => {
+const TBody: FC<TBodyProps> = ({ ...props }: TBodyProps) => {
+  const table = useTableContext();
+
   return (
     <tbody {...props}>
       {table.getRowModel().rows.map((row) => (
         <tr key={row.id}>
-          {row.getVisibleCells().map((cell) => (
-            <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+          {row.getAllCells().map((c) => (
+            <table.AppCell cell={c} key={c.id}>
+              {(cell) => (
+                <td>
+                  <cell.FlexRender />
+                </td>
+              )}
+            </table.AppCell>
           ))}
         </tr>
       ))}
@@ -23,4 +28,4 @@ const TBody = <T,>({ table, ...props }: TBodyProps<T>) => {
   );
 };
 
-export default memo(TBody) as <T>(props: TBodyProps<T>) => ReactElement;
+export default memo(TBody);
