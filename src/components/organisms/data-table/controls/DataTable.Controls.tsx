@@ -6,7 +6,7 @@ import { memo } from "react";
 
 import { addClassNameToProps } from "@/utils/styles";
 
-import styles from "./DataTable.module.css";
+import styles from "./DataTable.Controls.module.css";
 
 const Controls: FC<PropsWithChildren> = ({ children, ...props }) => {
   // const t = useTranslations("common.dataTable");

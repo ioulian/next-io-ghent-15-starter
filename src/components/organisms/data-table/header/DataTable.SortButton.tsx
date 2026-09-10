@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 
 import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 
-import { useHeaderContext, useTableContext } from "./DataTable.utils";
+import { useHeaderContext, useTableContext } from "../DataTable.utils";
 
 type THeadButtonProps = {} & ComponentPropsWithRef<"button">;
 

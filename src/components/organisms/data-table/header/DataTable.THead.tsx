@@ -2,15 +2,19 @@ import type { ComponentPropsWithRef, FC } from "react";
 
 import { memo } from "react";
 
-import { useTableContext } from "@/components/organisms/data-table/DataTable.utils";
+import { addClassNameToProps } from "@/utils/styles";
 
-type THeadProps = {} & ComponentPropsWithRef<"thead">;
+import { useTableContext } from "../DataTable.utils";
 
-const THead: FC<THeadProps> = ({ ...props }: THeadProps) => {
+import styles from "./DataTable.THead.module.css";
+
+type THeadProps = { isSticky?: boolean } & ComponentPropsWithRef<"thead">;
+
+const THead: FC<THeadProps> = ({ isSticky = false, ...props }: THeadProps) => {
   const table = useTableContext();
 
   return (
-    <thead {...props}>
+    <thead {...addClassNameToProps(props, styles.thead, isSticky && styles.sticky)}>
       {table.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id}>
           {headerGroup.headers.map((h) => (
@@ -22,7 +26,10 @@ const THead: FC<THeadProps> = ({ ...props }: THeadProps) => {
                   onClick={header.column.getToggleSortingHandler()}
                 >
                   {header.isPlaceholder ? null : (
-                    <div>{header.column.getCanSort() ? <header.SortButton /> : <header.FlexRender />}</div>
+                    <>
+                      <div>{header.column.getCanSort() ? <header.SortButton /> : <header.FlexRender />}</div>
+                      {header.column.getCanFilter() ? <header.ColumnFilter /> : null}
+                    </>
                   )}
                 </th>
               )}

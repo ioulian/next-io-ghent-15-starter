@@ -44,6 +44,9 @@
       }
     },
     "dataTable": {
+      "filter": {
+        "placeholder": "Filter {columnId}..."
+      },
       "sorting": {
         "asc": "Sort ascending",
         "desc": "Sort descending",

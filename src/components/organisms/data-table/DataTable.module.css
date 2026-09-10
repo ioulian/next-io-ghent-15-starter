@@ -7,6 +7,7 @@
     width: 100%;
     max-width: 100%;
     border: 1px solid var(--color-secondary-200);
+    background-color: var(--color-white);
 
     th,
     td {
@@ -43,12 +44,5 @@
         }
       }
     }
-  }
-
-  .controls {
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
 }
