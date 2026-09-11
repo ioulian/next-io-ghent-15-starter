@@ -1,0 +1,66 @@
+@layer atoms {
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    &:has(:disabled) {
+      opacity: 0.4;
+    }
+  }
+
+  .slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(1.5rem + 9px * 2 + 2px);
+    height: calc(1.5rem + 9px * 2 + 2px);
+    padding: 9px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1.5rem;
+    text-align: center;
+  }
+
+  .slotActive {
+    outline: 2px solid var(--form-outline);
+    outline-offset: 2px;
+    z-index: 1;
+  }
+
+  .container:has([aria-invalid="true"]) .slot {
+    border-color: var(--form-error);
+  }
+
+  .container:has([aria-invalid="true"]:focus-visible) .slotActive {
+    outline-color: var(--form-error);
+  }
+
+  .caret {
+    position: absolute;
+    width: 1px;
+    height: 1.25rem;
+    background-color: currentcolor;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .caret {
+      animation: otp-caret-blink 1.2s ease-out infinite;
+    }
+  }
+}
+
+@keyframes otp-caret-blink {
+  0%,
+  70%,
+  100% {
+    opacity: 1;
+  }
+
+  20%,
+  50% {
+    opacity: 0;
+  }
+}

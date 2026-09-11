@@ -129,6 +129,29 @@ describe("InputPassword", () => {
   });
 });
 
+describe("InputOtp", () => {
+  beforeAll(() => {
+    document.elementFromPoint = () => null;
+  });
+
+  it("renders with correct value", async () => {
+    render(<StringFieldForm value="123456">{(field) => <field.InputOtp data-testid="test" />}</StringFieldForm>);
+    await wait(50);
+    expect(screen.getByTestId<HTMLInputElement>("test").value).toBe("123456");
+  });
+
+  it("updates value on change", async () => {
+    render(<StringFieldForm value="">{(field) => <field.InputOtp data-testid="test" />}</StringFieldForm>);
+    await wait(50);
+
+    await act(async () => {
+      await userEvent.type(screen.getByTestId("test"), "123456");
+    });
+
+    expect(screen.getByTestId<HTMLInputElement>("test").value).toBe("123456");
+  });
+});
+
 describe("InputTextArea", () => {
   it("renders with correct value", async () => {
     render(

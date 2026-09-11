@@ -3,6 +3,7 @@ import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
 import InputBooleanCheckbox from "./field/InputBooleanCheckbox";
 import InputBooleanToggle from "./field/InputBooleanToggle";
 import InputCheckbox from "./field/InputCheckbox";
+import InputOtp from "./field/InputOtp";
 import InputPassword from "./field/InputPassword";
 import InputRadio from "./field/InputRadio";
 import InputRichText from "./field/InputRichText";
@@ -23,6 +24,7 @@ export const { useAppForm, useTypedAppFormContext } = createFormHook({
   fieldComponents: {
     InputField,
     InputText,
+    InputOtp,
     InputPassword,
     InputTextArea,
     InputBooleanCheckbox,

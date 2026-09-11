@@ -107,6 +107,23 @@ export const WithTextArea: Story = {
   },
 };
 
+export const WithOtp: Story = {
+  render: (args) => (
+    <SampleForm>
+      {(field) => (
+        <field.InputField {...args}>
+          <field.InputOtp />
+        </field.InputField>
+      )}
+    </SampleForm>
+  ),
+  args: {
+    label: "Verification code",
+    description: "Enter the 6-digit code",
+    required: true,
+  },
+};
+
 export const WithPasswordStrengthMeter: Story = {
   render: (args) => (
     <SampleForm>
