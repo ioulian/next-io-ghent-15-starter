@@ -1,5 +1,6 @@
 "use client";
 
+import type { SvgSpriteName } from "@/components/atoms/svg-sprite/SvgSprite.generated";
 import type { ComponentPropsWithRef, FC } from "react";
 
 import { memo } from "react";

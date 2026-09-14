@@ -1,3 +1,4 @@
+import type { SvgSpriteName } from "@/components/atoms/svg-sprite/SvgSprite.generated";
 import type { ComponentPropsWithRef, FC, ReactNode } from "react";
 import type { VariantProps } from "tailwind-variants";
 

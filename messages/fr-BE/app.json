@@ -22,12 +22,6 @@
         "description": "Homepage description"
       },
       "title": "Homepage FR"
-    },
-    "serverside": {
-      "meta": {
-        "title": "Serverside",
-        "description": "Serverside description"
-      }
     }
   }
 }

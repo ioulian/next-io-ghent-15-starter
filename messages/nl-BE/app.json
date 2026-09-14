@@ -22,12 +22,6 @@
         "description": "Homepage description"
       },
       "title": "Homepage NL"
-    },
-    "serverside": {
-      "meta": {
-        "title": "Serverside",
-        "description": "Serverside description"
-      }
     }
   }
 }
