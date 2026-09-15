@@ -19,7 +19,7 @@
     "check:build-prerequisites": "tsx scripts/check-build-prerequisites.ts",
     "check:lint": "eslint --fix .",
     "check:css": "pnpm dlx stylelint 'src/**/*.css' --fix",
-    "check:types": "pnpm svg-sprite:build && next typegen && tsc --noemit --extendedDiagnostics",
+    "check:types": "pnpm svg-sprite:build && next typegen && tsc --noemit --extendedDiagnostics --incremental false",
     "format:code": "prettier --write .",
     "// storybook": "echo 'Storybook stuff'",
     "storybook": "pnpm svg-sprite:build && storybook dev -p 6006",
