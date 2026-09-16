@@ -1,0 +1,28 @@
+@layer molecules {
+  /* Keep the page clickable while the indicator animates */
+  ::view-transition {
+    pointer-events: none;
+  }
+
+  ::view-transition-group(.locale-indicator) {
+    animation-duration: 250ms;
+    animation-timing-function: ease-in-out;
+  }
+
+  /* Slide the bar instead of cross-fading two snapshots */
+  ::view-transition-old(.locale-indicator),
+  ::view-transition-new(.locale-indicator) {
+    animation: none;
+    mix-blend-mode: normal;
+    block-size: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(.locale-indicator),
+    ::view-transition-old(.locale-indicator),
+    ::view-transition-new(.locale-indicator) {
+      animation-duration: 0s !important;
+      animation-delay: 0s !important;
+    }
+  }
+}

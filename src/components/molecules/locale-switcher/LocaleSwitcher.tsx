@@ -7,6 +7,9 @@ import { locales } from "@/i18n/constants";
 import LocaleItem from "./LocaleItem";
 
 import styles from "./LocaleSwitcher.module.css";
+// Not a CSS module: the `::view-transition-*` selectors have to match the view transition class
+// names set by `LocaleItem`, which module hashing would rewrite.
+import "./LocaleItem.view-transitions.css";
 
 const LocaleSwitcher: FC = () => {
   return (

@@ -3,10 +3,15 @@ import { tv } from "tailwind-variants";
 import styles from "./LocaleItem.module.css";
 
 export const localeItem = tv({
-  base: styles.localeItem,
+  slots: {
+    link: styles.localeItem,
+    indicator: styles.indicator,
+  },
   variants: {
     isActive: {
-      true: styles.localeItemActive,
+      true: {
+        link: styles.localeItemActive,
+      },
     },
   },
 });

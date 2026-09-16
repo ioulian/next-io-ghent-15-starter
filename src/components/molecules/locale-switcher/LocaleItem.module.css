@@ -1,5 +1,6 @@
 @layer molecules {
   .localeItem {
+    position: relative;
     text-decoration: none;
 
     &:hover,
@@ -8,7 +9,19 @@
     }
   }
 
+  /* The indicator already marks the active locale, so no text underline on top of it */
   .localeItemActive {
-    text-decoration: underline;
+    &:hover,
+    &:focus-visible {
+      text-decoration: none;
+    }
+  }
+
+  .indicator {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: 1px;
+    background-color: currentcolor;
   }
 }
