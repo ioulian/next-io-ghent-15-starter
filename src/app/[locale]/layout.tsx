@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 
 import dynamic from "next/dynamic";
 
-import { RscBoundaryProvider } from "@rsc-boundary/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 
@@ -14,6 +13,8 @@ import { htmlFontClass } from "./_styles/fonts";
 import { getCss, getThemeCss, getVariable } from "./_styles/variables";
 
 import "./_styles/globals.css";
+
+import type { ComponentType, ReactNode } from "react";
 
 import { clsx } from "clsx";
 
@@ -43,10 +44,15 @@ export async function generateMetadata({}: Omit<LayoutProps<"/[locale]">, "child
   };
 }
 
-let ReactScan: React.ComponentType = () => null;
+let ReactScan: ComponentType = () => null;
+let RscBoundaryProvider: ComponentType<{ children: ReactNode }> = ({ children }) => children;
 
 if (process.env.NODE_ENV === "development" && env.NEXT_PUBLIC_REACT_SCAN_ENABLE) {
   ReactScan = dynamic(() => import("./_components/ReactScan"));
+}
+
+if (process.env.NODE_ENV === "development" && env.NEXT_PUBLIC_RSC_BOUNDARY_ENABLE) {
+  RscBoundaryProvider = dynamic(() => import("@rsc-boundary/next").then((mod) => mod.RscBoundaryProvider));
 }
 
 export default async function LocaleLayout({ children }: LayoutProps<"/[locale]">) {

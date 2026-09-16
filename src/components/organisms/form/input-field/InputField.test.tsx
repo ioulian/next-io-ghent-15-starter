@@ -1,7 +1,6 @@
 import type { FC, ReactNode } from "react";
 
-import { render, screen } from "@/test/test-utils";
-import { wait } from "@/utils/promises";
+import { render, screen, waitInAct } from "@/test/test-utils";
 
 import Form from "../Form";
 import { useAppForm } from "../Form.utils";
@@ -62,7 +61,7 @@ describe("InputField", () => {
       </SampleForm>,
     );
 
-    await wait(50);
+    await waitInAct(50);
     expect(screen.getByTestId("test")).toHaveAttribute("name", "test-name");
     expect(screen.getByTestId<HTMLInputElement>("input").value).toBe("test-value");
     expect(screen.queryByText("test-description")).toBeInTheDocument();

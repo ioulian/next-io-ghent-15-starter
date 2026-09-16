@@ -2,8 +2,7 @@ import type { FC, ReactNode } from "react";
 
 import { userEvent } from "storybook/test";
 
-import { act, fireEvent, render, screen } from "@/test/test-utils";
-import { wait } from "@/utils/promises";
+import { act, fireEvent, render, screen, waitInAct } from "@/test/test-utils";
 
 import Form from "../Form";
 import { useAppForm } from "../Form.utils";
@@ -90,13 +89,13 @@ describe("InputText", () => {
     render(
       <StringFieldForm value="initial-value">{(field) => <field.InputText data-testid="test" />}</StringFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
     expect(screen.getByTestId<HTMLInputElement>("test").value).toBe("initial-value");
   });
 
   it("updates value on change", async () => {
     render(<StringFieldForm value="">{(field) => <field.InputText data-testid="test" />}</StringFieldForm>);
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       await userEvent.type(screen.getByTestId("test"), "new-value");
@@ -113,13 +112,13 @@ describe("InputPassword", () => {
         {(field) => <field.InputPassword data-testid="test" />}
       </StringFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
     expect(screen.getByTestId<HTMLInputElement>("test").value).toBe("secret-password");
   });
 
   it("updates value on change", async () => {
     render(<StringFieldForm value="">{(field) => <field.InputPassword data-testid="test" />}</StringFieldForm>);
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       await userEvent.type(screen.getByTestId("test"), "new-password");
@@ -136,13 +135,13 @@ describe("InputOtp", () => {
 
   it("renders with correct value", async () => {
     render(<StringFieldForm value="123456">{(field) => <field.InputOtp data-testid="test" />}</StringFieldForm>);
-    await wait(50);
+    await waitInAct(50);
     expect(screen.getByTestId<HTMLInputElement>("test").value).toBe("123456");
   });
 
   it("updates value on change", async () => {
     render(<StringFieldForm value="">{(field) => <field.InputOtp data-testid="test" />}</StringFieldForm>);
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       await userEvent.type(screen.getByTestId("test"), "123456");
@@ -157,13 +156,13 @@ describe("InputTextArea", () => {
     render(
       <StringFieldForm value="initial-text">{(field) => <field.InputTextArea data-testid="test" />}</StringFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
     expect(screen.getByTestId<HTMLTextAreaElement>("test").value).toBe("initial-text");
   });
 
   it("updates value on change", async () => {
     render(<StringFieldForm value="">{(field) => <field.InputTextArea data-testid="test" />}</StringFieldForm>);
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       await userEvent.type(screen.getByTestId("test"), "new-text");
@@ -185,7 +184,7 @@ describe("InputRadio", () => {
         )}
       </StringFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     expect(screen.getByTestId("radio1")).toBeChecked();
     expect(screen.getByTestId("radio2")).not.toBeChecked();
@@ -202,7 +201,7 @@ describe("InputRadio", () => {
         )}
       </StringFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       fireEvent.click(screen.getByTestId("radio2"));
@@ -226,7 +225,7 @@ describe("InputCheckbox", () => {
         )}
       </ArrayFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     expect(screen.getByTestId("cb1")).toBeChecked();
     expect(screen.getByTestId("cb2")).toBeChecked();
@@ -244,7 +243,7 @@ describe("InputCheckbox", () => {
         )}
       </ArrayFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       fireEvent.click(screen.getByTestId("cb2"));
@@ -265,7 +264,7 @@ describe("InputCheckbox", () => {
         )}
       </ArrayFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       fireEvent.click(screen.getByTestId("cb1"));
@@ -289,7 +288,7 @@ describe("InputToggle", () => {
         )}
       </ArrayFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     expect(screen.getByTestId("toggle1")).toBeChecked();
     expect(screen.getByTestId("toggle2")).toBeChecked();
@@ -307,7 +306,7 @@ describe("InputToggle", () => {
         )}
       </ArrayFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       fireEvent.click(screen.getByTestId("toggle2"));
@@ -328,7 +327,7 @@ describe("InputToggle", () => {
         )}
       </ArrayFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       fireEvent.click(screen.getByTestId("toggle1"));
@@ -346,7 +345,7 @@ describe("InputBooleanCheckbox", () => {
         {(field) => <field.InputBooleanCheckbox data-testid="test" label="Accept terms" />}
       </BooleanFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     expect(screen.getByTestId("test")).toBeChecked();
   });
@@ -357,7 +356,7 @@ describe("InputBooleanCheckbox", () => {
         {(field) => <field.InputBooleanCheckbox data-testid="test" label="Accept terms" />}
       </BooleanFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     expect(screen.getByTestId("test")).not.toBeChecked();
   });
@@ -368,7 +367,7 @@ describe("InputBooleanCheckbox", () => {
         {(field) => <field.InputBooleanCheckbox data-testid="test" label="Accept terms" />}
       </BooleanFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       fireEvent.click(screen.getByTestId("test"));
@@ -383,7 +382,7 @@ describe("InputBooleanCheckbox", () => {
         {(field) => <field.InputBooleanCheckbox data-testid="test" label="Accept terms" />}
       </BooleanFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       fireEvent.click(screen.getByTestId("test"));
@@ -400,7 +399,7 @@ describe("InputBooleanToggle", () => {
         {(field) => <field.InputBooleanToggle data-testid="test" label="Enable feature" />}
       </BooleanFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     expect(screen.getByTestId("test")).toBeChecked();
   });
@@ -411,7 +410,7 @@ describe("InputBooleanToggle", () => {
         {(field) => <field.InputBooleanToggle data-testid="test" label="Enable feature" />}
       </BooleanFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     expect(screen.getByTestId("test")).not.toBeChecked();
   });
@@ -422,7 +421,7 @@ describe("InputBooleanToggle", () => {
         {(field) => <field.InputBooleanToggle data-testid="test" label="Enable feature" />}
       </BooleanFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       fireEvent.click(screen.getByTestId("test"));
@@ -437,7 +436,7 @@ describe("InputBooleanToggle", () => {
         {(field) => <field.InputBooleanToggle data-testid="test" label="Enable feature" />}
       </BooleanFieldForm>,
     );
-    await wait(50);
+    await waitInAct(50);
 
     await act(async () => {
       fireEvent.click(screen.getByTestId("test"));

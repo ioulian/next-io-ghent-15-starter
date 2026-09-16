@@ -2,6 +2,8 @@ import type { NextRequest } from "next/server";
 
 import { headers } from "next/headers";
 
+import { TRUSTED_TYPES_POLICY_NAME } from "@/utils/trusted-types/constants";
+
 export const injectCSP = (request: NextRequest) => {
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
@@ -16,6 +18,8 @@ export const injectCSP = (request: NextRequest) => {
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
+    require-trusted-types-for 'script';
+    trusted-types ${TRUSTED_TYPES_POLICY_NAME};
 `;
   // Replace newline characters and spaces
   const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, " ").trim();

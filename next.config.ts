@@ -26,6 +26,10 @@ const nextConfig: NextConfig = {
   // We should enable this when we can test it properly
   // reactCompiler: true,
 
+  experimental: {
+    optimizePackageImports: ["zod"],
+  },
+
   // If commit hooks are enabled, you can uncomment these lines, making builds faster
   typescript: {
     ignoreBuildErrors: true,

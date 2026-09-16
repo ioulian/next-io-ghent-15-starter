@@ -1,5 +1,5 @@
 import { createEnv } from "@t3-oss/env-nextjs"; // or core package
-import * as z from "zod/v4-mini";
+import * as z from "zod";
 
 // TODO: treeshaking does not work, this should be disabled when working on a production build
 // or until https://github.com/colinhacks/zod/issues/5561 is fixed
@@ -19,6 +19,7 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_REACT_SCAN_ENABLE: z.boolean(),
+    NEXT_PUBLIC_RSC_BOUNDARY_ENABLE: z.boolean(),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
@@ -29,6 +30,7 @@ export const env = createEnv({
   runtimeEnv: {
     SITE_URL: process.env.SITE_URL,
     NEXT_PUBLIC_REACT_SCAN_ENABLE: process.env.NEXT_PUBLIC_REACT_SCAN_ENABLE === "true",
+    NEXT_PUBLIC_RSC_BOUNDARY_ENABLE: process.env.NEXT_PUBLIC_RSC_BOUNDARY_ENABLE === "true",
   },
   /**
    * Makes it so that empty strings are treated as undefined. `SOME_VAR: z.string()` and

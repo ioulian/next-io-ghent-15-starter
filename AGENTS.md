@@ -160,7 +160,7 @@ Use these instead of relative paths when leaving the current component area:
 
 ### Vitest (unit / integration)
 
-- **Config:** `vitest.config.ts` - projects: default (jsdom) and storybook (browser/Playwright). Setup: `vitest.setup.ts` (e.g. `@testing-library/jest-dom`).
+- **Config:** `vitest.config.mts` - projects: default (jsdom) and storybook (browser/Playwright). Setup: `vitest.setup.ts` (e.g. `@testing-library/jest-dom`).
 - **Test files:** `**/*.test.tsx` or `**/*.test.ts` next to the code.
 - **Render:** Use the custom **`render`** from `src/test/test-utils.tsx`, which wraps the tree in **`NextIntlClientProvider`** with locale and default messages so that `useTranslations` works.
 - **Reusable "base API" tests:** Use **`describeGeneralTests(Element, () => ({ render }))`** from `src/test/general-tests.tsx` to assert render, custom `className`, and custom props (see e.g. `SvgSprite.test.tsx`).
