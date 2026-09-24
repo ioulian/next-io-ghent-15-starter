@@ -14,6 +14,7 @@ export interface DialogOptions {
   open?: boolean;
   sheetSide?: Side;
   onOpenChange?: (open: boolean) => void;
+  isDismissable?: boolean;
 }
 
 export const useDialog = ({
@@ -21,6 +22,7 @@ export const useDialog = ({
   open: controlledOpen,
   sheetSide = "right",
   onOpenChange: setControlledOpen,
+  isDismissable = true,
 }: DialogOptions = {}) => {
   const [uncontrolledOpen, setUncontrolledOpen] = useState<boolean>(initialOpen);
   const [labelId, setLabelId] = useState<string | undefined>();
@@ -44,6 +46,7 @@ export const useDialog = ({
   });
   const dismiss = useDismiss(context, {
     outsidePressEvent: "pointerdown",
+    enabled: isDismissable,
   });
   const role = useRole(context);
 
