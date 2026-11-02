@@ -1,7 +1,7 @@
 import { fireEvent, userEvent } from "storybook/test";
 
 import describeGeneralTests from "@/test/general-tests";
-import { act, render, screen } from "@/test/test-utils";
+import { render, screen } from "@/test/test-utils";
 
 import PasswordInput from "./PasswordInput";
 
@@ -11,9 +11,7 @@ describe("PasswordInput", () => {
   it("renders with correct id", async () => {
     render(<PasswordInput data-testid="test" />);
 
-    await act(async () => {
-      fireEvent.click(screen.getByRole("button"));
-    });
+    fireEvent.click(screen.getByRole("button"));
     expect(screen.getByTestId("test")).toHaveAttribute("type", "text");
   });
 
@@ -21,9 +19,7 @@ describe("PasswordInput", () => {
     const onChangeSpy = vi.fn();
     render(<PasswordInput data-testid="test" value="" onChange={onChangeSpy} />);
 
-    await act(async () => {
-      await userEvent.type(screen.getByTestId("test"), "test");
-    });
+    await userEvent.type(screen.getByTestId("test"), "test");
 
     expect(onChangeSpy).toHaveBeenCalled();
   });

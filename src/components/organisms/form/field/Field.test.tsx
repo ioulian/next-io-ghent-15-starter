@@ -2,7 +2,7 @@ import type { FC, ReactNode } from "react";
 
 import { userEvent } from "storybook/test";
 
-import { act, fireEvent, render, screen, waitInAct } from "@/test/test-utils";
+import { fireEvent, render, screen, waitInAct } from "@/test/test-utils";
 
 import Form from "../Form";
 import { useAppForm } from "../Form.utils";
@@ -97,9 +97,7 @@ describe("InputText", () => {
     render(<StringFieldForm value="">{(field) => <field.InputText data-testid="test" />}</StringFieldForm>);
     await waitInAct(50);
 
-    await act(async () => {
-      await userEvent.type(screen.getByTestId("test"), "new-value");
-    });
+    await userEvent.type(screen.getByTestId("test"), "new-value");
 
     expect(screen.getByTestId<HTMLInputElement>("test").value).toBe("new-value");
   });
@@ -120,9 +118,7 @@ describe("InputPassword", () => {
     render(<StringFieldForm value="">{(field) => <field.InputPassword data-testid="test" />}</StringFieldForm>);
     await waitInAct(50);
 
-    await act(async () => {
-      await userEvent.type(screen.getByTestId("test"), "new-password");
-    });
+    await userEvent.type(screen.getByTestId("test"), "new-password");
 
     expect(screen.getByTestId<HTMLInputElement>("test").value).toBe("new-password");
   });
@@ -143,9 +139,7 @@ describe("InputOtp", () => {
     render(<StringFieldForm value="">{(field) => <field.InputOtp data-testid="test" />}</StringFieldForm>);
     await waitInAct(50);
 
-    await act(async () => {
-      await userEvent.type(screen.getByTestId("test"), "123456");
-    });
+    await userEvent.type(screen.getByTestId("test"), "123456");
 
     expect(screen.getByTestId<HTMLInputElement>("test").value).toBe("123456");
   });
@@ -164,9 +158,7 @@ describe("InputTextArea", () => {
     render(<StringFieldForm value="">{(field) => <field.InputTextArea data-testid="test" />}</StringFieldForm>);
     await waitInAct(50);
 
-    await act(async () => {
-      await userEvent.type(screen.getByTestId("test"), "new-text");
-    });
+    await userEvent.type(screen.getByTestId("test"), "new-text");
 
     expect(screen.getByTestId<HTMLTextAreaElement>("test").value).toBe("new-text");
   });
@@ -203,9 +195,7 @@ describe("InputRadio", () => {
     );
     await waitInAct(50);
 
-    await act(async () => {
-      fireEvent.click(screen.getByTestId("radio2"));
-    });
+    fireEvent.click(screen.getByTestId("radio2"));
 
     expect(screen.getByTestId("radio1")).not.toBeChecked();
     expect(screen.getByTestId("radio2")).toBeChecked();
@@ -245,9 +235,7 @@ describe("InputCheckbox", () => {
     );
     await waitInAct(50);
 
-    await act(async () => {
-      fireEvent.click(screen.getByTestId("cb2"));
-    });
+    fireEvent.click(screen.getByTestId("cb2"));
 
     expect(screen.getByTestId("cb1")).toBeChecked();
     expect(screen.getByTestId("cb2")).toBeChecked();
@@ -266,9 +254,7 @@ describe("InputCheckbox", () => {
     );
     await waitInAct(50);
 
-    await act(async () => {
-      fireEvent.click(screen.getByTestId("cb1"));
-    });
+    fireEvent.click(screen.getByTestId("cb1"));
 
     expect(screen.getByTestId("cb1")).not.toBeChecked();
     expect(screen.getByTestId("cb2")).toBeChecked();
@@ -308,9 +294,7 @@ describe("InputToggle", () => {
     );
     await waitInAct(50);
 
-    await act(async () => {
-      fireEvent.click(screen.getByTestId("toggle2"));
-    });
+    fireEvent.click(screen.getByTestId("toggle2"));
 
     expect(screen.getByTestId("toggle1")).toBeChecked();
     expect(screen.getByTestId("toggle2")).toBeChecked();
@@ -329,9 +313,7 @@ describe("InputToggle", () => {
     );
     await waitInAct(50);
 
-    await act(async () => {
-      fireEvent.click(screen.getByTestId("toggle1"));
-    });
+    fireEvent.click(screen.getByTestId("toggle1"));
 
     expect(screen.getByTestId("toggle1")).not.toBeChecked();
     expect(screen.getByTestId("toggle2")).toBeChecked();
@@ -369,9 +351,7 @@ describe("InputBooleanCheckbox", () => {
     );
     await waitInAct(50);
 
-    await act(async () => {
-      fireEvent.click(screen.getByTestId("test"));
-    });
+    fireEvent.click(screen.getByTestId("test"));
 
     expect(screen.getByTestId("test")).toBeChecked();
   });
@@ -384,9 +364,7 @@ describe("InputBooleanCheckbox", () => {
     );
     await waitInAct(50);
 
-    await act(async () => {
-      fireEvent.click(screen.getByTestId("test"));
-    });
+    fireEvent.click(screen.getByTestId("test"));
 
     expect(screen.getByTestId("test")).not.toBeChecked();
   });
@@ -423,9 +401,7 @@ describe("InputBooleanToggle", () => {
     );
     await waitInAct(50);
 
-    await act(async () => {
-      fireEvent.click(screen.getByTestId("test"));
-    });
+    fireEvent.click(screen.getByTestId("test"));
 
     expect(screen.getByTestId("test")).toBeChecked();
   });
@@ -438,9 +414,7 @@ describe("InputBooleanToggle", () => {
     );
     await waitInAct(50);
 
-    await act(async () => {
-      fireEvent.click(screen.getByTestId("test"));
-    });
+    fireEvent.click(screen.getByTestId("test"));
 
     expect(screen.getByTestId("test")).not.toBeChecked();
   });

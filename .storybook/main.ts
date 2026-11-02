@@ -26,6 +26,9 @@ const config: StorybookConfig = {
   typescript: {
     check: false,
     reactDocgen: "react-docgen-typescript",
+    reactDocgenTypescriptOptions: {
+      tsconfigPath: "./tsconfig.json",
+    },
   },
 
   env: {},

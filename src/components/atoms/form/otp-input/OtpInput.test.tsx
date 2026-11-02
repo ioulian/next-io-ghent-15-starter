@@ -1,6 +1,6 @@
 import { userEvent } from "storybook/test";
 
-import { act, render, screen } from "@/test/test-utils";
+import { render, screen } from "@/test/test-utils";
 
 import OtpInput from "./OtpInput";
 
@@ -28,9 +28,7 @@ describe("OtpInput", () => {
     const onChangeSpy = vi.fn();
     render(<OtpInput data-testid="test" value="" onChange={onChangeSpy} />);
 
-    await act(async () => {
-      await userEvent.type(screen.getByTestId("test"), "123456");
-    });
+    await userEvent.type(screen.getByTestId("test"), "123456");
 
     expect(onChangeSpy).toHaveBeenCalled();
   });

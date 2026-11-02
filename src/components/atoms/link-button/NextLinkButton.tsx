@@ -17,11 +17,21 @@ import LinkButton from "./LinkButton";
 const NextLinkButton: FC<WithRequired<Omit<LBProps<typeof Link>, "as">, "children">> = (props) => {
   const [prefetch, setPrefetch] = useState<boolean>(false);
 
-  const onMouseEnter = useCallback(() => {
+  const setIntent = useCallback(() => {
     setPrefetch(true);
   }, []);
 
-  return <LinkButton as={Link} prefetch={prefetch ? null : false} onMouseEnter={onMouseEnter} {...props} />;
+  return (
+    <LinkButton
+      as={Link}
+      // TODO: check if "auto" instead of false would be acceptable
+      prefetch={prefetch ? true : false}
+      onMouseEnter={setIntent}
+      onFocus={setIntent}
+      onTouchStart={setIntent}
+      {...props}
+    />
+  );
 };
 
 export default memo(NextLinkButton);
