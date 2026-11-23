@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import Button from "@/components/atoms/button/Button";
 import Heading from "@/components/atoms/heading/Heading";
-import LinkButton from "@/components/atoms/link-button/LinkButton";
 import Paragraph from "@/components/atoms/paragraph/Paragraph";
 import ButtonGroup from "@/components/molecules/button-group/ButtonGroup";
 import Card from "@/components/molecules/card/Card";
@@ -30,9 +29,9 @@ export const Default: Story = {
           header={<img src="https://placehold.co/600x400/EEE/31343C" alt="" />}
           footer={
             <ButtonGroup>
-              <LinkButton variant="simple" size="base">
+              <Button as="a" href="#" variant="simple" size="base">
                 Read more
-              </LinkButton>
+              </Button>
             </ButtonGroup>
           }
         >
@@ -48,9 +47,9 @@ export const Default: Story = {
           header={<img src="https://placehold.co/600x400/EEE/31343C" alt="" />}
           footer={
             <ButtonGroup>
-              <LinkButton variant="simple" size="base">
+              <Button as="a" href="#" variant="simple" size="base">
                 Read more
-              </LinkButton>
+              </Button>
             </ButtonGroup>
           }
         >
@@ -67,9 +66,9 @@ export const Default: Story = {
           header={<img src="https://placehold.co/600x400/EEE/31343C" alt="" />}
           footer={
             <ButtonGroup>
-              <LinkButton variant="simple" size="base">
+              <Button as="a" href="#" variant="simple" size="base">
                 Read more
-              </LinkButton>
+              </Button>
             </ButtonGroup>
           }
         >
@@ -86,9 +85,9 @@ export const Default: Story = {
           header={<img src="https://placehold.co/600x400/EEE/31343C" alt="" />}
           footer={
             <ButtonGroup>
-              <LinkButton variant="simple" size="base">
+              <Button as="a" href="#" variant="simple" size="base">
                 Read more
-              </LinkButton>
+              </Button>
             </ButtonGroup>
           }
         >
@@ -105,9 +104,9 @@ export const Default: Story = {
           header={<img src="https://placehold.co/600x400/EEE/31343C" alt="" />}
           footer={
             <ButtonGroup>
-              <LinkButton variant="simple" size="base">
+              <Button as="a" href="#" variant="simple" size="base">
                 Read more
-              </LinkButton>
+              </Button>
             </ButtonGroup>
           }
         >

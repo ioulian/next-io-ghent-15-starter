@@ -1,4 +1,4 @@
-import type { FC, FocusEvent, HTMLProps, MouseEvent } from "react";
+import type { FocusEvent, HTMLProps, MouseEvent } from "react";
 
 import { memo, useContext } from "react";
 
@@ -8,7 +8,9 @@ import type { MenuContextType, MenuItemProps } from "../MenuBar.types";
 
 import { MenuContext } from "../MenuBar.context";
 
-const MenuItem: FC<MenuItemProps & HTMLProps<HTMLButtonElement>> = ({ label, disabled, ref, ...props }) => {
+export type Props = MenuItemProps & HTMLProps<HTMLButtonElement>;
+
+function MenuItem({ label, disabled, ref, ...props }: Props) {
   const menu = useContext(MenuContext);
   const item = useListItem({ label: disabled ? null : label });
   const tree = useFloatingTree();
@@ -59,6 +61,6 @@ const MenuItem: FC<MenuItemProps & HTMLProps<HTMLButtonElement>> = ({ label, dis
       {label}
     </button>
   );
-};
+}
 
 export default memo(MenuItem);

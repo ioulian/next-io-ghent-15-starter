@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -9,13 +9,13 @@ import { useBaseChangeHandler } from "@/components/organisms/form/field/Field.ho
 
 import { useFieldContext } from "../Form.utils";
 
-type InputPasswordProps = FieldProps & ComponentPropsWithRef<"input">;
+export type Props = FieldProps & ComponentPropsWithRef<"input">;
 
-const InputPassword: FC<InputPasswordProps> = ({ ...props }) => {
+function InputPassword({ ...props }: Props) {
   const field = useFieldContext<string>();
   const onChange = useBaseChangeHandler<string, HTMLInputElement>();
 
   return <PasswordInput {...props} value={field.state.value} onChange={onChange} onBlur={field.handleBlur} />;
-};
+}
 
 export default memo(InputPassword);

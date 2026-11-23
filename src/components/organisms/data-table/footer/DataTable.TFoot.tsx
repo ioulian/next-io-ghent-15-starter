@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -8,9 +8,9 @@ import { useTableContext } from "../DataTable.utils";
 
 import styles from "./DataTable.TFoot.module.css";
 
-type TFootProps = { isSticky?: boolean } & ComponentPropsWithRef<"tfoot">;
+export type Props = { isSticky?: boolean } & ComponentPropsWithRef<"tfoot">;
 
-const TFoot: FC<TFootProps> = ({ isSticky = false, ...props }: TFootProps) => {
+function TFoot({ isSticky = false, ...props }: Props) {
   const table = useTableContext();
 
   return (
@@ -30,6 +30,6 @@ const TFoot: FC<TFootProps> = ({ isSticky = false, ...props }: TFootProps) => {
       ))}
     </tfoot>
   );
-};
+}
 
 export default memo(TFoot);

@@ -1,12 +1,14 @@
 "use client";
 
-import type { FC, HTMLProps } from "react";
+import type { HTMLProps } from "react";
 
 import { cloneElement, isValidElement, memo, useCallback } from "react";
 
 import { usePopoverContext } from "./Popover.hooks";
 
-const PopoverClose: FC<HTMLProps<HTMLButtonElement>> = ({ children, ...props }) => {
+export type Props = HTMLProps<HTMLButtonElement>;
+
+function PopoverClose({ children, ...props }: Props) {
   const state = usePopoverContext();
   const onClick = useCallback(() => {
     state.setOpen(false);
@@ -24,6 +26,6 @@ const PopoverClose: FC<HTMLProps<HTMLButtonElement>> = ({ children, ...props }) 
       {children}
     </button>
   );
-};
+}
 
 export default memo(PopoverClose);

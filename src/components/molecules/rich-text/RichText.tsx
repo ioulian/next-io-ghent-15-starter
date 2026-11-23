@@ -1,7 +1,7 @@
 "use client";
 
 import type { Editor, EditorEvents, EditorProviderProps } from "@tiptap/react";
-import type { FC, Ref } from "react";
+import type { Ref } from "react";
 
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 
@@ -18,7 +18,9 @@ import RichTextToolbar from "./rich-text-toolbar/RichTextToolbar";
 
 import richTextStyles from "./RichText.module.css";
 
-const RichText: FC<{} & Omit<EditorProviderProps, "children"> & { ref: Ref<HTMLDivElement> }> = ({ ref, ...props }) => {
+export type Props = Omit<EditorProviderProps, "children"> & { ref: Ref<HTMLDivElement> };
+
+function RichText({ ref, ...props }: Props) {
   const editorRef = useRef<Editor | null>(null);
   const [extensions] = useState(() => [StarterKit, Subscript, Superscript]);
   const [editorProps] = useState(() => ({
@@ -51,7 +53,7 @@ const RichText: FC<{} & Omit<EditorProviderProps, "children"> & { ref: Ref<HTMLD
       />
     </div>
   );
-};
+}
 
 /**
  * Rich text editor component

@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, HTMLProps } from "react";
+import type { HTMLProps } from "react";
 
 import { cloneElement, isValidElement, memo, useLayoutEffect } from "react";
 
@@ -8,7 +8,9 @@ import { useId } from "@floating-ui/react";
 
 import { useDialogContext } from "./Dialog.hooks";
 
-const DialogHeading: FC<HTMLProps<HTMLHeadingElement>> = ({ children, ...props }) => {
+export type Props = HTMLProps<HTMLHeadingElement>;
+
+function DialogHeading({ children, ...props }: Props) {
   const { setLabelId } = useDialogContext();
   const id = useId();
 
@@ -31,6 +33,6 @@ const DialogHeading: FC<HTMLProps<HTMLHeadingElement>> = ({ children, ...props }
       {children}
     </h2>
   );
-};
+}
 
 export default memo(DialogHeading);

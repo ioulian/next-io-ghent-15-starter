@@ -1,5 +1,5 @@
 import type { WithRequired } from "@/types/helpers";
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -10,7 +10,9 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Description.module.css";
 
-const Description: FC<WithRequired<ComponentPropsWithRef<"div">, "id">> = ({ id, children, ...props }) => {
+export type Props = WithRequired<ComponentPropsWithRef<"div">, "id">;
+
+function Description({ id, children, ...props }: Props) {
   const t = useTranslations("common.form");
 
   return (
@@ -19,7 +21,7 @@ const Description: FC<WithRequired<ComponentPropsWithRef<"div">, "id">> = ({ id,
       {children}
     </div>
   );
-};
+}
 
 /**
  * Description of the form field

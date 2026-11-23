@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, HTMLProps } from "react";
+import type { HTMLProps } from "react";
 
 import { cloneElement, isValidElement, memo, useLayoutEffect } from "react";
 
@@ -8,7 +8,9 @@ import { useId } from "@floating-ui/react";
 
 import { usePopoverContext } from "./Popover.hooks";
 
-const PopoverDescription: FC<HTMLProps<HTMLParagraphElement>> = ({ children, ...props }) => {
+export type Props = HTMLProps<HTMLParagraphElement>;
+
+function PopoverDescription({ children, ...props }: Props) {
   const { setDescriptionId } = usePopoverContext();
   const id = useId();
 
@@ -31,6 +33,6 @@ const PopoverDescription: FC<HTMLProps<HTMLParagraphElement>> = ({ children, ...
       {children}
     </p>
   );
-};
+}
 
 export default memo(PopoverDescription);

@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 import { memo } from "react";
 
@@ -10,7 +10,9 @@ import { LOADER_DELAY } from "@/utils/constants";
 
 import { getVariable } from "../_styles/variables";
 
-const Providers: FC<PropsWithChildren<{ nonce?: string }>> = ({ children, nonce }) => {
+export type Props = PropsWithChildren<{ nonce?: string }>;
+
+function Providers({ children, nonce }: Props) {
   return (
     <ProgressProvider
       height="4px"
@@ -23,7 +25,7 @@ const Providers: FC<PropsWithChildren<{ nonce?: string }>> = ({ children, nonce 
       {children}
     </ProgressProvider>
   );
-};
+}
 
 /**
  * Providers that need client component to run.

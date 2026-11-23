@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { Children, cloneElement, isValidElement, memo, useImperativeHandle, useRef } from "react";
 
@@ -11,12 +11,9 @@ import Layout from "../../atoms/layout/Layout";
 import blockStyles from "./../Blocks.module.css";
 import styles from "./MediaText.module.css";
 
-const MediaText: FC<{ coverMedia?: boolean } & ComponentPropsWithRef<"div">> = ({
-  children,
-  coverMedia = false,
-  ref,
-  ...props
-}) => {
+export type Props = { coverMedia?: boolean } & ComponentPropsWithRef<"div">;
+
+function MediaText({ children, coverMedia = false, ref, ...props }: Props) {
   const innerRef = useRef<HTMLDivElement>(null);
   useImperativeHandle(ref, () => innerRef.current!, []);
 
@@ -50,6 +47,6 @@ const MediaText: FC<{ coverMedia?: boolean } & ComponentPropsWithRef<"div">> = (
       </Layout>
     </div>
   );
-};
+}
 
 export default memo(MediaText);

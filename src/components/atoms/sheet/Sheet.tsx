@@ -1,5 +1,5 @@
 import type { Placement } from "@floating-ui/react";
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -7,11 +7,11 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { sheet } from "./Sheet.styles";
 
-const Sheet: FC<
-  {
-    placement: Placement;
-  } & ComponentPropsWithRef<"div">
-> = ({ children, placement, ...props }) => {
+export type Props = {
+  placement: Placement;
+} & ComponentPropsWithRef<"div">;
+
+function Sheet({ children, placement, ...props }: Props) {
   return (
     <div
       {...addClassNameToProps(
@@ -24,7 +24,7 @@ const Sheet: FC<
       {children}
     </div>
   );
-};
+}
 
 /**
  * Sheet that will be fixed on a screen side. TO be used with Floating UI components

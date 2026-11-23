@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, ElementType, FC, ReactNode } from "react";
+import type { ComponentPropsWithRef, ElementType, ReactNode } from "react";
 import type { VariantProps } from "tailwind-variants";
 
 import { memo } from "react";
@@ -7,20 +7,20 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { card } from "./Card.styles";
 
-const Card: FC<
-  {
-    /**
-     * Tag of the element
-     */
-    as?: ElementType;
+export type Props = {
+  /**
+   * Tag of the element
+   */
+  as?: ElementType;
 
-    elevation?: VariantProps<typeof card>["elevation"];
-    padded?: boolean;
+  elevation?: VariantProps<typeof card>["elevation"];
+  padded?: boolean;
 
-    header?: ReactNode;
-    footer?: ReactNode;
-  } & ComponentPropsWithRef<"article">
-> = ({ elevation, as = "article", padded = false, header, footer, children, ...props }) => {
+  header?: ReactNode;
+  footer?: ReactNode;
+} & ComponentPropsWithRef<"article">;
+
+function Card({ elevation, as = "article", padded = false, header, footer, children, ...props }: Props) {
   const Element = as;
 
   const classes = card({ elevation, padded });
@@ -32,6 +32,6 @@ const Card: FC<
       {footer ? <footer className={classes.footer()}>{footer}</footer> : null}
     </Element>
   );
-};
+}
 
 export default memo(Card);

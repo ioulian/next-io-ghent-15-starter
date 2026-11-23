@@ -1,6 +1,6 @@
 "use client";
 
-import type { ChangeEvent, FC } from "react";
+import type { ChangeEvent } from "react";
 
 import { memo, useCallback } from "react";
 
@@ -11,7 +11,9 @@ import { useTableContext } from "@/components/organisms/data-table/DataTable.uti
 
 const DEFAULT_PAGE_SIZES = [10, 20, 50, 100];
 
-const PageSize: FC<{ pageSizes?: number[] }> = ({ pageSizes = DEFAULT_PAGE_SIZES }) => {
+export type Props = { pageSizes?: number[] };
+
+function PageSize({ pageSizes = DEFAULT_PAGE_SIZES }: Props) {
   const t = useTranslations("common.dataTable");
 
   const table = useTableContext();
@@ -31,6 +33,6 @@ const PageSize: FC<{ pageSizes?: number[] }> = ({ pageSizes = DEFAULT_PAGE_SIZES
       ))}
     </Select>
   );
-};
+}
 
 export default memo(PageSize);

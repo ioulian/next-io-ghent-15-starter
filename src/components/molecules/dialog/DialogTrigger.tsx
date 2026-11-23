@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, HTMLProps } from "react";
+import type { HTMLProps } from "react";
 
 import { cloneElement, isValidElement, memo } from "react";
 
@@ -8,7 +8,9 @@ import { useMergeRefs } from "@floating-ui/react";
 
 import { useDialogContext } from "./Dialog.hooks";
 
-const DialogTrigger: FC<HTMLProps<HTMLElement>> = ({ children, ref: propRef, ...props }) => {
+export type Props = HTMLProps<HTMLElement>;
+
+function DialogTrigger({ children, ref: propRef, ...props }: Props) {
   const context = useDialogContext();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -38,6 +40,6 @@ const DialogTrigger: FC<HTMLProps<HTMLElement>> = ({ children, ref: propRef, ...
       {children}
     </button>
   );
-};
+}
 
 export default memo(DialogTrigger);

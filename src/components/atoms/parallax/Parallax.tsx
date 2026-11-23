@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useMemo } from "react";
 
@@ -6,14 +6,14 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Parallax.module.css";
 
-const Parallax: FC<
-  {
-    /**
-     * Percentage of the parallax effect
-     */
-    strength?: number;
-  } & ComponentPropsWithRef<"div">
-> = ({ strength = 0.2, style, ...props }) => {
+export type Props = {
+  /**
+   * Percentage of the parallax effect
+   */
+  strength?: number;
+} & ComponentPropsWithRef<"div">;
+
+function Parallax({ strength = 0.2, style, ...props }: Props) {
   const newStyle = useMemo(
     () => ({
       ...(style ?? {}),
@@ -23,7 +23,7 @@ const Parallax: FC<
   );
 
   return <div {...addClassNameToProps(props, styles.parallax)} style={newStyle} {...props} />;
-};
+}
 
 /**
  * Parallax component

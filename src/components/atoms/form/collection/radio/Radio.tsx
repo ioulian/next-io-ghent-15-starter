@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -13,7 +13,9 @@ import checkboxStyles from "../checkbox/Checkbox.module.css";
 import inputStyles from "./../../input/Input.module.css";
 import styles from "./Radio.module.css";
 
-const Radio: FC<{} & ComponentPropsWithRef<"input">> = ({ id, name, value, children, ...props }) => {
+export type Props = ComponentPropsWithRef<"input">;
+
+function Radio({ id, name, value, children, ...props }: Props) {
   const linkedId = `${id}-${value}`;
 
   return (
@@ -28,7 +30,7 @@ const Radio: FC<{} & ComponentPropsWithRef<"input">> = ({ id, name, value, child
       <Label htmlFor={linkedId}>{children}</Label>
     </div>
   );
-};
+}
 
 /**
  * Radio input field

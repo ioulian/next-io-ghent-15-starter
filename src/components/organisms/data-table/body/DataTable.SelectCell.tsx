@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -8,7 +8,7 @@ import SingleCheckbox from "@/components/atoms/form/single-checkbox/SingleCheckb
 
 import { useCellContext, useTableContext } from "../DataTable.utils";
 
-type SelectCellProps = {} & ComponentPropsWithRef<typeof SingleCheckbox>;
+export type Props = ComponentPropsWithRef<typeof SingleCheckbox>;
 
 /**
  * Row-selection checkbox cell - toggles selection for the current row.
@@ -18,7 +18,7 @@ type SelectCellProps = {} & ComponentPropsWithRef<typeof SingleCheckbox>;
  * a prop or hook the compiler can track), so without an explicit subscription
  * to the row-selection state it would never re-render when selection changes.
  */
-const SelectCell: FC<SelectCellProps> = ({ ...props }) => {
+function SelectCell({ ...props }: Props) {
   const cell = useCellContext();
   const table = useTableContext();
   const row = cell.row;
@@ -36,6 +36,6 @@ const SelectCell: FC<SelectCellProps> = ({ ...props }) => {
       )}
     </Subscribe>
   );
-};
+}
 
 export default memo(SelectCell);

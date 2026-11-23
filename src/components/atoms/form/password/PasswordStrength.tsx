@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useState, useTransition } from "react";
 
@@ -15,9 +15,9 @@ import { addClassNameToProps } from "@/utils/styles";
 import { passwordStrength } from "./PasswordStrength.styles";
 import { validatePassword } from "./PasswordStrength.utils";
 
-export type PasswordStrengthProps = { value?: string } & ComponentPropsWithRef<"div">;
+export type Props = { value?: string } & ComponentPropsWithRef<"div">;
 
-const PasswordStrength: FC<PasswordStrengthProps> = ({ value, ...props }) => {
+function PasswordStrength({ value, ...props }: Props) {
   const messages = useMessages();
 
   const [score, setScore] = useState<number>(-1);
@@ -55,7 +55,7 @@ const PasswordStrength: FC<PasswordStrengthProps> = ({ value, ...props }) => {
       </div>
     </div>
   );
-};
+}
 
 /**
  * Password strength meter

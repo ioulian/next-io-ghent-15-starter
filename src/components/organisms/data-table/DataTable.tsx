@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -6,17 +6,17 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./DataTable.module.css";
 
-export type DataTableProps = {} & ComponentPropsWithRef<"div">;
+export type Props = ComponentPropsWithRef<"div">;
 
 /**
  * Table to be used for tanstack table
  */
-const DataTable: FC<DataTableProps> = ({ children, ...props }) => {
+function DataTable({ children, ...props }: Props) {
   return (
     <div {...addClassNameToProps(props, styles.container)}>
       <table className={styles.table}>{children}</table>
     </div>
   );
-};
+}
 
 export default memo(DataTable);

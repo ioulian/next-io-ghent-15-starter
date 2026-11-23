@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { ZodType } from "zod";
 
 import { z } from "zod";
@@ -29,11 +29,14 @@ const schema: ZodType<SampleFormData, SampleFormData> = z.object({
   test: z.any(),
 });
 
-const SampleForm: FC<{
+function SampleForm({
+  value,
+  children,
+}: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: (field: any) => ReactNode;
   value?: string;
-}> = ({ value, children }) => {
+}) {
   const form = useAppForm({
     defaultValues: {
       test: value,
@@ -53,7 +56,7 @@ const SampleForm: FC<{
       </Form>
     </form.AppForm>
   );
-};
+}
 
 export const Default: Story = {
   render: (args) => (

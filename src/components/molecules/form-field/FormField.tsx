@@ -1,4 +1,5 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { PolymorphicProps } from "@/types/helpers";
+import type { ElementType } from "react";
 
 import { memo } from "react";
 
@@ -6,26 +7,23 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { formField } from "./FormField.styles";
 
-export type FormFieldProps = {
-  /**
-   * Setting this option to `true` will render `<fieldset>` as a wrapper, this should be used when using multiple radio buttons or checkboxes
-   */
-  asFieldSet?: boolean;
+export type Props<E extends ElementType = "div"> = PolymorphicProps<
+  E,
+  {
+    /**
+     * Will hide formfield from view, usefull when using hidden input fields
+     */
+    isHidden?: boolean;
+    disabled?: boolean;
+  }
+>;
 
-  /**
-   * Will hide formfield from view, usefull when using hidden input fields
-   */
-  isHidden?: boolean;
-  disabled?: boolean;
-} & ComponentPropsWithRef<"div">;
-
-const FormField: FC<FormFieldProps> = ({ asFieldSet, isHidden, children, disabled, ...props }) => {
-  const Component = asFieldSet ? "fieldset" : "div";
+function FormField<E extends ElementType = "div">({ as, isHidden, children, disabled, ...props }: Props<E>) {
+  const Component: ElementType = as ?? "div";
 
   return (
-    // @ts-expect-error TODO: type me
     <Component {...addClassNameToProps(props, formField({ isHidden, isDisabled: disabled }))}>{children}</Component>
   );
-};
+}
 
-export default memo(FormField);
+export default memo(FormField) as typeof FormField;

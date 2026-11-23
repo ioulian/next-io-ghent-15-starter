@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useCallback, useEffect, useId, useMemo, useState } from "react";
 
@@ -13,26 +13,26 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { ellipsis, numberOfLinesVar } from "./Ellipsis.styles";
 
-const Ellipsis: FC<
-  {
-    /**
-     * Number of lines to trunctate the text
-     */
-    numberOfLines?: number;
+export type Props = {
+  /**
+   * Number of lines to trunctate the text
+   */
+  numberOfLines?: number;
 
-    /**
-     * Controlled
-     */
-    open?: boolean;
+  /**
+   * Controlled
+   */
+  open?: boolean;
 
-    /**
-     * Is ellipsis showing all text or is truncated?
-     *
-     * @param isOpen
-     */
-    onToggle?: (isOpen: boolean) => void;
-  } & ComponentPropsWithRef<"div">
-> = ({ children, open = false, onToggle, numberOfLines = 2, style, ...props }) => {
+  /**
+   * Is ellipsis showing all text or is truncated?
+   *
+   * @param isOpen
+   */
+  onToggle?: (isOpen: boolean) => void;
+} & ComponentPropsWithRef<"div">;
+
+function Ellipsis({ children, open = false, onToggle, numberOfLines = 2, style, ...props }: Props) {
   const t = useTranslations("common.ellipsis");
   const [isOpen, setIsOpen] = useState<boolean>(open);
   const [showButton, setShowButton] = useState<boolean>(true);
@@ -91,7 +91,7 @@ const Ellipsis: FC<
       )}
     </div>
   );
-};
+}
 
 /**
  * Ellipis component that will automatically truncate/clamp the text inside.

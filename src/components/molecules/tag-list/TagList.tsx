@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { Children, memo } from "react";
 
@@ -6,7 +6,9 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./TagList.module.css";
 
-const TagList: FC<ComponentPropsWithRef<"ul">> = ({ children, ...props }) => {
+export type Props = ComponentPropsWithRef<"ul">;
+
+function TagList({ children, ...props }: Props) {
   return (
     <ul {...addClassNameToProps(props, styles.list)} role="list">
       {Children.map(children, (child) => (
@@ -14,7 +16,7 @@ const TagList: FC<ComponentPropsWithRef<"ul">> = ({ children, ...props }) => {
       ))}
     </ul>
   );
-};
+}
 
 /**
  * List of tags

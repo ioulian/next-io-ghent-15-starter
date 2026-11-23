@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -8,7 +8,9 @@ import { useEffectOnce } from "react-use";
 
 import { MAIN_CONTENT_ID } from "./MainContent.constants";
 
-const MainContent: FC<ComponentPropsWithRef<"main">> = ({ children, ...props }) => {
+export type Props = ComponentPropsWithRef<"main">;
+
+function MainContent({ children, ...props }: Props) {
   useEffectOnce(() => {
     if (process.env.NODE_ENV !== "production") {
       const link = document.querySelector(`a[href="#${MAIN_CONTENT_ID}"]`);
@@ -25,6 +27,6 @@ const MainContent: FC<ComponentPropsWithRef<"main">> = ({ children, ...props }) 
       {children}
     </main>
   );
-};
+}
 
 export default memo(MainContent);

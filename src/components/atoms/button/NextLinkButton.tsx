@@ -1,20 +1,16 @@
 "use client";
 
-import type { WithRequired } from "@/types/helpers";
-import type { FC } from "react";
-
 import { memo, useCallback, useState } from "react";
 
-import type { Props as LBProps } from "./LinkButton";
+import type { Props as ButtonProps } from "./Button";
 
+import Button from "@/components/atoms/button/Button";
 import { Link } from "@/i18n/navigation";
-
-import LinkButton from "./LinkButton";
 
 /**
  * Wrapper around next/link. Also changed prefetching to onHover
  */
-const NextLinkButton: FC<WithRequired<Omit<LBProps<typeof Link>, "as">, "children">> = (props) => {
+function NextLinkButton(props: ButtonProps<typeof Link>) {
   const [prefetch, setPrefetch] = useState<boolean>(false);
 
   const setIntent = useCallback(() => {
@@ -22,7 +18,7 @@ const NextLinkButton: FC<WithRequired<Omit<LBProps<typeof Link>, "as">, "childre
   }, []);
 
   return (
-    <LinkButton
+    <Button
       as={Link}
       // TODO: check if "auto" instead of false would be acceptable
       prefetch={prefetch ? true : false}
@@ -32,6 +28,6 @@ const NextLinkButton: FC<WithRequired<Omit<LBProps<typeof Link>, "as">, "childre
       {...props}
     />
   );
-};
+}
 
 export default memo(NextLinkButton);

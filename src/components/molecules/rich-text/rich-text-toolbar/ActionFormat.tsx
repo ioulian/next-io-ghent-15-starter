@@ -1,7 +1,7 @@
 "use client";
 
 import type { HeadingType } from "@/components/atoms/heading/Heading";
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useCallback } from "react";
 
@@ -16,7 +16,9 @@ import { addClassNameToProps } from "@/utils/styles";
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
-const ActionFormat: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
+export type Props = ComponentPropsWithRef<"button">;
+
+function ActionFormat({ ...props }: Props) {
   const { editor } = useCurrentEditor();
   const t = useTranslations("common.richText.toolbar");
   const actionParagraph = useCallback(() => {
@@ -64,7 +66,7 @@ const ActionFormat: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
       })}
     </Dropdown>
   );
-};
+}
 
 /**
  * Format selector action

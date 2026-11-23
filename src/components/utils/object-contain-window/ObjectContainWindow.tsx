@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { memo, useLayoutEffect, useState } from "react";
 
@@ -9,7 +9,7 @@ type Size = {
   height: number;
 };
 
-export type ObjectContainWindowProps = {
+export type Props = {
   aspectRatio?: number;
   padding?: number;
   children: (size: Size) => ReactNode;
@@ -19,7 +19,7 @@ export type ObjectContainWindowProps = {
  * This will scale the child element to fit the window (by using object-fit: contain logic).
  * This is useful for elements that do not scale well with the window size, such as iframes, maybe videos, etc.
  */
-const ObjectContainWindow: FC<ObjectContainWindowProps> = ({ aspectRatio = 16 / 9, padding = 0, children }) => {
+function ObjectContainWindow({ aspectRatio = 16 / 9, padding = 0, children }: Props) {
   const [size, setSize] = useState<Size>({ width: 360, height: 360 * aspectRatio });
 
   useLayoutEffect(() => {
@@ -45,6 +45,6 @@ const ObjectContainWindow: FC<ObjectContainWindowProps> = ({ aspectRatio = 16 / 
   }, [aspectRatio, children, padding]);
 
   return children(size);
-};
+}
 
 export default memo(ObjectContainWindow);

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentPropsWithRef, FC, PropsWithChildren } from "react";
+import type { ComponentPropsWithRef, PropsWithChildren } from "react";
 
 import { memo } from "react";
 
@@ -10,12 +10,12 @@ import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 
 import styles from "./Stepper.module.css";
 
+export type Props = PropsWithChildren<
+  { isCurrent?: boolean; isDone?: boolean; index: number; onClick?: () => void } & ComponentPropsWithRef<"li">
+>;
+
 // TODO: add aria-controls to the button
-const Step: FC<
-  PropsWithChildren<
-    { isCurrent?: boolean; isDone?: boolean; index: number; onClick?: () => void } & ComponentPropsWithRef<"li">
-  >
-> = ({ isCurrent, isDone, index, children, onClick, ...props }) => {
+function Step({ isCurrent, isDone, index, children, onClick, ...props }: Props) {
   return (
     <li
       className={clsx(
@@ -33,6 +33,6 @@ const Step: FC<
       </button>
     </li>
   );
-};
+}
 
 export default memo(Step);

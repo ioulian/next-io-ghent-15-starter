@@ -4,11 +4,9 @@
 // prettier-ignore
 import { scan } from "react-scan";
 
-import type { JSX } from "react";
-
 import { useEffect } from "react";
 
-const ReactScan = (): JSX.Element => {
+function ReactScan() {
   useEffect(() => {
     scan({
       enabled: true,
@@ -20,6 +18,6 @@ const ReactScan = (): JSX.Element => {
   // Needed for react-scan
   // eslint-disable-next-line react/jsx-no-useless-fragment
   return <></>;
-};
+}
 
 export default ReactScan;

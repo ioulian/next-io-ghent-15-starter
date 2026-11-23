@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useMemo } from "react";
 
@@ -6,36 +6,36 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { backgroundColorVar, circularProgress, mainColorVar } from "./CircularProgress.styles";
 
-const CircularProgress: FC<
-  {
-    /**
-     * Main color
-     */
-    mainColor?: string;
+export type Props = {
+  /**
+   * Main color
+   */
+  mainColor?: string;
 
-    /**
-     * Background color
-     */
-    backgroundColor?: string;
+  /**
+   * Background color
+   */
+  backgroundColor?: string;
 
-    /**
-     * Amount to fill
-     */
-    percent: number;
+  /**
+   * Amount to fill
+   */
+  percent: number;
 
-    /**
-     * Hide the progress bar when the percent is 0, this will not show the dot that is left of the stroke
-     */
-    hideOnZero?: boolean;
-  } & ComponentPropsWithRef<"svg">
-> = ({
+  /**
+   * Hide the progress bar when the percent is 0, this will not show the dot that is left of the stroke
+   */
+  hideOnZero?: boolean;
+} & ComponentPropsWithRef<"svg">;
+
+function CircularProgress({
   mainColor = "currentColor",
   backgroundColor = "var(--color-secondary-200)",
   percent,
   hideOnZero = false,
   style,
   ...props
-}) => {
+}: Props) {
   const classes = circularProgress();
   const newStyle = useMemo(
     () => ({
@@ -65,7 +65,7 @@ const CircularProgress: FC<
       ) : null}
     </svg>
   );
-};
+}
 
 /**
  * Circular Progress bar component

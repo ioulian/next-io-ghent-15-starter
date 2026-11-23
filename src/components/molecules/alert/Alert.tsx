@@ -1,5 +1,5 @@
 import type { SvgSpriteName } from "@/components/atoms/svg-sprite/SvgSprite.generated";
-import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import type { VariantProps } from "tailwind-variants";
 
 import { memo } from "react";
@@ -16,7 +16,7 @@ const ICON_MAP: Record<Exclude<VariantProps<typeof alert>["variant"], undefined>
   success: "tablerCircleCheck",
 };
 
-interface Props extends ComponentPropsWithRef<"div"> {
+export type Props = {
   /**
    * Icon to show. Set to `false` for no icon. If nothing is passed, default icons are shown.
    */
@@ -26,9 +26,9 @@ interface Props extends ComponentPropsWithRef<"div"> {
    * Variant of the alert
    */
   variant?: VariantProps<typeof alert>["variant"];
-}
+} & ComponentPropsWithRef<"div">;
 
-const Alert: FC<Props> = ({ children, variant = "normal", icon, ...props }) => {
+function Alert({ children, variant = "normal", icon, ...props }: Props) {
   const classes = alert({ variant });
   const defaultIcon = ICON_MAP[variant];
 
@@ -40,7 +40,7 @@ const Alert: FC<Props> = ({ children, variant = "normal", icon, ...props }) => {
       <div className={classes.content()}>{children}</div>
     </div>
   );
-};
+}
 
 /**
  * Alert component, with different states

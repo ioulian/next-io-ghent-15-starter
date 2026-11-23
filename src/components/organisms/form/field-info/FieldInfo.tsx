@@ -1,11 +1,12 @@
 import type { AnyFieldApi } from "@tanstack/react-form";
-import type { FC } from "react";
 
 import { memo } from "react";
 
 import FieldError from "@/components/atoms/form/field-error/FieldError";
 
-const FieldInfo: FC<{ field: AnyFieldApi; id?: string }> = ({ field, id }) => {
+export type Props = { field: AnyFieldApi; id?: string };
+
+function FieldInfo({ field, id }: Props) {
   return (
     <div id={id}>
       {field.state.meta.isTouched && !field.state.meta.isValid ? (
@@ -13,6 +14,6 @@ const FieldInfo: FC<{ field: AnyFieldApi; id?: string }> = ({ field, id }) => {
       ) : null}
     </div>
   );
-};
+}
 
 export default memo(FieldInfo);

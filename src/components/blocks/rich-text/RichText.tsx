@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -8,12 +8,14 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./RichText.module.css";
 
-const RichText: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
+export type Props = ComponentPropsWithRef<"div">;
+
+function RichText({ children, ...props }: Props) {
   return (
     <BaseBlock {...addClassNameToProps(props, styles.richText)}>
       <Text>{children}</Text>
     </BaseBlock>
   );
-};
+}
 
 export default memo(RichText);

@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, ComponentPropsWithRef, FC } from "react";
+import type { ChangeEventHandler, ComponentPropsWithRef } from "react";
 
 import { memo, useCallback, useMemo } from "react";
 
@@ -8,9 +8,9 @@ import Toggle from "@/components/atoms/form/collection/toggle/Toggle";
 
 import { useFieldContext } from "../Form.utils";
 
-type InputBooleanToggleProps = FieldProps & ComponentPropsWithRef<"input">;
+export type Props = FieldProps & ComponentPropsWithRef<"input">;
 
-const InputBooleanToggle: FC<InputBooleanToggleProps> = ({ label, required, ...props }) => {
+function InputBooleanToggle({ label, required, ...props }: Props) {
   const field = useFieldContext<boolean>();
 
   const onChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
@@ -27,6 +27,6 @@ const InputBooleanToggle: FC<InputBooleanToggleProps> = ({ label, required, ...p
       {label}
     </Toggle>
   );
-};
+}
 
 export default memo(InputBooleanToggle);

@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { memo } from "react";
 
@@ -7,19 +7,19 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Input.module.css";
 
-const Input: FC<
-  {
-    /**
-     * Add a node before
-     */
-    iconBefore?: ReactNode;
+export type Props = {
+  /**
+   * Add a node before
+   */
+  iconBefore?: ReactNode;
 
-    /**
-     * Add a node after
-     */
-    iconAfter?: ReactNode;
-  } & ComponentPropsWithRef<"input">
-> = ({ iconBefore, iconAfter, ...props }) => {
+  /**
+   * Add a node after
+   */
+  iconAfter?: ReactNode;
+} & ComponentPropsWithRef<"input">;
+
+function Input({ iconBefore, iconAfter, ...props }: Props) {
   const element = <input {...addClassNameToProps(props, baseInput(), styles.input)} />;
 
   if ((iconBefore || iconAfter) && !["checkbox", "radio"].includes(props.type ?? "")) {
@@ -33,7 +33,7 @@ const Input: FC<
   }
 
   return element;
-};
+}
 
 /**
  * Input field

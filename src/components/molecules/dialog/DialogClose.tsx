@@ -1,12 +1,14 @@
 "use client";
 
-import type { FC, HTMLProps } from "react";
+import type { HTMLProps } from "react";
 
 import { cloneElement, isValidElement, memo, useCallback } from "react";
 
 import { useDialogContext } from "./Dialog.hooks";
 
-const DialogClose: FC<HTMLProps<HTMLButtonElement>> = ({ children, ...props }) => {
+export type Props = HTMLProps<HTMLButtonElement>;
+
+function DialogClose({ children, ...props }: Props) {
   const context = useDialogContext();
   const onClick = useCallback(() => {
     context.setOpen(false);
@@ -24,6 +26,6 @@ const DialogClose: FC<HTMLProps<HTMLButtonElement>> = ({ children, ...props }) =
       {children}
     </button>
   );
-};
+}
 
 export default memo(DialogClose);

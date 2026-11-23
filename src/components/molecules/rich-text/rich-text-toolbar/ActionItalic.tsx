@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useCallback } from "react";
 
@@ -14,7 +14,9 @@ import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
 import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
 import VisuallyHidden from "@/components/utils/visually-hidden/VisuallyHidden";
 
-const ActionItalic: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
+export type Props = ComponentPropsWithRef<"button">;
+
+function ActionItalic({ ...props }: Props) {
   const { editor } = useCurrentEditor();
   const t = useTranslations("common.richText.toolbar");
   const action = useCallback(() => {
@@ -42,7 +44,7 @@ const ActionItalic: FC<ComponentPropsWithRef<"button">> = ({ ...props }) => {
       <TooltipContent>{t("actions.italic.tooltip")}</TooltipContent>
     </Tooltip>
   );
-};
+}
 
 /**
  * Italic action

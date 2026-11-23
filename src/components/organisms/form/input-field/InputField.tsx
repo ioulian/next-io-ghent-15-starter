@@ -1,5 +1,5 @@
 import type { FieldProps } from "@/components/organisms/form/field/Field.types";
-import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { cloneElement, isValidElement, memo, useId } from "react";
 
@@ -11,25 +11,25 @@ import FieldInfo from "../field-info/FieldInfo";
 import { useFieldContext } from "../Form.utils";
 import { getAriaDescribedBy } from "./InputField.utils";
 
-const InputField: FC<
-  {
-    label: ReactNode;
-    required?: boolean;
-    disabled?: boolean;
-    description?: ReactNode;
-    passLabelToChildren?: boolean;
-    asFieldSet?: boolean;
-  } & ComponentPropsWithRef<typeof FormField>
-> = ({
+export type Props = {
+  label: ReactNode;
+  required?: boolean;
+  disabled?: boolean;
+  description?: ReactNode;
+  passLabelToChildren?: boolean;
+  asFieldSet?: boolean;
+} & ComponentPropsWithRef<typeof FormField>;
+
+function InputField({
   label,
   children,
   required = false,
   disabled = false,
   description,
   passLabelToChildren = false,
-  asFieldSet = false,
+  as,
   ...props
-}) => {
+}: Props) {
   const field = useFieldContext<string>();
   const descriptionId = useId();
   const infoId = useId();
@@ -38,10 +38,13 @@ const InputField: FC<
   const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
   const describedBy = getAriaDescribedBy(infoId, !!description && descriptionId);
 
+  const asFieldSet = as === "fieldset";
+  const htmlForObj = asFieldSet ? { htmlFor: id } : {};
+
   return (
-    <FormField asFieldSet={asFieldSet} disabled={disabled} {...props}>
+    <FormField as={as} disabled={disabled} {...props}>
       {!passLabelToChildren ? (
-        <Label as={asFieldSet ? "legend" : "label"} htmlFor={asFieldSet ? undefined : id} required={required}>
+        <Label as={asFieldSet ? "legend" : "label"} {...htmlForObj} required={required}>
           {label}
         </Label>
       ) : null}
@@ -60,6 +63,6 @@ const InputField: FC<
       <FieldInfo field={field} id={infoId} />
     </FormField>
   );
-};
+}
 
 export default memo(InputField);

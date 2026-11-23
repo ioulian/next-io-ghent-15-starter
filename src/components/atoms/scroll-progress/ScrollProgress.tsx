@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useMemo } from "react";
 
@@ -7,19 +7,24 @@ import { addClassNameToProps } from "@/utils/styles";
 import styles from "./ScrollProgress.module.css";
 
 // https://webkit.org/blog/17101/a-guide-to-scroll-driven-animations-with-just-css/
-const ScrollProgress: FC<
-  {
-    /**
-     * Main color
-     */
-    mainColor?: string;
+export type Props = {
+  /**
+   * Main color
+   */
+  mainColor?: string;
 
-    /**
-     * Background color
-     */
-    backgroundColor?: string;
-  } & ComponentPropsWithRef<"div">
-> = ({ mainColor = "var(--color-primary-200)", backgroundColor = "var(--color-secondary-200)", style, ...props }) => {
+  /**
+   * Background color
+   */
+  backgroundColor?: string;
+} & ComponentPropsWithRef<"div">;
+
+function ScrollProgress({
+  mainColor = "var(--color-primary-200)",
+  backgroundColor = "var(--color-secondary-200)",
+  style,
+  ...props
+}: Props) {
   const newStyle = useMemo(
     () => ({
       ...(style ?? {}),
@@ -30,7 +35,7 @@ const ScrollProgress: FC<
   );
 
   return <div {...addClassNameToProps(props, styles.scrollProgress)} style={newStyle} />;
-};
+}
 
 /**
  * Scroll Progress bar component

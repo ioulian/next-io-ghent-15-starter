@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { memo } from "react";
 
@@ -7,7 +7,9 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Hero.module.css";
 
-const Hero: FC<{ media?: ReactNode } & ComponentPropsWithRef<"div">> = ({ media, children, ...props }) => {
+export type Props = { media?: ReactNode } & ComponentPropsWithRef<"div">;
+
+function Hero({ media, children, ...props }: Props) {
   return (
     <div {...addClassNameToProps(props, styles.hero)}>
       <div className={styles.background}>{media}</div>
@@ -16,6 +18,6 @@ const Hero: FC<{ media?: ReactNode } & ComponentPropsWithRef<"div">> = ({ media,
       </Layout>
     </div>
   );
-};
+}
 
 export default memo(Hero);

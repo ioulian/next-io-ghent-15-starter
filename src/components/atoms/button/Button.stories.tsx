@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
+import Link from "next/link";
+
 import Tooltip from "@/components/molecules/tooltip/Tooltip";
 import TooltipContent from "@/components/molecules/tooltip/TooltipContent";
 import TooltipTrigger from "@/components/molecules/tooltip/TooltipTrigger";
@@ -106,5 +108,33 @@ export const Text: Story = {
     disabled: false,
     isLoading: false,
     fullWidth: false,
+  },
+};
+
+export const AsLink: Story = {
+  render: (args) => <Button as="a" href="/another-page" {...args} />,
+  args: {
+    size: "base",
+    variant: "simple",
+    children: "Settings",
+    disabled: false,
+    isLoading: false,
+    fullWidth: false,
+  },
+};
+
+export const NextLink: Story = {
+  render: (args) => (
+    <Button as={Link} href={{ pathname: "/test" }} target="_blank" rel="noreferrer" variant={args.variant}>
+      {args.children}
+    </Button>
+  ),
+  args: {
+    variant: "primary",
+    children: "Navigate to another page",
+    iconOnly: false,
+    fullWidth: false,
+    size: "normal",
+    iconAfter: <SvgSprite name="tablerChevronRight" />,
   },
 };

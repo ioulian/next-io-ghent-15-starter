@@ -1,5 +1,5 @@
 import type { WithRequired } from "@/types/helpers";
-import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { memo, useMemo } from "react";
 
@@ -14,9 +14,12 @@ import Mobile from "./mobile/Mobile";
 import stylesStickyShadow from "./../../utils/sticky-shadow/StickyShadow.module.css";
 import styles from "./Header.module.css";
 
-const Header: FC<
-  { topMenu?: ReactNode; actions?: ReactNode } & WithRequired<ComponentPropsWithRef<"header">, "children">
-> = ({ topMenu, actions, children, ...props }) => {
+export type Props = { topMenu?: ReactNode; actions?: ReactNode } & WithRequired<
+  ComponentPropsWithRef<"header">,
+  "children"
+>;
+
+function Header({ topMenu, actions, children, ...props }: Props) {
   const headerStyle = useMemo(
     () => ({
       "--sticky-shadow": createSmoothShadow(presetDefault),
@@ -39,6 +42,6 @@ const Header: FC<
       </HeaderContext>
     </header>
   );
-};
+}
 
 export default memo(Header);

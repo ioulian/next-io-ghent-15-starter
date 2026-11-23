@@ -1,6 +1,5 @@
 "use client";
 
-import type { FC } from "react";
 import type { ReactPaginateProps } from "react-paginate";
 
 import { memo } from "react";
@@ -11,7 +10,9 @@ import ReactPaginate from "react-paginate";
 
 import styles from "./Pagination.module.css";
 
-const Pagination: FC<ReactPaginateProps> = (props) => {
+export type Props = ReactPaginateProps;
+
+function Pagination(props: Props) {
   const t = useTranslations("common.pagination");
 
   return (
@@ -38,7 +39,7 @@ const Pagination: FC<ReactPaginateProps> = (props) => {
       />
     </div>
   );
-};
+}
 
 /**
  * Pagination wrapper around `react-paginate`, providing correct translations and styling.

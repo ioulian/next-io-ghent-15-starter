@@ -1,15 +1,15 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
 import { useCellContext } from "../DataTable.utils";
 
-type NumberCellProps = {} & ComponentPropsWithRef<"span">;
+export type Props = ComponentPropsWithRef<"span">;
 
-const NumberCell: FC<NumberCellProps> = ({ ...props }) => {
+function NumberCell({ ...props }: Props) {
   const cell = useCellContext<number>();
 
   return <span {...props}>{cell.getValue().toLocaleString()}</span>;
-};
+}
 
 export default memo(NumberCell);

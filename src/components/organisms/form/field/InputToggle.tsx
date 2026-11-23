@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ChangeEventHandler, ComponentPropsWithRef, ReactNode } from "react";
 
 import { memo, useCallback } from "react";
 
@@ -8,10 +8,9 @@ import Toggle from "@/components/atoms/form/collection/toggle/Toggle";
 
 import { useFieldContext } from "../Form.utils";
 
-type InputToggleProps = { label: ReactNode; value: string } & FieldProps &
-  Omit<ComponentPropsWithRef<"input">, "value">;
+export type Props = { label: ReactNode; value: string } & FieldProps & Omit<ComponentPropsWithRef<"input">, "value">;
 
-const InputToggle: FC<InputToggleProps> = ({ value, label, id, ...props }) => {
+function InputToggle({ value, label, id, ...props }: Props) {
   const field = useFieldContext<string[] | undefined>();
   const onChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (e) => {
@@ -37,6 +36,6 @@ const InputToggle: FC<InputToggleProps> = ({ value, label, id, ...props }) => {
       {label}
     </Toggle>
   );
-};
+}
 
 export default memo(InputToggle);

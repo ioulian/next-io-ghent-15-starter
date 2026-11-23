@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 import type { VariantProps } from "tailwind-variants";
 
 import { memo, useMemo } from "react";
@@ -11,12 +11,12 @@ import { paragraph } from "./Paragraph.styles";
 
 export type ParagraphSize = VariantProps<typeof paragraph>["size"];
 
-const Paragraph: FC<
-  {
-    size?: ParagraphSize;
-    maxLines?: number;
-  } & ComponentPropsWithRef<"p">
-> = ({ size, children, maxLines, style, ...props }) => {
+export type Props = {
+  size?: ParagraphSize;
+  maxLines?: number;
+} & ComponentPropsWithRef<"p">;
+
+function Paragraph({ size, children, maxLines, style, ...props }: Props) {
   const isClamped = isNumber(maxLines);
   const newStyle = useMemo(
     () => ({
@@ -31,8 +31,6 @@ const Paragraph: FC<
       {children}
     </p>
   );
-};
-
-Paragraph.displayName = "Paragraph";
+}
 
 export default memo(Paragraph);

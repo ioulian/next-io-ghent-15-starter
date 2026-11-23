@@ -1,5 +1,5 @@
 import type { CompositeProps } from "@floating-ui/react";
-import type { FC, HTMLAttributes, HTMLProps } from "react";
+import type { HTMLAttributes, HTMLProps } from "react";
 
 import { memo, useCallback } from "react";
 
@@ -9,7 +9,9 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./MenuBar.module.css";
 
-const MenuBar: FC<HTMLProps<HTMLElement> & CompositeProps> = ({ ...props }) => {
+export type Props = HTMLProps<HTMLElement> & CompositeProps;
+
+function MenuBar({ ...props }: Props) {
   const defaultRender = useCallback((props: HTMLAttributes<HTMLElement>) => <nav {...props} />, []);
 
   return (
@@ -20,6 +22,6 @@ const MenuBar: FC<HTMLProps<HTMLElement> & CompositeProps> = ({ ...props }) => {
       {...addClassNameToProps(props, styles.menuBar)}
     />
   );
-};
+}
 
 export default memo(MenuBar);

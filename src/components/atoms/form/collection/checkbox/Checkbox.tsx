@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -7,9 +7,12 @@ import SingleCheckbox from "../../single-checkbox/SingleCheckbox";
 
 import styles from "./Checkbox.module.css";
 
-const Checkbox: FC<
-  { isError?: boolean; labelProps?: ComponentPropsWithRef<typeof Label> } & ComponentPropsWithRef<"input">
-> = ({ id, name, value, children, labelProps, ...props }) => {
+export type Props = {
+  isError?: boolean;
+  labelProps?: ComponentPropsWithRef<typeof Label>;
+} & ComponentPropsWithRef<"input">;
+
+function Checkbox({ id, name, value, children, labelProps, ...props }: Props) {
   const linkedId = value ? `${id}-${value}` : id;
 
   return (
@@ -20,7 +23,7 @@ const Checkbox: FC<
       </Label>
     </div>
   );
-};
+}
 
 /**
  * Checkbox field

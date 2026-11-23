@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, HTMLProps } from "react";
+import type { HTMLProps } from "react";
 
 import { cloneElement, isValidElement, memo } from "react";
 
@@ -8,7 +8,9 @@ import { useMergeRefs } from "@floating-ui/react";
 
 import { usePopoverContext } from "./Popover.hooks";
 
-const PopoverTrigger: FC<HTMLProps<HTMLElement>> = ({ children, ref: propRef, ...props }) => {
+export type Props = HTMLProps<HTMLElement>;
+
+function PopoverTrigger({ children, ref: propRef, ...props }: Props) {
   const context = usePopoverContext();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -38,6 +40,6 @@ const PopoverTrigger: FC<HTMLProps<HTMLElement>> = ({ children, ref: propRef, ..
       {children}
     </button>
   );
-};
+}
 
 export default memo(PopoverTrigger);

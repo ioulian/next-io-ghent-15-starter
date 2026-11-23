@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -9,7 +9,9 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./FieldError.module.css";
 
-const FieldError: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
+export type Props = ComponentPropsWithRef<"div">;
+
+function FieldError({ children, ...props }: Props) {
   const t = useTranslations("common.form");
 
   return (
@@ -18,7 +20,7 @@ const FieldError: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) =>
       {children}
     </div>
   );
-};
+}
 
 /**
  * Error message for the form field

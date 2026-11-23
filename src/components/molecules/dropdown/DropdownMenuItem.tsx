@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, FocusEvent, HTMLProps, KeyboardEvent, MouseEvent } from "react";
+import type { FocusEvent, HTMLProps, KeyboardEvent, MouseEvent } from "react";
 
 import { cloneElement, isValidElement, memo, useCallback, useContext } from "react";
 
@@ -10,7 +10,9 @@ import type { MenuContextType, WithTypeAheadKey } from "./Dropdown";
 
 import { MenuContext } from "./Dropdown";
 
-const DropdownMenuItem: FC<{ closeOnClick?: boolean } & WithTypeAheadKey & HTMLProps<HTMLButtonElement>> = ({
+export type Props = { closeOnClick?: boolean } & WithTypeAheadKey & HTMLProps<HTMLButtonElement>;
+
+function DropdownMenuItem({
   children,
   typeaheadKey,
   disabled,
@@ -20,7 +22,7 @@ const DropdownMenuItem: FC<{ closeOnClick?: boolean } & WithTypeAheadKey & HTMLP
   onMouseEnter,
   ref: forwardedRef,
   ...props
-}) => {
+}: Props) {
   const menu = useContext(MenuContext);
   const item = useListItem({ label: disabled ? null : typeaheadKey });
   const tree = useFloatingTree();
@@ -115,6 +117,6 @@ const DropdownMenuItem: FC<{ closeOnClick?: boolean } & WithTypeAheadKey & HTMLP
       {children}
     </button>
   );
-};
+}
 
 export default memo(DropdownMenuItem);

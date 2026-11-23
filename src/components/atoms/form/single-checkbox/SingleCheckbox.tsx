@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useEffect, useImperativeHandle, useRef } from "react";
 
@@ -10,11 +10,9 @@ import { addClassNameToProps } from "@/utils/styles";
 import inputStyles from "./../input/Input.module.css";
 import styles from "./SingleCheckbox.module.css";
 
-const SingleCheckbox: FC<{ indeterminate?: boolean } & Omit<ComponentPropsWithRef<"input">, "children">> = ({
-  indeterminate,
-  ref,
-  ...props
-}) => {
+export type Props = { indeterminate?: boolean } & Omit<ComponentPropsWithRef<"input">, "children">;
+
+function SingleCheckbox({ indeterminate, ref, ...props }: Props) {
   const innerRef = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => innerRef.current!, []);
 
@@ -33,7 +31,7 @@ const SingleCheckbox: FC<{ indeterminate?: boolean } & Omit<ComponentPropsWithRe
       ref={innerRef}
     />
   );
-};
+}
 
 /**
  * Single checkbox component, use this when the value should be a boolean (instead of an array/object).

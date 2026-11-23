@@ -1,5 +1,5 @@
 import type { RenderOptions } from "@testing-library/react";
-import type { FC, PropsWithChildren, ReactNode } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 
 import { act, render } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
@@ -8,13 +8,13 @@ import { wait } from "@/utils/promises";
 
 import defaultMessages from "../../messages/en-GB/common.json";
 
-const AllTheProviders: FC<PropsWithChildren> = ({ children }) => {
+function AllTheProviders({ children }: PropsWithChildren) {
   return (
     <NextIntlClientProvider locale="en-GB" messages={defaultMessages}>
       {children}
     </NextIntlClientProvider>
   );
-};
+}
 
 const customRender = (ui: ReactNode, options?: RenderOptions) => render(ui, { wrapper: AllTheProviders, ...options });
 

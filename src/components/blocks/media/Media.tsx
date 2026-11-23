@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -7,8 +7,10 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Media.module.css";
 
-const Media: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
+export type Props = ComponentPropsWithRef<"div">;
+
+function Media({ children, ...props }: Props) {
   return <BaseBlock {...addClassNameToProps(props, styles.media)}>{children}</BaseBlock>;
-};
+}
 
 export default memo(Media);

@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -11,14 +11,14 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Select.module.css";
 
-const Select: FC<
-  {
-    /**
-     * Add empty option as first item
-     */
-    addEmptyOption?: boolean | string;
-  } & ComponentPropsWithRef<"select">
-> = ({ addEmptyOption = false, children, ...props }) => {
+export type Props = {
+  /**
+   * Add empty option as first item
+   */
+  addEmptyOption?: boolean | string;
+} & ComponentPropsWithRef<"select">;
+
+function Select({ addEmptyOption = false, children, ...props }: Props) {
   const t = useTranslations("common.form");
 
   return (
@@ -32,7 +32,7 @@ const Select: FC<
       {children}
     </select>
   );
-};
+}
 
 /**
  * Select field

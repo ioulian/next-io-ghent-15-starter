@@ -1,7 +1,7 @@
 "use client";
 
-import type { WithRequired } from "@/types/helpers";
-import type { ComponentPropsWithRef, FC, MouseEvent as ReactMouseEvent, ReactNode } from "react";
+import type { PolymorphicProps } from "@/types/helpers";
+import type { ElementType, MouseEvent as ReactMouseEvent, ReactNode } from "react";
 import type { VariantProps } from "tailwind-variants";
 
 import { cloneElement, isValidElement, memo, useCallback } from "react";
@@ -14,49 +14,55 @@ import { addClassNameToProps } from "@/utils/styles";
 import Spinner from "../spinner/Spinner";
 import { button } from "./Button.styles";
 
-type Props = {
-  /**
-   * Variant of the button
-   */
-  variant?: VariantProps<typeof button>["variant"];
+export type Props<E extends ElementType = "button"> = PolymorphicProps<
+  E,
+  {
+    /**
+     * Variant of the button
+     */
+    variant?: VariantProps<typeof button>["variant"];
 
-  /**
-   * Size of the button
-   */
-  size?: VariantProps<typeof button>["size"];
+    /**
+     * Size of the button
+     */
+    size?: VariantProps<typeof button>["size"];
 
-  /**
-   * Should button be rendered full width
-   */
-  fullWidth?: boolean;
+    /**
+     * Should button be rendered full width
+     */
+    fullWidth?: boolean;
 
-  /**
-   * Show progress bar
-   */
-  isLoading?: boolean;
+    /**
+     * Show progress bar
+     */
+    isLoading?: boolean;
 
-  /**
-   * Add an icon before
-   */
-  iconBefore?: ReactNode;
+    /**
+     * Add an icon before
+     */
+    iconBefore?: ReactNode;
 
-  /**
-   * Add an icon after
-   */
-  iconAfter?: ReactNode;
+    /**
+     * Add an icon after
+     */
+    iconAfter?: ReactNode;
 
-  /**
-   * Will hide children and show icons only
-   */
-  iconOnly?: boolean;
+    /**
+     * Will hide children and show icons only
+     */
+    iconOnly?: boolean;
 
-  /**
-   * Should the element be able to be clicked on
-   */
-  disabled?: boolean;
-} & WithRequired<ComponentPropsWithRef<"button">, "children">;
+    /**
+     * Should the element be able to be clicked on
+     */
+    disabled?: boolean;
 
-const Button: FC<Props> = ({
+    children: ReactNode;
+  }
+>;
+
+function Button<E extends ElementType = "button">({
+  as,
   variant,
   size,
   fullWidth,
@@ -68,7 +74,8 @@ const Button: FC<Props> = ({
   onClick,
   children,
   ...props
-}) => {
+}: Props<E>) {
+  const Component: ElementType = as ?? "button";
   const t = useTranslations("common.button");
   const newOnClick = useCallback(
     (e: ReactMouseEvent<HTMLButtonElement, MouseEvent> & ReactMouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -82,8 +89,8 @@ const Button: FC<Props> = ({
   const classes = button({ variant, size, isLoading, fullWidth });
 
   return (
-    <button
-      type="button"
+    <Component
+      type={Component === "button" ? "button" : undefined}
       {...props}
       disabled={disabled}
       aria-disabled={isLoading || disabled ? true : undefined}
@@ -110,11 +117,11 @@ const Button: FC<Props> = ({
         aria-hidden={!isLoading}
         aria-label={isLoading ? t("spinner.aria-label") : ""}
       />
-    </button>
+    </Component>
   );
-};
+}
 
 /**
  * Generic button component
  */
-export default memo(Button);
+export default memo(Button) as typeof Button;

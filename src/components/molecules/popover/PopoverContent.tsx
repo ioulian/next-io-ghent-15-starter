@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, HTMLProps } from "react";
+import type { HTMLProps } from "react";
 
 import { Fragment, memo, useCallback, useMemo } from "react";
 
@@ -21,12 +21,9 @@ import { zoomAnimation } from "@/components/atoms/floater/Floater.animations";
 
 import { usePopoverContext } from "./Popover.hooks";
 
-const PopoverContent: FC<{ withCloseButton?: boolean; showArrow?: boolean } & HTMLProps<HTMLDivElement>> = ({
-  withCloseButton = false,
-  showArrow,
-  ref: propRef,
-  ...props
-}) => {
+export type Props = { withCloseButton?: boolean; showArrow?: boolean } & HTMLProps<HTMLDivElement>;
+
+function PopoverContent({ withCloseButton = false, showArrow, ref: propRef, ...props }: Props) {
   const t = useTranslations("common.closeButton");
   const context = usePopoverContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
@@ -70,6 +67,6 @@ const PopoverContent: FC<{ withCloseButton?: boolean; showArrow?: boolean } & HT
       </FloatingNode>
     </Wrapper>
   );
-};
+}
 
 export default memo(PopoverContent);

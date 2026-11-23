@@ -1,7 +1,7 @@
 "use client";
 
 import type { SvgSpriteName } from "@/components/atoms/svg-sprite/SvgSprite.generated";
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -12,9 +12,9 @@ import SvgSprite from "@/components/atoms/svg-sprite/SvgSprite";
 
 import { useHeaderContext, useTableContext } from "../DataTable.utils";
 
-type THeadButtonProps = {} & ComponentPropsWithRef<"button">;
+export type Props = ComponentPropsWithRef<"button">;
 
-const SortButton: FC<THeadButtonProps> = ({ ...props }) => {
+function SortButton({ ...props }: Props) {
   const table = useTableContext();
   const header = useHeaderContext();
   const t = useTranslations("common.dataTable");
@@ -55,6 +55,6 @@ const SortButton: FC<THeadButtonProps> = ({ ...props }) => {
       <SvgSprite name={icon} />
     </button>
   );
-};
+}
 
 export default memo(SortButton);

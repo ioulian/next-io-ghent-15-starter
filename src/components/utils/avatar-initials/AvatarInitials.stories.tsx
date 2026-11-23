@@ -1,13 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import type { FC } from "react";
 
 import { getAvatarInitials } from "./AvatarInitials.utilities";
 
-const AvatarInitials: FC<{
-  initials: string;
-  backgroundColor: string;
-  textColor?: string;
-}> = ({ initials, backgroundColor, textColor }) => {
+function AvatarInitials({
+  initials,
+  backgroundColor,
+  textColor,
+}: {
+  readonly initials: string;
+  readonly backgroundColor: string;
+  readonly textColor?: string;
+}) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
@@ -16,7 +19,7 @@ const AvatarInitials: FC<{
       alt=""
     />
   );
-};
+}
 
 const meta: Meta<typeof AvatarInitials> = {
   title: "UI/Utils/Avatar Initials",

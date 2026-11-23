@@ -1,6 +1,6 @@
 "use client";
 
-import type { Dispatch, FC, HTMLProps, ReactNode, SetStateAction } from "react";
+import type { Dispatch, HTMLProps, ReactNode, SetStateAction } from "react";
 
 import { createContext, memo } from "react";
 
@@ -40,7 +40,9 @@ export interface DropdownMenuProps {
   children?: ReactNode;
 }
 
-const Dropdown: FC<DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButtonElement>> = (props) => {
+export type Props = DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButtonElement>;
+
+function Dropdown(props: Props) {
   const parentId = useFloatingParentNodeId();
 
   if (parentId === null) {
@@ -52,6 +54,6 @@ const Dropdown: FC<DropdownMenuProps & WithTypeAheadKey & HTMLProps<HTMLButtonEl
   }
 
   return <DropdownMenu {...props} />;
-};
+}
 
 export default memo(Dropdown);

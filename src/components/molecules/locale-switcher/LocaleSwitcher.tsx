@@ -1,5 +1,3 @@
-import type { FC } from "react";
-
 import { memo } from "react";
 
 import { locales } from "@/i18n/constants";
@@ -11,7 +9,7 @@ import styles from "./LocaleSwitcher.module.css";
 // names set by `LocaleItem`, which module hashing would rewrite.
 import "./LocaleItem.view-transitions.css";
 
-const LocaleSwitcher: FC = () => {
+function LocaleSwitcher() {
   return (
     <nav>
       <ul className={styles.list} role="list">
@@ -23,7 +21,7 @@ const LocaleSwitcher: FC = () => {
       </ul>
     </nav>
   );
-};
+}
 
 /**
  * Locale switcher component. Will render buttons to switch different locales.

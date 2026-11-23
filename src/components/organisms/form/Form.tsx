@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentPropsWithRef, FC, SubmitEventHandler } from "react";
+import type { ComponentPropsWithRef, SubmitEventHandler } from "react";
 
 import { memo, useCallback } from "react";
 
@@ -10,11 +10,9 @@ import { useFormContext } from "./Form.utils";
 
 import styles from "./Form.module.css";
 
-const Form: FC<{} & Omit<ComponentPropsWithRef<"form">, "onSubmit">> = ({
-  children,
+export type Props = Omit<ComponentPropsWithRef<"form">, "onSubmit">;
 
-  ...props
-}) => {
+function Form({ children, ...props }: Props) {
   const form = useFormContext();
 
   const onSubmit = useCallback<SubmitEventHandler<HTMLFormElement>>(
@@ -41,6 +39,6 @@ const Form: FC<{} & Omit<ComponentPropsWithRef<"form">, "onSubmit">> = ({
       )}
     </form.Subscribe>
   );
-};
+}
 
 export default memo(Form);

@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, ComponentPropsWithRef, FC, MouseEventHandler } from "react";
+import type { ChangeEventHandler, ComponentPropsWithRef, MouseEventHandler } from "react";
 
 import { memo, useCallback } from "react";
 
@@ -9,9 +9,9 @@ import Input from "@/components/atoms/form/input/Input";
 
 import { useHeaderContext, useTableContext } from "../DataTable.utils";
 
-type ColumnFilterProps = {} & ComponentPropsWithRef<"div">;
+export type Props = ComponentPropsWithRef<"div">;
 
-const ColumnFilter: FC<ColumnFilterProps> = ({ onClick, ...props }) => {
+function ColumnFilter({ onClick, ...props }: Props) {
   const t = useTranslations("common.dataTable");
   const header = useHeaderContext();
   const table = useTableContext();
@@ -48,6 +48,6 @@ const ColumnFilter: FC<ColumnFilterProps> = ({ onClick, ...props }) => {
       />
     </div>
   );
-};
+}
 
 export default memo(ColumnFilter);

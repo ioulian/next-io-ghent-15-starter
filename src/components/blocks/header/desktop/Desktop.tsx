@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -12,7 +12,9 @@ import { useActions, useTopMenuItems } from "../Desktop.hooks";
 
 import styles from "./Desktop.module.css";
 
-const Desktop: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
+export type Props = ComponentPropsWithRef<"div">;
+
+function Desktop({ children, ...props }: Props) {
   const topMenuItems = useTopMenuItems();
   const actions = useActions();
 
@@ -39,6 +41,6 @@ const Desktop: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
       </div>
     </div>
   );
-};
+}
 
 export default memo(Desktop);

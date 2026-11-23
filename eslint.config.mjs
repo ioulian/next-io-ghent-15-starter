@@ -117,6 +117,7 @@ const eslintConfig = defineConfig([
       "sonarjs/no-redundant-optional": "off",
       // As we use generic tests
       "sonarjs/no-empty-test-file": "off",
+      "sonarjs/prefer-read-only-props": "off",
     },
   },
 

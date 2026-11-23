@@ -1,7 +1,7 @@
 "use client";
 
 import type { Placement, UseTransitionStylesProps } from "@floating-ui/react";
-import type { ComponentPropsWithRef, FC, HTMLProps } from "react";
+import type { ComponentPropsWithRef, ComponentType, HTMLProps } from "react";
 import type { VariantProps } from "tailwind-variants";
 
 import { Fragment, memo, useCallback, useEffect, useState } from "react";
@@ -27,16 +27,16 @@ import { dialogAnimation, dialogOverlayAnimation } from "@/components/atoms/floa
 import { useDialogContext } from "./Dialog.hooks";
 import { overlay } from "./Dialog.styles";
 
-export type DialogContentWrapperProps = FC<ComponentPropsWithRef<"div"> & { placement: Placement }>;
+export type DialogContentWrapperProps = ComponentType<ComponentPropsWithRef<"div"> & { placement: Placement }>;
 
-const DialogContent: FC<
-  {
-    withCloseButton?: boolean;
-    wrapper?: DialogContentWrapperProps;
-    animation?: UseTransitionStylesProps;
-    overlayRendering?: VariantProps<typeof overlay>["rendering"];
-  } & HTMLProps<HTMLDivElement>
-> = ({
+export type Props = {
+  withCloseButton?: boolean;
+  wrapper?: DialogContentWrapperProps;
+  animation?: UseTransitionStylesProps;
+  overlayRendering?: VariantProps<typeof overlay>["rendering"];
+} & HTMLProps<HTMLDivElement>;
+
+function DialogContent({
   withCloseButton,
   ref: propRef,
   className,
@@ -44,7 +44,7 @@ const DialogContent: FC<
   wrapper: DialogContentWrapper = Floater,
   animation = dialogAnimation,
   ...props
-}) => {
+}: Props) {
   const t = useTranslations("common.closeButton");
   const context = useDialogContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
@@ -107,6 +107,6 @@ const DialogContent: FC<
       </FloatingNode>
     </Wrapper>
   );
-};
+}
 
 export default memo(DialogContent);

@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 import type { ZodType } from "zod";
 
 import { userEvent } from "storybook/test";
@@ -18,11 +18,11 @@ const schema: ZodType<TestFormData, TestFormData> = z.object({
   test: z.string({ message: "Error" }).trim().min(1, { message: "Error" }),
 });
 
-const SampleForm: FC<{ onSubmit?: () => void; onError?: () => void } & ComponentPropsWithRef<typeof Form>> = ({
+function SampleForm({
   onSubmit,
   onError,
   ...props
-}) => {
+}: { onSubmit?: () => void; onError?: () => void } & ComponentPropsWithRef<typeof Form>) {
   const form = useAppForm({
     defaultValues: { test: "" } as TestFormData,
     validators: {
@@ -57,7 +57,7 @@ const SampleForm: FC<{ onSubmit?: () => void; onError?: () => void } & Component
       </Form>
     </form.AppForm>
   );
-};
+}
 
 describe("Form", () => {
   describeGeneralTests(<SampleForm />, () => ({ render }));

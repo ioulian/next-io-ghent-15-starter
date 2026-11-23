@@ -1,12 +1,14 @@
-import type { FC, MouseEventHandler, ReactNode } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
 
 import { memo, useCallback } from "react";
 
 import { useFormContext } from "@/components/organisms/form/Form.utils";
 
-const Reset: FC<{
+export type Props = {
   children: (reset: MouseEventHandler<HTMLButtonElement>, canReset: boolean) => ReactNode;
-}> = ({ children }) => {
+};
+
+function Reset({ children }: Props) {
   const form = useFormContext();
 
   const reset = useCallback<MouseEventHandler<HTMLButtonElement>>(
@@ -23,6 +25,6 @@ const Reset: FC<{
       {(isDefaultValue) => children(reset, !isDefaultValue)}
     </form.Subscribe>
   );
-};
+}
 
 export default memo(Reset);

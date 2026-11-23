@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, HTMLProps } from "react";
+import type { HTMLProps } from "react";
 
 import { cloneElement, isValidElement, memo, useLayoutEffect } from "react";
 
@@ -8,7 +8,9 @@ import { useId } from "@floating-ui/react";
 
 import { useDialogContext } from "./Dialog.hooks";
 
-const DialogDescription: FC<HTMLProps<HTMLParagraphElement>> = ({ children, ...props }) => {
+export type Props = HTMLProps<HTMLParagraphElement>;
+
+function DialogDescription({ children, ...props }: Props) {
   const { setDescriptionId } = useDialogContext();
   const id = useId();
 
@@ -31,6 +33,6 @@ const DialogDescription: FC<HTMLProps<HTMLParagraphElement>> = ({ children, ...p
       {children}
     </p>
   );
-};
+}
 
 export default memo(DialogDescription);

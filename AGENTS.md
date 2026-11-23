@@ -74,8 +74,8 @@ Use these instead of relative paths when leaving the current component area:
 - **Goal:** A component should not re-render when its props are effectively the same. Use `memo`, `useMemo`, and `useCallback` to keep references stable where it matters.
 
 - **memo:** Wrap every React component in `memo()` and export as default:
-  - `const Component: FC<Props> = (props) => { ... }; export default memo(Component);`
-- Use a **named type** for props (e.g. `type Props = { ... }`) and `FC<Props>`. Export the props type when the component is part of a public API.
+  - `export type Props = { ... }; function Component({ ...props }: Props) { ... } export default memo(Component);`
+- Use an exported **`Props`** type for the component’s props. For polymorphic/generic components, keep `export default memo(Component) as typeof Component`.
 
 - **Stable props for memoized children:** If a parent passes **objects**, **arrays**, or **functions** to a `memo()`-wrapped child, those props are compared by reference. To avoid unnecessary re-renders:
   - **Callbacks:** Use `useCallback` when the callback is passed to a memoized child or appears in a dependency array and you need a stable reference across parent re-renders.
@@ -195,7 +195,7 @@ Use these instead of relative paths when leaving the current component area:
 
 When adding features to this boilerplate (or a project created from it):
 
-1. **Components:** One folder per component (PascalCase), `ComponentName.tsx` + styles/hooks/tests/stories as above; export default `memo(Component)`.
+1. **Components:** One folder per component (PascalCase), `ComponentName.tsx` + styles/hooks/tests/stories as above; `export type Props`, `function Component`, export default `memo(Component)`.
 2. **Re-renders:** Use `memo` on components; use `useCallback` / `useMemo` where referential stability matters (e.g. props to memoized children, effect deps, render props).
 3. **Compound components:** Prefer composition + context in `ComponentName.hooks.ts`; avoid prop drilling and huge prop lists.
 4. **Icons:** Use `<SvgSprite name="…" />`; add new SVGs via `src/svg-sprites/` or `scripts/svg-sprite/constants.ts`, then `pnpm svg-sprite:build`.

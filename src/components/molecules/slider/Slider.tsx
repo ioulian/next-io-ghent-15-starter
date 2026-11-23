@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import type { SwiperProps } from "swiper/react";
 
 import { memo } from "react";
@@ -12,7 +12,9 @@ import styles from "./Slider.module.css";
 
 import "./Slider.css";
 
-const Slider: FC<PropsWithChildren<SwiperProps>> = ({ children, modules, ...props }) => {
+export type Props = PropsWithChildren<SwiperProps>;
+
+function Slider({ children, modules, ...props }: Props) {
   return (
     <div className={styles.sliderContainer}>
       <Swiper {...props} modules={Array.isArray(modules) ? [...modules, A11y] : [A11y]}>
@@ -20,7 +22,7 @@ const Slider: FC<PropsWithChildren<SwiperProps>> = ({ children, modules, ...prop
       </Swiper>
     </div>
   );
-};
+}
 
 /**
  * Wrapper around `swiper` component.

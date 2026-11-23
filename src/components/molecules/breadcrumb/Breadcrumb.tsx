@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { Children, cloneElement, isValidElement, memo } from "react";
 
@@ -8,7 +8,9 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Breadcrumb.module.css";
 
-const Breadcrumb: FC<ComponentPropsWithRef<"nav">> = ({ children, ...props }) => {
+export type Props = ComponentPropsWithRef<"nav">;
+
+function Breadcrumb({ children, ...props }: Props) {
   const t = useTranslations("common");
 
   return (
@@ -33,7 +35,7 @@ const Breadcrumb: FC<ComponentPropsWithRef<"nav">> = ({ children, ...props }) =>
       </ol>
     </nav>
   );
-};
+}
 
 /**
  * Breadcrumb component, just render some links in it, it will handle the separation of them

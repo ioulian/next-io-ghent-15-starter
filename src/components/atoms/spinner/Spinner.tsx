@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 import type { VariantProps } from "tailwind-variants";
 
 import { memo, useMemo } from "react";
@@ -9,29 +9,29 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { backgroundColorVar, primaryColorVar, secondaryColorVar, spinner } from "./Spinner.styles";
 
-const Spinner: FC<
-  {
-    /**
-     * Main color of the spinner
-     */
-    primaryColor?: string;
+export type Props = {
+  /**
+   * Main color of the spinner
+   */
+  primaryColor?: string;
 
-    /**
-     * Secondary color of the spinner, but is by default not visible
-     */
-    secondaryColor?: string;
+  /**
+   * Secondary color of the spinner, but is by default not visible
+   */
+  secondaryColor?: string;
 
-    /**
-     * Background color of the spinner, usefull when using a spinner inside a component as full size
-     */
-    backgroundColor?: string;
+  /**
+   * Background color of the spinner, usefull when using a spinner inside a component as full size
+   */
+  backgroundColor?: string;
 
-    /**
-     * Size of the spinner
-     */
-    size?: VariantProps<typeof spinner>["size"];
-  } & ComponentPropsWithRef<"div">
-> = ({
+  /**
+   * Size of the spinner
+   */
+  size?: VariantProps<typeof spinner>["size"];
+} & ComponentPropsWithRef<"div">;
+
+function Spinner({
   children,
   style,
   primaryColor = "currentColor",
@@ -39,7 +39,7 @@ const Spinner: FC<
   backgroundColor = "transparent",
   size,
   ...props
-}) => {
+}: Props) {
   const spinnerStyle = useMemo(
     () => ({
       ...(style ?? {}),
@@ -71,7 +71,7 @@ const Spinner: FC<
       {children ? <span className={classes.label()}>{children}</span> : null}
     </span>
   );
-};
+}
 
 /**
  * Spinner component. You can provide an optional string to render beside the spinner.

@@ -1,5 +1,3 @@
-import type { FC } from "react";
-
 import { memo } from "react";
 
 import { useTranslations } from "next-intl";
@@ -10,7 +8,7 @@ import { MAIN_CONTENT_ID } from "./MainContent.constants";
 
 import styles from "./MainContentLink.module.css";
 
-const MainContentLink: FC = () => {
+function MainContentLink() {
   const t = useTranslations("common.mainContent");
 
   return (
@@ -20,6 +18,6 @@ const MainContentLink: FC = () => {
       </a>
     </VisuallyHidden>
   );
-};
+}
 
 export default memo(MainContentLink);

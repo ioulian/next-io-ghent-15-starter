@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC, PropsWithChildren } from "react";
+import type { ComponentPropsWithRef, PropsWithChildren } from "react";
 
 import { Children, cloneElement, isValidElement, memo } from "react";
 
@@ -7,7 +7,9 @@ import type { FieldProps } from "../field/Field.types";
 import { inputList } from "@/components/organisms/form/input-list/InputList.styles";
 import { addClassNameToProps } from "@/utils/styles";
 
-const InputList: FC<PropsWithChildren<ComponentPropsWithRef<"div"> & FieldProps>> = ({ children, ...props }) => {
+export type Props = PropsWithChildren<ComponentPropsWithRef<"div"> & FieldProps>;
+
+function InputList({ children, ...props }: Props) {
   const {
     name,
     id,
@@ -32,6 +34,6 @@ const InputList: FC<PropsWithChildren<ComponentPropsWithRef<"div"> & FieldProps>
       })}
     </div>
   );
-};
+}
 
 export default memo(InputList);

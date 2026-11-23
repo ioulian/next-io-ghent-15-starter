@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { memo } from "react";
 
@@ -9,9 +9,9 @@ import { useBaseChangeHandler } from "@/components/organisms/form/field/Field.ho
 
 import { useFieldContext } from "../Form.utils";
 
-type InputRadioProps = { label: ReactNode; value: string } & FieldProps & Omit<ComponentPropsWithRef<"input">, "value">;
+export type Props = { label: ReactNode; value: string } & FieldProps & Omit<ComponentPropsWithRef<"input">, "value">;
 
-const InputRadio: FC<InputRadioProps> = ({ value, label, id, ...props }) => {
+function InputRadio({ value, label, id, ...props }: Props) {
   const field = useFieldContext<string>();
   const onChange = useBaseChangeHandler<string, HTMLInputElement>();
 
@@ -22,6 +22,6 @@ const InputRadio: FC<InputRadioProps> = ({ value, label, id, ...props }) => {
       {label}
     </Radio>
   );
-};
+}
 
 export default memo(InputRadio);

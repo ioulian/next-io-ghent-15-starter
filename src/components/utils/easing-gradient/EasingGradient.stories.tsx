@@ -1,18 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import type { FC } from "react";
 
 import { easings } from "@/utils/easings";
 
 import { createEasingGradient } from "./EasingGradient.utilities";
 
-const EasingGradient: FC<{
+function EasingGradient({
+  from,
+  to,
+  useEasing = false,
+  stops = 16,
+  direction = 0,
+  easing = "cubic-bezier(0.5, 0, 0.5, 1)",
+}: {
   from: string;
   to: string;
   useEasing?: boolean;
   direction?: number;
   stops?: number;
   easing?: string;
-}> = ({ from, to, useEasing = false, stops = 16, direction = 0, easing = "cubic-bezier(0.5, 0, 0.5, 1)" }) => {
+}) {
   return (
     <div
       style={{
@@ -24,7 +30,7 @@ const EasingGradient: FC<{
       }}
     />
   );
-};
+}
 
 const meta: Meta<typeof EasingGradient> = {
   title: "UI/Utils/Easing Gradient",

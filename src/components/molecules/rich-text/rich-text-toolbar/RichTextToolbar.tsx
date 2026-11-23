@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useEffect, useState } from "react";
 
@@ -23,7 +23,9 @@ import ActionUnderline from "./ActionUnderline";
 
 import styles from "./RichTextToolbar.module.css";
 
-const RichTextToolbar: FC<ComponentPropsWithRef<"div">> = ({ ...props }) => {
+export type Props = ComponentPropsWithRef<"div">;
+
+function RichTextToolbar({ ...props }: Props) {
   const { editor } = useCurrentEditor();
   const [delay] = useState(() => ({ open: 1000, close: 200 }));
 
@@ -58,7 +60,7 @@ const RichTextToolbar: FC<ComponentPropsWithRef<"div">> = ({ ...props }) => {
       </FloatingDelayGroup>
     </div>
   );
-};
+}
 
 /**
  * Toolbar for RichTextEditor

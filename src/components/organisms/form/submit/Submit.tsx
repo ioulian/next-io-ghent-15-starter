@@ -1,12 +1,14 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { memo, useCallback } from "react";
 
 import { useFormContext } from "@/components/organisms/form/Form.utils";
 
-const Submit: FC<{
+export type Props = {
   children: (canSubmit?: boolean, isSubmitting?: boolean, isFormValidating?: boolean) => ReactNode;
-}> = ({ children }) => {
+};
+
+function Submit({ children }: Props) {
   const form = useFormContext();
 
   return (
@@ -16,6 +18,6 @@ const Submit: FC<{
       {([canSubmit, isSubmitting, isFormValidating]) => children(canSubmit, isSubmitting, isFormValidating)}
     </form.Subscribe>
   );
-};
+}
 
 export default memo(Submit);

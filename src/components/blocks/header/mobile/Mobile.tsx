@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -16,7 +16,9 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Mobile.module.css";
 
-const Mobile: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
+export type Props = ComponentPropsWithRef<"div">;
+
+function Mobile({ children, ...props }: Props) {
   const t = useTranslations("common.header");
 
   return (
@@ -44,6 +46,6 @@ const Mobile: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
       </Layout>
     </div>
   );
-};
+}
 
 export default memo(Mobile);

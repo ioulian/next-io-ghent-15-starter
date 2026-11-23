@@ -1,4 +1,5 @@
-import type { ComponentPropsWithRef, ElementType, FC } from "react";
+import type { PolymorphicProps } from "@/types/helpers";
+import type { ElementType } from "react";
 
 import { memo } from "react";
 
@@ -9,12 +10,10 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Label.module.css";
 
-const Label: FC<
-  {
-    as?: ElementType;
-    required?: boolean;
-  } & ComponentPropsWithRef<"label">
-> = ({ required, as: Component = "label", children, ...props }) => {
+export type Props<E extends ElementType = "label"> = PolymorphicProps<E, { required?: boolean }>;
+
+function Label<E extends ElementType = "label">({ required, as, children, ...props }: Props<E>) {
+  const Component: ElementType = as ?? "label";
   const t = useTranslations("common.form");
 
   return (
@@ -30,9 +29,9 @@ const Label: FC<
       ) : null}
     </Component>
   );
-};
+}
 
 /**
  * Label component for the form field
  */
-export default memo(Label);
+export default memo(Label) as typeof Label;

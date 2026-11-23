@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { memo } from "react";
 
@@ -11,13 +11,13 @@ import Layout from "../../atoms/layout/Layout";
 
 import styles from "./Footer.module.css";
 
-const Footer: FC<{ showCreatedBy?: boolean; metaNav: ReactNode; siteName: string } & ComponentPropsWithRef<"div">> = ({
-  showCreatedBy,
-  metaNav,
-  siteName,
-  children,
-  ...props
-}) => {
+export type Props = {
+  showCreatedBy?: boolean;
+  metaNav: ReactNode;
+  siteName: string;
+} & ComponentPropsWithRef<"div">;
+
+function Footer({ showCreatedBy, metaNav, siteName, children, ...props }: Props) {
   const t = useTranslations("common.footer");
   const year = new Date().getFullYear();
 
@@ -39,6 +39,6 @@ const Footer: FC<{ showCreatedBy?: boolean; metaNav: ReactNode; siteName: string
       </div>
     </footer>
   );
-};
+}
 
 export default memo(Footer);

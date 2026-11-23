@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -6,11 +6,13 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./ButtonGroupSeparator.module.css";
 
-const ButtonGroupSeparator: FC<ComponentPropsWithRef<"div">> = (props) => {
+export type Props = ComponentPropsWithRef<"div">;
+
+function ButtonGroupSeparator(props: Props) {
   return (
     <div role="separator" aria-orientation="vertical" {...addClassNameToProps(props, styles.buttonGroupSeparator)} />
   );
-};
+}
 
 /**
  * Will render buttons as a group

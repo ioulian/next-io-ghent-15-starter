@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { memo } from "react";
 
@@ -7,19 +7,19 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { expandable } from "./Expandable.styles";
 
-const Expandable: FC<
-  {
-    /**
-     * Title of the block
-     */
-    summary: ReactNode;
+export type Props = {
+  /**
+   * Title of the block
+   */
+  summary: ReactNode;
 
-    /**
-     * Controlled mode
-     */
-    open?: boolean;
-  } & ComponentPropsWithRef<"details">
-> = ({ summary, children, open = false, ...props }) => {
+  /**
+   * Controlled mode
+   */
+  open?: boolean;
+} & ComponentPropsWithRef<"details">;
+
+function Expandable({ summary, children, open = false, ...props }: Props) {
   const classes = expandable();
 
   return (
@@ -31,7 +31,7 @@ const Expandable: FC<
       <div className={classes.container()}>{children}</div>
     </details>
   );
-};
+}
 
 /**
  * Basic, animated, <summary> alternative

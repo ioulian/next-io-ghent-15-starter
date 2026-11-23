@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -7,11 +7,11 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./TextArea.module.css";
 
-const TextArea: FC<{} & ComponentPropsWithRef<"textarea">> = ({ ...props }) => {
-  return <textarea cols={40} rows={5} {...addClassNameToProps(props, baseInput(), styles.textarea)} />;
-};
+export type Props = ComponentPropsWithRef<"textarea">;
 
-TextArea.displayName = "TextArea";
+function TextArea({ ...props }: Props) {
+  return <textarea cols={40} rows={5} {...addClassNameToProps(props, baseInput(), styles.textarea)} />;
+}
 
 /**
  * Text component

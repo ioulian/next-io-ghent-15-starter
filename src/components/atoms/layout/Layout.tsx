@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, ElementType, FC } from "react";
+import type { ComponentPropsWithRef, ElementType } from "react";
 import type { VariantProps } from "tailwind-variants";
 
 import { Children, memo, useImperativeHandle, useRef } from "react";
@@ -12,17 +12,17 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Layout.module.css";
 
-const Layout: FC<
-  {
-    /**
-     * Tag of the element
-     */
-    as?: ElementType;
+export type Props = {
+  /**
+   * Tag of the element
+   */
+  as?: ElementType;
 
-    debug?: boolean;
-    variant?: VariantProps<typeof layout>["variant"];
-  } & ComponentPropsWithRef<"div">
-> = ({ debug, as = "div", variant, children, ref, ...props }) => {
+  debug?: boolean;
+  variant?: VariantProps<typeof layout>["variant"];
+} & ComponentPropsWithRef<"div">;
+
+function Layout({ debug, as = "div", variant, children, ref, ...props }: Props) {
   const Element = as;
   const showDebug = process.env.NODE_ENV !== "production" && debug;
   const innerRef = useRef<HTMLDivElement>(null);
@@ -52,6 +52,6 @@ const Layout: FC<
       {children}
     </Element>
   );
-};
+}
 
 export default memo(Layout);

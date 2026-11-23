@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -10,19 +10,19 @@ export type HeadingType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 // eslint-disable-next-line sonarjs/redundant-type-aliases
 export type HeadingSize = HeadingType;
 
-const Heading: FC<
-  {
-    /**
-     * Tag of the element
-     */
-    type?: HeadingType | "p" | "span";
+export type Props = {
+  /**
+   * Tag of the element
+   */
+  type?: HeadingType | "p" | "span";
 
-    /**
-     * (CSS) size of the text. By default it will take the tag size, but sometimes you will need h2 rendered as h1...
-     */
-    size?: HeadingSize;
-  } & ComponentPropsWithRef<"h1">
-> = ({ type = "h2", size: sizeArgument, children, ...props }) => {
+  /**
+   * (CSS) size of the text. By default it will take the tag size, but sometimes you will need h2 rendered as h1...
+   */
+  size?: HeadingSize;
+} & ComponentPropsWithRef<"h1">;
+
+function Heading({ type = "h2", size: sizeArgument, children, ...props }: Props) {
   const Element = type;
 
   // Check that size is provided when it can't be inferred from type
@@ -32,6 +32,6 @@ const Heading: FC<
   const size: HeadingSize = sizeArgument ?? (type as HeadingType);
 
   return <Element {...addClassNameToProps(props, styles.heading, size)}>{children}</Element>;
-};
+}
 
 export default memo(Heading);

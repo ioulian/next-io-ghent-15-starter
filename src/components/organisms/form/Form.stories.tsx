@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import type { FC } from "react";
 import type { ZodType } from "zod";
 
 import { useTranslations } from "next-intl";
@@ -82,7 +81,7 @@ const onErrorCallback = fn();
 
 const ASYNC_DELAY = 1000;
 
-const SampleForm: FC = () => {
+function SampleForm() {
   const t = useTranslations();
   const form = useAppForm({
     defaultValues: {
@@ -142,7 +141,7 @@ const SampleForm: FC = () => {
         </form.AppField>
         <form.AppField name="hobbies">
           {(field) => (
-            <field.InputField label="Hobbies" asFieldSet required>
+            <field.InputField label="Hobbies" as="fieldset" required>
               <InputList>
                 <field.InputCheckbox value="1" label="Hobby 1" data-testid="firstCheckbox" />
                 <field.InputCheckbox value="2" label="Hobby 2" />
@@ -153,7 +152,7 @@ const SampleForm: FC = () => {
         </form.AppField>
         <form.AppField name="selectOne">
           {(field) => (
-            <field.InputField label="Select one" asFieldSet required>
+            <field.InputField label="Select one" as="fieldset" required>
               <InputList>
                 <field.InputRadio value="1" label="Option 1" data-testid="firstRadio" />
                 <field.InputRadio value="2" label="Option 2" />
@@ -215,7 +214,7 @@ const SampleForm: FC = () => {
       </Form>
     </form.AppForm>
   );
-};
+}
 
 export const Default: Story = {
   play: async ({ canvasElement, step }) => {

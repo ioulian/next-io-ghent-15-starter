@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import type { FC } from "react";
 
 import type { SmoothShadowOptionsType } from "./SmoothShadow.utilities";
 
@@ -8,7 +7,7 @@ import { easings } from "@/utils/easings";
 import { presetDefault } from "./SmoothShadow.presets";
 import { createSmoothShadow } from "./SmoothShadow.utilities";
 
-const SmoothShadow: FC<SmoothShadowOptionsType> = (options) => {
+function SmoothShadow(options: SmoothShadowOptionsType) {
   return (
     <div
       style={{
@@ -18,7 +17,7 @@ const SmoothShadow: FC<SmoothShadowOptionsType> = (options) => {
       }}
     />
   );
-};
+}
 
 const meta: Meta<typeof SmoothShadow> = {
   title: "UI/Utils/Smooth shadow",

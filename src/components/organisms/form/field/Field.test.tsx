@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { userEvent } from "storybook/test";
 
@@ -19,11 +19,14 @@ type BooleanFormData = {
   test: boolean;
 };
 
-const StringFieldForm: FC<{
+function StringFieldForm({
+  children,
+  value = "",
+}: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: (field: any) => ReactNode;
   value?: string;
-}> = ({ children, value = "" }) => {
+}) {
   const form = useAppForm({
     defaultValues: {
       test: value,
@@ -37,18 +40,18 @@ const StringFieldForm: FC<{
       </Form>
     </form.AppForm>
   );
-};
+}
 
-const ArrayFieldForm: FC<{
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  children: (field: any) => ReactNode;
-  value?: string[];
-}> = ({
+function ArrayFieldForm({
   children,
   // Doesn't matter as this is a test only
   // eslint-disable-next-line react/no-object-type-as-default-prop
   value = [],
-}) => {
+}: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children: (field: any) => ReactNode;
+  value?: string[];
+}) {
   const form = useAppForm({
     defaultValues: {
       test: value,
@@ -62,13 +65,16 @@ const ArrayFieldForm: FC<{
       </Form>
     </form.AppForm>
   );
-};
+}
 
-const BooleanFieldForm: FC<{
+function BooleanFieldForm({
+  children,
+  value = false,
+}: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: (field: any) => ReactNode;
   value?: boolean;
-}> = ({ children, value = false }) => {
+}) {
   const form = useAppForm({
     defaultValues: {
       test: value,
@@ -82,7 +88,7 @@ const BooleanFieldForm: FC<{
       </Form>
     </form.AppForm>
   );
-};
+}
 
 describe("InputText", () => {
   it("renders with correct value", async () => {

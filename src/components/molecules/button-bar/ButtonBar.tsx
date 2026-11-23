@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -6,9 +6,11 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./ButtonBar.module.css";
 
-const ButtonBar: FC<ComponentPropsWithRef<"div">> = ({ ...props }) => {
+export type Props = ComponentPropsWithRef<"div">;
+
+function ButtonBar({ ...props }: Props) {
   return <div {...addClassNameToProps(props, styles.buttonBar)} role="group" />;
-};
+}
 
 /**
  * Will render buttons as a bar

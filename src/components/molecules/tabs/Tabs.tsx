@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 import type { TabsProps } from "react-tabs";
 
 import { memo } from "react";
@@ -12,7 +12,9 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Tabs.module.css";
 
-const Tabs: FC<{ tabsProps?: TabsProps } & ComponentPropsWithRef<"div">> = ({ children, tabsProps, ...props }) => {
+export type Props = { tabsProps?: TabsProps } & ComponentPropsWithRef<"div">;
+
+function Tabs({ children, tabsProps, ...props }: Props) {
   return (
     <div {...addClassNameToProps(props)}>
       <ReactTabs
@@ -26,7 +28,7 @@ const Tabs: FC<{ tabsProps?: TabsProps } & ComponentPropsWithRef<"div">> = ({ ch
       </ReactTabs>
     </div>
   );
-};
+}
 
 /**
  * Wrapper around `react-tabs` with correct styling

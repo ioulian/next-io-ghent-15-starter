@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -8,9 +8,9 @@ import { useTableContext } from "../DataTable.utils";
 
 import styles from "./DataTable.THead.module.css";
 
-type THeadProps = { isSticky?: boolean } & ComponentPropsWithRef<"thead">;
+export type Props = { isSticky?: boolean } & ComponentPropsWithRef<"thead">;
 
-const THead: FC<THeadProps> = ({ isSticky = false, ...props }: THeadProps) => {
+function THead({ isSticky = false, ...props }: Props) {
   const table = useTableContext();
 
   return (
@@ -39,6 +39,6 @@ const THead: FC<THeadProps> = ({ isSticky = false, ...props }: THeadProps) => {
       ))}
     </thead>
   );
-};
+}
 
 export default memo(THead);

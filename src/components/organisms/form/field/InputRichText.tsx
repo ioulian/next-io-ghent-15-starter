@@ -1,6 +1,6 @@
 import type RichText from "@/components/molecules/rich-text/RichText";
 import type { EditorEvents } from "@tiptap/react";
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useCallback } from "react";
 import dynamic from "next/dynamic";
@@ -11,9 +11,9 @@ import { useFieldContext } from "../Form.utils";
 
 const RichTextComponent = dynamic(() => import("@/components/molecules/rich-text/RichText"), { ssr: false });
 
-type InputRichTextProps = {} & FieldProps & ComponentPropsWithRef<typeof RichText>;
+export type Props = FieldProps & ComponentPropsWithRef<typeof RichText>;
 
-const InputRichText: FC<InputRichTextProps> = ({ ...props }) => {
+function InputRichText({ ...props }: Props) {
   const field = useFieldContext<string>();
   const onBlur = useCallback<(props: EditorEvents["blur"]) => void>(
     (editor) => {
@@ -23,6 +23,6 @@ const InputRichText: FC<InputRichTextProps> = ({ ...props }) => {
   );
 
   return <RichTextComponent {...props} content={field.state.value} onBlur={onBlur} />;
-};
+}
 
 export default memo(InputRichText);

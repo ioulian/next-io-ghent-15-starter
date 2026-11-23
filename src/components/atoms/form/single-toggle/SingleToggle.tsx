@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useId } from "react";
 
@@ -12,7 +12,9 @@ import { addClassNameToProps } from "@/utils/styles";
 import stylesVisuallyHidden from "./../../../utils/visually-hidden/VisuallyHidden.module.css";
 import styles from "./SingleToggle.module.css";
 
-const SingleToggle: FC<{} & Omit<ComponentPropsWithRef<"input">, "children">> = ({ id, ...props }) => {
+export type Props = Omit<ComponentPropsWithRef<"input">, "children">;
+
+function SingleToggle({ id, ...props }: Props) {
   const internalId = useId();
 
   // We set aria-hidden to true, as we have another label for that element
@@ -26,7 +28,7 @@ const SingleToggle: FC<{} & Omit<ComponentPropsWithRef<"input">, "children">> = 
       <label htmlFor={id ?? internalId} className={clsx(baseInput(), styles.label)} aria-hidden="true" />
     </div>
   );
-};
+}
 
 /**
  * Checkbox component styled as a toggle

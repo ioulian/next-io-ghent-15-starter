@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useId } from "react";
 
@@ -6,12 +6,12 @@ import type { SvgSpriteName } from "./SvgSprite.generated";
 
 import { ID_SEPARATOR, SPRITE_FILE, SVG_SPRITE_DEFINITIONS } from "./SvgSprite.generated";
 
-const SvgSprite: FC<
-  {
-    name: SvgSpriteName;
-    title?: string;
-  } & ComponentPropsWithRef<"svg">
-> = ({ name, children: _children, ...props }) => {
+export type Props = {
+  name: SvgSpriteName;
+  title?: string;
+} & ComponentPropsWithRef<"svg">;
+
+function SvgSprite({ name, children: _children, ...props }: Props) {
   const { title, ...rest } = props;
   const titleId = useId();
 
@@ -36,7 +36,7 @@ const SvgSprite: FC<
       />
     </svg>
   );
-};
+}
 
 /**
  * Will render an SVG sprite using `<use>` component in svg.

@@ -1,22 +1,25 @@
 "use client";
 
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo, useCallback, useState } from "react";
 
 import { useTranslations } from "next-intl";
 
 import { isString } from "@/types/type-guards";
-import type { PasswordStrengthProps } from "./PasswordStrength";
+import type { Props as PasswordStrengthProps } from "./PasswordStrength";
 
 import Button from "../../button/Button";
 import SvgSprite from "../../svg-sprite/SvgSprite";
 import Input from "../input/Input";
 import PasswordStrength from "./PasswordStrength";
 
-const PasswordInput: FC<
-  { showStrengthMeter?: boolean; strengthMeterProps?: PasswordStrengthProps } & ComponentPropsWithRef<"input">
-> = ({ showStrengthMeter, value, strengthMeterProps, ...props }) => {
+export type Props = {
+  showStrengthMeter?: boolean;
+  strengthMeterProps?: PasswordStrengthProps;
+} & ComponentPropsWithRef<"input">;
+
+function PasswordInput({ showStrengthMeter, value, strengthMeterProps, ...props }: Props) {
   const t = useTranslations("common.form");
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -47,7 +50,7 @@ const PasswordInput: FC<
       ) : null}
     </>
   );
-};
+}
 
 // False positive
 

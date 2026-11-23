@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import type { FC } from "react";
 
 import { useTranslations } from "next-intl";
 
@@ -14,7 +13,7 @@ const meta: Meta<typeof RichTranslation> = {
 export default meta;
 type Story = StoryObj<typeof RichTranslation>;
 
-const Example: FC = () => {
+function Example() {
   const t = useTranslations("common");
 
   return (
@@ -31,7 +30,7 @@ const Example: FC = () => {
       }
     </RichTranslation>
   );
-};
+}
 
 export const Default: Story = {
   render: () => <Example />,

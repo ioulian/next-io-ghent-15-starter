@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 import { memo } from "react";
 
@@ -8,7 +8,9 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./DataTable.Controls.module.css";
 
-const Controls: FC<PropsWithChildren> = ({ children, ...props }) => {
+export type Props = PropsWithChildren;
+
+function Controls({ children, ...props }: Props) {
   // const t = useTranslations("common.dataTable");
   // const showControls = showPagination || showPerPages;
 
@@ -31,6 +33,6 @@ const Controls: FC<PropsWithChildren> = ({ children, ...props }) => {
   // }
 
   return <div {...addClassNameToProps(props, styles.controls)}>{children}</div>;
-};
+}
 
 export default memo(Controls);

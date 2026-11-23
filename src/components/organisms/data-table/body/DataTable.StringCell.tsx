@@ -1,15 +1,15 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
 import { useCellContext } from "../DataTable.utils";
 
-type StringCellProps = {} & ComponentPropsWithRef<"span">;
+export type Props = ComponentPropsWithRef<"span">;
 
-const StringCell: FC<StringCellProps> = ({ ...props }) => {
+function StringCell({ ...props }: Props) {
   const cell = useCellContext<string>();
 
   return <span {...props}>{cell.getValue()}</span>;
-};
+}
 
 export default memo(StringCell);

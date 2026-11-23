@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { expect, userEvent, within } from "storybook/test";
 
-import LinkButton from "@/components/atoms/link-button/LinkButton";
+import Button from "@/components/atoms/button/Button";
 
 import Breadcrumb from "./Breadcrumb";
 
@@ -31,18 +31,18 @@ export const Default: Story = {
   },
   render: (args) => (
     <Breadcrumb {...args}>
-      <LinkButton href="/" as={Link} size="base" variant="simple" data-testid="button1">
+      <Button href={{ pathname: "/" }} as={Link} size="base" variant="simple" data-testid="button1">
         Home
-      </LinkButton>
-      <LinkButton href="/parent-1" as={Link} size="base" variant="simple" data-testid="button2">
+      </Button>
+      <Button href={{ pathname: "/parent-1" }} as={Link} size="base" variant="simple" data-testid="button2">
         Parent 1
-      </LinkButton>
-      <LinkButton href="/parent-2" as={Link} size="base" variant="simple" data-testid="button3">
+      </Button>
+      <Button href={{ pathname: "/parent-2" }} as={Link} size="base" variant="simple" data-testid="button3">
         Parent 2
-      </LinkButton>
-      <LinkButton href="/current" as={Link} size="base" variant="simple" data-testid="button4">
+      </Button>
+      <Button href={{ pathname: "/current" }} as={Link} size="base" variant="simple" data-testid="button4">
         Current
-      </LinkButton>
+      </Button>
     </Breadcrumb>
   ),
 };

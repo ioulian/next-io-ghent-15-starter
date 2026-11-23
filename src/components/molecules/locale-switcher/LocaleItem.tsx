@@ -1,7 +1,6 @@
 "use client";
 
 import type { LocaleType } from "@/i18n/types";
-import type { FC } from "react";
 
 import { memo, ViewTransition } from "react";
 
@@ -16,12 +15,14 @@ import {
   LOCALE_INDICATOR_VIEW_TRANSITION_SHARE,
 } from "./LocaleSwitcher.constants";
 
-const LocaleItem: FC<{
+export type Props = {
   /**
    * Locale to switch to
    */
   locale: LocaleType;
-}> = ({ locale }) => {
+};
+
+function LocaleItem({ locale }: Props) {
   const t = useTranslations("common.localeSwitcher");
   const currentLocale = useLocale();
   const pathname = usePathname();
@@ -61,6 +62,6 @@ const LocaleItem: FC<{
       ) : null}
     </Link>
   );
-};
+}
 
 export default memo(LocaleItem);

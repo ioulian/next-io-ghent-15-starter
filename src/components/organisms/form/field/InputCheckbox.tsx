@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ChangeEventHandler, ComponentPropsWithRef, ReactNode } from "react";
 
 import { memo, useCallback } from "react";
 
@@ -8,10 +8,9 @@ import Checkbox from "@/components/atoms/form/collection/checkbox/Checkbox";
 
 import { useFieldContext } from "../Form.utils";
 
-type InputCheckboxProps = { label: ReactNode; value: string } & FieldProps &
-  Omit<ComponentPropsWithRef<"input">, "value">;
+export type Props = { label: ReactNode; value: string } & FieldProps & Omit<ComponentPropsWithRef<"input">, "value">;
 
-const InputCheckbox: FC<InputCheckboxProps> = ({ value, label, id, ...props }) => {
+function InputCheckbox({ value, label, id, ...props }: Props) {
   const field = useFieldContext<string[] | undefined>();
   const onChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (e) => {
@@ -37,6 +36,6 @@ const InputCheckbox: FC<InputCheckboxProps> = ({ value, label, id, ...props }) =
       {label}
     </Checkbox>
   );
-};
+}
 
 export default memo(InputCheckbox);

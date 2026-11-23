@@ -1,4 +1,6 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
+
+import { expect, it } from "vitest";
 
 import { render, screen, waitInAct } from "@/test/test-utils";
 
@@ -9,11 +11,14 @@ type TestFormData = {
   test: string;
 };
 
-const SampleForm: FC<{
+function SampleForm({
+  children,
+  value,
+}: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: (field: any) => ReactNode;
   value?: string;
-}> = ({ children, value }) => {
+}) {
   const form = useAppForm({
     defaultValues: {
       test: value,
@@ -27,7 +32,7 @@ const SampleForm: FC<{
       </Form>
     </form.AppForm>
   );
-};
+}
 
 describe("InputField", () => {
   it("renders", () => {
@@ -70,7 +75,7 @@ describe("InputField", () => {
   it("renders as fieldset", async () => {
     render(
       <SampleForm>
-        {(field) => <field.InputField data-testid="test" asFieldSet label="Test label" name="test-name" />}
+        {(field) => <field.InputField data-testid="test" as="fieldset" label="Test label" name="test-name" />}
       </SampleForm>,
     );
 
@@ -81,7 +86,7 @@ describe("InputField", () => {
   it("renders required label", async () => {
     render(
       <SampleForm>
-        {(field) => <field.InputField data-testid="test" asFieldSet label="Test label" name="test-name" required />}
+        {(field) => <field.InputField data-testid="test" as="fieldset" label="Test label" name="test-name" required />}
       </SampleForm>,
     );
 

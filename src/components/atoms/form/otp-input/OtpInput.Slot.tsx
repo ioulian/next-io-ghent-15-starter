@@ -1,11 +1,12 @@
 import type { SlotProps } from "input-otp";
-import type { FC } from "react";
 
 import { memo } from "react";
 
 import { otpInput } from "./OtpInput.styles";
 
-const OtpSlot: FC<SlotProps> = ({ char, placeholderChar, isActive, hasFakeCaret }) => {
+export type Props = SlotProps;
+
+function OtpSlot({ char, placeholderChar, isActive, hasFakeCaret }: Props) {
   const { slot, caret } = otpInput({ isActive });
 
   return (
@@ -14,6 +15,6 @@ const OtpSlot: FC<SlotProps> = ({ char, placeholderChar, isActive, hasFakeCaret 
       {hasFakeCaret ? <span className={caret()} aria-hidden /> : null}
     </div>
   );
-};
+}
 
 export default memo(OtpSlot);

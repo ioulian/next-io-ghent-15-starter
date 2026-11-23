@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 
 import { memo } from "react";
 
@@ -9,11 +9,11 @@ import { cardList } from "./CardList.styles";
 
 import blockStyles from "./../Blocks.module.css";
 
-const CardList: FC<
-  {
-    footer?: ReactNode;
-  } & ComponentPropsWithRef<"div">
-> = ({ footer, children, ...props }) => {
+export type Props = {
+  footer?: ReactNode;
+} & ComponentPropsWithRef<"div">;
+
+function CardList({ footer, children, ...props }: Props) {
   const classes = cardList();
 
   return (
@@ -30,6 +30,6 @@ const CardList: FC<
       ) : null}
     </div>
   );
-};
+}
 
 export default memo(CardList);

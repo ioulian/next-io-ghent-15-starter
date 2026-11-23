@@ -1,5 +1,5 @@
 import type { Coords, Placement, Strategy } from "@floating-ui/react";
-import type { ComponentPropsWithRef, CSSProperties, FC } from "react";
+import type { ComponentPropsWithRef, CSSProperties } from "react";
 
 import { memo, useMemo } from "react";
 
@@ -10,16 +10,25 @@ import { addClassNameToProps, roundByDPR } from "@/utils/styles";
 
 import styles from "./Floater.module.css";
 
-const Floater: FC<
-  {
-    position?: { x: number | null; y: number | null };
-    arrowPosition?: Partial<Coords>;
-    strategy?: Strategy;
-    placement?: Placement;
-    arrowCallback?: (node: HTMLDivElement | null) => void;
-    showArrow?: boolean;
-  } & ComponentPropsWithRef<"div">
-> = ({ children, position, arrowPosition, strategy, placement, arrowCallback, showArrow = true, ...props }) => {
+export type Props = {
+  position?: { x: number | null; y: number | null };
+  arrowPosition?: Partial<Coords>;
+  strategy?: Strategy;
+  placement?: Placement;
+  arrowCallback?: (node: HTMLDivElement | null) => void;
+  showArrow?: boolean;
+} & ComponentPropsWithRef<"div">;
+
+function Floater({
+  children,
+  position,
+  arrowPosition,
+  strategy,
+  placement,
+  arrowCallback,
+  showArrow = true,
+  ...props
+}: Props) {
   const style = useMemo<CSSProperties>(
     () => ({
       transform: position
@@ -71,7 +80,7 @@ const Floater: FC<
       </div>
     </div>
   );
-};
+}
 
 /**
  * Floater window used in Floating UI Components

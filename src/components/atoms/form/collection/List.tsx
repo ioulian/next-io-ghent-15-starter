@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -6,9 +6,11 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./List.module.css";
 
-const List: FC<ComponentPropsWithRef<"div">> = ({ children, ...props }) => {
+export type Props = ComponentPropsWithRef<"div">;
+
+function List({ children, ...props }: Props) {
   return <div {...addClassNameToProps(props, styles.list)}>{children}</div>;
-};
+}
 
 /**
  * List wrapper that will render children inline

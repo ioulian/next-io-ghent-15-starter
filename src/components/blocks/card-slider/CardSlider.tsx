@@ -1,5 +1,5 @@
 import type { WithRequired } from "@/types/helpers";
-import type { ComponentPropsWithRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import type { SwiperOptions } from "swiper/types";
 
 import { Children, cloneElement, isValidElement, memo, useId, useMemo } from "react";
@@ -19,11 +19,11 @@ import blockStyles from "./../Blocks.module.css";
 
 import "./CardSlider.css";
 
-const CardSlider: FC<
-  {
-    action?: ReactNode;
-  } & WithRequired<ComponentPropsWithRef<"div">, "children">
-> = ({ action, children, ...props }) => {
+export type Props = {
+  action?: ReactNode;
+} & WithRequired<ComponentPropsWithRef<"div">, "children">;
+
+function CardSlider({ action, children, ...props }: Props) {
   const t = useTranslations("common.cardSlider");
   const paginationElId = useId();
   const prevElId = useId();
@@ -84,6 +84,6 @@ const CardSlider: FC<
       </Layout>
     </div>
   );
-};
+}
 
 export default memo(CardSlider);

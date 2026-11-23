@@ -1,6 +1,6 @@
 "use client";
 
-import type { FC, HTMLProps } from "react";
+import type { HTMLProps } from "react";
 
 import { cloneElement, isValidElement, memo } from "react";
 
@@ -8,7 +8,9 @@ import { useMergeRefs } from "@floating-ui/react";
 
 import { useTooltipContext } from "./Tooltip.hooks";
 
-const TooltipTrigger: FC<HTMLProps<HTMLElement>> = ({ children, ref: propRef, ...props }) => {
+export type Props = HTMLProps<HTMLElement>;
+
+function TooltipTrigger({ children, ref: propRef, ...props }: Props) {
   const context = useTooltipContext();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,6 +39,6 @@ const TooltipTrigger: FC<HTMLProps<HTMLElement>> = ({ children, ref: propRef, ..
       {children}
     </span>
   );
-};
+}
 
 export default memo(TooltipTrigger);

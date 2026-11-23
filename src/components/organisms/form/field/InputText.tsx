@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -9,13 +9,13 @@ import { useBaseChangeHandler } from "@/components/organisms/form/field/Field.ho
 
 import { useFieldContext } from "../Form.utils";
 
-type InputTextProps = FieldProps & ComponentPropsWithRef<"input">;
+export type Props = FieldProps & ComponentPropsWithRef<"input">;
 
-const InputText: FC<InputTextProps> = ({ ...props }) => {
+function InputText({ ...props }: Props) {
   const field = useFieldContext<string>();
   const onChange = useBaseChangeHandler<string, HTMLInputElement>();
 
   return <Input type="text" {...props} value={field.state.value} onChange={onChange} onBlur={field.handleBlur} />;
-};
+}
 
 export default memo(InputText);

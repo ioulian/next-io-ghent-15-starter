@@ -1,12 +1,12 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
 import { useTableContext } from "@/components/organisms/data-table/DataTable.utils";
 
-type TBodyProps = {} & ComponentPropsWithRef<"tbody">;
+export type Props = ComponentPropsWithRef<"tbody">;
 
-const TBody: FC<TBodyProps> = ({ ...props }: TBodyProps) => {
+function TBody({ ...props }: Props) {
   const table = useTableContext();
 
   return (
@@ -26,6 +26,6 @@ const TBody: FC<TBodyProps> = ({ ...props }: TBodyProps) => {
       ))}
     </tbody>
   );
-};
+}
 
 export default memo(TBody);

@@ -1,4 +1,4 @@
-import type { ComponentPropsWithRef, FC } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 import { memo } from "react";
 
@@ -7,9 +7,12 @@ import SingleToggle from "../../single-toggle/SingleToggle";
 
 import styles from "./../checkbox/Checkbox.module.css";
 
-const Toggle: FC<
-  { isError?: boolean; labelProps?: ComponentPropsWithRef<typeof Label> } & ComponentPropsWithRef<"input">
-> = ({ id, name, value, children, labelProps, ...props }) => {
+export type Props = {
+  isError?: boolean;
+  labelProps?: ComponentPropsWithRef<typeof Label>;
+} & ComponentPropsWithRef<"input">;
+
+function Toggle({ id, name, value, children, labelProps, ...props }: Props) {
   const linkedId = value ? `${id}-${value}` : id;
 
   return (
@@ -20,7 +23,7 @@ const Toggle: FC<
       </Label>
     </div>
   );
-};
+}
 
 /**
  * Toggle field

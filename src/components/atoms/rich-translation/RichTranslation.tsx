@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { memo } from "react";
 
@@ -20,13 +20,15 @@ export const defaultTranslationValues: Record<Tag, (chunks: ReactNode) => ReactN
   br: () => <br />,
 };
 
-const RichTranslation: FC<{
+export type Props = {
   children: (tags: Record<Tag, (chunks: ReactNode) => ReactNode>) => ReactNode;
-}> = ({ children }) => {
+};
+
+function RichTranslation({ children }: Props) {
   return children({
     ...defaultTranslationValues,
   });
-};
+}
 
 /**
  * Rich translation

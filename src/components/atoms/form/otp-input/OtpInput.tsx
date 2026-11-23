@@ -1,7 +1,6 @@
 "use client";
 
 import type { OTPInputProps, RenderProps } from "input-otp";
-import type { FC } from "react";
 
 import { memo, useCallback } from "react";
 
@@ -14,16 +13,16 @@ import { otpInput } from "./OtpInput.styles";
 
 const DEFAULT_MAX_LENGTH = 6;
 
-export type OtpInputProps = Omit<OTPInputProps, "render" | "children" | "maxLength"> & {
+export type Props = Omit<OTPInputProps, "render" | "children" | "maxLength"> & {
   maxLength?: number;
 };
 
-const OtpInput: FC<OtpInputProps> = ({
+function OtpInput({
   maxLength = DEFAULT_MAX_LENGTH,
   pattern = REGEXP_ONLY_DIGITS,
   containerClassName,
   ...props
-}) => {
+}: Props) {
   const { container } = otpInput();
 
   const render = useCallback(
@@ -46,7 +45,7 @@ const OtpInput: FC<OtpInputProps> = ({
       render={render}
     />
   );
-};
+}
 
 /**
  * One-time password input
