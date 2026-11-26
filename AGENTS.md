@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` - verify at `node_modules/next/
 
 # AGENTS.md - Project conventions for next-io-ghent-15-starter
 
-This document describes the conventions used in this Next.js boilerplate. **When extending or installing this project, follow these patterns so the codebase stays consistent.**
+This document is the convention source for projects created from this boilerplate (and for edits inside this repo). Agents generating components must follow these patterns so the codebase stays consistent.
 
 ---
 
@@ -18,15 +18,20 @@ This document describes the conventions used in this Next.js boilerplate. **When
 
 ### Components
 
-- **One component per folder.** Folder name = component name in **PascalCase** (e.g. `Button`, `FormField`, `DataTable`).
+- **One component per folder.** Folder name = component name in **kebab-case**; files use **PascalCase** (e.g. `src/components/atoms/button/Button.tsx`, `form-field/FormField.tsx`, `data-table/DataTable.tsx`).
 - **Files in that folder:**
   - `ComponentName.tsx` - main component
-  - `ComponentName.styles.ts` - tailwind-variants + optional CSS module imports
+  - `ComponentName.styles.ts` - tailwind-variants + CSS module imports
   - `ComponentName.module.css` - component-scoped styles (when needed)
   - `ComponentName.hooks.ts` - hooks and context for that component (e.g. `Dialog.hooks.ts`, `Popover.hooks.ts`)
+  - `ComponentName.utils.ts` - helpers scoped to the component (when needed)
+  - `ComponentName.types.ts` - types scoped to the component (when needed)
+  - `ComponentName.constants.ts` - constants scoped to the component (when needed)
+  - `ComponentName.context.ts` - context module when kept separate from hooks (when needed)
   - `ComponentName.test.tsx` - Vitest unit/integration tests
   - `ComponentName.stories.tsx` - Storybook stories
-- **Subcomponents** of a compound component can use a dot: `DataTable.THead.tsx`, `DataTable.TBody.tsx`, `DataTable.Controls.tsx`. Keep them in the same folder as the root (e.g. `organisms/data-table/`) or you can create subfolder(s) for them following atomic design patterns (e.g. `organisms/data-table/atoms/`).
+- **Subcomponents** of a compound component can use a dot: `DataTable.THead.tsx`, `DataTable.TBody.tsx`, `DataTable.Controls.tsx`. Keep them in the same folder as the root (e.g. `organisms/data-table/`) or create subfolder(s) following atomic design (e.g. `organisms/data-table/atoms/`).
+- Place new UI in the matching atomic folder (`atoms/`, `molecules/`, `organisms/`, `blocks/`, `utils/`). Prefer an existing component (`Button`, `Dialog`, `Form`, `DataTable`, …) over inventing a new one.
 
 ### Other source files
 
@@ -61,7 +66,7 @@ Use these instead of relative paths when leaving the current component area:
 
 ### Root
 
-- **`messages/`** - JSON per locale (e.g. `en-GB/common.json`, `en-GB/app.json`). One folder per locale.
+- **`messages/`** - JSON per locale (e.g. `en-GB/common.json`, `en-GB/app.json`). One folder per locale (`en-GB`, `fr-BE`, `nl-BE` from `src/i18n/constants.ts`).
 - **`e2e-tests/`** - Playwright specs (e.g. `svg-sprite.spec.ts`).
 - **`scripts/`** - Build/CLI scripts (e.g. `scripts/svg-sprite/` for sprite generation).
 
@@ -75,7 +80,7 @@ Use these instead of relative paths when leaving the current component area:
 
 - **memo:** Wrap every React component in `memo()` and export as default:
   - `export type Props = { ... }; function Component({ ...props }: Props) { ... } export default memo(Component);`
-- Use an exported **`Props`** type for the component’s props. For polymorphic/generic components, keep `export default memo(Component) as typeof Component`.
+- Use an exported **`Props`** type for the component’s props. For polymorphic/generic components, use `PolymorphicProps` from `@/types/helpers` and keep `export default memo(Component) as typeof Component` (see `Button.tsx`).
 
 - **Stable props for memoized children:** If a parent passes **objects**, **arrays**, or **functions** to a `memo()`-wrapped child, those props are compared by reference. To avoid unnecessary re-renders:
   - **Callbacks:** Use `useCallback` when the callback is passed to a memoized child or appears in a dependency array and you need a stable reference across parent re-renders.
@@ -94,18 +99,25 @@ Use these instead of relative paths when leaving the current component area:
 ### Client components
 
 - Add **`"use client"`** only when the component uses hooks, browser APIs, or client-only libraries. Keep server components as default for pages and layouts where possible.
+- Do not use `useEffect` to copy props into state (`eslint-plugin-react-you-might-not-need-an-effect`).
 
 ### Styling (tailwind-variants + CSS modules)
 
-- **Variants and layout:** Use **tailwind-variants** (`tv`) in `ComponentName.styles.ts` with **slots** when the component has multiple styled parts (e.g. `button`, `content`, `spinner`, `icon`).
-- **Complex or animation styles:** Use **CSS modules** (`ComponentName.module.css`) and reference them in the `tv` definition (e.g. `slots: { button: styles.button }`).
+This project does **not** use Tailwind CSS utility classes, `class-variance-authority` (CVA), `tailwind-merge`, or a shadcn-style `cn()`. Class names come from CSS modules; **tailwind-variants** (`tv`) is only the variant composer.
+
+- **Why tailwind-variants instead of CVA:** The API matches CVA (`base`, `variants`, `defaultVariants`, `VariantProps`), and it additionally supports **slots** for multi-part components. Prefer `tv` from `tailwind-variants`; do not add CVA.
+- **Single-element variants (CVA-shaped):** Use `base` + `variants` in `ComponentName.styles.ts`, importing classes from the CSS module (see `Paragraph.styles.ts`).
+- **Multi-part components (slots):** Map each part in `slots` (e.g. `button`, `content`, `spinner`, `icon`) to CSS module classes, then call `classes.button()`, `classes.content()`, etc. (see `Button.styles.ts`).
+- **CSS modules:** Put layout, color, animation, and complex selectors in `ComponentName.module.css`. Open the file with the cascade layer for that atomic level: `@layer atoms`, `@layer molecules`, `@layer organisms`, `@layer blocks`, or `@layer utils`. Layer order is fixed in `src/app/[locale]/_styles/layers.css`.
+- **Design tokens:** Use existing CSS variables from `src/app/[locale]/_styles/variables.ts` (e.g. `var(--color-…)`, `var(--radius-01)`, `var(--duration-fast)`, `var(--zIndex-dialog)`, `var(--easing-swift-out)`). Do not invent a second palette inside a component.
 - Use **`VariantProps<typeof componentStyles>`** for variant/size props (e.g. `variant?: VariantProps<typeof button>["variant"]`).
-- Use **`addClassNameToProps`** (from `@/utils/styles`) to merge `className` from props with the variant classes without overwriting.
+- Merge `className` from props with **`addClassNameToProps`** from `@/utils/styles` (`clsx`). Do not add `tailwind-merge` or a custom `cn()`.
 
 ### Spreading and refs
 
 - Extend **`ComponentPropsWithRef<"element">`** (or `HTMLProps<HTMLDivElement>` etc.) when the component forwards ref and DOM props, and spread the rest: `...props` after explicit props.
 - Use **`WithRequired<..., "children">`** from `@/types/helpers` when children are required.
+- Keep `import type` as separate type-only imports (`@typescript-eslint/consistent-type-imports`).
 
 ---
 
@@ -115,8 +127,8 @@ Use these instead of relative paths when leaving the current component area:
 
 - **Routing:** `src/i18n/routing.ts` - `defineRouting` with `locales`, `defaultLocale`, `localePrefix: "as-needed"`.
 - **Request config:** `src/i18n/request.ts` - `getRequestConfig` loads messages per locale from `messages/${locale}/common.json` and `app.json`.
-- **Navigation:** `src/i18n/navigation.ts` - `Link`, `redirect`, `usePathname`, `useRouter`, `getPathname` from `createNavigation(routing)`; use these instead of raw Next.js navigation for locale-aware URLs.
-- **Middleware:** `src/proxy.ts` (or root middleware) uses `createMiddleware(routing)` from `next-intl/middleware`.
+- **Navigation:** `src/i18n/navigation.ts` - `Link`, `redirect`, `usePathname`, `useRouter`, `getPathname` from `createNavigation(routing)`; use these instead of raw `next/link` or `next/navigation` for locale-aware URLs.
+- **Middleware:** `src/proxy.ts` uses `createMiddleware(routing)` from `next-intl/middleware`.
 - **Layout:** Root layout under `app/[locale]/` wraps children with `NextIntlClientProvider` (no `locale`/`messages` needed in client - they come from request config).
 
 ### Usage in code
@@ -125,11 +137,13 @@ Use these instead of relative paths when leaving the current component area:
 - **Server components / async:** `getTranslations({ locale, namespace: "..." })` (e.g. in `generateMetadata`, or server page).
 - **Locale:** `useLocale()` when needed on the client.
 - **Types:** `src/i18n/types.ts` augments `next-intl` `AppConfig` with `Locale` and `Messages`; keep locale and message types in sync with `messages/` and `i18n/constants.ts`.
+- User-facing copy must go through translations. `i18next/no-literal-string` is enabled; stories and tests are exempt.
 
 ### Messages and namespaces
 
 - **One namespace per file:** e.g. `common.json` → `useTranslations("common")` or `useTranslations("common.button")`.
 - **Page-specific:** e.g. `pages.home.meta` in `getTranslations` for metadata; keep page strings under a `pages` namespace if shared with client.
+- Add new keys to **every** locale under `messages/` (`en-GB`, `fr-BE`, `nl-BE`).
 - **Check translations:** `pnpm check:translations` (i18n-check) - run before commits.
 
 ---
@@ -184,10 +198,19 @@ Use these instead of relative paths when leaving the current component area:
 - **SVG sprites** - `svg-sprite` (build), `SvgSprite` component and `SvgSprite.generated.ts`, `public/sprite.svg`.
 - **Vitest** - Unit/integration tests, jsdom and Storybook projects; custom render with next-intl.
 - **Playwright** - E2E in `e2e-tests/`.
-- **tailwind-variants** - Component variants and slots; use with CSS modules where needed.
+- **tailwind-variants** - CVA-compatible variant API (`tv`, `VariantProps`) plus **slots**; compose with CSS modules. Do not add CVA or Tailwind utilities.
+- **es-toolkit** - Prefer `es-toolkit` (or `es-toolkit/compat` for lodash-shaped names) for helpers such as `get`, `isNil`, `omitBy`, `groupBy`, `debounce`, `omit`, `chunk`. Do not hand-roll these and do not add lodash (`eslint-plugin-depend` flags heavy duplicates). See usage in `src/app/[locale]/_styles/variables.ts` and `src/utils/next.ts`.
+- **Zod** - Schemas for forms and env validation.
+- **@tanstack/react-form** - Forms via `useAppForm` from `src/components/organisms/form/Form.utils.ts`. Do not add react-hook-form.
+- **@tanstack/react-table** / **@tanstack/react-store** - Tables and related local UI state; extend the existing `DataTable` rather than inventing a parallel table stack.
+- **@t3-oss/env-nextjs** - Typed env in `src/env.mjs`. Read `env`, not raw `process.env`, in application code.
+- **react-use** - Prefer existing hooks (`useEffectOnce`, `useDebounce`, `useUpdateEffect`, …) before adding a new hook under `src/hooks/`.
+- **DOMPurify** - Sanitize HTML strings (see `src/utils/trusted-types/`).
 - **@floating-ui/react** - Dialogs, popovers, dropdowns, tooltips; compound components use its context and hooks.
 - **React 19** - Current patterns (e.g. ref as prop, no legacy context API) are compatible.
-- **TypeScript** - Strict mode; use types from the project (`LocaleType`, `SvgSpriteName`, `VariantProps<typeof X>`, etc.).
+- **TypeScript** - Strict mode; use types from the project (`LocaleType`, `SvgSpriteName`, `VariantProps<typeof X>`, `PolymorphicProps`, etc.).
+
+Do **not** install Tailwind, CVA, shadcn, lodash, or react-hook-form as part of normal component work.
 
 ---
 
@@ -195,13 +218,19 @@ Use these instead of relative paths when leaving the current component area:
 
 When adding features to this boilerplate (or a project created from it):
 
-1. **Components:** One folder per component (PascalCase), `ComponentName.tsx` + styles/hooks/tests/stories as above; `export type Props`, `function Component`, export default `memo(Component)`.
-2. **Re-renders:** Use `memo` on components; use `useCallback` / `useMemo` where referential stability matters (e.g. props to memoized children, effect deps, render props).
-3. **Compound components:** Prefer composition + context in `ComponentName.hooks.ts`; avoid prop drilling and huge prop lists.
-4. **Icons:** Use `<SvgSprite name="…" />`; add new SVGs via `src/svg-sprites/` or `scripts/svg-sprite/constants.ts`, then `pnpm svg-sprite:build`.
-5. **i18n:** Use `useTranslations` / `getTranslations` with existing namespaces; add keys to `messages/<locale>/*.json` and run `pnpm check:translations`.
-6. **Imports:** Prefer `@/` path aliases for components, utils, hooks, types.
-7. **Tests:** Use `render` from `src/test/test-utils.tsx`; add `*.test.tsx` and/or e2e in `e2e-tests/` as appropriate.
-8. **Scripts:** Before dev/build/typecheck, ensure sprite is built if SVGs changed (`pnpm svg-sprite:build`).
+1. **Reuse first:** Prefer existing components (`Button`, `Dialog`, `Form`, `DataTable`, …) and place new UI in the correct atomic folder.
+2. **Components:** One kebab-case folder per component, PascalCase files (`ComponentName.tsx` + styles/hooks/utils/types/tests/stories as needed); `export type Props`, `function Component`, export default `memo(Component)` (polymorphic: `as typeof Component`).
+3. **Styling:** CSS modules + `tv` from tailwind-variants (slots when multi-part); design tokens via CSS variables; `addClassNameToProps` for `className`. No Tailwind utilities, CVA, or `cn()`.
+4. **Utilities:** Use `es-toolkit` / `es-toolkit/compat` instead of custom or lodash helpers.
+5. **Re-renders:** Use `memo` on components; use `useCallback` / `useMemo` where referential stability matters (e.g. props to memoized children, effect deps, render props).
+6. **Compound components:** Prefer composition + context in `ComponentName.hooks.ts`; avoid prop drilling and huge prop lists.
+7. **Forms / tables / env:** Zod + `useAppForm`; extend DataTable; read env from `src/env.mjs`.
+8. **Icons:** Use `<SvgSprite name="…" />`; add new SVGs via `src/svg-sprites/` or `scripts/svg-sprite/constants.ts`, then `pnpm svg-sprite:build`.
+9. **i18n:** Use `useTranslations` / `getTranslations`; add keys to every locale under `messages/`; run `pnpm check:translations`. No user-facing literal strings in components.
+10. **Navigation:** Use `Link` / `redirect` / `useRouter` / `usePathname` from `@/i18n/navigation`, not raw Next.js navigation.
+11. **Imports:** Prefer `@/` path aliases; keep `import type` separate.
+12. **Client boundary:** `"use client"` only when needed; avoid effect-driven state sync from props.
+13. **Tests:** Use `render` from `src/test/test-utils.tsx`; add `*.test.tsx` and/or e2e in `e2e-tests/` as appropriate.
+14. **Scripts:** Before dev/build/typecheck, ensure sprite is built if SVGs changed (`pnpm svg-sprite:build`).
 
 Following this document keeps the rest of the project aligned with the same design patterns as this boilerplate.
