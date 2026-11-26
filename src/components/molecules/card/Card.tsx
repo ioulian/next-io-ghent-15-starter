@@ -1,4 +1,5 @@
-import type { ComponentPropsWithRef, ElementType, ReactNode } from "react";
+import type { PolymorphicProps } from "@/types/helpers";
+import type { ElementType, ReactNode } from "react";
 import type { VariantProps } from "tailwind-variants";
 
 import { memo } from "react";
@@ -7,31 +8,37 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import { card } from "./Card.styles";
 
-export type Props = {
-  /**
-   * Tag of the element
-   */
-  as?: ElementType;
+export type Props<E extends ElementType = "article"> = PolymorphicProps<
+  E,
+  {
+    elevation?: VariantProps<typeof card>["elevation"];
+    padded?: boolean;
 
-  elevation?: VariantProps<typeof card>["elevation"];
-  padded?: boolean;
+    header?: ReactNode;
+    footer?: ReactNode;
+  }
+>;
 
-  header?: ReactNode;
-  footer?: ReactNode;
-} & ComponentPropsWithRef<"article">;
-
-function Card({ elevation, as = "article", padded = false, header, footer, children, ...props }: Props) {
-  const Element = as;
+function Card<E extends ElementType = "article">({
+  elevation,
+  padded = false,
+  header,
+  footer,
+  children,
+  as,
+  ...props
+}: Props<E>) {
+  const Component: ElementType = as ?? "article";
 
   const classes = card({ elevation, padded });
 
   return (
-    <Element {...addClassNameToProps(props, classes.base())}>
+    <Component {...addClassNameToProps(props, classes.base())}>
       {header ? <header className={classes.header()}>{header}</header> : null}
       {children ? <div className={classes.body()}>{children}</div> : null}
       {footer ? <footer className={classes.footer()}>{footer}</footer> : null}
-    </Element>
+    </Component>
   );
 }
 
-export default memo(Card);
+export default memo(Card) as typeof Card;

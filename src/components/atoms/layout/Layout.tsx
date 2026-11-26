@@ -1,4 +1,5 @@
-import type { ComponentPropsWithRef, ElementType } from "react";
+import type { PolymorphicProps } from "@/types/helpers";
+import type { ElementType } from "react";
 import type { VariantProps } from "tailwind-variants";
 
 import { Children, memo, useImperativeHandle, useRef } from "react";
@@ -12,18 +13,16 @@ import { addClassNameToProps } from "@/utils/styles";
 
 import styles from "./Layout.module.css";
 
-export type Props = {
-  /**
-   * Tag of the element
-   */
-  as?: ElementType;
+export type Props<E extends ElementType = "div"> = PolymorphicProps<
+  E,
+  {
+    debug?: boolean;
+    variant?: VariantProps<typeof layout>["variant"];
+  }
+>;
 
-  debug?: boolean;
-  variant?: VariantProps<typeof layout>["variant"];
-} & ComponentPropsWithRef<"div">;
-
-function Layout({ debug, as = "div", variant, children, ref, ...props }: Props) {
-  const Element = as;
+function Layout<E extends ElementType = "div">({ debug, variant, children, as, ref, ...props }: Props<E>) {
+  const Component: ElementType = as ?? "div";
   const showDebug = process.env.NODE_ENV !== "production" && debug;
   const innerRef = useRef<HTMLDivElement>(null);
   useImperativeHandle(ref, () => innerRef.current!, []);
@@ -48,9 +47,9 @@ function Layout({ debug, as = "div", variant, children, ref, ...props }: Props) 
   });
 
   return (
-    <Element {...addClassNameToProps(props, layout({ variant }), showDebug && styles.debug)} ref={innerRef}>
+    <Component {...addClassNameToProps(props, layout({ variant }), showDebug && styles.debug)} ref={innerRef}>
       {children}
-    </Element>
+    </Component>
   );
 }
 
